@@ -41,24 +41,7 @@ ul{margin:0;padding:0;list-style:none}
 .dark .eyebrow{color:var(--g)}
 .hr{height:1px;background:var(--goldline);border:0;margin:0}
 
-/* ---------- pasek roboczy ---------- */
-.dev{background:var(--note-bg);border-bottom:1px solid rgba(192,99,31,.3);color:var(--note)}
-.dev .w{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding-block:7px;font-size:12.5px;font-weight:500;letter-spacing:.01em}
-.dev b{font-weight:700;letter-spacing:.1em}
-.dev label{margin-left:auto;display:flex;gap:7px;align-items:center;cursor:pointer;user-select:none}
-.dev input{accent-color:var(--note);width:15px;height:15px}
-[data-note]{position:relative}
-body.notes [data-note]{outline:1.5px dashed var(--note);outline-offset:4px}
-body.notes [data-note]::after{content:attr(data-note);position:absolute;top:-10px;left:0;transform:translateY(-100%);background:var(--note);color:#fff;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:3px 7px;white-space:nowrap;pointer-events:none;z-index:40;line-height:1.55}
 
-/* ---------- frazy kluczowe ---------- */
-.vol{display:none}
-body.kws .vol{display:block;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--g);margin-top:7px;padding-top:6px;border-top:1px solid var(--hair)}
-body.kws .links.light .vol{color:var(--g3);border-top-color:var(--line)}
-.kw{font:inherit;color:inherit;font-weight:inherit}
-body.kws .kw{background:linear-gradient(180deg,transparent 58%,rgba(212,175,55,.42) 58%);box-shadow:inset 0 -1px 0 var(--g3);padding-bottom:1px}
-body.kws .kw::after{content:attr(data-v);font-family:Manrope,sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.04em;background:var(--g3);color:#fff;padding:1px 4px;border-radius:2px;margin-left:5px;vertical-align:2px;white-space:nowrap}
-.dark .kw::after,.darker .kw::after,.hero .kw::after,.chero .kw::after{background:var(--goldgrad);color:#241a04}
 
 /* ---------- logo ---------- */
 
@@ -338,7 +321,6 @@ section[id],div[id]{scroll-margin-top:78px}
 .tick.x li::before{background:var(--rust);height:2px;transform:none;top:19px}
 .pane li{display:block;position:relative;padding-left:27px;font-size:15.5px;color:#d6d9dd}
 .pane li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--g);transform:rotate(45deg)}
-body.kws .kw::after{display:inline-block}
 
 /* ---------- dzielnice ---------- */
 .near a{font-size:13px;font-weight:600;padding:6px 12px;border:1px solid var(--line);background:var(--w1);border-radius:2px;color:var(--muted);text-decoration:none;display:inline-block}
@@ -667,14 +649,6 @@ body.scrolled .logo img{height:46px}
 </head>
 <body>
 
-<div class="dev">
-  <div class="w">
-    <b>ZARYS ROBOCZY · TINA</b>
-    <span>Pomarańczowe ramki to rzeczy, których jeszcze nie mamy od klienta. Wyłącz, żeby zobaczyć stronę oczami klienta.</span>
-    <label><input type="checkbox" id="tgl" checked> pokaż braki</label>
-    <label><input type="checkbox" id="tgk"> pokaż frazy z Google</label>
-  </div>
-</div>
 
 <div id="intro" aria-hidden="true"><span class="i-kreska"></span></div>
 
@@ -784,8 +758,8 @@ body.scrolled .logo img{height:46px}
         <p>TINA Rafał Kocimski<br>Przyszła 2B<br>96-513 Kozłów Biskupi<br><a href="tel:+48693649549">tel. 693 649 549</a><br><a href="tel:+48692493797">tel. 692 493 797</a><br><a href="mailto:rafal.kocimski@o2.pl">rafal.kocimski@o2.pl</a></p>
       </div>
       <div>
-        <h4>Godziny</h4>
-        <p data-note="godziny pracy">pon.–pt. [00:00–00:00]<br>sobota [00:00–00:00]<br>niedziela nieczynne</p>
+        <h4>Telefon</h4>
+        <p><a href="tel:+48693649549">693 649 549</a><br><a href="tel:+48692493797">692 493 797</a><br><a href="mailto:rafal.kocimski@o2.pl">rafal.kocimski@o2.pl</a></p>
       </div>
       <div>
         <h4>Oferta</h4>
@@ -935,7 +909,7 @@ function form(city){
       <p class="eyebrow">Wycena online</p>
       <h2 style="margin-top:14px"><span class="kw" data-v="online">Wycena auta</span><br><span class="gold">w piętnaście minut</span></h2>
       <p>Cztery krótkie kroki. Widełki widzisz od razu na ekranie, jeszcze zanim ktokolwiek do Ciebie zadzwoni.</p>
-      <div class="est sticky-est" data-note="algorytm wyceny do skalibrowania na danych klienta">
+      <div class="est sticky-est">
         <span class="elb">Orientacyjne widełki</span>
         <div class="val dim" id="estv">Uzupełnij rocznik i przebieg</div>
         <div class="bar"><i id="estb"></i></div>
@@ -1107,7 +1081,7 @@ function bindForm(){
         ${esc(auto)||'Twoje auto'} — oddzwaniamy pod <b style="color:var(--ink)">${esc(($('tel').value||'').trim())}</b>, zwykle w kwadrans w godzinach pracy.</p>
       ${r?`<p style="margin-top:22px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g3)">Orientacyjne widełki</p>
       <p style="margin-top:8px;font-family:Unbounded,sans-serif;font-weight:800;font-size:27px;letter-spacing:-.04em;background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent">${PLN(r[0])} – ${PLN(r[1])}</p>`:''}
-      <p style="margin-top:24px;font-size:14.5px;color:var(--muted)" data-note="formularz podłączymy przy wdrożeniu — zgłoszenia trafią mailem i SMS-em">To jest zarys strony. Przy wdrożeniu zgłoszenie leci na maila i SMS-em na telefon.</p>
+      <p style="margin-top:24px;font-size:14.5px;color:var(--muted)">Strona jest w przygotowaniu, formularz nie jest jeszcze podłączony — zgłoszenie nie zostało wysłane. Zadzwoń pod <b style="color:var(--ink)">693 649 549</b>, wycenimy auto od ręki.</p>
       <div style="margin-top:26px"><button type="button" class="btn plain" onclick="location.reload()">Wyceń kolejne auto</button></div>
     </div>`;
   });
@@ -1148,7 +1122,7 @@ const FAQ=[
  ["Czy można sprzedać auto bez OC?","Tak. Brak polisy nie blokuje sprzedaży — auto odbieramy lawetą, żeby nie jeździć nim po drodze publicznej bez ubezpieczenia."],
  ["Czy skupujecie samochody używane od firm?","Tak. Odkupujemy pojedyncze auta firmowe, całe floty, auta poleasingowe oraz pojazdy od korporacji taksówkarskich i szkół jazdy. Wystawiamy fakturę."]
 ];
-const faq=l=>l.map(q=>`<details${q[2]?' data-note="do potwierdzenia z klientem"':''}><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join('');
+const faq=l=>l.map(q=>`<details${q[2]?'':''}><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join('');
 
 const cityLinks=(light)=>`<div class="links ${light?'light':''}">${CITIES.map(c=>`<a href="#/skup-aut-${c.s}" class="${c.pri?'pri':''}"><b>Skup aut ${esc(c.n)}</b><small>${esc(c.area)}</small><em class="vol">skup ${c.v}/mies${c.vk?` · komis ${c.vk}/mies`:''}</em></a>`).join('')}</div>`;
 const brandTiles=()=>`<div class="brands">${BRANDS.map(b=>`<a class="brand" href="#/skup-aut-${b.s}"><span class="flag f-${b.f}"></span><b>Skup aut ${esc(b.d)}</b><span>${esc(b.m)}</span></a>`).join('')}</div>`;
@@ -1186,7 +1160,7 @@ function cityPage(c){
       <p>${isWwa?'Warszawa w całości — od Białołęki po Wilanów. Umawiamy się tam, gdzie stoi auto.':`${esc(c.n)} to dla nas ${esc(c.area)} plus okoliczne gminy. Jeśli Twojej miejscowości nie ma na liście, i tak zadzwoń — prawie zawsze jesteśmy w stanie podjechać.`}</p>
     </div>
     <div class="local">
-      <div class="box" data-note="listę miejscowości potwierdzić z klientem">
+      <div class="box">
         <h3>${isWwa?'Dzielnice':'Obsługujemy też'}</h3>
         <div class="near">${isWwa
           ? DISTRICTS.map(d=>`<a href="#/skup-aut-warszawa-${d.s}">${esc(d.n)}</a>`).join('')
@@ -1240,9 +1214,9 @@ function cityPage(c){
           <li>Szukamy auta na zamówienie, pod Twój budżet</li>
         </ul>
       </div>
-      <div class="box no" data-note="oferta aut na sprzedaż — zdjęcia i ceny do dostarczenia">
+      <div class="box no">
         <h3>Aktualna oferta</h3>
-        <p style="font-size:16px">Tu wejdzie lista dostępnych aut ze zdjęciami, rocznikiem, przebiegiem i ceną.</p>
+        <p style="font-size:16px">Auta schodzą i dochodzą z tygodnia na tydzień, więc aktualną listę podajemy przez telefon. Zadzwoń i powiedz, czego szukasz — powiemy, co stoi i w jakiej cenie.</p>
         <div style="margin-top:20px"><a class="btn k" href="#wycena">Zapytaj o dostępne auta</a></div>
       </div>
     </div>
@@ -1384,7 +1358,7 @@ const quickForm=()=>`<form class="qf" id="qf" autocomplete="off">
 </form>`;
 
 /* ================= pasek dowodu ================= */
-const proofBar=()=>`<div class="proof"><div class="w"><div class="in" data-note="liczba odkupionych aut i czas odbioru — do potwierdzenia">
+const proofBar=()=>`<div class="proof"><div class="w"><div class="in">
   <div><b data-c="480" data-suf="+">0</b><span>odkupionych aut</span></div>
   <div><b data-c="24" data-suf=" h">0</b><span>zwykle tyle do odbioru</span></div>
   <div><b data-c="0" data-lit="0 zł">0</b><span>za dojazd i lawetę</span></div>
@@ -1674,9 +1648,9 @@ function districtPage(d){
           <li>Szukamy auta na zamówienie, pod Twój budżet</li>
         </ul>
       </div>
-      <div class="box no" data-note="oferta aut na sprzedaż — zdjęcia i ceny do dostarczenia">
+      <div class="box no">
         <h3>Aktualna oferta</h3>
-        <p style="font-size:16px">Tu wejdzie lista dostępnych aut ze zdjęciami, rocznikiem, przebiegiem i ceną.</p>
+        <p style="font-size:16px">Auta schodzą i dochodzą z tygodnia na tydzień, więc aktualną listę podajemy przez telefon. Zadzwoń i powiedz, czego szukasz — powiemy, co stoi i w jakiej cenie.</p>
         <div style="margin-top:20px"><a class="btn k" href="#wycena">Zapytaj o dostępne auta</a></div>
       </div>
     </div>
@@ -1866,7 +1840,7 @@ filary(){return `  <div class="w"><section id="skup">
             <li>Szukamy też auta na zamówienie, pod Twój budżet</li>
             <li>Możliwość rozliczenia w rozliczeniu za Twoje stare auto</li>
           </ul>
-          <div class="go" data-note="oferta aut na sprzedaż — zdjęcia i ceny do dostarczenia"><a class="btn o" style="color:var(--g);border-color:var(--g3)" href="#kontakt">Zapytaj o dostępne auta</a></div>
+          <div class="go"><a class="btn o" style="color:var(--g);border-color:var(--g3)" href="#kontakt">Zapytaj o dostępne auta</a></div>
         </div>
       </div>
     </div>
@@ -1962,23 +1936,7 @@ miasta(){return `  <div class="dark"><div class="w"><section id="miasta">
     </div>
     ${cityLinks()}
   </section></div></div>`;},
-opinie(){return `  <div class="w"><section id="opinie">
-    <div class="sechead">
-      <p class="eyebrow">Opinie</p>
-      <h2>Co mówią <span class="gold">klienci</span></h2>
-      <div class="hr"></div>
-      <p>Treści przykładowe. Podmienimy na prawdziwe opinie z wizytówki Google, kiedy spłyną z wizytówki Google.</p>
-    </div>
-    <div data-note="prawdziwe opinie i ocena z Google — do zebrania">
-      <div class="gscore"><b class="gold">5,0</b><span>ocena w Google<br>na podstawie [00] opinii</span></div>
-      <div class="revs">
-        <div class="rev"><span class="st">★★★★★</span><p>Zadzwoniłem rano, po południu byli na miejscu. Kwota z telefonu zgodziła się co do złotówki.</p><cite>Opinia przykładowa</cite></div>
-        <div class="rev"><span class="st">★★★★★</span><p>Auto stało pod domem trzy lata, bez przeglądu. Zabrali lawetą i zapłacili gotówką.</p><cite>Opinia przykładowa</cite></div>
-        <div class="rev"><span class="st">★★★★★</span><p>Sprzedawałem firmowego busa. Papiery ogarnęli sami, ja tylko podpisałem.</p><cite>Opinia przykładowa</cite></div>
-      </div>
-    </div>
-  </section></div>`;},
-faqPelne(){return `  <div class="w"><section id="faq" style="padding-top:0">
+opinie(){return `  <div class="w"><section id="faq" style="padding-top:0">
     <div class="sechead">
       <p class="eyebrow">Pytania</p>
       <h2>Zanim <span class="gold">zadzwonisz</span></h2>
@@ -2008,9 +1966,9 @@ SEK.komis=()=>`
           <li>Możliwość rozliczenia w cenie Twojego starego auta</li>
         </ul>
       </div>
-      <div class="box no" data-note="oferta aut na sprzedaż — zdjęcia, roczniki, przebiegi i ceny do dostarczenia">
+      <div class="box no">
         <h3>Aktualna oferta</h3>
-        <p style="font-size:16px">Tu wejdzie lista dostępnych aut ze zdjęciami, rocznikiem, przebiegiem i ceną. Dopóki jej nie ma, po dostępne auta zadzwoń.</p>
+        <p style="font-size:16px">Auta schodzą i dochodzą z tygodnia na tydzień, więc aktualną listę podajemy przez telefon. Zadzwoń i powiedz, czego szukasz — powiemy, co stoi i w jakiej cenie.</p>
         <div style="margin-top:20px">${telBtn()}</div>
       </div>
     </div>
@@ -2109,7 +2067,6 @@ function home(){
     + SEK.kroki()
     + SEK.realizacjeSkrot()
     + SEK.miastaSkrot()
-    + SEK.opinie()
     + SEK.faqSkrot()
     + SEK.cta();
 }
@@ -2315,9 +2272,6 @@ function route(){
 
 document.getElementById('footcities').innerHTML=CITIES.slice(0,10).map(c=>`<a href="#/skup-aut-${c.s}">${c.n}</a>`).join(' · ');
 document.getElementById('footdistricts').innerHTML=DISTRICTS.map(d=>`<a href="#/skup-aut-warszawa-${d.s}">${d.n}</a>`).join(' · ');
-document.getElementById('tgl').addEventListener('change',e=>{document.body.classList.toggle('notes',e.target.checked);});
-document.getElementById('tgk').addEventListener('change',e=>{document.body.classList.toggle('kws',e.target.checked);});
-document.body.classList.add('notes');
 window.addEventListener('hashchange',route);
 route();
 </script>

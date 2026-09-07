@@ -1,30 +1,40 @@
-# TINA Kupno i Sprzedaż — podgląd roboczy
+# TINA Skup Aut — strona
 
-Strona dla Krystiana (skup aut i komis, Mazowsze). **To jest zarys do akceptacji, nie produkcja.**
-Całość jest oznaczona `noindex` — Google tego nie zaindeksuje.
+**TINA Rafał Kocimski** · skup aut i komis, Mazowsze
+NIP 522-234-50-44 · REGON 142742668 · Przyszła 2B, 96-513 Kozłów Biskupi · firma od 2011
+
+**Podgląd do akceptacji, nie produkcja.** Całość ma `noindex` i `robots.txt Disallow`
+— Google tego nie zaindeksuje.
 
 ## Co działa
 
-- **Kalkulator widelek** — formularz krokowy liczy orientacyjną kwotę na żywo. Algorytm do skalibrowania na danych Krystiana.
+- **Kalkulator widełek** — formularz krokowy liczy orientacyjną kwotę na żywo.
+  Algorytm do skalibrowania na danych klienta.
 - **Szybka wycena w hero** — trzy pola, przenosi dane do pełnego formularza.
-- **Podstrony miast** (19) i **dzielnic Warszawy** (18) — każda z własnym tekstem, FAQ i formularzem.
-- **Podstrony marek** według kraju pochodzenia.
-- **Mapa zasięgu** — miasta rozstawione według rzeczywistych współrzędnych, promienie od bazy w Sochaczewie.
+- **Osobna podstrona dla każdej zakładki**: skup, sprzedaż, wycena, realizacje,
+  porównanie, marki, miasta, pytania — każda z własnym tytułem, opisem meta i H1.
+- **19 podstron miast** i **18 podstron dzielnic Warszawy**, wybór miasta w nawigacji.
+- **8 podstron marek** według kraju pochodzenia.
 - **Tabela porównawcza** skup / ogłoszenie / komis.
-- Galeria z lightboxem, dane strukturalne dla Google (AutoDealer, FAQPage, BreadcrumbList).
+- Ekran powitalny z logo, galeria z lightboxem, dane strukturalne
+  (AutoDealer z pełnym adresem, FAQPage, BreadcrumbList).
 
-## Paski robocze u góry
+## Do uzupełnienia od klienta
 
-- **pokaż braki** — pomarańczowe ramki na wszystkim, czego nie mamy jeszcze od klienta
-  (telefon, adres, NIP, godziny, opinie Google, oferta aut na sprzedaż).
-- **pokaż frazy z Google** — podświetla frazy kluczowe z miesięcznym wolumenem wyszukiwań.
+- godziny pracy
+- wizytówka Google: link, ocena, opinie (sekcja opinii jest na razie zdjęta ze strony)
+- auta na sprzedaż: zdjęcia, roczniki, przebiegi, ceny
+- za ile realnie kupują — 5–10 przykładów do kalibracji kalkulatora
+- ile aut łącznie odkupili i typowy czas od zgłoszenia do odbioru
+- logo w wektorze (mamy JPG, sam znak ma 309×121 px)
 
-Przed oddaniem klientowi oba paski schodzą ze strony.
+## Do zrobienia przed produkcją
 
-## Do uzupełnienia przez klienta
-
-telefon · adres · e-mail · godziny pracy · NIP i REGON · opinie i ocena Google ·
-zdjęcia i ceny aut na sprzedaż · liczby na pasku dowodu · kalibracja kalkulatora wyceny
+- **adresy z hashem → osobne pliki** — dziś Google widzi jedną stronę, nie 45
+- polityka prywatności i zgoda RODO przy formularzu (wymóg prawny)
+- podłączenie formularza (mail + SMS), strona „dziękujemy”, strona 404
+- sitemap.xml, canonical, `robots.txt` bez Disallow, `og:image`
+- Google Search Console i Analytics, obrazy do WebP
 
 ---
 Realizacja: [Impulseo](https://impulseo.pl)
