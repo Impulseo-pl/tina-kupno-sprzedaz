@@ -445,13 +445,14 @@ body.scrolled .ctabar{transform:none}
 /* ================= mapa zasiegu ================= */
 .mapwrap{position:relative;background:var(--k0);border:1px solid var(--hair);padding:18px}
 .mapwrap svg{display:block;width:100%;height:auto}
+.mapwrap .scroller{width:100%}
 .mapwrap .ring{fill:none;stroke:rgba(212,175,55,.16);stroke-dasharray:3 6}
 .mapwrap .rlab{fill:#4c525d;font-family:Manrope,sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em}
 .mapwrap .dot{fill:#8f6c19;transition:fill .2s,r .2s}
 .mapwrap .dot.pri{fill:#d4af37}
 .mapwrap .base{fill:#f7e6ae}
 .mapwrap g.pin{cursor:pointer}
-.mapwrap g.pin text{fill:#9096a0;font-family:Manrope,sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.02em;transition:fill .2s}
+.mapwrap g.pin text{fill:#9096a0;font-family:Manrope,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.02em;transition:fill .2s}
 .mapwrap g.pin:hover text,.mapwrap g.pin:focus text{fill:#f7e6ae}
 .mapwrap g.pin:hover .dot,.mapwrap g.pin:focus .dot{fill:#f7e6ae;r:6}
 .mapwrap g.pin:focus{outline:none}
@@ -498,6 +499,34 @@ body.scrolled .ctabar{transform:none}
 .nav a.act{opacity:1;border-bottom-color:var(--g)}
 .sticky-est{position:sticky;top:86px}
 @media (max-width:1000px){.sticky-est{position:static}}
+/* ================= telefon: nawigacja, mapa, drobne ================= */
+@media (max-width:1000px){
+  .top .w{flex-wrap:wrap;row-gap:4px}
+  .nav{display:flex;order:3;width:100%;margin-left:0;gap:0;overflow-x:auto;
+       border-top:1px solid var(--hair);padding-top:7px;scrollbar-width:none;-ms-overflow-style:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{white-space:nowrap;padding:5px 13px;font-size:12px;letter-spacing:.07em;border-bottom:0;opacity:.72}
+  .nav a:first-child{padding-left:0}
+  .nav a:hover,.nav a:active{opacity:1;color:var(--g)}
+  .logo .nm{font-size:25px}
+  body.scrolled .logo .nm{font-size:22px}
+}
+@media (max-width:760px){
+  .mapwrap{padding:14px 14px 0}
+  .mapwrap .scroller{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:12px}
+  .mapwrap .scroller>svg{min-width:660px}
+  .mapleg{font-size:11.5px;gap:12px}
+  .mapleg span:last-child{margin-left:0}
+  .est{padding:20px 20px 22px}
+  .wiz div{font-size:9.5px;letter-spacing:.06em;padding:11px 4px 9px}
+  .wiz div i{font-size:13px}
+  .qf{padding:14px}
+  .hero .w{padding-block:44px 42px}
+  .chero .w{padding-block:36px 40px}
+  .vow{padding:22px 22px 24px;grid-template-columns:30px 1fr;gap:14px}
+  .vow svg{width:26px;height:26px}
+  .foot .fine{flex-direction:column;gap:8px}
+}
 </style>
 
 </head>
@@ -1455,7 +1484,7 @@ function coverageMap(){
   /* pierwsze przejscie: pozycje kropek */
   pts.forEach(p=>{ const q=px(p); p.x=q[0]; p.y=q[1];
     p.base=p.c.s==='sochaczew'; p.r=p.base?6.5:(p.c.pri?5:3.6);
-    p.txt=p.c.n+(p.base?' \u00b7 baza':'');
+    p.txt=p.c.n+(p.base?' · baza':'');
     p.w=p.txt.length*CH+4; });
 
   const zajete=pts.map(p=>({x1:p.x-p.r-3,x2:p.x+p.r+3,y1:p.y-p.r-3,y2:p.y+p.r+3}));
@@ -1491,16 +1520,16 @@ function coverageMap(){
       <text x="${p.tx.toFixed(1)}" y="${p.ty.toFixed(1)}" text-anchor="${p.anchor}">${esc(p.txt)}</text>
     </g>`).join('');
 
-  return `<div class="mapwrap" data-note="promienie liczone od bazy w Sochaczewie \u2014 potwierdzi\u0107 z Krystianem">
-    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Mapa zasi\u0119gu: miasta na Mazowszu, w kt\u00f3rych prowadzimy skup aut">
+  return `<div class="mapwrap" data-note="promienie liczone od bazy w Sochaczewie — potwierdzić z Krystianem">
+    <div class="scroller"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Mapa zasięgu: miasta na Mazowszu, w których prowadzimy skup aut">
       ${rings}${pins}
-    </svg>
+    </svg></div>
     <div class="mapleg">
-      <span><i style="background:#f7e6ae"></i>baza \u2014 Sochaczew</span>
+      <span><i style="background:#f7e6ae"></i>baza — Sochaczew</span>
       <span><i style="background:#d4af37"></i>dojazd tego samego dnia</span>
-      <span><i style="background:#8f6c19"></i>dojazd w ci\u0105gu doby</span>
-      <span>okr\u0119gi co 50 km od bazy</span>
-      <span style="margin-left:auto">kliknij miasto, \u017ceby przej\u015b\u0107 na jego stron\u0119</span>
+      <span><i style="background:#8f6c19"></i>dojazd w ciągu doby</span>
+      <span>okręgi co 50 km od bazy</span>
+      <span style="margin-left:auto">kliknij miasto, żeby przejść na jego stronę</span>
     </div>
   </div>`;
 }
