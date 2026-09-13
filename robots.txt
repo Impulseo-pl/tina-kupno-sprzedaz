@@ -1,2 +1,5 @@
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /_src/
+
+Sitemap: https://tinaskupaut.pl/sitemap.xml
