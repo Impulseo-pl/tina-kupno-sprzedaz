@@ -25,8 +25,6 @@ ul{margin:0;padding:0;list-style:none}
 .dark .eyebrow{color:var(--g)}
 .hr{height:1px;background:var(--goldline);border:0;margin:0}
 
-
-
 /* ---------- logo ---------- */
 
 /* ---------- nagłówek ---------- */
@@ -116,24 +114,6 @@ section{padding-block:78px}
 
 /* ---------- marki wg krajów ---------- */
 .brands{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.brand{background:var(--w0);border:1px solid var(--line);padding:22px 20px 24px;text-decoration:none;display:block;text-align:center;transition:border-color .2s,transform .2s}
-.brand:hover{border-color:var(--g);transform:translateY(-3px)}
-.flag{width:56px;height:38px;margin:0 auto 14px;border:1px solid rgba(0,0,0,.14);box-shadow:0 2px 8px -4px rgba(0,0,0,.4)}
-.f-de{background:linear-gradient(180deg,#111 33.3%,#d40000 33.3% 66.6%,#f5cc00 66.6%)}
-.f-jp{background:#fff;position:relative}
-.f-jp::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#bc002d 0 32%,transparent 32%)}
-.f-kr{background:#fff;position:relative}
-.f-kr::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,#cd2e3a 0 30%,transparent 30%),radial-gradient(circle at 50% 58%,#0047a0 0 30%,transparent 30%)}
-.f-fr{background:linear-gradient(90deg,#0055a4 33.3%,#fff 33.3% 66.6%,#ef4135 66.6%)}
-.f-gb{background:#fff;position:relative}
-.f-gb::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 42%,#ce1124 42% 58%,transparent 58%),linear-gradient(180deg,transparent 38%,#ce1124 38% 62%,transparent 62%)}
-.f-us{background:repeating-linear-gradient(180deg,#b22234 0 14.28%,#fff 14.28% 28.57%);position:relative}
-.f-us::after{content:"";position:absolute;left:0;top:0;width:44%;height:53.8%;background:#3c3b6e}
-.f-it{background:linear-gradient(90deg,#008c45 33.3%,#fff 33.3% 66.6%,#cd212a 66.6%)}
-.f-cz{background:linear-gradient(180deg,#fff 50%,#d7141a 50%);position:relative}
-.f-cz::after{content:"";position:absolute;left:0;top:0;border-style:solid;border-width:19px 0 19px 28px;border-color:transparent transparent transparent #11457e}
-.brand b{display:block;font-family:Unbounded,sans-serif;font-weight:700;font-size:13px;letter-spacing:-.02em;text-transform:uppercase;line-height:1.3}
-.brand span{display:block;font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45}
 
 /* ---------- formularz ---------- */
 .fgrid{display:grid;grid-template-columns:.78fr 1.22fr;gap:46px;align-items:start}
@@ -173,7 +153,6 @@ legend{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:upperca
 .actions{display:flex;gap:12px;align-items:center;margin-top:26px;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
 .btn.plain{background:transparent;color:var(--muted);border:1px solid var(--line)}
 .btn.plain:hover{color:var(--ink);border-color:var(--ink)}
-.sent{margin-left:auto;font-size:13px;font-weight:600;color:var(--rust);display:none}
 
 /* ---------- listy tak/nie ---------- */
 .duo{display:grid;grid-template-columns:1.08fr .92fr;gap:22px}
@@ -189,17 +168,12 @@ legend{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:upperca
 .links a b{font-weight:700}
 .links a small{display:block;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--onk-mut);margin-top:4px;font-weight:600}
 .links a:hover small{color:var(--g3)}
-.links a.pri{background:#191d25}
 .links.light a{background:var(--w0);border-color:var(--line);color:var(--ink)}
 .links.light a:hover{border-color:var(--g3);color:var(--g3)}
 .links.light a small{color:var(--muted)}
 
 /* ---------- opinie ---------- */
 .revs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.rev{background:var(--w0);border:1px solid var(--line);padding:26px 26px 28px;display:grid;gap:12px;align-content:start}
-.rev .st{color:var(--g);letter-spacing:.22em;font-size:14px}
-.rev p{font-size:16px}
-.rev cite{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .gscore{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:26px}
 .gscore b{font-family:Unbounded,sans-serif;font-weight:800;font-size:34px;letter-spacing:-.05em}
 .gscore span{font-size:13.5px;color:var(--muted);text-align:left;line-height:1.35}
@@ -245,7 +219,7 @@ summary:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 
 /* ---------- stopka ---------- */
 .foot{background:var(--k0);color:var(--onk);padding-block:52px 28px;font-size:15px;border-top:1px solid var(--hair)}
-.foot .cols{display:grid;grid-template-columns:1.3fr .8fr .8fr 1.1fr;gap:36px}
+.foot .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
 .foot h4{font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin:0 0 13px}
 .foot p{color:#b9bdc4;line-height:1.8}
 .foot a{color:#b9bdc4;text-decoration:none}
@@ -294,22 +268,11 @@ html{-webkit-text-size-adjust:100%}
   /* Tabela na czterech kolumnach nie miesci sie na telefonie, a przewijanie w bok
      gubi caly sens porownania. Rozkladamy ja na bloki: jeden wiersz = jedna karta. */
   .cmpwrap{overflow:visible;border:0;background:transparent}
-  .cmpwrap .cmp{min-width:0;width:100%;font-size:16px;display:block}
-  .cmpwrap .cmp thead{display:none}
-  .cmpwrap .cmp tbody,.cmpwrap .cmp tr{display:block;width:auto}
-  .cmpwrap .cmp tbody th,.cmpwrap .cmp td{display:block;width:auto}
-  .cmpwrap .cmp tr{border:1px solid var(--line);background:var(--w0);margin-bottom:14px}
-  .cmpwrap .cmp tbody th{padding:14px 18px 12px;background:var(--w2);
-    border-bottom:1px solid var(--line);font-size:12.5px;letter-spacing:.12em;color:var(--ink)}
-  .cmpwrap .cmp td{padding:13px 18px 15px;border-bottom:1px solid var(--line)}
   /* Ten sam ::after niesie na duzym ekranie zlota romb, a tu nazwe kolumny -
      dlatego kasujemy obrot i tlo po rombie, inaczej napis lezy na ukos. */
   .cmpwrap .cmp td::before{content:attr(data-k);display:block;margin:0 0 5px;font-size:10.5px;
     font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
     width:auto;height:auto;background:none;transform:none;vertical-align:baseline}
-  .cmpwrap .cmp td.us{background:#fdfbf4}
-  .cmpwrap .cmp td.us::before{color:var(--g4)}
-  .cmpwrap .cmp tr td:last-child{border-bottom:0}
   .przesun{display:none}
 }
 
@@ -465,18 +428,6 @@ body.scrolled .ctabar{transform:none}
 
 /* ================= tabela porownawcza ================= */
 .cmpwrap{overflow-x:auto;border:1px solid var(--line);background:var(--w0)}
-.cmp{width:100%;min-width:660px;border-collapse:collapse;font-size:15.5px}
-.cmp th,.cmp td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-.cmp thead th{font-family:Unbounded,sans-serif;font-weight:700;font-size:12.5px;letter-spacing:-.01em;text-transform:uppercase;background:var(--w2);border-bottom:1px solid var(--line)}
-.cmp thead th.us{background:var(--k0);color:var(--onk);position:relative}
-.cmp thead th.us::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--goldgrad)}
-.cmp tbody th{font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);width:26%}
-.cmp td.us{background:#fdfbf4;font-weight:600}
-.cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
-.cmp .y::before,.cmp .n::before{content:"";display:inline-block;width:8px;height:8px;margin-right:9px;transform:rotate(45deg);vertical-align:1px}
-.cmp .y::before{background:var(--goldgrad)}
-.cmp .n::before{background:var(--rust);height:2px;transform:none;vertical-align:4px}
-
 
 /* ================= dokumenty ================= */
 .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -538,155 +489,25 @@ body.scrolled .ctabar{transform:none}
   .vow svg{width:26px;height:26px}
   .foot .fine{flex-direction:column;gap:8px}
 }
-/* ---------- rozwijany wybór miasta w nawigacji ---------- */
-.navdrop{position:relative;display:flex;align-items:center}
-.dropbtn{font:inherit;font-size:13.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-  appearance:none;-webkit-appearance:none;background:transparent;box-shadow:none;border-radius:0;border:0;color:var(--onk);opacity:.78;cursor:pointer;padding:7px 0;display:flex;
-  align-items:center;gap:6px;border-bottom:1.5px solid transparent;transition:.18s}
-.dropbtn:hover,.dropbtn[aria-expanded="true"]{opacity:1;border-bottom-color:var(--g)}
-.dropbtn svg{transition:transform .22s var(--ez)}
-.dropbtn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.dropmenu{position:absolute;top:calc(100% + 11px);right:0;z-index:70;display:none;
-  min-width:520px;padding:16px 18px 18px;background:rgba(10,12,16,.985);border:1px solid var(--hair);
-  box-shadow:0 30px 70px -34px rgba(0,0,0,.95)}
-.dropmenu::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--goldline)}
-.dropmenu.on{display:block;animation:dropin .22s var(--ez) both}
 @keyframes dropin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-.dropmenu h5{margin:0 0 9px;font-family:Manrope,sans-serif;font-size:10px;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--g3)}
-.dropmenu h5+.dg{margin-bottom:16px}
-.dg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px 14px}
-.dropmenu a{display:block;padding:5px 8px;font-size:13px;font-weight:600;letter-spacing:.01em;
-  text-transform:none;color:#b9bdc4;text-decoration:none;border-radius:2px;border-bottom:0;opacity:1}
-.dropmenu a:hover{background:#191d25;color:var(--g)}
-.dropmenu a.pri{color:var(--onk)}
-.dropmenu .stopka{margin-top:14px;padding-top:12px;border-top:1px solid var(--hair);display:flex;
-  justify-content:space-between;gap:14px;flex-wrap:wrap}
-.dropmenu .stopka a{padding:4px 0;font-size:12.5px;color:var(--g);letter-spacing:.04em}
-.dropmenu .stopka a:hover{background:none;text-decoration:underline}
 .nav a.act,.dropbtn.act{opacity:1;color:var(--g);border-bottom-color:var(--g)}
 @media (max-width:1000px){
-  .navdrop{flex:none}
-  .dropbtn{font-size:12px;letter-spacing:.07em;padding:5px 13px;opacity:.72}
-  .dropmenu{position:fixed;left:12px;right:12px;top:auto;min-width:0;max-height:62vh;overflow:auto}
-  .dg{grid-template-columns:repeat(2,1fr)}
 }
-@media (max-width:520px){.dg{grid-template-columns:1fr}}
+@media (max-width:520px){}
 /* ---------- znak firmowy ---------- */
 .logo{display:block;text-decoration:none;flex:none;line-height:0}
 .logo img{height:var(--znak-h,56px);width:auto;max-width:none;transition:height .25s var(--ez)}
 .l-ciemne{display:none}
 body.scrolled .logo img{height:46px}
 @media (max-width:1000px){.logo img{height:42px}body.scrolled .logo img{height:38px}}
-/* na kremowej kurtynie znak jest ciemnozloty, w pasku bialy */
-.intro-on:not(.intro-jasny) .l-jasne{display:none}
-.intro-on:not(.intro-jasny) .l-ciemne{display:block}
-.intro-on .logo img{height:auto!important;width:var(--i-w,420px)!important;transition:none}
-.intro-on.intro-out .logo img{transition:none}
-
-/* ================= KURTYNA Z LOGO (ekran powitalny) =================
-   Wzorzec domu: Meble FRONT -> STOLMAR -> SPECBUD. Przeniesiony na TINE.
-
-   Kurtyna ma kolor STRONY (kremowy --w1), a kontrast robi CIEMNE HERO, ktore
-   wyjezdza spod niej. Ciemna zaslona nad ciemnym hero nie odslania niczego.
-
-   Jedzie DOKLADNIE ten sam element co w naglowku (.logo), wiec nie da sie
-   zobaczyc szwu miedzy "logo z wejscia" a "logo w pasku".
-
-   Skalujemy W DOL, nigdy w gore: na kurtynie logo dostaje swoj docelowy,
-   duzy rozmiar (--i-k), a do paska wraca scale() mniejszym od 1. Powiekszanie
-   rasteryzuje tekst w rozmiarze bazowym i na telefonie wychodzi rozmyte
-   (zgloszone przez K. 02.09.2026 przy SPECBUDzie).
-
-   Cztery bezpieczniki, wszystkie obowiazkowe:
-   1. #intro jest domyslnie display:none - bez JS wejscia po prostu nie ma;
-   2. twarde limity czasu w skrypcie zdejmuja zaslone niezaleznie od wszystkiego;
-   3. klik / scroll / dotyk / klawisz przerywa natychmiast;
-   4. prefers-reduced-motion pomija calosc. */
-#intro{display:none}
-.intro-on #intro{
-  display:block;position:fixed;inset:0;z-index:300;background:var(--w1);
-  transform:translateY(0);
-  /* Swiadomie BEZ expo-out. Kurtyna i logo jada naraz, w przeciwnych kierunkach:
-     przy szybkim starcie krawedz zeszlaby pod logo w pierwszych 100 ms. */
-  transition:transform .72s cubic-bezier(.66,0,.24,1);
-}
-/* Cien nad krawedzia: kremowa plachta na kremowej stronie nie ma widocznej
-   krawedzi wszedzie tam, gdzie pod spodem nie ma zdjecia. */
-.intro-on #intro::before{
-  content:"";position:absolute;left:0;right:0;bottom:100%;height:56px;
-  background:linear-gradient(to top,rgba(12,14,18,.12),rgba(12,14,18,0));
-}
-.intro-on.intro-out #intro{transform:translateY(100%);pointer-events:none}
-.intro-on body{overflow:hidden}
-.intro-on .dev,.intro-on .ctabar,.intro-on .prog{opacity:0}
-
-/* Drugi takt ruchu: zlota wloskowata kreska pod logo, ta sama co .hr na stronie.
-   Bez niej wejscie jest jednym plaskim gestem, a jeden gest wyglada jak fade
-   z szablonu. */
-.i-kreska{
-  position:absolute;left:50%;top:50%;width:var(--i-w,300px);height:1px;
-  background:linear-gradient(90deg,transparent,#a07d21 18%,#c9a03a 50%,#a07d21 82%,transparent);
-  transform-origin:center;opacity:0;
-  transform:translate(-50%,calc(var(--i-h,70px) / 2 + 26px)) scaleX(0);
-}
-.intro-on.intro-gra .i-kreska{
-  opacity:1;transform:translate(-50%,calc(var(--i-h,70px) / 2 + 26px)) scaleX(1);
-  transition:transform .46s cubic-bezier(.16,1,.3,1) .14s,opacity .18s linear .14s;
-}
-.intro-on.intro-out .i-kreska{opacity:0;transition:opacity .2s linear}
-
-/* Naglowek nad zaslona, ale widoczne jest z niego TYLKO logo. Tlo i kreska
-   znikaja na czas wejscia - inaczej przez kremowa kurtyne idzie czarny pas. */
-.intro-on .top{position:relative!important;z-index:301;background:transparent;border-bottom-color:transparent}
-.intro-on .top .nav,.intro-on .top .tel{opacity:0}
-.intro-on.intro-out .top{
-  background:rgba(6,7,10,.97);border-bottom-color:var(--hair);
-  transition:background .34s linear .3s,border-color .34s linear .3s;
-}
-.intro-on.intro-out .top .nav,.intro-on.intro-out .top .tel{
-  opacity:1;transition:opacity .5s cubic-bezier(.22,.68,.36,1) .32s;
-}
 
 /* Slot trzyma miejsce po logo w pasku - bez tego naglowek zapada sie i podskakuje
    po zdjeciu kurtyny. */
 .logo-slot{flex:none;display:block}
-.intro-on .logo-slot{width:var(--i-baza-w,240px);height:var(--i-baza-h,52px)}
-.intro-on .logo{
-  position:fixed!important;left:50%;top:50%;margin:0;z-index:302;
-  transform:translate(-50%,-50%);transform-origin:center center;will-change:transform;
-  /* ZERO zwyklego opacity+scale - to jest wzorzec taniej roboty. Zamiast tego
-     maska (clip-path) plus rozmycie schodzace do ostrosci. */
-  clip-path:inset(0 100% 0 0);
-  filter:blur(13px);
-}
-
-.intro-on.intro-gra .logo{
-  clip-path:inset(0 0 0 0);filter:blur(0px);
-  transition:clip-path .54s cubic-bezier(.16,1,.3,1),filter .54s cubic-bezier(.16,1,.3,1);
-}
-/* Przelot do paska bierze spokojniejsza krzywa niz odslona - logo ma dojechac,
-   a nie strzelic. */
-.intro-on.intro-out .logo{
-  transform:translate(calc(-50% + var(--i-px,0px)),calc(-50% + var(--i-py,0px)))
-            scale(var(--i-zmniejsz,.42));
-  transition:transform .72s cubic-bezier(.16,.84,.44,1);
-}
 /* Pomiar miejsca docelowego: skrypt na jedna klatke przywraca logo do stanu z paska. */
 .logo.mierze{position:static!important;transform:none!important;transition:none!important;
   filter:none!important;clip-path:none!important}
 .logo.mierze img{height:var(--znak-h,50px)!important;width:auto!important;transition:none!important}
 
 @media (prefers-reduced-motion:reduce){
-  .intro-on #intro{display:none}
-  .intro-on body{overflow:auto}
-  .intro-on .dev,.intro-on .ctabar,.intro-on .prog{opacity:1}
-  .intro-on .logo-slot{width:auto;height:auto}
-  .intro-on .logo{position:static!important;transform:none!important;transition:none!important;
-    filter:none!important;clip-path:none!important}
-  .intro-on .logo img{height:var(--znak-h,50px)!important;width:auto!important}
-  .intro-on .l-jasne{display:block}
-  .intro-on .l-ciemne{display:none}
-  .intro-on .top{background:rgba(6,7,10,.97);border-bottom-color:var(--hair)}
-  .intro-on .top .nav,.intro-on .top .tel{opacity:1}
 }

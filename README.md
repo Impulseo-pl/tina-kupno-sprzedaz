@@ -9,82 +9,68 @@ Docelowy adres: **tinaskupaut.pl** · podgląd: https://impulseo-pl.github.io/ti
 
 ## Jak to jest zbudowane
 
-Treść mieszka w **jednym pliku `_src/app.html`** — to aplikacja, która składa wszystkie
-podstrony z tablic `CITIES`, `DISTRICTS`, `BRANDS` i `TABS`. Otwarta bezpośrednio w przeglądarce
-działa jak podgląd z adresami po hashu.
-
-`_src/build.py` otwiera ten plik w przeglądarce, zdejmuje gotowy HTML z każdego adresu
-i zapisuje jako **osobny plik z własnym katalogiem**. Dzięki temu Google widzi 54 strony,
-a nie jedną — i każda ma swój `<title>`, opis, `canonical` i dane strukturalne w źródle,
-bez czekania na JavaScript.
+Statyczny HTML, bez build-stepu. Każda podstrona to osobny plik, który edytuje się wprost —
+otwierasz w edytorze, zapisujesz, `git push`. Nic się nie generuje, nic nie trzeba instalować.
 
 ```
-python -m pip install playwright
-python -m playwright install chromium
-python _src/build.py
+index.html                 strona główna
+skup.html                  skup aut
+sprzedaz.html              komis i sprzedaż
+wycena.html                formularz wyceny + jak liczymy
+realizacje.html            galeria odkupionych aut (18 zdjęć klienta)
+pytania.html               FAQ
+polityka-prywatnosci.html
+dziekujemy.html            po wysłaniu formularza
+404.html
+assets/styles.css          jeden arkusz dla całej strony
+assets/app.js              kalkulator widełek, formularz, galeria, animacje (10 kB)
+img/                       zdjęcia klienta, logo, og.jpg
 ```
 
-Generator sam sprawdza, czy każda podstrona dostała własny tytuł, i przerywa, jeśli nie.
-
-⚠️ **Nie edytuj plików `index.html` w katalogach ani `assets/*`** — są nadpisywane przy
-każdym budowaniu. Zmiany wprowadzasz w `_src/app.html` (treść, style, skrypt)
-albo w `_src/proste.py` (polityka prywatności, podziękowanie, 404) i budujesz od nowa.
-
-```
-_src/app.html      cała treść, style i skrypt — jedyne miejsce do edycji
-_src/build.py      generator stron + sitemap.xml
-_src/proste.py     polityka prywatności, strona podziękowania, 404
-assets/            styles.css i app.js wycięte z app.html (generowane)
-img/               zdjęcia od klienta, logo, og.jpg
-<slug>/index.html  54 wygenerowane podstrony
-```
+Nagłówek i stopka są powielone w każdym pliku — zmiana w nawigacji oznacza poprawkę
+we wszystkich podstronach (jest ich osiem).
 
 ## Co strona ma
 
-- **Kalkulator widełek** — formularz krokowy liczy orientacyjną kwotę na żywo.
-  Algorytm nadal do skalibrowania na prawdziwych danych klienta.
-- **Szybka wycena w hero** — trzy pola, przenoszą dane do pełnego formularza.
-- **54 osobne podstrony:** 8 zakładek, 19 miast, 18 dzielnic Warszawy, 8 grup marek,
-  polityka prywatności, podziękowanie, 404.
-- **Formularz podłączony** — wysyłka przez FormSubmit na `rafal.kocimski@o2.pl`,
-  ze zdjęciami auta w załączniku, zgodą RODO i przekierowaniem na stronę podziękowania
-  z wyliczonymi widełkami.
-- Tabela porównawcza skup / ogłoszenie / komis, ekran powitalny z logo, galeria z lightboxem.
-- Dane strukturalne: `AutoDealer` z pełnym adresem, `FAQPage`, `BreadcrumbList`.
-- `sitemap.xml`, `robots.txt`, `canonical` na każdej stronie, `og:image` 1200×630.
+- **Kalkulator widełek** — formularz krokowy liczy orientacyjną kwotę na żywo z rocznika,
+  przebiegu, paliwa, stanu i zaznaczonych cech. ⚠️ **Marka i model NIE wpływają na wynik** —
+  algorytm jest do skalibrowania na prawdziwych danych klienta.
+- **Formularz** — wysyłka przez FormSubmit na `rafal.kocimski@o2.pl`, ze zdjęciami auta
+  w załączniku, zgodą RODO i przekierowaniem na stronę podziękowania z wyliczonymi widełkami.
+- Galeria z lightboxem, tabela dokumentów do sprzedaży, FAQ.
+- Dane strukturalne `AutoDealer` na każdej stronie, `FAQPage` tam, gdzie są pytania.
+- `noindex` na wszystkich podstronach + `robots.txt` z `Disallow: /` — **to demo**.
 
 ## ⛔ Zanim strona pójdzie na tinaskupaut.pl
 
-1. **Aktywować FormSubmit.** Pierwsze zgłoszenie z formularza wysyła na
-   `rafal.kocimski@o2.pl` maila z linkiem aktywacyjnym. Dopóki ktoś w niego nie kliknie,
-   żaden lead nie dojdzie. **Wysłać testowe zgłoszenie i poprosić Rafała o kliknięcie.**
-2. **Przełączyć DNS.** Domena `tinaskupaut.pl` jest zarejestrowana i wskazuje dziś
-   na OVH (213.186.33.5). Żeby ruszyła z GitHub Pages, trzeba w panelu domeny ustawić
-   rekordy A na `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   oraz CNAME `www` → `impulseo-pl.github.io`, a w repo dodać plik `CNAME` z treścią
-   `tinaskupaut.pl` i włączyć *Enforce HTTPS*.
-   **Plik `CNAME` dokładamy dopiero po zmianie DNS** — wcześniej zepsuje podgląd.
-3. **Zgłosić stronę w Google Search Console** i wysłać `sitemap.xml` — dopiero po punkcie 2.
-4. `canonical` i `sitemap.xml` wskazują na `tinaskupaut.pl`. Gdyby strona miała zostać
-   na innym adresie, zmienić stałą `SITE` w `_src/build.py` i przebudować.
+1. **Zdjąć noindex** ze wszystkich podstron i przestawić `robots.txt` na `Allow: /`
+   (plus wpis `Sitemap:`). Bez tego Google jej nie pokaże.
+2. **Aktywować FormSubmit.** Pierwsze zgłoszenie wysyła na `rafal.kocimski@o2.pl` maila
+   z linkiem aktywacyjnym — dopóki ktoś w niego nie kliknie, żaden lead nie dojdzie.
+   Docelowo: przenieść formularz na Cloudflare Pages Function + Resend, jak u reszty klientów.
+3. **Przenieść na Cloudflare Pages** i podpiąć domenę (dziś `tinaskupaut.pl` wskazuje na OVH).
+   Canonical i `sitemap.xml` są już zapisane pod czyste adresy bez `.html` — CF robi z tego
+   przekierowanie 308 samo, ale **linki wewnętrzne w plikach zostają z `.html`**.
+4. **Zgłosić w Google Search Console** i wysłać `sitemap.xml` — dopiero po punkcie 3.
 
 ## Do uzupełnienia od klienta
 
-- **godziny pracy** — jedyna luka w stopce i w danych strukturalnych
-- **wizytówka Google**: link, ocena, liczba opinii + zgoda na przepisanie 3–5 opinii
-  (sekcja opinii jest na razie zdjęta ze strony, bo nie zmyślamy)
-- **auta na sprzedaż**: zdjęcia, roczniki, przebiegi, ceny — sekcja komisu świeci pustką
+- **godziny pracy** — brakuje ich w stopce i w danych strukturalnych
+- **ile aut łącznie odkupili i typowy czas od zgłoszenia do odbioru** — pasek pod heroem
+  („480+ odkupionych aut", „24 h do odbioru") stoi dziś na liczbach, których nikt nie potwierdził
 - **za ile realnie kupują** — 5–10 przykładów do skalibrowania kalkulatora
-- ile aut łącznie odkupili i typowy czas od zgłoszenia do odbioru
+- **auta na sprzedaż**: zdjęcia, roczniki, przebiegi, ceny — sekcja komisu świeci pustką
+- **wizytówka Google**: link, ocena, liczba opinii + zgoda na przepisanie 3–5 opinii
 - **logo w wektorze** (SVG / AI / PDF) — mamy JPG, sam znak ma 309×121 px
 - czy adres Przyszła 2B ma być publiczny (decyduje o wizytówce Google)
 
 ## Notatki techniczne
 
-- Zdjęcia przyszły z WhatsAppa i są już mocno skompresowane — konwersja do WebP dawała
-  pliki **cięższe** od źródłowych JPEG-ów, więc jej nie robimy. Zeszliśmy tylko z jakością
-  dwóch heroów, bo i tak leżą pod ciemną zasłoną.
+- Zdjęcia przyszły z WhatsAppa i są już mocno skompresowane — konwersja do WebP dawała pliki
+  **cięższe** od źródłowych JPEG-ów, więc jej nie robimy.
 - Analytics nie jest podpięty. Jeśli ma być, trzeba dopisać go do polityki prywatności.
+- Historia: do 13.09.2026 strona stała na własnym generatorze (SPA + Playwright prerenderujący
+  54 podstrony). Wycięty razem z podstronami miast, dzielnic, marek i porównania.
 
 ---
 Realizacja: [Impulseo](https://impulseo.pl)

@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Nie ma takiej strony | TINA Skup Aut</title>
-<meta name="description" content="Pod tym adresem nic nie ma. Wróć na stronę główną albo zadzwoń — wycenimy auto przez telefon.">
+<link rel="canonical" href="https://tinaskupaut.pl/dziekujemy">
+<title>Zgłoszenie przyjęte | TINA Skup Aut</title>
+<meta name="description" content="Dziękujemy za zgłoszenie auta do wyceny. Oddzwaniamy zwykle w kwadrans w godzinach pracy.">
 <meta name="theme-color" content="#06070a">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nie ma takiej strony | TINA Skup Aut">
-<meta property="og:description" content="Pod tym adresem nic nie ma. Wróć na stronę główną albo zadzwoń — wycenimy auto przez telefon.">
+<meta property="og:title" content="Zgłoszenie przyjęte | TINA Skup Aut">
+<meta property="og:description" content="Dziękujemy za zgłoszenie auta do wyceny. Oddzwaniamy zwykle w kwadrans w godzinach pracy.">
 <meta property="og:locale" content="pl_PL">
-<meta property="og:url" content="https://tinaskupaut.pl/404">
+<meta property="og:url" content="https://tinaskupaut.pl/dziekujemy">
 <meta property="og:image" content="https://tinaskupaut.pl/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,7 +23,7 @@
 <link rel="stylesheet" href="assets/styles.css">
 
 
-<meta name="robots" content="noindex">
+<meta name="robots" content="noindex, nofollow">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoDealer","name":"TINA Skup Aut","legalName":"TINA Rafał Kocimski","description":"Skup aut za gotówkę i sprzedaż samochodów używanych na Mazowszu. Działamy od 2011 roku.","url":"https://tinaskupaut.pl/","logo":"https://tinaskupaut.pl/img/logo.png","image":"https://tinaskupaut.pl/img/og.jpg","telephone":["+48692493797","+48693649549"],"email":"rafal.kocimski@o2.pl","taxID":"5222345044","vatID":"PL5222345044","foundingDate":"2011","address":{"@type":"PostalAddress","streetAddress":"Przyszła 2B","postalCode":"96-513","addressLocality":"Kozłów Biskupi","addressRegion":"mazowieckie","addressCountry":"PL"},"areaServed":{"@type":"State","name":"mazowieckie"},"priceRange":"$$"}</script>
 </head>
 <body>
@@ -44,26 +45,42 @@
 <main id="app">
 <div class="chero">
   <div class="w">
-    <p class="crumb"><a href="index.html">TINA</a> / Błąd 404</p>
-    <h1>Pod tym adresem <span class="gold">nic nie ma</span></h1>
-    <p class="lede">Strona została przeniesiona albo adres ma literówkę. Auto wycenimy też przez telefon —
-      to zwykle szybsze niż szukanie po stronie.</p>
-    <div class="acts">
-      <a class="btn g" href="tel:+48692493797">Zadzwoń: 692 493 797</a>
-      <a class="btn o" href="index.html">Strona główna</a>
-    </div>
+    <p class="crumb"><a href="index.html">TINA</a> / Zgłoszenie przyjęte</p>
+    <h1>Zgłoszenie <span class="gold">przyjęte</span></h1>
+    <p class="lede" id="dz-lede">Oddzwaniamy zwykle w kwadrans w godzinach pracy.</p>
+    <div class="acts"><a class="btn g" href="tel:+48692493797">Zadzwoń teraz: 692 493 797</a></div>
   </div>
 </div>
-<div class="w"><section><div class="proza">
-  <h2>Czego zwykle szukają</h2>
-  <ul>
-    <li><a href="skup.html">Skup aut za gotówkę</a> — każda marka, rocznik i stan.</li>
-    <li><a href="wycena.html">Wycena auta online</a> — widełki na ekranie w kilkanaście minut.</li>
-    <li><a href="sprzedaz.html">Samochody używane</a> — auta sprawdzone przed sprzedażą.</li>
-    <li><a href="realizacje.html">Miasta, w których jeździmy</a> — całe Mazowsze.</li>
-    <li><a href="pytania.html">Pytania i odpowiedzi</a> — dokumenty, laweta, brak OC, leasing.</li>
-  </ul>
+<div class="w"><section><div class="dziek">
+  <p class="eyebrow" id="dz-etykieta" hidden>Orientacyjne widełki z kalkulatora</p>
+  <p class="kwota" id="dz-kwota" hidden></p>
+  <p style="margin-top:18px;color:var(--muted);font-size:16.5px">
+    To wyliczenie z danych rynkowych, a nie oferta. Widełki potwierdzamy przez telefon,
+    ostateczną kwotę po obejrzeniu auta — i nie zmieniamy jej przy podpisywaniu umowy.</p>
+  <p style="margin-top:16px;color:var(--muted);font-size:16.5px">
+    Jeśli spieszysz się ze sprzedażą, nie czekaj na nasz telefon — zadzwoń pod
+    <a href="tel:+48692493797" style="color:var(--g4);font-weight:700">692 493 797</a>
+    albo <a href="tel:+48693649549" style="color:var(--g4);font-weight:700">693 649 549</a>,
+    wycenimy auto od ręki.</p>
+  <div class="acts">
+    <a class="btn k" href="index.html">Wróć na stronę główną</a>
+    <a class="btn o" style="color:var(--ink);border-color:var(--line)" href="realizacje.html">Zobacz, co odkupiliśmy</a>
+  </div>
 </div></section></div>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  var a=q.get('a'), w=q.get('w'), t=q.get('t');
+  var l=document.getElementById('dz-lede');
+  if(a||t){
+    l.textContent=(a?a+' — o':'O')+'ddzwaniamy'+(t?' pod '+t:'')+', zwykle w kwadrans w godzinach pracy.';
+  }
+  if(w){
+    document.getElementById('dz-etykieta').hidden=false;
+    var k=document.getElementById('dz-kwota'); k.hidden=false; k.textContent=w;
+  }
+})();
+</script>
 </main>
 
 <footer class="foot">
