@@ -5,7 +5,7 @@ FIRMA = u'TINA Rafał Kocimski'
 ADRES = u'Przyszła 2B, 96-513 Kozłów Biskupi'
 NIP = u'522-234-50-44'
 MAIL = u'rafal.kocimski@o2.pl'
-TEL = u'693 649 549'
+TEL = u'692 493 797'
 
 POLITYKA_TYTUL = u'Polityka prywatności | TINA Skup Aut'
 POLITYKA_OPIS = (u'Polityka prywatności serwisu tinaskupaut.pl — kto przetwarza dane '
@@ -25,7 +25,7 @@ POLITYKA = u"""
 
 <h2>1. Kto jest administratorem danych</h2>
 <p>Administratorem Twoich danych osobowych jest <b>{FIRMA}</b>, {ADRES}, NIP {NIP}.
-Kontakt w sprawie danych: <a href="mailto:{MAIL}">{MAIL}</a>, tel. <a href="tel:+48693649549">{TEL}</a>.</p>
+Kontakt w sprawie danych: <a href="mailto:{MAIL}">{MAIL}</a>, tel. <a href="tel:+48692493797">{TEL}</a>.</p>
 
 <h2>2. Jakie dane zbieramy</h2>
 <p>Zbieramy tylko to, co sam podasz w formularzu wyceny albo powiesz przez telefon:</p>
@@ -106,7 +106,7 @@ DZIEKUJEMY = u"""
     <p class="crumb"><a href="{ROOT}">TINA</a> / Zgłoszenie przyjęte</p>
     <h1>Zgłoszenie <span class="gold">przyjęte</span></h1>
     <p class="lede" id="dz-lede">Oddzwaniamy zwykle w kwadrans w godzinach pracy.</p>
-    <div class="acts"><a class="btn g" href="tel:+48693649549">Zadzwoń teraz: 693 649 549</a></div>
+    <div class="acts"><a class="btn g" href="tel:+48692493797">Zadzwoń teraz: 692 493 797</a></div>
   </div>
 </div>
 <div class="w"><section><div class="dziek">
@@ -117,8 +117,8 @@ DZIEKUJEMY = u"""
     ostateczną kwotę po obejrzeniu auta — i nie zmieniamy jej przy podpisywaniu umowy.</p>
   <p style="margin-top:16px;color:var(--muted);font-size:16.5px">
     Jeśli spieszysz się ze sprzedażą, nie czekaj na nasz telefon — zadzwoń pod
-    <a href="tel:+48693649549" style="color:var(--g4);font-weight:700">693 649 549</a>
-    albo <a href="tel:+48692493797" style="color:var(--g4);font-weight:700">692 493 797</a>,
+    <a href="tel:+48692493797" style="color:var(--g4);font-weight:700">692 493 797</a>
+    albo <a href="tel:+48693649549" style="color:var(--g4);font-weight:700">693 649 549</a>,
     wycenimy auto od ręki.</p>
   <div class="acts">
     <a class="btn k" href="{ROOT}">Wróć na stronę główną</a>
@@ -152,7 +152,7 @@ CZTERY = u"""
     <p class="lede">Strona została przeniesiona albo adres ma literówkę. Auto wycenimy też przez telefon —
       to zwykle szybsze niż szukanie po stronie.</p>
     <div class="acts">
-      <a class="btn g" href="tel:+48693649549">Zadzwoń: 693 649 549</a>
+      <a class="btn g" href="tel:+48692493797">Zadzwoń: 692 493 797</a>
       <a class="btn o" href="{ROOT}">Strona główna</a>
     </div>
   </div>

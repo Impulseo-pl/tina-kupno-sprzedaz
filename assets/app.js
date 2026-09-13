@@ -108,7 +108,7 @@ const BRANDS=[
 ];
 
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const telBtn=(cls)=>`<a class="tel ${cls||''}" href="tel:+48693649549"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>693 649 549</a>`;
+const telBtn=(cls)=>`<a class="tel ${cls||''}" href="tel:+48692493797"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>692 493 797</a>`;
 
 function shots(list){
   return `<div class="grid4">${list.map(c=>`<figure class="shot"><img src="${c.s}" alt="${esc(c.n)}, ${esc(c.t)}" loading="lazy">
@@ -673,7 +673,7 @@ function jsonld(kind,obj){
     "url":location.origin+location.pathname,
     "logo":new URL("img/logo.png",location.href).href,
     "image":new URL("img/logo.png",location.href).href,
-    "telephone":["+48693649549","+48692493797"],
+    "telephone":["+48692493797","+48693649549"],
     "email":"rafal.kocimski@o2.pl",
     "taxID":"5222345044","vatID":"PL5222345044",
     "foundingDate":"2011",
