@@ -293,6 +293,60 @@ summary:focus-visible{outline:2px solid var(--g);outline-offset:2px}
   .pillars{grid-template-columns:1fr}
   .pillars div{border-left:0}
 }
+/* ================= telefon: dotyk i czytelnosc ================= */
+html{-webkit-text-size-adjust:100%}
+*{-webkit-tap-highlight-color:rgba(212,175,55,.2)}
+.przesun{display:none}
+
+@media (max-width:1000px){
+  /* Pasek na gorze byl kryjacy w 97% i przez te trzy procent przebijala tresc. */
+  .top{background:#06070a}
+  /* Pole dotyku rosnie do 44 px bez ruszania ukladu paska. */
+  .nav a,.dropbtn{position:relative}
+  .nav a::after,.dropbtn::after{content:"";position:absolute;left:0;right:0;top:50%;
+    transform:translateY(-50%);height:44px}
+  .cmpwrap{position:relative;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .przesun{display:block;margin-top:10px;font-size:13.5px;letter-spacing:.04em;
+    text-transform:uppercase;font-weight:600;color:var(--g3);text-align:center}
+  .lb{overscroll-behavior:contain;touch-action:pan-y}
+}
+
+@media (max-width:760px){
+  /* Tabela na czterech kolumnach nie miesci sie na telefonie, a przewijanie w bok
+     gubi caly sens porownania. Rozkladamy ja na bloki: jeden wiersz = jedna karta. */
+  .cmpwrap{overflow:visible;border:0;background:transparent}
+  .cmpwrap .cmp{min-width:0;width:100%;font-size:16px;display:block}
+  .cmpwrap .cmp thead{display:none}
+  .cmpwrap .cmp tbody,.cmpwrap .cmp tr{display:block;width:auto}
+  .cmpwrap .cmp tbody th,.cmpwrap .cmp td{display:block;width:auto}
+  .cmpwrap .cmp tr{border:1px solid var(--line);background:var(--w0);margin-bottom:14px}
+  .cmpwrap .cmp tbody th{padding:14px 18px 12px;background:var(--w2);
+    border-bottom:1px solid var(--line);font-size:12.5px;letter-spacing:.12em;color:var(--ink)}
+  .cmpwrap .cmp td{padding:13px 18px 15px;border-bottom:1px solid var(--line)}
+  /* Ten sam ::after niesie na duzym ekranie zlota romb, a tu nazwe kolumny -
+     dlatego kasujemy obrot i tlo po rombie, inaczej napis lezy na ukos. */
+  .cmpwrap .cmp td::before{content:attr(data-k);display:block;margin:0 0 5px;font-size:10.5px;
+    font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    width:auto;height:auto;background:none;transform:none;vertical-align:baseline}
+  .cmpwrap .cmp td.us{background:#fdfbf4}
+  .cmpwrap .cmp td.us::before{color:var(--g4)}
+  .cmpwrap .cmp tr td:last-child{border-bottom:0}
+  .przesun{display:none}
+}
+
+@media (max-width:820px){
+  /* iPhone przybliza cala strone, gdy pole ma mniej niz 16 px. */
+  #wf input,#wf select,#wf textarea,.qf input,.qf select{font-size:16px}
+  /* Wciecie pod pasek gestow w iPhonie. */
+  .ctabar{padding-bottom:env(safe-area-inset-bottom,0px)}
+  .foot{padding-bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+  /* Odnosniki w stopce i okruszki daja sie trafic palcem. */
+  .foot p a{display:inline-block;padding-block:8px}
+  .fine a{display:inline-block;padding-block:8px}
+  #footcities a,#footdistricts a{padding:8px 2px}
+  .crumb a{display:inline-block;padding-block:7px}
+}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 /* ---------- ruch: przejscia miedzy podstronami ---------- */
 :root{--ez:cubic-bezier(.22,.68,.36,1)}
@@ -840,6 +894,7 @@ function idzDo(v){
 
 const IMG = {
   hero:"img/hero.jpg", hero2:"img/hero2.jpg",
+  heroM:"img/hero-m.jpg", hero2M:"img/hero2-m.jpg",
   cars:[
     {s:"img/auto-01.jpg",  n:"Opel Movano",    f:"de", t:"furgon"},
     {s:"img/auto-02.jpg",  n:"BMW serii 1",    f:"de", t:"osobowy"},
@@ -1191,7 +1246,7 @@ function cityPage(c){
   const isWwa = c.s==='warszawa';
   return `
   <div class="chero">
-    <img src="${IMG.hero2}" alt="">
+    <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / Skup aut ${esc(c.n)}</p>
       <h1><span class="kw" data-v="${c.v} wyszukiwań/mies">Skup aut ${esc(c.n)}</span></h1>
@@ -1309,7 +1364,7 @@ function autaMarki(f){ return IMG.cars.filter(c=>c.f===f); }
 function brandPage(b){
   return `
   <div class="chero">
-    <img src="${IMG.hero2}" alt="">
+    <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / Skup aut ${esc(b.d)}</p>
       <h1>Skup aut <span class="gold">${esc(b.d)}</span></h1>
@@ -1469,8 +1524,12 @@ const compareSection=()=>`<div class="w"><section id="porownanie">
   </div>
   <div class="cmpwrap"><table class="cmp">
     <thead><tr><th></th><th class="us">TINA — skup</th><th>Ogłoszenie na portalu</th><th>Komis w rozliczeniu</th></tr></thead>
-    <tbody>${CMP.map(r=>`<tr><th>${r[0]}</th><td class="us y">${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</tbody>
+    <tbody>${CMP.map(r=>`<tr><th>${r[0]}</th>`+
+      `<td class="us y" data-k="TINA — skup">${r[1]}</td>`+
+      `<td data-k="Ogłoszenie na portalu">${r[2]}</td>`+
+      `<td data-k="Komis w rozliczeniu">${r[3]}</td></tr>`).join('')}</tbody>
   </table></div>
+  <p class="przesun">Przesuń tabelę w bok, żeby zobaczyć wszystkie trzy drogi.</p>
   <p style="margin-top:18px;font-size:15px;color:var(--muted);text-align:center">Zależy Ci na najwyższej kwocie i masz czas? Wystaw ogłoszenie. Zależy Ci, żeby mieć to z głowy w tym tygodniu — zadzwoń do nas.</p>
 </section></div>`;
 
@@ -1534,6 +1593,13 @@ function jsonld(kind,obj){
   lb.addEventListener('click',e=>{ if(e.target===lb) close(); });
   document.addEventListener('keydown',e=>{ if(!lb.classList.contains('on'))return;
     if(e.key==='Escape')close(); if(e.key==='ArrowLeft')show(idx-1); if(e.key==='ArrowRight')show(idx+1); });
+  /* Na telefonie zdjecia przewija sie palcem, nie szukaniem strzalki. */
+  let dotykX=0, dotykY=0;
+  lb.addEventListener('touchstart',e=>{ dotykX=e.touches[0].clientX; dotykY=e.touches[0].clientY; },{passive:true});
+  lb.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-dotykX, dy=e.changedTouches[0].clientY-dotykY;
+    if(Math.abs(dx)>48 && Math.abs(dx)>Math.abs(dy)) show(dx<0 ? idx+1 : idx-1);
+  },{passive:true});
   document.addEventListener('click',e=>{
     const fig=e.target.closest&&e.target.closest('.shot');
     if(!fig)return;
@@ -1640,7 +1706,7 @@ function districtPage(d){
   ];
   return `
   <div class="chero">
-    <img src="${IMG.hero2}" alt="">
+    <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / <a href="#/skup-aut-warszawa">Skup aut Warszawa</a> / ${esc(d.n)}</p>
       <h1><span class="kw" data-v="${d.v} wyszukiwań/mies">Skup aut ${esc(d.n)}</span></h1>
@@ -1835,7 +1901,7 @@ document.addEventListener('click',e=>{
 const SEK={
 hero(){return `
   <div class="hero">
-    <img src="${IMG.hero}" alt="">
+    <img src="${IMG.hero}" srcset="${IMG.heroM} 780w, ${IMG.hero} 1050w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="tag">Twoje zaufanie, nasze doświadczenie</p>
       <h1><span class="kw" data-v="14 800/mies">Skup aut</span> za gotówkę<span class="l2 gold">i sprzedaż samochodów</span></h1>
@@ -2207,7 +2273,7 @@ const TABS={
 function subHero(t){
   return `
   <div class="chero">
-    <img src="${IMG.hero2}" alt="">
+    <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / ${esc(t.crumb)}</p>
       <h1>${t.kw?`<span class="kw" data-v="${t.kw}">`:''}${t.h1}${t.kw?'</span>':''}</h1>

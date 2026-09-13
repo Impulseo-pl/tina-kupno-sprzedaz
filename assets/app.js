@@ -14,6 +14,7 @@ function idzDo(v){
 
 const IMG = {
   hero:"img/hero.jpg", hero2:"img/hero2.jpg",
+  heroM:"img/hero-m.jpg", hero2M:"img/hero2-m.jpg",
   cars:[
     {s:"img/auto-01.jpg",  n:"Opel Movano",    f:"de", t:"furgon"},
     {s:"img/auto-02.jpg",  n:"BMW serii 1",    f:"de", t:"osobowy"},
@@ -365,7 +366,7 @@ function cityPage(c){
   const isWwa = c.s==='warszawa';
   return `
   <div class="chero">
-    <img src="${IMG.hero2}" alt="">
+    <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / Skup aut ${esc(c.n)}</p>
       <h1><span class="kw" data-v="${c.v} wyszukiwań/mies">Skup aut ${esc(c.n)}</span></h1>
@@ -483,7 +484,7 @@ function autaMarki(f){ return IMG.cars.filter(c=>c.f===f); }
 function brandPage(b){
   return `
   <div class="chero">
-    <img src="${IMG.hero2}" alt="">
+    <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / Skup aut ${esc(b.d)}</p>
       <h1>Skup aut <span class="gold">${esc(b.d)}</span></h1>
@@ -643,8 +644,12 @@ const compareSection=()=>`<div class="w"><section id="porownanie">
   </div>
   <div class="cmpwrap"><table class="cmp">
     <thead><tr><th></th><th class="us">TINA — skup</th><th>Ogłoszenie na portalu</th><th>Komis w rozliczeniu</th></tr></thead>
-    <tbody>${CMP.map(r=>`<tr><th>${r[0]}</th><td class="us y">${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</tbody>
+    <tbody>${CMP.map(r=>`<tr><th>${r[0]}</th>`+
+      `<td class="us y" data-k="TINA — skup">${r[1]}</td>`+
+      `<td data-k="Ogłoszenie na portalu">${r[2]}</td>`+
+      `<td data-k="Komis w rozliczeniu">${r[3]}</td></tr>`).join('')}</tbody>
   </table></div>
+  <p class="przesun">Przesuń tabelę w bok, żeby zobaczyć wszystkie trzy drogi.</p>
   <p style="margin-top:18px;font-size:15px;color:var(--muted);text-align:center">Zależy Ci na najwyższej kwocie i masz czas? Wystaw ogłoszenie. Zależy Ci, żeby mieć to z głowy w tym tygodniu — zadzwoń do nas.</p>
 </section></div>`;
 
@@ -708,6 +713,13 @@ function jsonld(kind,obj){
   lb.addEventListener('click',e=>{ if(e.target===lb) close(); });
   document.addEventListener('keydown',e=>{ if(!lb.classList.contains('on'))return;
     if(e.key==='Escape')close(); if(e.key==='ArrowLeft')show(idx-1); if(e.key==='ArrowRight')show(idx+1); });
+  /* Na telefonie zdjecia przewija sie palcem, nie szukaniem strzalki. */
+  let dotykX=0, dotykY=0;
+  lb.addEventListener('touchstart',e=>{ dotykX=e.touches[0].clientX; dotykY=e.touches[0].clientY; },{passive:true});
+  lb.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-dotykX, dy=e.changedTouches[0].clientY-dotykY;
+    if(Math.abs(dx)>48 && Math.abs(dx)>Math.abs(dy)) show(dx<0 ? idx+1 : idx-1);
+  },{passive:true});
   document.addEventListener('click',e=>{
     const fig=e.target.closest&&e.target.closest('.shot');
     if(!fig)return;
@@ -814,7 +826,7 @@ function districtPage(d){
   ];
   return `
   <div class="chero">
-    <img src="${IMG.hero2}" alt="">
+    <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / <a href="#/skup-aut-warszawa">Skup aut Warszawa</a> / ${esc(d.n)}</p>
       <h1><span class="kw" data-v="${d.v} wyszukiwań/mies">Skup aut ${esc(d.n)}</span></h1>
@@ -1009,7 +1021,7 @@ document.addEventListener('click',e=>{
 const SEK={
 hero(){return `
   <div class="hero">
-    <img src="${IMG.hero}" alt="">
+    <img src="${IMG.hero}" srcset="${IMG.heroM} 780w, ${IMG.hero} 1050w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="tag">Twoje zaufanie, nasze doświadczenie</p>
       <h1><span class="kw" data-v="14 800/mies">Skup aut</span> za gotówkę<span class="l2 gold">i sprzedaż samochodów</span></h1>
@@ -1381,7 +1393,7 @@ const TABS={
 function subHero(t){
   return `
   <div class="chero">
-    <img src="${IMG.hero2}" alt="">
+    <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / ${esc(t.crumb)}</p>
       <h1>${t.kw?`<span class="kw" data-v="${t.kw}">`:''}${t.h1}${t.kw?'</span>':''}</h1>

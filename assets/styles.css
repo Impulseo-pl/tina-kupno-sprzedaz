@@ -272,6 +272,60 @@ summary:focus-visible{outline:2px solid var(--g);outline-offset:2px}
   .pillars{grid-template-columns:1fr}
   .pillars div{border-left:0}
 }
+/* ================= telefon: dotyk i czytelnosc ================= */
+html{-webkit-text-size-adjust:100%}
+*{-webkit-tap-highlight-color:rgba(212,175,55,.2)}
+.przesun{display:none}
+
+@media (max-width:1000px){
+  /* Pasek na gorze byl kryjacy w 97% i przez te trzy procent przebijala tresc. */
+  .top{background:#06070a}
+  /* Pole dotyku rosnie do 44 px bez ruszania ukladu paska. */
+  .nav a,.dropbtn{position:relative}
+  .nav a::after,.dropbtn::after{content:"";position:absolute;left:0;right:0;top:50%;
+    transform:translateY(-50%);height:44px}
+  .cmpwrap{position:relative;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .przesun{display:block;margin-top:10px;font-size:13.5px;letter-spacing:.04em;
+    text-transform:uppercase;font-weight:600;color:var(--g3);text-align:center}
+  .lb{overscroll-behavior:contain;touch-action:pan-y}
+}
+
+@media (max-width:760px){
+  /* Tabela na czterech kolumnach nie miesci sie na telefonie, a przewijanie w bok
+     gubi caly sens porownania. Rozkladamy ja na bloki: jeden wiersz = jedna karta. */
+  .cmpwrap{overflow:visible;border:0;background:transparent}
+  .cmpwrap .cmp{min-width:0;width:100%;font-size:16px;display:block}
+  .cmpwrap .cmp thead{display:none}
+  .cmpwrap .cmp tbody,.cmpwrap .cmp tr{display:block;width:auto}
+  .cmpwrap .cmp tbody th,.cmpwrap .cmp td{display:block;width:auto}
+  .cmpwrap .cmp tr{border:1px solid var(--line);background:var(--w0);margin-bottom:14px}
+  .cmpwrap .cmp tbody th{padding:14px 18px 12px;background:var(--w2);
+    border-bottom:1px solid var(--line);font-size:12.5px;letter-spacing:.12em;color:var(--ink)}
+  .cmpwrap .cmp td{padding:13px 18px 15px;border-bottom:1px solid var(--line)}
+  /* Ten sam ::after niesie na duzym ekranie zlota romb, a tu nazwe kolumny -
+     dlatego kasujemy obrot i tlo po rombie, inaczej napis lezy na ukos. */
+  .cmpwrap .cmp td::before{content:attr(data-k);display:block;margin:0 0 5px;font-size:10.5px;
+    font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    width:auto;height:auto;background:none;transform:none;vertical-align:baseline}
+  .cmpwrap .cmp td.us{background:#fdfbf4}
+  .cmpwrap .cmp td.us::before{color:var(--g4)}
+  .cmpwrap .cmp tr td:last-child{border-bottom:0}
+  .przesun{display:none}
+}
+
+@media (max-width:820px){
+  /* iPhone przybliza cala strone, gdy pole ma mniej niz 16 px. */
+  #wf input,#wf select,#wf textarea,.qf input,.qf select{font-size:16px}
+  /* Wciecie pod pasek gestow w iPhonie. */
+  .ctabar{padding-bottom:env(safe-area-inset-bottom,0px)}
+  .foot{padding-bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+  /* Odnosniki w stopce i okruszki daja sie trafic palcem. */
+  .foot p a{display:inline-block;padding-block:8px}
+  .fine a{display:inline-block;padding-block:8px}
+  #footcities a,#footdistricts a{padding:8px 2px}
+  .crumb a{display:inline-block;padding-block:7px}
+}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 /* ---------- ruch: przejscia miedzy podstronami ---------- */
 :root{--ez:cubic-bezier(.22,.68,.36,1)}

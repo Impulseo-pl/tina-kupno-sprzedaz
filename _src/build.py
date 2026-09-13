@@ -90,6 +90,10 @@ def linki(html, root):
             kotwica = '#' + kotwica
         return 'href="%s%s/%s"' % (root, cel.strip('/'), kotwica)
     html = re.sub(r'href="#(/[a-z0-9-]*(?:#[a-z0-9-]+)?)"', f, html)
+    html = re.sub(r'srcset="([^"]*)"',
+                  lambda m: 'srcset="%s"' % re.sub(r'(^|,\s*)img/',
+                                                   lambda x: x.group(1) + root + 'img/', m.group(1)),
+                  html)
     return html.replace('src="img/', 'src="%simg/' % root)
 
 
