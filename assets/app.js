@@ -123,7 +123,7 @@ function form(city){
   return `<div class="darker" id="wycena"><div class="w"><section><div class="fgrid">
     <div class="fintro">
       <p class="eyebrow">Wycena online</p>
-      <h2 style="margin-top:14px"><span class="kw" data-v="online">Wycena auta</span><br><span class="gold">w piętnaście minut</span></h2>
+      <h2 style="margin-top:14px"><span class="kw">Wycena auta</span><br><span class="gold">w piętnaście minut</span></h2>
       <p>Cztery krótkie kroki. Widełki widzisz od razu na ekranie, jeszcze zanim ktokolwiek do Ciebie zadzwoni.</p>
       <div class="est sticky-est">
         <span class="elb">Orientacyjne widełki</span>
@@ -352,7 +352,7 @@ const FAQ=[
 ];
 const faq=l=>l.map(q=>`<details${q[2]?'':''}><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join('');
 
-const cityLinks=(light)=>`<div class="links ${light?'light':''}">${CITIES.map(c=>`<a href="#/skup-aut-${c.s}" class="${c.pri?'pri':''}"><b>Skup aut ${esc(c.n)}</b><small>${esc(c.area)}</small><em class="vol">skup ${c.v}/mies${c.vk?` · komis ${c.vk}/mies`:''}</em></a>`).join('')}</div>`;
+const cityLinks=(light)=>`<div class="links ${light?'light':''}">${CITIES.map(c=>`<a href="#/skup-aut-${c.s}" class="${c.pri?'pri':''}"><b>Skup aut ${esc(c.n)}</b><small>${esc(c.area)}</small></a>`).join('')}</div>`;
 const brandTiles=()=>`<div class="brands">${BRANDS.map(b=>`<a class="brand" href="#/skup-aut-${b.s}"><span class="flag f-${b.f}"></span><b>Skup aut ${esc(b.d)}</b><span>${esc(b.m)}</span></a>`).join('')}</div>`;
 
 /* ================= strona główna ================= */
@@ -369,7 +369,7 @@ function cityPage(c){
     <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / Skup aut ${esc(c.n)}</p>
-      <h1><span class="kw" data-v="${c.v} wyszukiwań/mies">Skup aut ${esc(c.n)}</span></h1>
+      <h1><span class="kw">Skup aut ${esc(c.n)}</span></h1>
       <p class="lede">${esc(c.lead)}</p>
       <div class="acts"><a class="btn g" href="#wycena">Wyceń auto ${esc(c.loc)}</a>${telBtn()}</div>
       <p style="margin-top:22px;font-size:14px;color:var(--onk-mut)">Skup samochodów, auto skup i komis samochodowy ${esc(c.loc)} oraz w całym obszarze, jakim jest ${esc(c.area)}.</p>
@@ -383,7 +383,7 @@ function cityPage(c){
   <div class="w"><section>
     <div class="sechead">
       <p class="eyebrow">Obszar</p>
-      <h2>${isWwa?'<span class="kw" data-v="5 400/mies">Skup aut Warszawa</span> we <span class="gold">wszystkich dzielnicach</span>':'<span class="kw" data-v="'+c.v+'/mies">Auto skup '+esc(c.n)+'</span> — <span class="gold">gdzie dojeżdżamy</span>'}</h2>
+      <h2>${isWwa?'<span class="kw">Skup aut Warszawa</span> we <span class="gold">wszystkich dzielnicach</span>':'<span class="kw">Auto skup '+esc(c.n)+'</span> — <span class="gold">gdzie dojeżdżamy</span>'}</h2>
       <div class="hr"></div>
       <p>${isWwa?'Warszawa w całości — od Białołęki po Wilanów. Umawiamy się tam, gdzie stoi auto.':`${esc(c.n)} to dla nas ${esc(c.area)} plus okoliczne gminy. Jeśli Twojej miejscowości nie ma na liście, i tak zadzwoń — prawie zawsze jesteśmy w stanie podjechać.`}</p>
     </div>
@@ -409,7 +409,7 @@ function cityPage(c){
   ${isWwa?`<div class="dark"><div class="w"><section>
     <div class="sechead">
       <p class="eyebrow">Osiemnaście dzielnic</p>
-      <h2><span class="kw" data-v="5 400/mies">Skup aut Warszawa</span> <span class="gold">dzielnica po dzielnicy</span></h2>
+      <h2><span class="kw">Skup aut Warszawa</span> <span class="gold">dzielnica po dzielnicy</span></h2>
       <div class="hr"></div>
       <p>Każda dzielnica ma własną stronę: dojazd, obsługiwane osiedla i formularz wyceny od razu na górze.</p>
     </div>
@@ -428,7 +428,7 @@ function cityPage(c){
   <div class="w"><section>
     <div class="sechead">
       <p class="eyebrow">Druga strona</p>
-      <h2><span class="kw" data-v="${c.vk?c.vk+'/mies':'do sprawdzenia'}">Komis samochodowy ${esc(c.n)}</span></h2>
+      <h2><span class="kw">Komis samochodowy ${esc(c.n)}</span></h2>
       <div class="hr"></div>
       <p>${c.vk>500?`Uwaga: ${esc(c.n)} szuka w Google komisu i samochodów używanych częściej niż skupu. Ta sekcja to druga połowa rynku, której konkurencja nie obsługuje.`:`Nie tylko odkupujemy auta ${esc(c.loc)} — także sprzedajemy sprawdzone samochody używane.`}</p>
     </div>
@@ -812,7 +812,7 @@ const DISTRICTS=[
   near:["Stara Miłosna","Zielona","Groszówka","Wola Grzybowska","Centrum Wesoła"]}
 ];
 
-const districtLinks=(light)=>`<div class="links ${light?'light':''}">${DISTRICTS.map(d=>`<a href="#/skup-aut-warszawa-${d.s}"><b>Skup aut ${esc(d.n)}</b><small>Warszawa</small><em class="vol">skup ${d.v}/mies</em></a>`).join('')}</div>`;
+const districtLinks=(light)=>`<div class="links ${light?'light':''}">${DISTRICTS.map(d=>`<a href="#/skup-aut-warszawa-${d.s}"><b>Skup aut ${esc(d.n)}</b><small>Warszawa</small></a>`).join('')}</div>`;
 const districtChips=()=>`<div class="dchip">${DISTRICTS.map(d=>`<a href="#/skup-aut-warszawa-${d.s}">${esc(d.n)}</a>`).join('')}</div>`;
 
 /* ================= podstrona dzielnicy ================= */
@@ -829,7 +829,7 @@ function districtPage(d){
     <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / <a href="#/skup-aut-warszawa">Skup aut Warszawa</a> / ${esc(d.n)}</p>
-      <h1><span class="kw" data-v="${d.v} wyszukiwań/mies">Skup aut ${esc(d.n)}</span></h1>
+      <h1><span class="kw">Skup aut ${esc(d.n)}</span></h1>
       <p class="lede">${esc(d.lead)}</p>
       <div class="acts"><a class="btn g" href="#wycena">Wyceń auto ${esc(d.loc)}</a>${telBtn()}</div>
       <p class="sub">Skup samochodów, auto skup i komis samochodowy ${esc(d.loc)} — cała Warszawa i okolice.</p>
@@ -843,7 +843,7 @@ function districtPage(d){
   <div class="w"><section>
     <div class="sechead">
       <p class="eyebrow">Obszar</p>
-      <h2><span class="kw" data-v="${d.v}/mies">Auto skup ${esc(d.n)}</span> — <span class="gold">gdzie dojeżdżamy</span></h2>
+      <h2><span class="kw">Auto skup ${esc(d.n)}</span> — <span class="gold">gdzie dojeżdżamy</span></h2>
       <div class="hr"></div>
       <p>Cała dzielnica i osiedla wokół. Jeśli Twojego adresu nie ma na liście, i tak zadzwoń — po Warszawie jeździmy codziennie.</p>
     </div>
@@ -877,7 +877,7 @@ function districtPage(d){
   <div class="w"><section>
     <div class="sechead">
       <p class="eyebrow">Druga strona</p>
-      <h2><span class="kw" data-v="Warszawa 6 470/mies">Komis samochodowy</span> <span class="gold">${esc(d.n)}</span></h2>
+      <h2><span class="kw">Komis samochodowy</span> <span class="gold">${esc(d.n)}</span></h2>
       <div class="hr"></div>
       <p>Nie tylko odkupujemy auta ${esc(d.loc)} — sprzedajemy też sprawdzone samochody używane.</p>
     </div>
@@ -1024,8 +1024,8 @@ hero(){return `
     <img src="${IMG.hero}" srcset="${IMG.heroM} 780w, ${IMG.hero} 1050w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="tag">Twoje zaufanie, nasze doświadczenie</p>
-      <h1><span class="kw" data-v="14 800/mies">Skup aut</span> za gotówkę<span class="l2 gold">i sprzedaż samochodów</span></h1>
-      <p class="lede">Prowadzimy <span class="kw" data-v="6 600/mies">skup samochodów</span> na terenie całego Mazowsza — każda marka, każdy rocznik, także <span class="kw" data-v="1 300/mies">skup aut uszkodzonych</span> i powypadkowych. A jeśli szukasz auta dla siebie, nasz <span class="kw" data-v="1 900/mies w Warszawie">komis samochodowy</span> znajdzie je i sprawdzi przed zakupem.</p>
+      <h1><span class="kw">Skup aut</span> za gotówkę<span class="l2 gold">i sprzedaż samochodów</span></h1>
+      <p class="lede">Prowadzimy <span class="kw">skup samochodów</span> na terenie całego Mazowsza — każda marka, każdy rocznik, także <span class="kw">skup aut uszkodzonych</span> i powypadkowych. A jeśli szukasz auta dla siebie, nasz <span class="kw">komis samochodowy</span> znajdzie je i sprawdzi przed zakupem.</p>
       ${quickForm()}
       <div class="acts" style="margin-top:18px">
         <a class="btn o" href="#sprzedaz">Nie sprzedaję — szukam auta do kupienia</a>
@@ -1053,16 +1053,16 @@ hero(){return `
 filary(){return `  <div class="w"><section id="skup">
     <div class="sechead">
       <p class="eyebrow">Dwie strony jednej transakcji</p>
-      <h2><span class="kw" data-v="14 800/mies">Skup aut</span> albo <span class="gold"><span class="kw" data-v="wg miasta">komis samochodowy</span></span></h2>
+      <h2><span class="kw">Skup aut</span> albo <span class="gold"><span class="kw">komis samochodowy</span></span></h2>
       <div class="hr"></div>
-      <p>Większość skupów robi tylko jedno. My prowadzimy obie strony — <span class="kw" data-v="1 300/mies">auto skup</span> i sprzedaż aut używanych — dlatego wiemy, ile Twoje auto jest naprawdę warte na rynku.</p>
+      <p>Większość skupów robi tylko jedno. My prowadzimy obie strony — <span class="kw">auto skup</span> i sprzedaż aut używanych — dlatego wiemy, ile Twoje auto jest naprawdę warte na rynku.</p>
     </div>
     <div class="two">
       <div class="pane">
         <img src="${IMG.cars[4].s}" alt="">
         <div class="in">
-          <h3><span>Skup</span><span class="kw" data-v="2 400/mies">Sprzedam auto</span></h3>
-          <p><span class="kw" data-v="1 300/mies">Skup aut za gotówkę</span> — przyjeżdżamy pod wskazany adres, oglądamy auto i płacimy na miejscu.</p>
+          <h3><span>Skup</span><span class="kw">Sprzedam auto</span></h3>
+          <p><span class="kw">Skup aut za gotówkę</span> — przyjeżdżamy pod wskazany adres, oglądamy auto i płacimy na miejscu.</p>
           <ul>
             <li>Każda marka i rocznik, także powypadkowe i niejeżdżące</li>
             <li>Bez ważnego OC albo przeglądu</li>
@@ -1075,7 +1075,7 @@ filary(){return `  <div class="w"><section id="skup">
       <div class="pane" id="sprzedaz">
         <img src="${IMG.cars[13].s}" alt="">
         <div class="in">
-          <h3><span>Sprzedaż</span><span class="kw" data-v="880/mies w Warszawie">Samochody używane</span></h3>
+          <h3><span>Sprzedaż</span><span class="kw">Samochody używane</span></h3>
           <p>Każde auto z naszej oferty przechodzi sprawdzenie przed wystawieniem.</p>
           <ul>
             <li>Historia pojazdu i przebieg sprawdzone przed sprzedażą</li>
@@ -1083,7 +1083,7 @@ filary(){return `  <div class="w"><section id="skup">
             <li>Szukamy też auta na zamówienie, pod Twój budżet</li>
             <li>Możliwość rozliczenia w rozliczeniu za Twoje stare auto</li>
           </ul>
-          <div class="go"><a class="btn o" style="color:var(--g);border-color:var(--g3)" href="#kontakt">Zapytaj o dostępne auta</a></div>
+          <div class="go"><a class="btn o" style="color:var(--g);border-color:var(--g3)" href="#wycena">Zapytaj o dostępne auta</a></div>
         </div>
       </div>
     </div>
@@ -1093,14 +1093,14 @@ realizacje(){return `  <div class="dark"><div class="w"><section id="realizacje"
       <p class="eyebrow">Dowód, nie deklaracja</p>
       <h2>Auta, które <span class="gold">już odkupiliśmy</span></h2>
       <div class="hr"></div>
-      <p>Zdjęcia z naszych transakcji — <span class="kw" data-v="880/mies">skup aut używanych</span> obejmuje u nas wszystko, od trzydziestoletniego mercedesa po skrzyniowego craftera i auto po kolizji. Żadnych zdjęć ze stocka.</p>
+      <p>Zdjęcia z naszych transakcji — <span class="kw">skup aut używanych</span> obejmuje u nas wszystko, od trzydziestoletniego mercedesa po skrzyniowego craftera i auto po kolizji. Żadnych zdjęć ze stocka.</p>
     </div>
     ${shots(IMG.cars.slice(0,12))}
   </section></div></div>`;},
 uszkodzone(){return `  <div class="w"><section id="uszkodzone">
     <div class="sechead">
       <p class="eyebrow">Auta w każdym stanie</p>
-      <h2><span class="kw" data-v="1 300/mies">Skup aut uszkodzonych</span> i <span class="gold"><span class="kw" data-v="590/mies">powypadkowych</span></span></h2>
+      <h2><span class="kw">Skup aut uszkodzonych</span> i <span class="gold"><span class="kw">powypadkowych</span></span></h2>
       <div class="hr"></div>
       <p>Nie musisz naprawiać auta przed sprzedażą ani jeździć na stację diagnostyczną. Odkupimy je takie, jakie jest.</p>
     </div>
@@ -1108,15 +1108,15 @@ uszkodzone(){return `  <div class="w"><section id="uszkodzone">
       <div class="box">
         <h3>W jakim stanie kupujemy</h3>
         <ul class="tick">
-          <li><span class="kw" data-v="590/mies">Skup aut powypadkowych</span> i po szkodzie całkowitej</li>
-          <li><span class="kw" data-v="590/mies">Skup samochodów uszkodzonych</span> — także niejeżdżących</li>
-          <li><span class="kw" data-v="50/mies">Skup aut bez OC</span> i bez ważnego przeglądu</li>
-          <li><span class="kw" data-v="880/mies">Skup aut na części</span> i do kasacji</li>
+          <li><span class="kw">Skup aut powypadkowych</span> i po szkodzie całkowitej</li>
+          <li><span class="kw">Skup samochodów uszkodzonych</span> — także niejeżdżących</li>
+          <li><span class="kw">Skup aut bez OC</span> i bez ważnego przeglądu</li>
+          <li><span class="kw">Skup aut na części</span> i do kasacji</li>
           <li>Auta w kredycie i po leasingu, po ustaleniu z bankiem</li>
         </ul>
       </div>
       <div class="box no">
-        <h3><span class="kw" data-v="70/mies">Skup aut — ile płacą</span></h3>
+        <h3><span class="kw">Skup aut — ile płacą</span></h3>
         <p style="font-size:16px">Widełki podajemy przez telefon, po marce, roczniku, przebiegu i stanie. Ostateczną kwotę — po oględzinach. Wycena jest darmowa i nie zobowiązuje do niczego.</p>
         <p style="margin-top:16px;color:var(--muted);font-size:15.5px">Auto niejeżdżące odbieramy lawetą, transport jest po naszej stronie i nie schodzi z ceny.</p>
         <div style="margin-top:20px"><a class="btn k" href="#wycena">Sprawdź, ile dostaniesz</a></div>
@@ -1126,7 +1126,7 @@ uszkodzone(){return `  <div class="w"><section id="uszkodzone">
 kroki(){return `  <div class="w"><section id="jak">
     <div class="sechead">
       <p class="eyebrow">Przebieg sprawy</p>
-      <h2>Trzy kroki i <span class="gold"><span class="kw" data-v="480/mies „jak sprzedać auto”">auto sprzedane</span></span></h2>
+      <h2>Trzy kroki i <span class="gold"><span class="kw">auto sprzedane</span></span></h2>
       <div class="hr"></div>
       <p>Bez wystawiania ogłoszeń, bez oglądaczy pod domem, bez czekania na przelew od nieznajomego.</p>
     </div>
@@ -1139,7 +1139,7 @@ kroki(){return `  <div class="w"><section id="jak">
 marki(){return `  <div class="w"><section id="marki">
     <div class="sechead">
       <p class="eyebrow">Marki</p>
-      <h2><span class="kw" data-v="6 600/mies">Skup samochodów</span> <span class="gold">wszystkich marek</span></h2>
+      <h2><span class="kw">Skup samochodów</span> <span class="gold">wszystkich marek</span></h2>
       <div class="hr"></div>
       <p>Niezależnie od tego, skąd pochodzi Twoje auto — sprawdź, ile jest warte.</p>
     </div>
@@ -1173,7 +1173,7 @@ zakres(){return `  <div class="w"><section style="padding-top:0" id="zakres">
 miasta(){return `  <div class="dark"><div class="w"><section id="miasta">
     <div class="sechead">
       <p class="eyebrow">Obszar działania</p>
-      <h2><span class="kw" data-v="14 800/mies">Skup aut</span> <span class="gold"><span class="kw" data-v="320/mies">na całym Mazowszu</span></span></h2>
+      <h2><span class="kw">Skup aut</span> <span class="gold"><span class="kw">na całym Mazowszu</span></span></h2>
       <div class="hr"></div>
       <p>Promienie liczymy od bazy w Sochaczewie. Każde miasto ma własną stronę z informacją o dojeździe, terminach i obsługiwanych gminach.</p>
     </div>
@@ -1194,7 +1194,7 @@ SEK.komis=()=>`
   <div class="w"><section>
     <div class="sechead">
       <p class="eyebrow">Druga strona transakcji</p>
-      <h2><span class="kw" data-v="12 100/mies na Mazowszu">Komis samochodowy</span> <span class="gold">i auta na zamówienie</span></h2>
+      <h2><span class="kw">Komis samochodowy</span> <span class="gold">i auta na zamówienie</span></h2>
       <div class="hr"></div>
       <p>Większość skupów robi tylko jedno. My prowadzimy obie strony, dlatego wiemy, ile auto jest naprawdę warte na rynku — i dlatego umiemy znaleźć konkretne auto pod Twój budżet.</p>
     </div>
@@ -1238,7 +1238,7 @@ SEK.miastaSkrot=()=>`
   <div class="dark"><div class="w"><section>
     <div class="sechead">
       <p class="eyebrow">Obszar działania</p>
-      <h2><span class="kw" data-v="14 800/mies">Skup aut</span> <span class="gold">na całym Mazowszu</span></h2>
+      <h2><span class="kw">Skup aut</span> <span class="gold">na całym Mazowszu</span></h2>
       <div class="hr"></div>
       <p>Bazę mamy w Sochaczewie. Każde miasto ma własną stronę z informacją o dojeździe, terminach i obsługiwanych gminach.</p>
     </div>
@@ -1260,7 +1260,7 @@ SEK.miastaPelne=()=>`
   <div class="w"><section>
     <div class="sechead">
       <p class="eyebrow">Osiemnaście dzielnic</p>
-      <h2><span class="kw" data-v="5 400/mies">Skup aut Warszawa</span> <span class="gold">dzielnica po dzielnicy</span></h2>
+      <h2><span class="kw">Skup aut Warszawa</span> <span class="gold">dzielnica po dzielnicy</span></h2>
       <div class="hr"></div>
       <p>Umawiamy się pod blokiem, na parkingu osiedlowym albo w garażu podziemnym — tam, gdzie stoi auto.</p>
     </div>
@@ -1396,7 +1396,7 @@ function subHero(t){
     <img src="${IMG.hero2}" srcset="${IMG.hero2M} 780w, ${IMG.hero2} 1280w" sizes="100vw" alt="" fetchpriority="high">
     <div class="w">
       <p class="crumb"><a href="#/">TINA</a> / ${esc(t.crumb)}</p>
-      <h1>${t.kw?`<span class="kw" data-v="${t.kw}">`:''}${t.h1}${t.kw?'</span>':''}</h1>
+      <h1>${t.kw?`<span class="kw">`:''}${t.h1}${t.kw?'</span>':''}</h1>
       <p class="lede">${esc(t.lede)}</p>
       <div class="acts"><a class="btn g" href="#wycena">Wyceń swoje auto</a>${telBtn()}</div>
       ${t.sub?`<p class="sub">${esc(t.sub)}</p>`:''}

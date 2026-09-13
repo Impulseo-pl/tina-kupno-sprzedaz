@@ -106,9 +106,15 @@ def linki(html, root):
 
 
 def sprzataj(html):
-    """Znaczniki `kw` to nasza notatka o liczbie wyszukiwan - na stronie klienta
-    nie maja czego szukac, nawet w zrodle."""
-    return re.sub(r'<span class="kw" data-v="[^"]*">', '<span>', html)
+    """Znaczniki `kw` i `vol` to nasza notatka o liczbie wyszukiwan - na stronie
+    klienta nie maja czego szukac, nawet w zrodle.
+
+    `vol` bylo tu przeoczone: klasa nie miala zadnej reguly w CSS, wiec `<em>`
+    renderowal sie domyslna kursywa i pod kazdym miastem wisialo publicznie
+    "skup 140/mies - komis 110/mies" (13.09.2026). Zrodlo juz tego nie wystawia,
+    to zostaje jako bezpiecznik."""
+    html = re.sub(r'<span class="kw" data-v="[^"]*">', '<span>', html)
+    return re.sub(r'<em class="vol">.*?</em>', '', html)
 
 
 # ---------------------------------------------------------------- 6. zdejmowanie stron
