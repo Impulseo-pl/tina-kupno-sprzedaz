@@ -15,24 +15,24 @@ function idzDo(v){
 const IMG = {
   hero:"img/hero.jpg", hero2:"img/hero2.jpg",
   cars:[
-    {s:"img/auto-01.jpg",  n:"Opel Movano",    t:"furgon"},
-    {s:"img/auto-02.jpg",  n:"BMW serii 1",    t:"osobowy"},
-    {s:"img/auto-03.jpg",  n:"VW Golf GTI",    t:"osobowy"},
-    {s:"img/auto-04.jpg",  n:"Ford Mondeo",    t:"kombi"},
-    {s:"img/auto-05.jpg",  n:"Audi A6",        t:"osobowy"},
-    {s:"img/auto-06.jpg",  n:"Citroën Jumper", t:"furgon"},
-    {s:"img/auto-07.jpg",  n:"VW Transporter", t:"bus 9-osobowy"},
-    {s:"img/auto-08.jpg",  n:"Dodge Charger",  t:"powypadkowy", d:1},
-    {s:"img/auto-09.jpg",  n:"Mercedes W124",  t:"klasyk"},
-    {s:"img/auto-10.jpg",  n:"VW Crafter",     t:"skrzyniowy"},
-    {s:"img/auto-11.jpg", n:"Peugeot Boxer",  t:"furgon"},
-    {s:"img/auto-12.jpg", n:"Suzuki Swift",   t:"osobowy"},
-    {s:"img/auto-13.jpg", n:"Audi A4",        t:"uszkodzony tył", d:1},
-    {s:"img/auto-14.jpg", n:"Dacia Duster",   t:"SUV"},
-    {s:"img/auto-15.jpg", n:"Honda Civic",    t:"osobowy"},
-    {s:"img/auto-16.jpg", n:"Land Cruiser",   t:"terenowy"},
-    {s:"img/auto-17.jpg", n:"Fiat Fiorino",   t:"dostawczy"},
-    {s:"img/auto-18.jpg", n:"Toyota Tundra",  t:"pickup"}
+    {s:"img/auto-01.jpg",  n:"Opel Movano",    f:"de", t:"furgon"},
+    {s:"img/auto-02.jpg",  n:"BMW serii 1",    f:"de", t:"osobowy"},
+    {s:"img/auto-03.jpg",  n:"VW Golf GTI",    f:"de", t:"osobowy"},
+    {s:"img/auto-04.jpg",  n:"Ford Mondeo",    f:"us", t:"kombi"},
+    {s:"img/auto-05.jpg",  n:"Audi A6",        f:"de", t:"osobowy"},
+    {s:"img/auto-06.jpg",  n:"Citroën Jumper", f:"fr", t:"furgon"},
+    {s:"img/auto-07.jpg",  n:"VW Transporter", f:"de", t:"bus 9-osobowy"},
+    {s:"img/auto-08.jpg",  n:"Dodge Charger",  f:"us", t:"powypadkowy", d:1},
+    {s:"img/auto-09.jpg",  n:"Mercedes W124",  f:"de", t:"klasyk"},
+    {s:"img/auto-10.jpg",  n:"VW Crafter",     f:"de", t:"skrzyniowy"},
+    {s:"img/auto-11.jpg", n:"Peugeot Boxer",  f:"fr", t:"furgon"},
+    {s:"img/auto-12.jpg", n:"Suzuki Swift",   f:"jp", t:"osobowy"},
+    {s:"img/auto-13.jpg", n:"Audi A4",        f:"de", t:"uszkodzony tył", d:1},
+    {s:"img/auto-14.jpg", n:"Dacia Duster",   f:"fr", t:"SUV"},
+    {s:"img/auto-15.jpg", n:"Honda Civic",    f:"jp", t:"osobowy"},
+    {s:"img/auto-16.jpg", n:"Land Cruiser",   f:"jp", t:"terenowy"},
+    {s:"img/auto-17.jpg", n:"Fiat Fiorino",   f:"it", t:"dostawczy"},
+    {s:"img/auto-18.jpg", n:"Toyota Tundra",  f:"jp", t:"pickup"}
   ]
 };
 
@@ -100,7 +100,7 @@ const BRANDS=[
  {s:"niemieckich",n:"Niemieckie",d:"niemieckich",f:"de",m:"Audi · BMW · Mercedes · Volkswagen · Opel · Porsche"},
  {s:"japonskich", n:"Japońskie", d:"japońskich", f:"jp",m:"Toyota · Honda · Mazda · Nissan · Suzuki · Mitsubishi"},
  {s:"koreanskich",n:"Koreańskie",d:"koreańskich",f:"kr",m:"Kia · Hyundai · SsangYong"},
- {s:"francuskich",n:"Francuskie",d:"francuskich",f:"fr",m:"Renault · Peugeot · Citroën · DS"},
+ {s:"francuskich",n:"Francuskie",d:"francuskich",f:"fr",m:"Renault · Dacia · Peugeot · Citroën · DS"},
  {s:"angielskich",n:"Angielskie",d:"angielskich",f:"gb",m:"Land Rover · Jaguar · Mini · Bentley"},
  {s:"amerykanskich",n:"Amerykańskie",d:"amerykańskich",f:"us",m:"Ford · Jeep · Dodge · Chevrolet · Tesla"},
  {s:"wloskich",  n:"Włoskie",   d:"włoskich",  f:"it",m:"Fiat · Alfa Romeo · Lancia · Iveco"},
@@ -111,7 +111,8 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const telBtn=(cls)=>`<a class="tel ${cls||''}" href="tel:+48692493797"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>692 493 797</a>`;
 
 function shots(list){
-  return `<div class="grid4">${list.map(c=>`<figure class="shot"><img src="${c.s}" alt="${esc(c.n)}, ${esc(c.t)}" loading="lazy">
+  const malo = list.length<3 ? " malo-"+list.length : "";
+  return `<div class="grid4${malo}">${list.map(c=>`<figure class="shot"><img src="${c.s}" alt="${esc(c.n)}, ${esc(c.t)}" loading="lazy">
     <figcaption><b>${esc(c.n)}</b><span class="${c.d?'dm':''}">${esc(c.t)}</span></figcaption></figure>`).join('')}</div>`;
 }
 
@@ -477,6 +478,8 @@ function cityPage(c){
 }
 
 /* ================= podstrona marek ================= */
+function autaMarki(f){ return IMG.cars.filter(c=>c.f===f); }
+
 function brandPage(b){
   return `
   <div class="chero">
@@ -520,10 +523,12 @@ function brandPage(b){
   <div class="dark"><div class="w"><section>
     <div class="sechead">
       <p class="eyebrow">Realizacje</p>
-      <h2>Auta, które <span class="gold">już odkupiliśmy</span></h2>
+      <h2>${autaMarki(b.f).length ? `Auta <span class="gold">${esc(b.n.toLowerCase())}</span>, które odkupiliśmy` : `Auta, które <span class="gold">już odkupiliśmy</span>`}</h2>
       <div class="hr"></div>
     </div>
-    ${shots(IMG.cars.slice(0,8))}
+    ${autaMarki(b.f).length
+      ? shots(autaMarki(b.f)) + `<p class="podgaleria">To zdjęcia aut, które realnie od kogoś odkupiliśmy. <a href="#/realizacje">Zobacz wszystkie ${IMG.cars.length}</a>.</p>`
+      : `<p class="podgaleria pusto">Z tej grupy nie mamy jeszcze zdjęcia w galerii — odkupujemy je dokładnie tak samo jak resztę. <a href="#/realizacje">Zobacz auta, które już odkupiliśmy</a>.</p>`}
   </section></div></div>
 
   <div class="w"><section>
