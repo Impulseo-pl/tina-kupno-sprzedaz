@@ -18,6 +18,14 @@ ZRODLO = os.path.join(KOR, '_src', 'app.html')
 SITE   = 'https://tinaskupaut.pl'
 DZIS   = '2026-09-13'
 
+# Dopoki strona stoi jako DEMO pod impulseo-pl.github.io, kazda podstrona dostaje
+# `noindex`, a robots.txt zamyka caly katalog. Bez tego demo indeksuje sie klientowi
+# pod naszym adresem, a canonical i sitemap pokazuja na tinaskupaut.pl, gdzie stoi
+# jeszcze stara strona u poprzedniego dostawcy (wpadka z 13.09.2026).
+# PRZY GO-LIVE na tinaskupaut.pl: ustaw DEMO = False i przebuduj.
+DEMO   = True
+NOINDEX = '<meta name="robots" content="noindex, nofollow">'
+
 
 def czytaj(p):
     return io.open(p, encoding='utf-8').read()
@@ -179,6 +187,8 @@ with sync_playwright() as pw:
         glowa = podmien(glowa, r'(<meta property="og:description" content=")[^"]*(")', opis)
         for ld in d['ld']:
             glowa += '\n<script type="application/ld+json">%s</script>' % ld
+        if DEMO:
+            glowa += '\n' + NOINDEX
 
         reszta = RESZTA.replace('{{ROOT}}', root)
         reszta = reszta.replace('<main id="app"></main>',
@@ -217,6 +227,8 @@ for plik, kanon_sciezka, root, tytul, opis, tresc in proste.STRONY:
     glowa = podmien(glowa, r'(<meta property="og:title" content=")[^"]*(")', tytul)
     glowa = podmien(glowa, r'(<meta property="og:description" content=")[^"]*(")', opis)
     glowa += '\n<meta name="robots" content="noindex">' if not kanon_sciezka else ''
+    if DEMO and kanon_sciezka:
+        glowa += '\n' + NOINDEX
 
     reszta = RESZTA.replace('{{ROOT}}', root)
     reszta = reszta.replace('<main id="app"></main>',
@@ -253,5 +265,11 @@ mapa.append('  <url><loc>%s</loc><lastmod>%s</lastmod><priority>0.2</priority></
             % (adres('polityka-prywatnosci'), DZIS))
 mapa.append('</urlset>')
 pisz(os.path.join(KOR, 'sitemap.xml'), '\n'.join(mapa) + '\n')
+
+# ---------------------------------------------------------------- 9. robots.txt
+# Demo zamykamy w calosci; dopiero strona na wlasnej domenie wpuszcza roboty.
+pisz(os.path.join(KOR, 'robots.txt'),
+     'User-agent: *\nDisallow: /\n' if DEMO else
+     'User-agent: *\nAllow: /\nDisallow: /_src/\n\nSitemap: %s/sitemap.xml\n' % SITE)
 
 print('\nGotowe: %d stron, sitemap.xml, assets/styles.css, assets/app.js' % len(zrobione))
