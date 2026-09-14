@@ -527,19 +527,19 @@ body.scrolled .logo img{height:46px}
 .proces .tresc{min-width:0}
 .proces p{font-size:15px;color:var(--muted);max-width:32ch;margin-inline:auto}
 /* Skrot procesu w waskiej kolumnie: kola w pionie, bez opisow. */
-.proces.pion{grid-template-columns:1fr;gap:14px;margin-top:0}
-.proces.pion .krok{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;text-align:left}
+.proces.pion{grid-template-columns:1fr;gap:11px;margin-top:0}
+.proces.pion .krok{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:center;text-align:left}
 .proces.pion .krok::after{display:none}
-.proces.pion .nr{width:44px;height:44px;font-size:17px;margin:0}
-.proces.pion h3{font-size:16px;margin:0}
+.proces.pion .nr{width:32px;height:32px;font-size:13px;margin:0;box-shadow:none}
+.proces.pion h3{font-size:14.5px;margin:0}
 
 /* Kafelki miast i dzielnic */
-.kafle{display:flex;flex-wrap:wrap;gap:9px}
-.kafle a,.kafle span{font-size:13.5px;font-weight:600;padding:9px 15px;border:1px solid var(--line);
-  background:var(--w0);color:var(--ink);text-decoration:none;display:block}
+.kafle{display:flex;flex-wrap:wrap;gap:7px}
+.kafle a,.kafle span{font-size:12.5px;font-weight:600;padding:6px 11px;border:1px solid var(--line);
+  background:var(--w1);color:var(--ink);text-decoration:none;display:block}
 .kafle a{border-color:var(--g3);color:var(--g4)}
 .kafle a:hover{background:var(--w2)}
-.tyt-lista{font-family:Unbounded,sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;
+.tyt-lista{font-family:Unbounded,sans-serif;font-weight:700;font-size:15px;text-transform:uppercase;
   letter-spacing:-.01em;margin:0 0 14px}
 
 @media (max-width:900px){
