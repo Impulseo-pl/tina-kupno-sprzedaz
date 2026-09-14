@@ -46,6 +46,9 @@ function bindForm(){
     return true;
   };
   next.addEventListener('click',()=>{ if(sprawdz(i)) show(i+1,true); });
+  /* Krok ze zdjeciami mozna pominac — nic w nim nie jest wymagane. */
+  const pomin=wf.querySelector('.b-pomin');
+  if(pomin) pomin.addEventListener('click',()=>show(i+1,true));
   back.addEventListener('click',()=>show(i-1,true));
   tabs.forEach((t,j)=>t.addEventListener('click',()=>{ if(j<i||sprawdz(i)) show(j,true); }));
   wf.addEventListener('keydown',e=>{

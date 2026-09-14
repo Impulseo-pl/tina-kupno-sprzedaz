@@ -86,7 +86,7 @@ const { strona } = Astro.props;
           <input type="file" id="files" name="attachment" accept="image/*" multiple>
         </label>
         <div class="thumbs" id="thumbs"></div>
-        <p class="hint">Ze zdjęciami podamy pewniejszą kwotę już przez telefon. Bez nich też oddzwonimy — po prostu zapytamy o więcej szczegółów.</p>
+        <p style="margin-top:14px"><button type="button" class="btn plain b-pomin">Pomiń ten krok</button></p>
       </fieldset>
     </div>
 
@@ -94,12 +94,12 @@ const { strona } = Astro.props;
       <fieldset>
         <legend>Kontakt</legend>
         <div class="g g2">
+          <div class="f"><label for="imie">Imię</label><input id="imie" name="Imie" placeholder="Jan"></div>
           <div class="f"><label for="tel">Twój telefon <i>*</i></label><input id="tel" name="Telefon" inputmode="tel" placeholder="600 000 000"></div>
-          <div class="f"><label for="miasto">Miejscowość</label><input id="miasto" name="Miejscowosc" placeholder="Sochaczew"></div>
         </div>
         <div class="g g2" style="margin-top:14px">
+          <div class="f"><label for="miasto">Miejscowość</label><input id="miasto" name="Miejscowosc" placeholder="Sochaczew"></div>
           <div class="f"><label for="mail">E-mail (nieobowiązkowo)</label><input id="mail" name="Email" type="email" placeholder="jan@example.com"></div>
-          <div class="f"><label for="kiedy">Kiedy oddzwonić</label><select id="kiedy" name="Kiedy oddzwonic"><option>Jak najszybciej</option><option>Rano</option><option>Po południu</option><option>Wieczorem</option></select></div>
         </div>
         <label class="zgoda"><input type="checkbox" id="zgoda" name="Zgoda" value="tak"><span>Wyrażam zgodę na kontakt telefoniczny w sprawie wyceny auta i na przetwarzanie moich danych przez TINA Rafał Kocimski. Szczegóły w <a href="/polityka-prywatnosci">polityce prywatności</a>.</span></label>
         <p class="err"></p>
