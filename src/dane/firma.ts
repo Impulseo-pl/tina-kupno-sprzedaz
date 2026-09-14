@@ -57,6 +57,7 @@ export const FIRMA_LD = {
     addressRegion: FIRMA.region,
     addressCountry: 'PL',
   },
+  geo: { '@type': 'GeoCoordinates', latitude: 52.18222, longitude: 20.19086 },
   areaServed: { '@type': 'State', name: 'mazowieckie' },
   currenciesAccepted: 'PLN',
   paymentAccepted: 'Gotówka, przelew',

@@ -23,19 +23,28 @@ import { okruszki, FIRMA, FIRMA_LD } from '../dane/firma';
 <div class="w"><section>
   <div class="local">
     <div class="box">
-      <h3>Zadzwoń</h3>
-      <p style="margin-bottom:16px">Najprostsza droga. Powiedz, jakie masz auto i ile za nie chcesz — resztę ustalimy w jednej rozmowie.</p>
-      <div class="acts"><Telefon /></div>
-      <p style="margin-top:16px">Drugi numer: <a href={`tel:${FIRMA.tel2tel}`}>{FIRMA.tel2}</a></p>
-      <p style="margin-top:6px">E-mail: <a href={`mailto:${FIRMA.mail}`}>{FIRMA.mail}</a></p>
-      <p style="margin-top:16px;font-size:15px;color:#5a616e">Odbieramy 7 dni w tygodniu, także w weekendy.</p>
+      <h3>Zadzwoń albo napisz</h3>
+      <p style="margin-bottom:18px">Najprostsza droga. Powiedz, jakie masz auto i ile za nie chcesz — resztę ustalimy w jednej rozmowie.</p>
+      <div class="acts para"><Telefon /><a class="btn k" href="/wycena">Formularz wyceny</a></div>
+      <dl class="dane">
+        <div><dt>Telefon</dt><dd><a href={`tel:${FIRMA.tel1tel}`}>{FIRMA.tel1}</a></dd></div>
+        <div><dt>Drugi numer</dt><dd><a href={`tel:${FIRMA.tel2tel}`}>{FIRMA.tel2}</a></dd></div>
+        <div><dt>E-mail</dt><dd><a href={`mailto:${FIRMA.mail}`}>{FIRMA.mail}</a></dd></div>
+        <div><dt>Facebook</dt><dd><a href={FIRMA.fb} rel="noopener" target="_blank">Skup Aut TINA</a></dd></div>
+        <div><dt>Adres</dt><dd>{FIRMA.podmiot}<br>{FIRMA.ulica}, {FIRMA.kod} {FIRMA.miasto}<br>powiat sochaczewski, woj. mazowieckie</dd></div>
+        <div><dt>Dane firmy</dt><dd>NIP {FIRMA.nip}<br>REGON {FIRMA.regon}</dd></div>
+        <div><dt>Kiedy dzwonić</dt><dd>7 dni w tygodniu, także w weekendy</dd></div>
+        <div><dt>Obszar</dt><dd>Całe Mazowsze — dojazd i laweta bez opłat</dd></div>
+      </dl>
     </div>
-    <div class="box">
-      <h3>Gdzie jesteśmy</h3>
-      <p>{FIRMA.podmiot}<br>{FIRMA.ulica}<br>{FIRMA.kod} {FIRMA.miasto}<br>powiat sochaczewski, woj. mazowieckie</p>
-      <p style="margin-top:16px">NIP {FIRMA.nip}<br>REGON {FIRMA.regon}</p>
-      <p style="margin-top:16px;font-size:15px;color:#5a616e">To adres firmy, nie plac handlowy. Auta do skupu odbieramy u klientów — pod domem, pod pracą, w warsztacie albo na parkingu. Oględziny samochodów <a href="/sprzedaz">z naszej oferty</a> umawiamy tutaj, po wcześniejszym telefonie.</p>
-      <div class="acts" style="margin-top:18px"><a class="btn o" href={FIRMA.fb} rel="noopener" target="_blank">Facebook</a></div>
+    <div class="mapka">
+      <iframe
+        title="Mapa — Przyszła 2B, Kozłów Biskupi pod Sochaczewem"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=20.1709%2C52.1722%2C20.2109%2C52.1922&layer=mapnik&marker=52.1822213%2C20.1908621"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+      ></iframe>
+      <a class="mapka-link" href="https://www.google.com/maps/dir/?api=1&destination=52.1822213,20.1908621" rel="noopener" target="_blank">Wyznacz trasę</a>
     </div>
   </div>
 </section></div>

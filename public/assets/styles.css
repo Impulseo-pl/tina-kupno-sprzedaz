@@ -221,6 +221,19 @@ summary:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 
 .local{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .near{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+/* Telefon (.tel) i przycisk (.btn) maja rozne wysokosci bazowe — tu zrownane. */
+.acts.para{display:flex;gap:12px;flex-wrap:wrap}
+.acts.para .tel,.acts.para .btn{min-height:50px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+/* Lista danych kontaktowych: etykieta obok wartosci. */
+.dane{margin-top:24px;border-top:1px solid var(--line)}
+.dane>div{display:grid;grid-template-columns:132px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.dane dt{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g3);padding-top:3px}
+.dane dd{margin:0;font-size:15.5px;line-height:1.55}
+/* Mapa dojazdu — kafel tej samej wysokosci co karta obok. */
+.mapka{border:1px solid var(--line);background:var(--w0);display:flex;flex-direction:column;overflow:hidden}
+.mapka iframe{flex:1;display:block;width:100%;border:0;min-height:460px}
+.mapka-link{display:block;text-align:center;font-family:Unbounded,sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:15px 18px;border-top:1px solid var(--line)}
+.mapka-link:hover{background:var(--w1);color:var(--g3)}
 .near span{font-size:13px;font-weight:600;padding:6px 12px;border:1px solid var(--line);background:var(--w1);border-radius:2px;color:var(--muted)}
 
 /* ---------- stopka ---------- */
@@ -245,6 +258,8 @@ summary:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 }
 @media (max-width:620px){
   .grid4,.brands,.links{grid-template-columns:1fr}
+  .dane>div{grid-template-columns:1fr;gap:3px}
+  .mapka iframe{min-height:320px}
   .card .g3,.card .g2{grid-template-columns:1fr}
   .thumbs{grid-template-columns:repeat(3,1fr)}
   .foot .cols{grid-template-columns:1fr}
