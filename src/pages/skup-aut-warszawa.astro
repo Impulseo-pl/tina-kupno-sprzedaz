@@ -9,6 +9,7 @@ import Naglowek from '../components/Naglowek.astro';
 import ProcesKola from '../components/ProcesKola.astro';
 import Kupujemy from '../components/Kupujemy.astro';
 import LinkiTematyczne from '../components/LinkiTematyczne.astro';
+import Faq from '../components/Faq.astro';
 import Formularz from '../components/Formularz.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
@@ -34,20 +35,38 @@ const FAQ: [string, string][] = [
 ><span>Skup aut</span> za gotówkę<span class="l2 gold">w Warszawie</span></HeroSkup>
 
 <div class="w"><section>
+  <Naglowek
+    eyebrow="Dlaczego skup"
+    tytul='Sprzedaż samochodu <span class="gold">w Warszawie wygląda inaczej</span>'
+    opis="W Warszawie nieużywany samochód szybko zaczyna przeszkadzać. Zajmuje miejsce na osiedlowym parkingu, generuje koszt garażu albo stoi w strefie płatnego parkowania."
+  />
   <div class="proza">
-    {/* ——— tresc unikalna dla miasta ——— */}
-    <h2>Sprzedaż samochodu w Warszawie wygląda inaczej</h2>
-    <p>W Warszawie nieużywany samochód szybko zaczyna przeszkadzać. Zajmuje miejsce na osiedlowym parkingu, generuje koszt garażu albo stoi w strefie płatnego parkowania. Dotyczy to szczególnie drugiego auta w rodzinie, samochodu pozostałego po zmianie pracy lub pojazdu, który po awarii przestał być używany.</p>
+    <p>Dotyczy to szczególnie drugiego auta w rodzinie, samochodu pozostałego po zmianie pracy lub pojazdu, który po awarii przestał być używany.</p>
     <p>Sprzedaż prywatna teoretycznie daje dostęp do dużej liczby kupujących, ale oznacza również rywalizację z tysiącami innych ogłoszeń. Trzeba przygotować zdjęcia, odpowiadać na telefony i znaleźć czas na prezentowanie samochodu. Im popularniejszy model, tym większy wybór ma kupujący i tym łatwiej porównuje każde uszkodzenie, wyposażenie oraz cenę.</p>
     <p>Skup jest rozwiązaniem dla osób, które wolą najpierw poznać konkretną ofertę, a dopiero później zdecydować, czy chcą dalej wystawiać auto samodzielnie. Różnice między obiema drogami opisujemy na stronie <a href="/komis-czy-skup-aut">komis czy skup aut</a>.</p>
+  </div>
+</section></div>
 
-    <h2>Odbiór auta dopasowany do warunków miasta</h2>
-    <p>Samochód w Warszawie nie zawsze stoi na otwartym podjeździe. Może znajdować się w garażu podziemnym, na ciasnym parkingu osiedlowym, w warsztacie albo na terenie firmy. Dlatego przy zgłoszeniu ważny jest nie tylko stan pojazdu, ale również dokładne miejsce i warunki dostępu.</p>
+<div class="w"><section>
+  <Naglowek
+    eyebrow="Odbiór auta"
+    tytul='Odbiór dopasowany <span class="gold">do warunków miasta</span>'
+    opis="Samochód w Warszawie nie zawsze stoi na otwartym podjeździe. Może znajdować się w garażu podziemnym, na ciasnym parkingu osiedlowym, w warsztacie albo na terenie firmy."
+  />
+  <div class="proza">
+    <p>Dlatego przy zgłoszeniu ważny jest nie tylko stan pojazdu, ale również dokładne miejsce i warunki dostępu.</p>
     <p>W przypadku garażu podziemnego trzeba sprawdzić jego wysokość, szerokość wyjazdu oraz możliwość przetoczenia samochodu. Jeżeli auto znajduje się w warsztacie lub na parkingu strzeżonym, przed odbiorem należy ustalić zasady jego wydania. Takie informacje pozwalają właściwie zaplanować oględziny i ewentualny transport.</p>
     <p>Obsługujemy wszystkie dzielnice Warszawy — od Ursusa, Włoch, Bemowa i Woli po Mokotów, Ursynów, Białołękę, Targówek, Pragę i Wawer. Termin przyjazdu ustalamy indywidualnie, zależnie od adresu oraz dostępności.</p>
+  </div>
+</section></div>
 
-    <h2>Nie oceniamy auta po warszawskim adresie</h2>
-    <p>Samochód używany w Warszawie może mieć niski przebieg, ale wiele godzin pracy w korkach. Inny egzemplarz może codziennie pokonywać trasę poza miastem i mimo wyższego przebiegu pozostawać w dobrym stanie technicznym.</p>
+<div class="w"><section>
+  <Naglowek
+    eyebrow="Wycena"
+    tytul='Nie oceniamy auta <span class="gold">po warszawskim adresie</span>'
+    opis="Samochód używany w Warszawie może mieć niski przebieg, ale wiele godzin pracy w korkach. Inny egzemplarz może codziennie pokonywać trasę poza miastem i mimo wyższego przebiegu pozostawać w dobrym stanie technicznym."
+  />
+  <div class="proza">
     <p>Dlatego nie zakładamy z góry, że „auto miejskie” jest lepsze albo gorsze. Liczy się sposób użytkowania oraz rzeczywisty stan silnika, skrzyni biegów, sprzęgła, zawieszenia, hamulców, nadwozia i wnętrza.</p>
     <p>Obtarcia parkingowe, niewielkie wgniecenia czy ślady miejskiej eksploatacji nie zamykają drogi do sprzedaży. Warto pokazać je na zdjęciach już podczas zgłoszenia — dzięki temu możemy lepiej przygotować się do oględzin.</p>
   </div>
@@ -73,31 +92,23 @@ const FAQ: [string, string][] = [
   <LinkiTematyczne />
 </section></div>
 
-<div class="w"><section>
-  <Naglowek
-    eyebrow="Szukasz auta dla siebie?"
-    tytul='Sprzedaż samochodów <span class="gold">dla Warszawy</span>'
-    opis="Nie tylko odkupujemy auta — część z nich trafia później do dalszej sprzedaży."
-  />
-  <div class="proza">
-    {/* ——— tresc unikalna dla miasta ——— */}
-    <p>Samochody, które wcześniej odkupiliśmy, sprzedajemy jako własne pojazdy. Dla kupującego z Warszawy oznacza to rozmowę z jednym właścicielem zamiast przeglądania kilkunastu ogłoszeń od osób prywatnych i pośredników.</p>
-    <p>W stolicy pytania dotyczą najczęściej kompaktów i aut miejskich na krótkie dystanse, ale równie często szukane są kombi i SUV-y do dojazdów spoza obwodnicy. Dostępność zmienia się z tygodnia na tydzień, dlatego konkretny model warto potwierdzić telefonicznie.</p>
-    <p>Oględziny i jazdę próbną umawiamy w naszej bazie w Kozłowie Biskupim pod Sochaczewem, kilkadziesiąt kilometrów od Warszawy drogą krajową nr 92. Jeśli przy okazji chcesz sprzedać obecne auto, możemy je wycenić i rozliczyć przy zakupie.</p>
-    <div class="go" style="margin-top:22px"><a class="btn o" href="/sprzedaz">Zobacz samochody na sprzedaż</a></div>
+<div class="dark"><div class="w"><section>
+  <div class="sprzed">
+    <div>
+      <p class="eyebrow">Szukasz auta dla siebie?</p>
+      <h2>Samochody używane <span class="gold">na sprzedaż dla Warszawy</span></h2>
+      <p>Samochody używane, które sprzedajemy, wcześniej sami odkupiliśmy i sprawdziliśmy podczas oględzin. Dla kupującego z Warszawy oznacza to jedną rozmowę z właścicielem pojazdu zamiast przeglądania kilkudziesięciu ogłoszeń od osób prywatnych i pośredników.</p>
+      <p>W stolicy najczęściej szukane są auta miejskie i kompakty na krótkie dystanse, ale równie często pytają o nie kierowcy potrzebujący kombi albo SUV-a do dojazdów spoza obwodnicy. Nie jesteśmy komisem — każdy samochód z naszej oferty jest naszą własnością, więc cenę ustalasz bezpośrednio z nami.</p>
+      <p>Oględziny i jazdę próbną umawiamy w bazie w Kozłowie Biskupim pod Sochaczewem, kilkadziesiąt kilometrów od Warszawy drogą krajową nr 92. Jeśli przy okazji chcesz sprzedać obecne auto, możemy je wycenić i rozliczyć przy zakupie kolejnego.</p>
+      <div class="acts" style="margin-top:24px"><a class="btn g" href="/sprzedaz">Zobacz samochody na sprzedaż</a></div>
+    </div>
+    <figure><img src="/img/auto-02.jpg" alt="BMW serii 1 — samochody używane na sprzedaż dla kupujących z Warszawy" loading="lazy"></figure>
   </div>
-</section></div>
+</section></div></div>
 
 <div class="w"><section>
   <Naglowek eyebrow="Pytania" tytul='Skup aut Warszawa — <span class="gold">najczęstsze pytania</span>' />
-  <div class="proza">
-    {FAQ.map(([pytanie, odpowiedz]) => (
-      <>
-        <h3>{pytanie}</h3>
-        <p>{odpowiedz}</p>
-      </>
-    ))}
-  </div>
+  <Faq pary={FAQ} />
 </section></div>
 
 <Formularz strona="warszawa" />

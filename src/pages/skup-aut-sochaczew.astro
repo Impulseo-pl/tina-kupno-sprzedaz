@@ -6,6 +6,7 @@ import Naglowek from '../components/Naglowek.astro';
 import ProcesKola from '../components/ProcesKola.astro';
 import Kupujemy from '../components/Kupujemy.astro';
 import LinkiTematyczne from '../components/LinkiTematyczne.astro';
+import Faq from '../components/Faq.astro';
 import Formularz from '../components/Formularz.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
@@ -31,20 +32,37 @@ const FAQ: [string, string][] = [
 ><span>Skup aut</span> za gotówkę<span class="l2 gold">w Sochaczewie</span></HeroSkup>
 
 <div class="w"><section>
+  <Naglowek
+    eyebrow="Lokalnie"
+    tytul='Lokalny skup <span class="gold">z bazą pod Sochaczewem</span>'
+    opis="TINA działa w Kozłowie Biskupim, bezpośrednio przy Sochaczewie. Nie jest to więc miejscowość obsługiwana okazjonalnie podczas przejazdu przez Mazowsze, lecz podstawowy obszar działalności firmy."
+  />
   <div class="proza">
-    {/* ——— tresc unikalna dla miasta ——— */}
-    <h2>Lokalny skup z bazą pod Sochaczewem</h2>
-    <p>TINA działa w Kozłowie Biskupim, bezpośrednio przy Sochaczewie. Nie jest to więc miejscowość obsługiwana okazjonalnie podczas przejazdu przez Mazowsze, lecz podstawowy obszar działalności firmy.</p>
     <p>Znamy układ miasta rozciągającego się od Chodakowa przez centrum i Trojanów aż po Boryszew. Oględziny możemy ustalić przy domu, na osiedlowym parkingu, w warsztacie lub na terenie firmy. Dotyczy to także samochodów znajdujących się w okolicznych gminach powiatu sochaczewskiego.</p>
     <p>Bliskość bazy jest szczególnie istotna przy samochodach <a href="/auta-uszkodzone-powypadkowe">uszkodzonych i niejeżdżących</a>, których właściciel nie chce lub nie może dostarczyć do kupującego.</p>
+  </div>
+</section></div>
 
-    <h2>Samochody używane w mieście i na trasie</h2>
-    <p>Sochaczew leży przy drogach krajowych nr 50 i 92. Tutejsze samochody często łączą krótkie przejazdy po mieście z regularnymi trasami w stronę Warszawy, Płocka, Łowicza czy Żyrardowa.</p>
+<div class="w"><section>
+  <Naglowek
+    eyebrow="Jak jeżdżą tutejsze auta"
+    tytul='Samochody używane <span class="gold">w mieście i na trasie</span>'
+    opis="Sochaczew leży przy drogach krajowych nr 50 i 92. Tutejsze samochody często łączą krótkie przejazdy po mieście z regularnymi trasami w stronę Warszawy, Płocka, Łowicza czy Żyrardowa."
+  />
+  <div class="proza">
     <p>W praktyce oznacza to bardzo różne sposoby eksploatacji. Jedno auto może mieć niewielki przebieg, ale być używane głównie na krótkich odcinkach. Inne codziennie pokonuje kilkadziesiąt kilometrów, lecz jest regularnie serwisowane i większość przebiegu zrobiło w trasie.</p>
     <p>Podczas wyceny nie patrzymy więc wyłącznie na wskazanie licznika. Liczy się ogólny stan pojazdu, historia użytkowania oraz to, jak samochód był utrzymywany — piszemy o tym szerzej na stronie <a href="/ile-placimy">od czego zależy wycena</a>.</p>
+  </div>
+</section></div>
 
-    <h2>Lokalny rynek to nie tylko samochody osobowe</h2>
-    <p>W Sochaczewie i okolicznych gminach samochód często służy jednocześnie do życia prywatnego i pracy. Obok miejskich aut osobowych spotykamy <a href="/skup-aut-dostawczych">dostawczaki wykorzystywane przez lokalne firmy</a>, busy, samochody po działalności oraz pojazdy, które po awarii zostały odstawione na posesję.</p>
+<div class="w"><section>
+  <Naglowek
+    eyebrow="Rynek lokalny"
+    tytul='Nie tylko <span class="gold">samochody osobowe</span>'
+    opis="W Sochaczewie i okolicznych gminach samochód często służy jednocześnie do życia prywatnego i pracy."
+  />
+  <div class="proza">
+    <p>Obok miejskich aut osobowych spotykamy <a href="/skup-aut-dostawczych">dostawczaki wykorzystywane przez lokalne firmy</a>, busy, samochody po działalności oraz pojazdy, które po awarii zostały odstawione na posesję.</p>
     <p>Zdarzają się również auta odziedziczone, drugie samochody w rodzinie albo pojazdy kupione z myślą o naprawie, która ostatecznie przestała się opłacać. W takich przypadkach właściciel nie zawsze chce przygotowywać samochód do ogłoszenia i czekać na kupującego z innego regionu.</p>
     <p>Wycena skupu pozwala najpierw sprawdzić, ile samochód jest wart w obecnym stanie. Dopiero po poznaniu oferty właściciel decyduje, czy wybiera sprzedaż bezpośrednią, komis czy dalsze poszukiwanie nabywcy.</p>
   </div>
@@ -70,31 +88,23 @@ const FAQ: [string, string][] = [
   <LinkiTematyczne />
 </section></div>
 
-<div class="w"><section>
-  <Naglowek
-    eyebrow="Szukasz auta dla siebie?"
-    tytul='Sprzedaż samochodów <span class="gold">w Sochaczewie</span>'
-    opis="Nie tylko odkupujemy auta — część z nich trafia później do dalszej sprzedaży."
-  />
-  <div class="proza">
-    {/* ——— tresc unikalna dla miasta ——— */}
-    <p>Samochody wystawiane przez nas do sprzedaży wcześniej sami odkupiliśmy, więc znamy ich stan z oględzin, a nie z opisu poprzedniego właściciela. Dla kupującego z Sochaczewa i okolic oznacza to rozmowę na miejscu, bez jazdy na giełdę do Warszawy czy Łodzi.</p>
-    <p>W ofercie pojawiają się zarówno auta miejskie i rodzinne kombi, jak i pojazdy dostawcze, na które jest tu stały popyt wśród lokalnych firm. Dostępność zmienia się na bieżąco, dlatego konkretny model najlepiej potwierdzić telefonicznie lub na naszym profilu na Facebooku.</p>
-    <p>Oględziny i jazdę próbną umawiamy w Kozłowie Biskupim, kilka minut od centrum miasta. Jeśli chcesz przy okazji sprzedać obecny samochód, możemy go wycenić i rozliczyć przy zakupie kolejnego.</p>
-    <div class="go" style="margin-top:22px"><a class="btn o" href="/sprzedaz">Zobacz samochody na sprzedaż</a></div>
+<div class="dark"><div class="w"><section>
+  <div class="sprzed">
+    <div>
+      <p class="eyebrow">Szukasz auta dla siebie?</p>
+      <h2>Samochody używane <span class="gold">na sprzedaż w Sochaczewie</span></h2>
+      <p>Samochody używane, które wystawiamy na sprzedaż, wcześniej sami odkupiliśmy — ich stan znamy z oględzin, a nie z opisu poprzedniego właściciela. Dla kupującego z Sochaczewa, Chodakowa czy Trojanowa oznacza to rozmowę na miejscu, bez jazdy na giełdę samochodową do Warszawy lub Łodzi.</p>
+      <p>W ofercie pojawiają się auta osobowe do jazdy po mieście, rodzinne kombi i SUV-y, a także samochody dostawcze, na które jest tu stały popyt wśród lokalnych firm. Nie prowadzimy komisu — każdy sprzedawany pojazd jest naszą własnością, dlatego cenę i warunki ustalasz bezpośrednio z nami.</p>
+      <p>Oględziny i jazdę próbną umawiamy w Kozłowie Biskupim, kilka minut od centrum miasta. Aktualną dostępność najlepiej potwierdzić telefonicznie albo na naszym profilu na Facebooku. Jeśli przy okazji chcesz sprzedać obecny samochód, wycenimy go i rozliczymy przy zakupie kolejnego.</p>
+      <div class="acts" style="margin-top:24px"><a class="btn g" href="/sprzedaz">Zobacz samochody na sprzedaż</a></div>
+    </div>
+    <figure><img src="/img/auto-04.jpg" alt="Ford Mondeo kombi — samochody używane na sprzedaż w Sochaczewie" loading="lazy"></figure>
   </div>
-</section></div>
+</section></div></div>
 
 <div class="w"><section>
   <Naglowek eyebrow="Pytania" tytul='Skup aut Sochaczew — <span class="gold">najczęstsze pytania</span>' />
-  <div class="proza">
-    {FAQ.map(([pytanie, odpowiedz]) => (
-      <>
-        <h3>{pytanie}</h3>
-        <p>{odpowiedz}</p>
-      </>
-    ))}
-  </div>
+  <Faq pary={FAQ} />
 </section></div>
 
 <Formularz strona="sochaczew" />
