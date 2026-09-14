@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
 import Naglowek from '../components/Naglowek.astro';
 import Formularz from '../components/Formularz.astro';
-import Kroki from '../components/Kroki.astro';
 import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
@@ -30,23 +29,6 @@ const FAQ: [string, string][] = [
 ><span>Wycena <span class="gold">Twojego auta</span></span></Chero>
 
 <Formularz strona="wycena" />
-
-<div class="w"><section>
-  <Naglowek
-    eyebrow="Co dalej"
-    tytul='Co się dzieje <span class="gold">po wysłaniu</span>'
-    opis="Zgłoszenie trafia prosto do nas — nie do żadnej centrali ani pośrednika."
-  />
-  <Kroki />
-</section></div>
-
-<div class="w"><section>
-  <div class="proza">
-    <h2>Dlaczego nie ma tu kalkulatora</h2>
-    <p>Kalkulator wyceny auta wygląda profesjonalnie i przez chwilę sprawia wrażenie konkretu. Problem w tym, że taki kalkulator zna wyłącznie rocznik, przebieg i rodzaj paliwa — czyli dokładnie te rzeczy, które o realnej wartości samochodu decydują najmniej. Ten sam algorytm wyceni identycznie auto garażowane i auto po dachowaniu, bo obu przypisze ten sam wiek i ten sam licznik.</p>
-    <p>Efekt jest zawsze taki sam: widełki na stronie mówią jedno, a przy aucie pada zupełnie inna kwota. My wolimy od razu powiedzieć to, co jest prawdą — konkretną kwotę podajemy po rozmowie, a nie przed nią.</p>
-  </div>
-</section></div>
 
 <div class="w"><section>
   <Naglowek eyebrow="Pytania" tytul='O formularzu i <span class="gold">wycenie</span>' />
