@@ -22,9 +22,10 @@ export const FIRMA = {
   fb: 'https://www.facebook.com/p/Skup-Aut-Tina-61565193384415/',
 };
 
+/* "Ile płacimy" celowo poza menu — podstrona dziala i jest podlinkowana
+   ze stopki oraz z kafelkow na stronie glownej, tylko nie zajmuje miejsca w pasku. */
 export const NAW = [
-  { href: '/', label: 'Skup aut' },
-  { href: '/ile-placimy', label: 'Ile płacimy' },
+  { href: '/', label: 'Skup samochodów' },
   { href: '/sprzedaz', label: 'Sprzedaż' },
   { href: '/realizacje', label: 'Realizacje' },
   { href: '/pytania', label: 'Pytania' },
