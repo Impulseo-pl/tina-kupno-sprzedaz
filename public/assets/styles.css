@@ -442,7 +442,9 @@ body.scrolled .ctabar{transform:none}
 
 /* ================= dokumenty ================= */
 .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.doc{background:var(--w0);border:1px solid var(--line);padding:22px 22px 24px;position:relative}
+/* Kafelek ma wlasne tlo, wiec musi tez ustawic wlasny kolor tekstu —
+   inaczej na ciemnym pasie tytul dziedziczy jasny kolor i znika. */
+.doc{background:var(--w0);color:var(--ink);border:1px solid var(--line);padding:22px 22px 24px;position:relative}
 .doc b{display:block;font-family:Unbounded,sans-serif;font-weight:700;font-size:14px;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:9px;padding-left:36px}
 .doc b::before{content:"";position:absolute;left:22px;width:23px;height:23px;margin-top:-4px;border:0;border-radius:50%;background:no-repeat center/12px 12px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2306070a' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5 9.5 18 20 6.5'/%3E%3C/svg%3E"),var(--goldgrad);box-shadow:0 6px 15px -9px rgba(212,175,55,.95)}
 .doc p{font-size:14.5px;color:var(--muted);padding-left:36px}
