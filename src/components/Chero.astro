@@ -1,7 +1,10 @@
 ---
-/* Naglowek podstrony: zdjecie w tle, okruszki, H1, lead i wezwanie. */
+/* Naglowek podstrony: zdjecie w tle, okruszki, H1, lead i wezwanie.
+   Domyslne przyciski to wycena i telefon; podstrona moze podac wlasne
+   przez nazwany slot "akcje". */
 import Telefon from './Telefon.astro';
 const { okruszek, lede, sub = '', obraz = 'hero2', akcje = true } = Astro.props;
+const wlasneAkcje = Astro.slots.has('akcje');
 ---
 <div class="chero">
   <img src={`/img/${obraz}.jpg`} srcset={`/img/${obraz}-m.jpg 780w, /img/${obraz}.jpg 1280w`} sizes="100vw" alt="" fetchpriority="high">
@@ -9,12 +12,14 @@ const { okruszek, lede, sub = '', obraz = 'hero2', akcje = true } = Astro.props;
     <p class="crumb"><a href="/">TINA</a> / {okruszek}</p>
     <h1><slot /></h1>
     <p class="lede" set:html={lede} />
-    {akcje && (
+    {wlasneAkcje ? (
+      <div class="acts"><slot name="akcje" /></div>
+    ) : akcje ? (
       <div class="acts">
         <a class="btn g" href="/wycena">Wyceń swoje auto</a>
         <Telefon />
       </div>
-    )}
+    ) : null}
     {sub && <p class="sub">{sub}</p>}
   </div>
 </div>

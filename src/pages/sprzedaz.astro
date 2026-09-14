@@ -34,14 +34,12 @@ const ZAKUP: [string, string][] = [
   okruszek="Samochody na sprzedaż"
   lede="Sprzedajemy samochody, które wcześniej sami odkupiliśmy. Nie działamy jako komis — oferowane auta należą do nas, dlatego możemy rzeczowo opowiedzieć o ich stanie i odpowiedzieć na pytania dotyczące konkretnego egzemplarza."
   sub="Oględziny i jazdę próbną umawiamy telefonicznie."
-  akcje={false}
-><span>Samochody używane <span class="gold">na sprzedaż</span></span></Chero>
-
-<div class="w"><section style="text-align:center;padding-block:34px 0">
-  <div class="acts" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+>
+  <span>Samochody używane <span class="gold">na sprzedaż</span></span>
+  <Fragment slot="akcje">
     <a class="btn g" href={`tel:${FIRMA.tel1tel}`}>Zapytaj o dostępne auta</a>
-  </div>
-</section></div>
+  </Fragment>
+</Chero>
 
 <div class="w"><section>
   <div class="proza">
