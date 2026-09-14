@@ -572,6 +572,9 @@ body.scrolled .logo img{height:46px}
 .proces h3{font-size:18px;margin-bottom:9px}
 .proces .tresc{min-width:0}
 .proces p{font-size:15px;color:var(--muted);max-width:32ch;margin-inline:auto}
+/* proces na ciemnym pasie — jasniejszy tekst i kreski */
+.dark .proces p,.darker .proces p{color:var(--onk-mut)}
+.dark .proces .krok:not(:last-child)::after,.darker .proces .krok:not(:last-child)::after{background:linear-gradient(90deg,var(--g3),var(--hair))}
 /* Skrot procesu w waskiej kolumnie: kola w pionie, bez opisow. */
 /* Wariant na szesc krokow — trzy w rzedzie, bez kresek laczacych. */
 .proces.trzy{grid-template-columns:repeat(3,1fr);row-gap:40px}
