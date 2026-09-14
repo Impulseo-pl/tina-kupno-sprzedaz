@@ -540,7 +540,7 @@ body.scrolled .logo img{height:46px}
 /* ---------- mapa obszaru dzialania ---------- */
 .mapa-pl{margin:0}
 .mapa-pl svg{display:block;width:100%;height:auto;max-width:860px;margin-inline:auto}
-.mapa-pl .woj{fill:var(--w2);stroke:var(--w1);stroke-width:1.2;stroke-linejoin:round}
+.mapa-pl .woj{fill:#eae6dc;stroke:#d6d0c1;stroke-width:1.1;stroke-linejoin:round}
 .mapa-pl .woj.nasze{fill:var(--g1);stroke:var(--g3);stroke-width:1.8}
 .mapa-pl .pin circle{fill:var(--g4)}
 .mapa-pl .pin.baza circle{fill:var(--g3)}
@@ -553,7 +553,20 @@ body.scrolled .logo img{height:46px}
 .mapa-pl .leg{display:inline-flex;align-items:center;gap:8px}
 .mapa-pl .leg i{width:9px;height:9px;border-radius:50%;background:var(--g4);flex:none}
 .mapa-pl .leg i.b{width:13px;height:13px;background:var(--g3);box-shadow:0 0 0 4px rgba(160,125,33,.22)}
-@media (max-width:620px){.mapa-pl .pin text{font-size:15px}}
+/* Tekst i punkty w SVG skaluja sie razem z viewBox, wiec na waskim ekranie
+   trzeba je powiekszyc w jednostkach mapy, inaczej robia sie nieczytelne. */
+@media (max-width:900px){
+  .mapa-pl .pin text{font-size:18px}
+  .mapa-pl .pin circle{r:4.6px}
+  .mapa-pl .pin.baza circle{r:6.5px}
+  .mapa-pl .pin .aura{r:13px}
+}
+@media (max-width:620px){
+  .mapa-pl .pin text{font-size:26px;stroke-width:5px}
+  .mapa-pl .pin circle{r:6.5px}
+  .mapa-pl .pin.baza circle{r:9px}
+  .mapa-pl .pin .aura{r:18px}
+}
 
 /* ---------- proces w czterech krokach (kola z numerami) ---------- */
 .proces{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:6px}
