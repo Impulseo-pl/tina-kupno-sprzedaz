@@ -25,7 +25,7 @@ export const FIRMA = {
 /* "Ile płacimy" celowo poza menu — podstrona dziala i jest podlinkowana
    ze stopki oraz z kafelkow na stronie glownej, tylko nie zajmuje miejsca w pasku. */
 export const NAW = [
-  { href: '/', label: 'Skup samochodów' },
+  { href: '/', label: 'Skup' },
   { href: '/sprzedaz', label: 'Sprzedaż' },
   { href: '/realizacje', label: 'Realizacje' },
   { href: '/pytania', label: 'Pytania' },
