@@ -566,6 +566,9 @@ body.scrolled .logo img{height:46px}
 .proces .tresc{min-width:0}
 .proces p{font-size:15px;color:var(--muted);max-width:32ch;margin-inline:auto}
 /* Skrot procesu w waskiej kolumnie: kola w pionie, bez opisow. */
+/* Wariant na szesc krokow — trzy w rzedzie, bez kresek laczacych. */
+.proces.trzy{grid-template-columns:repeat(3,1fr);row-gap:40px}
+.proces.trzy .krok::after{display:none}
 .proces.pion{grid-template-columns:1fr;gap:11px;margin-top:0}
 .proces.pion .krok{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:center;text-align:left}
 .proces.pion .krok::after{display:none}
@@ -582,11 +585,11 @@ body.scrolled .logo img{height:46px}
   letter-spacing:-.01em;margin:0 0 14px}
 
 @media (max-width:900px){
-  .proces{grid-template-columns:1fr 1fr;gap:34px 22px}
+  .proces,.proces.trzy{grid-template-columns:1fr 1fr;gap:34px 22px}
   .proces .krok:nth-child(2n)::after{display:none}
 }
 @media (max-width:560px){
-  .proces{grid-template-columns:1fr;gap:28px}
+  .proces,.proces.trzy{grid-template-columns:1fr;gap:28px}
   .proces .krok::after{display:none}
   .proces .nr{width:58px;height:58px;font-size:22px;margin-bottom:14px}
 }

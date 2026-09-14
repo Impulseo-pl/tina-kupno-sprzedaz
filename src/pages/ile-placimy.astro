@@ -2,104 +2,185 @@
 import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
 import Naglowek from '../components/Naglowek.astro';
-import Formularz from '../components/Formularz.astro';
+import Telefon from '../components/Telefon.astro';
+import ProcesKola from '../components/ProcesKola.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Dlaczego nie ma cennika skupu aut?', 'Bo cennik w skupie aut zawsze jest nieprawdziwy. Dwa takie same roczniki tego samego modelu potrafią różnić się o kilka tysięcy złotych ze względu na stan blacharki, historię serwisową i to, czy auto ma komplet kluczy i dokumentów. Zamiast tabelki podajemy konkretną kwotę przez telefon.'],
-  ['Czy kwota z telefonu może się zmienić po oględzinach?', 'Tylko wtedy, gdy auto różni się od opisu — na przykład okazuje się, że jest po szkodzie, o której nie było mowy. Jeśli wszystko się zgadza, płacimy dokładnie tyle, ile powiedzieliśmy.'],
-  ['Czy mogę podać własną cenę?', 'Tak i bardzo o to prosimy. Jeśli od razu napiszesz, ile chcesz za auto, w jednej rozmowie wiemy, czy jest o czym rozmawiać. Oszczędza to czas obu stronom.'],
-  ['Płacicie gotówką czy przelewem?', 'Jak wolisz. Gotówkę mamy ze sobą na miejscu, przelew robimy od razu przy podpisaniu umowy.'],
-  ['Czy za auto w złym stanie też zapłacicie?', 'Zależy, jak złym. Auta uszkodzone i powypadkowe odkupujemy, jeśli da się je jeszcze naprawić. Aut nadających się wyłącznie na części albo na złom nie kupujemy i nie prowadzimy kasacji.'],
+  ['Dlaczego nie ma jednego cennika skupu aut?', 'Ponieważ na wartość wpływa rzeczywisty stan konkretnego pojazdu. Dwa auta tego samego modelu i z tego samego rocznika mogą różnić się wartością ze względu na przebieg, usterki, wyposażenie i historię.'],
+  ['Czy przez telefon otrzymam ostateczną cenę?', 'Na podstawie rozmowy i zdjęć możemy przygotować wstępną ocenę. Ostateczną ofertę przedstawiamy po obejrzeniu samochodu i potwierdzeniu jego stanu.'],
+  ['Czy wycena jest bezpłatna?', 'Tak. Przekazanie informacji o samochodzie i otrzymanie oferty nie zobowiązuje do sprzedaży.'],
+  ['Czy mogę podać własne oczekiwania cenowe?', 'Tak, możesz powiedzieć, jakiej kwoty oczekujesz. Nie jest to jednak wymagane — wycenę możemy przygotować na podstawie danych i stanu pojazdu.'],
+  ['Czy zdjęcia są obowiązkowe?', 'Nie, ale pomagają lepiej ocenić samochód przed umówieniem oględzin. Szczególnie przydatne są w przypadku aut uszkodzonych i niejeżdżących.'],
+  ['Czy kupujecie samochody bez ważnego OC lub przeglądu?', 'Takie auto również może zostać wycenione. Brak ważnych dokumentów wpływa na sposób odbioru pojazdu i może mieć znaczenie przy ustalaniu wartości.'],
+  ['Czy odkupujecie auta powypadkowe?', 'Rozpatrujemy również zgłoszenia dotyczące samochodów uszkodzonych, powypadkowych oraz niejeżdżących. Możliwość zakupu zależy od zakresu uszkodzeń i stanu całego pojazdu.'],
+  ['Jak mogę otrzymać pieniądze?', 'Sposób rozliczenia ustalamy przed finalizacją sprzedaży. Dostępność płatności gotówką lub przelewem możesz potwierdzić podczas rozmowy.'],
+];
+
+const WYCENA: [string, string][] = [
+  ['Przekazujesz informacje', 'Zadzwoń albo wypełnij formularz. Podaj podstawowe dane, opisz stan samochodu i dołącz zdjęcia, jeśli je posiadasz.'],
+  ['Analizujemy zgłoszenie', 'Sprawdzamy parametry auta, jego stan, aktualną sytuację rynkową oraz przewidywany zakres przygotowania pojazdu.'],
+  ['Umawiamy oględziny', 'Jeżeli jesteśmy zainteresowani zakupem, ustalamy dogodny termin i miejsce spotkania. Obsługujemy klientów na terenie całego Mazowsza.'],
+  ['Sprawdzamy samochód', 'Oglądamy nadwozie, wnętrze i najważniejsze podzespoły. Jeśli stan pojazdu na to pozwala, wykonujemy również krótką jazdę.'],
+  ['Przedstawiamy ostateczną ofertę', 'Końcowa kwota wynika z oględzin i rzeczywistego stanu samochodu. To Ty decydujesz, czy chcesz ją zaakceptować.'],
+  ['Finalizujemy sprzedaż', 'Przygotowujemy dokumenty, ustalamy sposób rozliczenia i odbieramy pojazd. W przypadku samochodu niejeżdżącego możemy zorganizować transport lawetą.'],
 ];
 ---
 <Base
-  title="Ile płacimy za auto — skup aut bez cennika | TINA"
-  description="Co naprawdę decyduje o kwocie w skupie aut: model, rocznik, przebieg, blacharka, dokumenty. Bez cennika i bez kalkulatora — konkretną kwotę podajemy przez telefon."
+  title="Ile płaci skup aut? Od czego zależy wycena | TINA"
+  description="Sprawdź, od czego zależy cena samochodu w skupie. Wyjaśniamy, jak przygotować auto do wyceny i jakie informacje wpływają na ofertę."
   path="/ile-placimy"
   schema={[okruszki([['/ile-placimy', 'Ile płacimy']]), faqLd(FAQ)]}
 >
 
 <Chero
   okruszek="Ile płacimy"
-  lede="Nie mamy cennika i nie udajemy, że da się go zrobić. Zamiast tego tłumaczymy dokładnie, co decyduje o kwocie — żebyś wiedział, czego się spodziewać, zanim podniesiesz słuchawkę."
-  sub="Skup aut za gotówkę na terenie całego Mazowsza."
-><span>Ile płacimy <span class="gold">za auto</span></span></Chero>
+  lede="Każde auto wyceniamy indywidualnie. Znaczenie mają nie tylko marka, rocznik i przebieg, ale również stan techniczny, historia pojazdu, wyposażenie oraz zakres ewentualnych uszkodzeń."
+  sub="Przekaż nam podstawowe informacje i zdjęcia samochodu. Wstępnie ocenimy pojazd, a po oględzinach przedstawimy ostateczną ofertę."
+>
+  <span>Ile możemy zapłacić <span class="gold">za Twój samochód?</span></span>
+  <Fragment slot="akcje">
+    <a class="btn g" href="/wycena">Wycena samochodu</a>
+    <Telefon />
+  </Fragment>
+</Chero>
 
 <div class="w"><section>
   <div class="proza">
-    <h2>Dlaczego nie znajdziesz tu tabelki z cenami</h2>
-    <p>Strony, które podają „cennik skupu aut”, robią jedną z dwóch rzeczy: albo wpisują kwoty tak niskie, że każda realna oferta wypada przy nich lepiej, albo tak wysokie, żeby ktoś zadzwonił — a prawdziwa cena pada dopiero na miejscu, przy aucie. Obie metody kończą się tak samo: klient traci pół dnia i wychodzi z poczuciem, że został wpuszczony w maliny.</p>
-    <p>My robimy inaczej. Kwotę podajemy przez telefon, na podstawie tego, co nam powiesz, i tej kwoty się trzymamy. Jeśli auto zgadza się z opisem, przy podpisie nie schodzimy ani złotówki. To jedyny sposób, żeby cena w ogóle coś znaczyła.</p>
+    <h2>Dlaczego nie publikujemy gotowego cennika?</h2>
+    <p>Dwa samochody tego samego modelu i z tego samego rocznika mogą mieć zupełnie inną wartość. Jeden będzie regularnie serwisowany i gotowy do dalszej jazdy, a drugi może wymagać naprawy silnika, skrzyni biegów albo elementów nadwozia.</p>
+    <p><strong>Prosta tabela oparta wyłącznie na roczniku i przebiegu nie uwzględni:</strong></p>
+    <ul>
+      <li>rzeczywistego stanu technicznego;</li>
+      <li>wcześniejszych napraw;</li>
+      <li>korozji i uszkodzeń blacharskich;</li>
+      <li>wersji silnika i wyposażenia;</li>
+      <li>historii serwisowej;</li>
+      <li>liczby właścicieli;</li>
+      <li>aktualnego zainteresowania danym modelem;</li>
+      <li>kosztu transportu i przygotowania samochodu.</li>
+    </ul>
+    <p>Dlatego podczas pierwszej rozmowy możemy podać wstępny poziom wyceny, ale ostateczną ofertę przedstawiamy po sprawdzeniu pojazdu. Dzięki temu kwota wynika z rzeczywistego stanu konkretnego auta.</p>
 
-    <h2>Co naprawdę decyduje o kwocie</h2>
-    <p>Kolejność nie jest przypadkowa — tak właśnie patrzymy na auto, gdy dzwonisz.</p>
+    <h2>Od czego zależy cena samochodu w skupie?</h2>
+    <p>Nie istnieje jeden parametr, który przesądza o wartości auta. Podczas wyceny bierzemy pod uwagę cały pojazd i oceniamy, jakie koszty będą związane z jego dalszym przygotowaniem.</p>
   </div>
 
-  <div class="docs" style="margin-top:26px">
-    <div class="doc"><b>Model i popyt na niego</b><p>Najważniejsza rzecz, o której mało kto mówi. Są auta, które sprzedają się same, i takie, które stoją miesiącami niezależnie od stanu. To odbija się na kwocie bardziej niż sam rocznik.</p></div>
-    <div class="doc"><b>Rocznik i przebieg razem</b><p>Osobno nie znaczą wiele. Dziesięcioletnie auto z przebiegiem 120 tysięcy i takie samo z przebiegiem 380 tysięcy to dwie różne sprawy — ale przebieg 90 tysięcy w aucie z 2009 roku też zapala lampkę.</p></div>
-    <div class="doc"><b>Blacharka i lakier</b><p>Najdroższa część każdej naprawy. Wgniecenia, ogniska korozji, ślady szpachli i różnice w odcieniu lakieru widać od razu — i od razu widać, ile będzie kosztowało doprowadzenie auta do porządku.</p></div>
-    <div class="doc"><b>Silnik i skrzynia</b><p>Czy odpala na zimno, czy nie kopci, czy skrzynia nie szarpie. Krótka jazda mówi nam o aucie więcej niż godzina oglądania go na postoju.</p></div>
-    <div class="doc"><b>Historia i dokumenty</b><p>Książka serwisowa, faktury, komplet kluczy, dowód rejestracyjny i karta pojazdu. Auto z papierami jest warte więcej, bo łatwiej je potem sprzedać dalej.</p></div>
-    <div class="doc"><b>Pochodzenie auta</b><p>Kupione w Polsce jako nowe, sprowadzone, po firmie czy po pierwszym właścicielu. Każda z tych historii inaczej wygląda w oczach następnego kupującego.</p></div>
+  <div class="docs" style="margin-top:24px">
+    <div class="doc"><b>Marka, model i wersja</b><p>Niektóre samochody cieszą się większym zainteresowaniem niż inne. Znaczenie ma nie tylko marka, lecz także konkretny model, rodzaj nadwozia, wersja silnika, skrzynia biegów oraz wyposażenie.</p><p>Popularny model w poszukiwanej konfiguracji jest zazwyczaj łatwiejszy do dalszej sprzedaży niż rzadko wybierana wersja.</p></div>
+    <div class="doc"><b>Rok produkcji i przebieg</b><p>Rocznik i przebieg analizujemy razem. Wysoki przebieg nie musi automatycznie oznaczać złego stanu, szczególnie w przypadku samochodów regularnie serwisowanych lub aut dostawczych.</p><p>Liczy się również to, czy zużycie wnętrza i podzespołów odpowiada wartości widocznej na liczniku.</p></div>
+    <div class="doc"><b>Stan silnika i skrzyni biegów</b><p>Sprawdzamy, jak samochód uruchamia się na zimnym silniku, czy pracuje równo i czy nie występują niepokojące dźwięki, wycieki albo nadmierne dymienie.</p><p>Podczas krótkiej jazdy można również ocenić działanie skrzyni biegów, sprzęgła, zawieszenia, hamulców oraz układu kierowniczego.</p></div>
+    <div class="doc"><b>Nadwozie i lakier</b><p>Na wycenę wpływają między innymi korozja, wgniecenia, zarysowania, uszkodzenia szyb i lamp oraz ślady wcześniejszych napraw blacharsko-lakierniczych.</p><p>Nie każde uszkodzenie przekreśla sprzedaż. Jego zakres pozwala jednak oszacować koszt doprowadzenia samochodu do odpowiedniego stanu.</p></div>
+    <div class="doc"><b>Stan wnętrza</b><p>Oceniamy fotele, tapicerkę, deskę rozdzielczą i działanie wyposażenia. Istotne mogą być również kontrolki błędów, sprawność klimatyzacji, elektroniki, szyb i centralnego zamka.</p></div>
+    <div class="doc"><b>Historia i dokumentacja</b><p>Książka serwisowa, faktury, potwierdzenia wymiany części oraz dokumentacja wcześniejszych napraw pomagają ocenić historię pojazdu.</p><p>Znaczenie mają także komplet kluczyków, dowód rejestracyjny i potwierdzenie ubezpieczenia. Jeżeli do samochodu została wcześniej wydana karta pojazdu, warto również ją przygotować.</p></div>
+    <div class="doc"><b>Stan prawny pojazdu</b><p>Przed zakupem trzeba potwierdzić, kto jest właścicielem samochodu i czy pojazd ma współwłaścicieli. Znaczenie może mieć również leasing, zastaw, zabezpieczenie kredytu albo prowadzone postępowanie spadkowe.</p></div>
+    <div class="doc"><b>Aktualna sytuacja rynkowa</b><p>Ceny używanych samochodów zmieniają się wraz z popytem, dostępnością części, kosztami napraw oraz zainteresowaniem konkretnymi modelami. Dlatego wycena wykonana kilka miesięcy wcześniej nie zawsze odpowiada obecnej wartości auta.</p></div>
   </div>
 
-  <div class="proza" style="margin-top:44px">
-    <h2>Co podnosi cenę, a co ją obniża</h2>
-  </div>
-  <div class="duo" style="margin-top:22px">
+  <div class="duo" style="margin-top:44px">
     <div class="box">
-      <h3>Na plus</h3>
+      <h3>Co może korzystnie wpłynąć na wycenę?</h3>
       <ul class="tick">
-        <li>Komplet kluczy i pełna dokumentacja</li>
-        <li>Udokumentowana historia serwisowa</li>
-        <li>Fabryczny lakier bez śladów naprawy</li>
-        <li>Pierwszy właściciel, auto kupione w Polsce</li>
-        <li>Ważne OC i przegląd</li>
-        <li>Opony, akumulator i wydech w dobrym stanie</li>
+        <li>udokumentowana historia serwisowa</li>
+        <li>komplet posiadanych kluczyków</li>
+        <li>sprawny silnik i skrzynia biegów</li>
+        <li>dobry stan nadwozia i podwozia</li>
+        <li>działające wyposażenie</li>
+        <li>czytelna historia napraw</li>
+        <li>ważne badanie techniczne i OC</li>
+        <li>zgodność stanu samochodu z przekazanym opisem</li>
       </ul>
+      <p style="margin-top:16px;font-size:15px;color:#5a616e">Nie oznacza to, że auto bez dokumentacji, z usterką albo bez ważnego przeglądu nie może zostać sprzedane. Takie informacje pomagają po prostu dokładniej określić jego wartość.</p>
     </div>
     <div class="box no">
-      <h3>Na minus</h3>
+      <h3>Co najczęściej obniża wartość samochodu?</h3>
       <ul class="tick x">
-        <li>Korozja progów, nadkoli i podłogi</li>
-        <li>Ślady poważnej naprawy blacharskiej</li>
-        <li>Niesprawna skrzynia automatyczna albo silnik na wymianę</li>
-        <li>Brak drugiego kluczyka albo karty pojazdu</li>
-        <li>Auto niezarejestrowane albo długo stojące bez ruchu</li>
-        <li>Przebieg, który nie pasuje do stanu wnętrza</li>
+        <li>poważne uszkodzenia silnika lub skrzyni biegów</li>
+        <li>zaawansowana korozja</li>
+        <li>ślady rozległych napraw powypadkowych</li>
+        <li>niesprawne wyposażenie</li>
+        <li>brakujące elementy pojazdu</li>
+        <li>długoletni postój</li>
+        <li>brak możliwości uruchomienia samochodu</li>
+        <li>niekompletne lub nieuregulowane dokumenty</li>
+        <li>rozbieżności między opisem a stanem faktycznym</li>
       </ul>
+      <p style="margin-top:16px;font-size:15px;color:#5a616e">Nawet przy poważniejszych usterkach warto przesłać zgłoszenie. Odkupujemy również wybrane <a href="/auta-uszkodzone-powypadkowe">auta uszkodzone, powypadkowe i niejeżdżące</a>.</p>
     </div>
   </div>
 
-  <div class="proza" style="margin-top:44px">
-    <h2>Dlaczego pytamy, ile chcesz za auto</h2>
-    <p>Prawie zawsze zadajemy to pytanie na początku rozmowy i nie jest to zagrywka negocjacyjna. Większość ludzi ma w głowie jakąś kwotę — sprawdzili ogłoszenia, ktoś im coś powiedział albo po prostu wiedzą, ile im się opłaca. Jeśli nam ją podasz, w minutę wiemy, czy w ogóle jest o czym rozmawiać.</p>
-    <p>Jeśli Twoja kwota mieści się w tym, co możemy dać, umawiamy przyjazd. Jeśli jest wyraźnie wyższa, mówimy to od razu i tłumaczymy dlaczego, zamiast przyjeżdżać i próbować zbić cenę na miejscu. Nikt nie traci dnia.</p>
+  <div class="proza" style="margin-top:46px">
+    <h2>Jak przygotować samochód do wyceny?</h2>
+    <p>Im dokładniejsze informacje otrzymamy na początku, tym sprawniej będziemy mogli ocenić zgłoszenie.</p>
+    <p><strong>Przygotuj:</strong></p>
+    <ol>
+      <li>markę i model samochodu;</li>
+      <li>rok produkcji;</li>
+      <li>rodzaj silnika i skrzyni biegów;</li>
+      <li>aktualny przebieg;</li>
+      <li>informacje o znanych usterkach;</li>
+      <li>opis wcześniejszych uszkodzeń lub napraw;</li>
+      <li>informację, czy auto odpala i jeździ;</li>
+      <li>lokalizację samochodu;</li>
+      <li>kilka aktualnych zdjęć.</li>
+    </ol>
+    <p>Nie musisz przed wyceną wykonywać kosztownych napraw. Najpierw pokaż nam samochód w obecnym stanie — sprawdzimy, czy jego zakup będzie możliwy bez dodatkowych przygotowań.</p>
 
-    <h2>Jak sprawdzić wartość auta, zanim zadzwonisz</h2>
-    <p>Najprostszy sposób to przejrzeć ogłoszenia tego samego modelu, z tym samym rocznikiem i zbliżonym przebiegiem. Trzeba jednak pamiętać o dwóch rzeczach, o których portale ogłoszeniowe nie mówią.</p>
-    <p>Po pierwsze, cena w ogłoszeniu to nie jest cena transakcyjna. Auta prywatne sprzedają się zwykle za mniej, niż widnieje w ogłoszeniu, a te wystawione przez firmy mają w cenie marżę, przygotowanie i czas stania na placu. Po drugie, sprzedaż prywatna to realnie kilka tygodni telefonów, oglądaczy, jazd próbnych i negocjacji, a potem jeszcze formalności. Różnica między ceną ze skupu a tym, co wyciągniesz z ogłoszenia, to cena za załatwienie sprawy w jeden dzień.</p>
-    <p>Jeśli masz czas i cierpliwość, sprzedaż prywatna zwykle da więcej. Jeśli auto ma zniknąć z podwórka dziś, z gotówką w ręce i bez papierów na głowie — po to jest skup.</p>
-
-    <h2>Czego nie robimy</h2>
-    <p>Nie wyceniamy aut kalkulatorem na stronie. Widełki wyliczone z rocznika i przebiegu wyglądają profesjonalnie, ale nie mają nic wspólnego z tym, ile ktokolwiek zapłaci za konkretny samochód — ten sam algorytm wyceniłby tak samo auto garażowane i auto po dachowaniu.</p>
-    <p>Nie zaniżamy też kwoty na miejscu. Jeśli auto jest takie, jak je opisałeś, płacimy to, co ustaliliśmy przez telefon. A jeśli po oględzinach okaże się, że jest lepsze, niż wynikało z rozmowy, powiemy o tym również.</p>
+    <h2>Jak zrobić zdjęcia do wyceny?</h2>
+    <p>Profesjonalna sesja nie jest potrzebna. Wystarczy kilka wyraźnych zdjęć wykonanych telefonem w świetle dziennym.</p>
+    <p><strong>Najbardziej pomocne będą zdjęcia:</strong></p>
+    <ul>
+      <li>samochodu z przodu i z tyłu;</li>
+      <li>obu boków pojazdu;</li>
+      <li>wnętrza;</li>
+      <li>deski rozdzielczej z widocznym przebiegiem;</li>
+      <li>komory silnika;</li>
+      <li>widocznych uszkodzeń;</li>
+      <li>opon i elementów dotkniętych korozją.</li>
+    </ul>
+    <p>Nie ukrywaj uszkodzeń poza kadrem. Ich pokazanie nie zamyka drogi do sprzedaży, a pozwala lepiej przygotować wstępną wycenę i uniknąć nieporozumień podczas oględzin.</p>
   </div>
 </section></div>
 
 <div class="w"><section>
-  <Naglowek eyebrow="Pytania o pieniądze" tytul='To, o co pytacie <span class="gold">najczęściej</span>' />
+  <Naglowek eyebrow="Krok po kroku" tytul='Jak wygląda <span class="gold">wycena auta w TINA?</span>' />
+  <ProcesKola kroki={WYCENA} trzy={true} />
+</section></div>
+
+<div class="w"><section>
+  <div class="proza">
+    <h2>Cena z ogłoszenia a rzeczywista wartość auta</h2>
+    <p>Przeglądanie portali ogłoszeniowych pomaga zorientować się w cenach, ale wymaga właściwego porównania. Sam rocznik i model to za mało.</p>
+    <p><strong>Szukając podobnych pojazdów, zwróć uwagę na:</strong></p>
+    <ul>
+      <li>wersję silnika;</li>
+      <li>rodzaj skrzyni biegów;</li>
+      <li>przebieg;</li>
+      <li>wyposażenie;</li>
+      <li>stan techniczny;</li>
+      <li>pochodzenie;</li>
+      <li>historię napraw;</li>
+      <li>rodzaj sprzedającego.</li>
+    </ul>
+    <p>Pamiętaj też, że cena widoczna w ogłoszeniu jest oczekiwaniem sprzedającego, a nie potwierdzeniem kwoty, za którą samochód rzeczywiście zostanie sprzedany.</p>
+    <p>Wycena skupu uwzględnia dodatkowo późniejszy transport, przygotowanie auta, ewentualne naprawy, czas potrzebny na sprzedaż oraz ryzyko po stronie firmy. Różnice między <a href="/komis-czy-skup-aut">skupem a komisem</a> opisujemy osobno.</p>
+
+    <h2>Czy warto naprawiać auto przed sprzedażą?</h2>
+    <p>Nie każda naprawa zwróci się w cenie samochodu. Wymiana drobnej, niedrogiej części może ułatwić sprzedaż, ale kosztowna naprawa silnika, skrzyni biegów lub nadwozia nie zawsze podniesie wartość auta o wydaną kwotę.</p>
+    <p>Przed rozpoczęciem większych prac warto najpierw sprawdzić, ile samochód jest wart w obecnym stanie. Pozwoli to porównać koszt naprawy z możliwą różnicą w cenie.</p>
+  </div>
+</section></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Pytania" tytul='Pytania dotyczące <span class="gold">wyceny samochodu</span>' />
   <Faq pary={FAQ} />
 </section></div>
 
-<Formularz strona="ile placimy" />
 <Cta
-  tytul='Powiedz, ile chcesz <span class="gold">za swoje auto</span>'
-  opis="Podaj markę, rocznik, przebieg i kwotę, na której Ci zależy. Oddzwonimy i powiemy wprost, czy jesteśmy w stanie ją dać."
+  tytul='Sprawdź, ile możemy zapłacić <span class="gold">za Twoje auto</span>'
+  opis="Podaj markę, model, rocznik, przebieg, stan samochodu i jego lokalizację. Jeśli możesz, dołącz również kilka aktualnych zdjęć. Przeanalizujemy zgłoszenie i skontaktujemy się z Tobą, aby omówić możliwość oględzin oraz dalsze kroki."
 />
 
 </Base>

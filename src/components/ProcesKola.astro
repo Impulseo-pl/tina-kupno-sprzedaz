@@ -8,9 +8,9 @@ const SKUP: [string, string][] = [
   ['Przyjeżdżamy tego samego dnia', 'Oglądamy auto i robimy krótką jazdę. Bez rzeczoznawcy i bez kolejnego terminu.'],
   ['Umowa, gotówka, laweta', 'Piętnaście minut na miejscu. Pieniądze dostajesz, zanim auto wjedzie na lawetę.'],
 ];
-const { kroki = SKUP, pion = false } = Astro.props;
+const { kroki = SKUP, pion = false, trzy = false } = Astro.props;
 ---
-<div class={pion ? 'proces pion' : 'proces'}>
+<div class={pion ? 'proces pion' : trzy ? 'proces trzy' : 'proces'}>
   {kroki.map(([tytul, opis]: [string, string?], i: number) => (
     <div class="krok">
       <div class="nr">{i + 1}</div>
