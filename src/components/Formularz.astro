@@ -2,7 +2,6 @@
 /* Formularz wyceny. Zbiera dane — nie liczy zadnej kwoty.
    Wycene podaje czlowiek przez telefon; to byla wyrazna decyzja klienta. */
 import Telefon from './Telefon.astro';
-import { FIRMA } from '../dane/firma';
 const { strona } = Astro.props;
 ---
 <div class="darker" id="wycena"><div class="w"><section><div class="fgrid">
@@ -20,13 +19,9 @@ const { strona } = Astro.props;
     </div>
   </div>
 
-  <form class="card" id="wf" autocomplete="off" novalidate method="POST" action={`https://formsubmit.co/${FIRMA.mail}`} enctype="multipart/form-data">
-    <input type="hidden" name="_subject" value="Wycena auta ze strony tinaskupaut.pl">
-    <input type="hidden" name="_next" value="">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="Strona" value={strona}>
-    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+  {/* Wysylka celowo nieaktywna: docelowo Pages Function + Resend.
+      Do tego czasu przycisk pokazuje komunikat z numerem telefonu. */}
+  <form class="card" id="wf" autocomplete="off" novalidate data-strona={strona}>
 
     <div class="wiz">
       <div class="on" data-w="0"><i><em>I</em></i>Auto</div>

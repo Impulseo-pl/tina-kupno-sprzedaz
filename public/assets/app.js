@@ -8,6 +8,23 @@ const ORIGIN = location.origin + location.pathname.replace(/[^/]*$/, '').replace
 
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
+/* ================= brak wysylki =================
+   Formularze zbieraja dane, ale nic jeszcze nie wysylaja: FormSubmit zostal
+   wyciety, a docelowa obsluga (Pages Function + Resend) ruszy razem z domena.
+   Zamiast po cichu gubic zgloszenie, pokazujemy komunikat z numerem telefonu. */
+const TEL_KONTAKT = '692 493 797';
+function brakWysylki(form, przycisk){
+  if(form.querySelector('.uwaga')) return;
+  const box=document.createElement('p');
+  box.className='uwaga';
+  box.innerHTML='Wysyłka formularza ruszy razem z uruchomieniem strony na docelowym adresie. '+
+                'Do tego czasu zadzwoń: <a href="tel:+48692493797">'+TEL_KONTAKT+'</a>.';
+  const akcje=form.querySelector('.actions');
+  (akcje||form).parentNode.insertBefore(box, akcje||null);
+  if(przycisk){ przycisk.disabled=true; }
+  box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
 /* ================= formularz krokowy ================= */
 function bindForm(){
   const wf=document.getElementById('wf');
@@ -76,8 +93,7 @@ function bindForm(){
       const t=($('tel').value||'').trim(); if(t) q.set('t',t);
       nx.value=ORIGIN+'/dziekujemy'+(q.toString()?'?'+q.toString():'');
     }
-    send.disabled=true; send.textContent='Wysyłam…';
-    wf.submit();
+    brakWysylki(wf, send);
   });
 
   /* ---------- szybka wycena z hero ---------- */
@@ -199,12 +215,11 @@ bindForm();
 reveal();
 counters();
 
-/* ---------- proste formularze bez kreatora ---------- */
-/* FormSubmit wymaga pelnego adresu powrotu, a ten zalezy od hosta —
-   na podgladzie inny niz na docelowej domenie. Uzupelniamy go przy wysylce. */
-document.querySelectorAll('form[data-dziekujemy]').forEach(function (f) {
-  f.addEventListener('submit', function () {
-    var nx = f.querySelector('input[name="_next"]');
-    if (nx) nx.value = ORIGIN + '/dziekujemy';
+/* ---------- formularze bez kreatora ---------- */
+document.querySelectorAll('form[data-strona]:not(#wf)').forEach(function (f) {
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if(!f.reportValidity()) return;
+    brakWysylki(f, f.querySelector('button[type=submit]'));
   });
 });

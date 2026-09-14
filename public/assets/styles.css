@@ -415,6 +415,10 @@ body.scrolled .ctabar{transform:none}
 .wnav{display:flex;gap:12px;align-items:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--line);flex-wrap:wrap}
 .wnav .sp{margin-left:auto}
 .err{color:var(--rust);font-size:13px;font-weight:600;display:none;margin-top:10px}
+/* Komunikat zastepujacy wysylke, dopoki formularz nie ma jeszcze obslugi. */
+.uwaga{margin-top:18px;padding:15px 17px;border:1px solid var(--g3);background:var(--w2);
+  font-size:14.5px;line-height:1.5;color:var(--ink)}
+.uwaga a{color:var(--g4);font-weight:700}
 .err.on{display:block}
 .f input.bad,.f select.bad{border-color:var(--rust);background:#fdf3ec}
 
