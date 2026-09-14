@@ -1,0 +1,17 @@
+---
+/* Szesc konkretow o sposobie pracy. Uzywane na stronie glownej i w "O nas",
+   wiec tresc siedzi w jednym miejscu. */
+const PUNKTY: [string, string][] = [
+  ['Cena z telefonu jest wiążąca', 'Jeśli auto zgadza się z opisem, płacimy dokładnie tyle, ile ustaliliśmy w rozmowie. Bez schodzenia przy podpisie.'],
+  ['Dojazd i laweta za darmo', 'Przyjeżdżamy na własny koszt, także wtedy, gdy ostatecznie nie dochodzi do transakcji.'],
+  ['Bez rzeczoznawców', 'Oglądamy auto i robimy krótką jazdę. Nie wysyłamy nikogo na diagnostykę i nie przekładamy terminu.'],
+  ['Pieniądze przed załadunkiem', 'Umowa, wypłata, dopiero potem auto wjeżdża na lawetę. Nigdy odwrotnie.'],
+  ['Siedem dni w tygodniu', 'Odbieramy telefon codziennie, także w weekendy. Jeśli nie odbierzemy, jesteśmy w trasie i oddzwonimy.'],
+  ['Mówimy „nie”, gdy trzeba', 'Jeśli nie kupujemy danego typu auta, powiemy to w pierwszej minucie rozmowy zamiast umawiać przyjazd donikąd.'],
+];
+---
+<div class="docs">
+  {PUNKTY.map(([tytul, opis]) => (
+    <div class="doc"><b>{tytul}</b><p>{opis}</p></div>
+  ))}
+</div>

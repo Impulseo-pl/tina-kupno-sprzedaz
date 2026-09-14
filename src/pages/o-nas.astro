@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
 import Naglowek from '../components/Naglowek.astro';
 import Kupujemy from '../components/Kupujemy.astro';
+import JakPracujemy from '../components/JakPracujemy.astro';
 import Cta from '../components/Cta.astro';
 import { okruszki, FIRMA } from '../dane/firma';
 ---
@@ -48,14 +49,7 @@ import { okruszki, FIRMA } from '../dane/firma';
 
 <div class="w"><section>
   <Naglowek eyebrow="Konkrety" tytul='Jak <span class="gold">pracujemy</span>' />
-  <div class="docs">
-    <div class="doc"><b>Cena z telefonu jest wiążąca</b><p>Jeśli auto zgadza się z opisem, płacimy dokładnie tyle, ile ustaliliśmy w rozmowie. Bez schodzenia przy podpisie.</p></div>
-    <div class="doc"><b>Dojazd i laweta za darmo</b><p>Przyjeżdżamy na własny koszt, także wtedy, gdy ostatecznie nie dochodzi do transakcji.</p></div>
-    <div class="doc"><b>Bez rzeczoznawców</b><p>Oglądamy auto i robimy krótką jazdę. Nie wysyłamy nikogo na diagnostykę i nie przekładamy terminu.</p></div>
-    <div class="doc"><b>Pieniądze przed załadunkiem</b><p>Umowa, wypłata, dopiero potem auto wjeżdża na lawetę. Nigdy odwrotnie.</p></div>
-    <div class="doc"><b>Siedem dni w tygodniu</b><p>Odbieramy telefon codziennie, także w weekendy. Jeśli nie odbierzemy, jesteśmy w trasie i oddzwonimy.</p></div>
-    <div class="doc"><b>Mówimy „nie”, gdy trzeba</b><p>Jeśli nie kupujemy danego typu auta, powiemy to w pierwszej minucie rozmowy zamiast umawiać przyjazd donikąd.</p></div>
-  </div>
+  <JakPracujemy />
 </section></div>
 
 <Cta />

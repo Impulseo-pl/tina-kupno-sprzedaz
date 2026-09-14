@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import PasFaktow from '../components/PasFaktow.astro';
 import Naglowek from '../components/Naglowek.astro';
 import Kupujemy from '../components/Kupujemy.astro';
+import JakPracujemy from '../components/JakPracujemy.astro';
 import ProcesKola from '../components/ProcesKola.astro';
 import MapaMazowsza from '../components/MapaMazowsza.astro';
 import Formularz from '../components/Formularz.astro';
@@ -77,24 +78,7 @@ const SKROT: [string][] = [
     tytul='Dlaczego warto sprzedać auto <span class="gold">w TINA?</span>'
     opis="Bez publikowania ogłoszeń, wielokrotnych spotkań i długiego oczekiwania na kupującego. Oglądamy samochód, przedstawiamy ofertę i — jeśli ją zaakceptujesz — zajmujemy się formalnościami oraz odbiorem pojazdu."
   />
-  <div class="vows">
-    <div class="vow">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5.5v6c0 5 3.4 9.4 8 10.5 4.6-1.1 8-5.5 8-10.5v-6L12 2z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>
-      <div><h3>Bezpłatna wycena</h3><p>Opisz samochód przez telefon lub formularz. Na podstawie przekazanych informacji wstępnie ocenimy auto i ustalimy dogodny termin oględzin.</p></div>
-    </div>
-    <div class="vow">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h20v11H2z"></path><path d="M2 8l4-5h12l4 5"></path><path d="M12 12v4"></path><path d="M9.5 13.6h5"></path></svg>
-      <div><h3>Dojazd i odbiór auta</h3><p>Obsługujemy klientów na terenie całego Mazowsza. Przyjeżdżamy pod wskazany adres, a jeśli samochód nie jest sprawny, możemy odebrać go lawetą.</p></div>
-    </div>
-    <div class="vow">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path></svg>
-      <div><h3>Sprawna transakcja</h3><p>Oględziny przeprowadzamy na miejscu. Po sprawdzeniu samochodu przedstawiamy konkretną ofertę i od razu możesz zdecydować, czy chcesz ją przyjąć.</p></div>
-    </div>
-    <div class="vow">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M8.5 14.5l2 2 4-4.5"></path></svg>
-      <div><h3>Umowa i jasne formalności</h3><p>Przygotowujemy umowę kupna-sprzedaży i przeprowadzamy Cię przez całą transakcję. Otrzymujesz własny egzemplarz dokumentu potwierdzającego sprzedaż auta.</p></div>
-    </div>
-  </div>
+  <JakPracujemy />
 </section></div></div>
 
 <div class="w"><section id="co-kupujemy">
