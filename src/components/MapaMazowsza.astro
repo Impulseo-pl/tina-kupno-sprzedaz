@@ -5,19 +5,27 @@
 
 /* Zarys granicy wojewodztwa, [dlugosc, szerokosc], zgodnie z ruchem wskazowek od polnocnego zachodu. */
 const GRANICA: [number, number][] = [
-  [19.90, 53.08], [20.38, 53.42], [21.10, 53.49], [21.60, 53.40], [21.95, 53.08],
-  [22.22, 52.92], [22.28, 52.60], [22.60, 52.38], [22.92, 52.22], [22.70, 51.98],
-  [22.30, 51.88], [21.95, 51.62], [21.90, 51.36], [21.78, 51.12], [21.52, 51.02],
-  [21.20, 51.14], [20.86, 51.20], [20.52, 51.34], [20.42, 51.62], [20.22, 51.80],
-  [20.02, 52.08], [19.62, 52.32], [19.42, 52.50], [19.58, 52.72], [19.62, 52.94],
+  /* krawedz polnocna, z zachodu na wschod */
+  [19.72, 52.98], [20.05, 53.16], [20.34, 53.35], [20.76, 53.30], [21.06, 53.46],
+  [21.46, 53.48], [21.76, 53.30], [22.06, 53.20],
+  /* krawedz wschodnia, z polnocy na poludnie */
+  [22.30, 53.00], [22.14, 52.80], [22.40, 52.68], [22.34, 52.50], [22.60, 52.35],
+  [22.76, 52.25], [22.95, 52.14], [22.74, 52.02], [22.44, 51.95], [22.14, 51.85],
+  /* krawedz poludniowa, ze wschodu na zachod — waski jezyk radomski */
+  [21.95, 51.72], [21.90, 51.55], [22.04, 51.40], [21.84, 51.25], [21.90, 51.10],
+  [21.64, 51.00], [21.44, 51.05], [21.24, 51.10], [21.04, 51.20], [20.80, 51.18],
+  /* krawedz zachodnia, z poludnia na polnoc */
+  [20.55, 51.30], [20.35, 51.45], [20.42, 51.65], [20.24, 51.80], [20.10, 51.95],
+  [19.94, 52.12], [19.80, 52.25], [19.55, 52.35], [19.42, 52.52], [19.56, 52.68],
+  [19.48, 52.85],
 ];
 
-type Miasto = { nazwa: string; lon: number; lat: number; baza?: boolean; etykieta?: boolean };
+type Miasto = { nazwa: string; lon: number; lat: number; baza?: boolean; etykieta?: boolean; lewo?: boolean };
 const MIASTA: Miasto[] = [
-  { nazwa: 'Sochaczew',           lon: 20.24, lat: 52.23, baza: true, etykieta: true },
+  { nazwa: 'Sochaczew',           lon: 20.24, lat: 52.23, baza: true, etykieta: true, lewo: true },
   { nazwa: 'Warszawa',            lon: 21.01, lat: 52.23, etykieta: true },
-  { nazwa: 'Płock',               lon: 19.71, lat: 52.55, etykieta: true },
-  { nazwa: 'Radom',               lon: 21.15, lat: 51.40, etykieta: true },
+  { nazwa: 'Płock',               lon: 19.71, lat: 52.55, etykieta: true, lewo: true },
+  { nazwa: 'Radom',               lon: 21.15, lat: 51.40, etykieta: true, lewo: true },
   { nazwa: 'Żyrardów',            lon: 20.45, lat: 52.05 },
   { nazwa: 'Grodzisk Mazowiecki', lon: 20.63, lat: 52.11 },
   { nazwa: 'Błonie',              lon: 20.61, lat: 52.20 },
@@ -78,7 +86,10 @@ const znaczniki = MIASTA.map((m) => {
         {m.baza && <circle cx={m.x} cy={m.y} r="11" class="aura" />}
         <circle cx={m.x} cy={m.y} r={m.baza ? 5 : 3.4} />
         {m.etykieta && (
-          <text x={m.x + (m.nazwa === 'Warszawa' ? 9 : 9)} y={m.y + 4}>{m.nazwa}</text>
+          <text
+            x={m.lewo ? m.x - 10 : m.x + 10}
+            y={m.y + 4}
+            text-anchor={m.lewo ? 'end' : 'start'}>{m.nazwa}</text>
         )}
       </g>
     ))}
