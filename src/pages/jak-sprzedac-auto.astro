@@ -2,90 +2,144 @@
 import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
 import Naglowek from '../components/Naglowek.astro';
+import Telefon from '../components/Telefon.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Co muszę mieć przy sobie przy sprzedaży auta?', 'Dowód rejestracyjny, dowód osobisty i komplet kluczy. Jeśli została wydana karta pojazdu, ona również. Reszta — książka serwisowa, faktury za naprawy — nie jest obowiązkowa, ale podnosi wartość auta.'],
-  ['Kto przygotowuje umowę kupna-sprzedaży?', 'My. Przywozimy ją gotową i podpisujemy na miejscu, a jeden egzemplarz zostaje u Ciebie. Zawsze przeczytaj ją przed podpisem — również u nas.'],
-  ['Kto zgłasza zbycie pojazdu?', 'Zgłoszenia dokonuje sprzedający, czyli Ty. Masz na to 30 dni od podpisania umowy i możesz to zrobić przez internet albo w wydziale komunikacji. My podpowiadamy, co i gdzie złożyć.'],
-  ['Co z ubezpieczeniem OC po sprzedaży?', 'Polisa przechodzi na kupującego wraz z autem, a Ty masz obowiązek poinformować ubezpieczyciela o sprzedaży w ciągu 14 dni. Jeśli nabywca wypowie polisę, zwrot niewykorzystanej składki należy się Tobie — załatwiasz go bezpośrednio u swojego ubezpieczyciela.'],
-  ['Czy mogę sprzedać auto, którego jestem współwłaścicielem?', 'Tak, ale umowę muszą podpisać wszyscy właściciele wpisani w dowodzie rejestracyjnym. Jeśli któryś nie może być obecny, potrzebne jest jego pisemne pełnomocnictwo.'],
+  ['Co przygotować do sprzedaży samochodu?', 'Dowód rejestracyjny, dokument tożsamości, informacje o polisie OC i wszystkie posiadane kluczyki. Przydatna będzie również historia serwisowa oraz karta pojazdu, jeżeli została wcześniej wydana.'],
+  ['Czy samochód musi mieć ważny przegląd?', 'Brak ważnego badania technicznego nie uniemożliwia zawarcia umowy sprzedaży. Trzeba jednak poinformować kupującego o stanie pojazdu. Samochód niedopuszczony do ruchu nie powinien być odbierany poprzez jazdę po drodze publicznej.'],
+  ['Kto przygotowuje umowę?', 'Przy sprzedaży firmie TINA przygotowujemy dokumenty transakcji. Przed podpisaniem sprawdzasz wszystkie dane i otrzymujesz własny egzemplarz.'],
+  ['Kto zgłasza sprzedaż samochodu?', 'Zbycie zgłasza dotychczasowy właściciel pojazdu. Ma na to 30 dni od zawarcia umowy.'],
+  ['Co dzieje się z ubezpieczeniem OC?', 'Prawa i obowiązki z polisy OC przechodzą na nabywcę. Sprzedający musi w ciągu 14 dni powiadomić ubezpieczyciela o sprzedaży i przekazać dane nowego właściciela.'],
+  ['Czy można sprzedać samochód należący do kilku osób?', 'Tak, ale umowę powinni podpisać wszyscy współwłaściciele. Nieobecny współwłaściciel może działać przez odpowiednio umocowanego pełnomocnika.'],
+  ['Czy sprzedaż auta oznacza jego wyrejestrowanie?', 'Nie. Po zwykłej sprzedaży zgłaszasz zbycie pojazdu. Wyrejestrowanie jest odrębną procedurą stosowaną tylko w określonych sytuacjach.'],
 ];
 ---
 <Base
-  title="Jak sprzedać auto — formalności krok po kroku | TINA"
-  description="Dokumenty, umowa kupna-sprzedaży, zgłoszenie zbycia w wydziale komunikacji i sprawa OC. Praktyczny poradnik sprzedaży samochodu bez niespodzianek."
+  title="Jak sprzedać samochód — formalności krok po kroku | TINA"
+  description="Dokumenty do sprzedaży auta, umowa kupna-sprzedaży, zgłoszenie zbycia pojazdu w 30 dni, powiadomienie ubezpieczyciela w 14 dni i podatek PIT. Poradnik krok po kroku."
   path="/jak-sprzedac-auto"
   schema={[okruszki([['/jak-sprzedac-auto', 'Jak sprzedać auto']]), faqLd(FAQ)]}
 >
 
 <Chero
   okruszek="Jak sprzedać auto"
-  lede="Co przygotować, co musi znaleźć się w umowie i o czym pamiętać po sprzedaży, żeby za pół roku nie przyszło wezwanie do zapłaty za cudze mandaty."
-  sub="Poradnik dla sprzedających — niezależnie od tego, komu sprzedajesz auto."
-><span>Jak <span class="gold">sprzedać auto</span></span></Chero>
+  lede="Sprzedaż auta nie kończy się w chwili przekazania kluczyków. Dobrze przygotowana umowa, potwierdzenie zapłaty i dwa zgłoszenia wykonane po transakcji pozwalają uniknąć późniejszych pytań o składkę OC, mandaty albo samochód, który nadal widnieje przy Twoich danych w urzędowym rejestrze."
+  sub="Poniżej wyjaśniamy krok po kroku, co przygotować, co zapisać w umowie i o czym pamiętać po sprzedaży — niezależnie od tego, czy samochód kupuje osoba prywatna, firma czy skup aut."
+>
+  <span>Jak sprzedać samochód <span class="gold">bez niepotrzebnych problemów?</span></span>
+  <Fragment slot="akcje">
+    <a class="btn g" href="/wycena">Wycena samochodu</a>
+    <Telefon />
+  </Fragment>
+</Chero>
 
 <div class="w"><section>
   <div class="proza">
-    <h2>Co przygotować przed sprzedażą</h2>
-    <p>Lista jest krótsza, niż się powszechnie sądzi. Nie potrzebujesz badania technicznego na sprzedaż, nie musisz myć auta ani naprawiać usterek. Potrzebujesz dokumentów i kluczy.</p>
+    <h2>Zanim wystawisz auto, zbierz najważniejsze informacje</h2>
+    <p>Nie musisz od razu naprawiać każdej usterki ani przygotowywać samochodu jak do salonowej sesji zdjęciowej. Najważniejsze jest zebranie dokumentów oraz rzetelnych informacji o pojeździe.</p>
+    <p><strong>Przygotuj:</strong></p>
   </div>
 
-  <div class="docs" style="margin-top:26px">
-    <div class="doc"><b>Dowód rejestracyjny</b><p>Podstawowy dokument. Sprawdź, czy dane właściciela w nim są aktualne — to najczęstsze źródło komplikacji przy sprzedaży.</p></div>
-    <div class="doc"><b>Karta pojazdu</b><p>Tylko jeśli została wydana. Dla aut zarejestrowanych po 2020 roku zwykle nie istnieje i nikt jej nie będzie wymagał.</p></div>
-    <div class="doc"><b>Dowód osobisty</b><p>Potrzebny do spisania umowy. Dane muszą zgadzać się z tymi w dowodzie rejestracyjnym.</p></div>
-    <div class="doc"><b>Komplet kluczy</b><p>Drugi kluczyk realnie podnosi wartość auta. Jeśli go nie ma, powiedz o tym od razu — to nie problem, tylko informacja.</p></div>
-    <div class="doc"><b>Polisa OC</b><p>Przyda się numer polisy i nazwa ubezpieczyciela. Polisa przechodzi na kupującego razem z autem.</p></div>
-    <div class="doc opt"><b>Historia serwisowa</b><p>Książka, faktury, potwierdzenia napraw. Nieobowiązkowe, ale każdy taki papier podnosi kwotę.</p></div>
+  <div class="docs" style="margin-top:24px">
+    <div class="doc"><b>Dowód rejestracyjny</b><p>Sprawdź dane właściciela, numer rejestracyjny i numer VIN. Jeżeli samochód ma kilku współwłaścicieli, trzeba uwzględnić ich podczas zawierania umowy.</p></div>
+    <div class="doc"><b>Dokument tożsamości</b><p>Będzie potrzebny do prawidłowego wpisania danych strony sprzedającej. Przed podpisaniem umowy sprawdź również dane kupującego.</p></div>
+    <div class="doc"><b>Potwierdzenie ubezpieczenia OC</b><p>Warto przygotować numer polisy oraz nazwę ubezpieczyciela. Ochrona wynikająca z obecnej umowy OC przechodzi na nabywcę wraz z samochodem.</p></div>
+    <div class="doc"><b>Kluczyki i wyposażenie przekazywane z autem</b><p>Przygotuj wszystkie posiadane kluczyki, piloty, kody, instrukcje i dodatkowe wyposażenie. Najlepiej wymienić je później w umowie lub protokole przekazania.</p></div>
+    <div class="doc opt"><b>Dokumenty dotyczące serwisu</b><p>Książka serwisowa, faktury za naprawy, wpisy z przeglądów i potwierdzenia wymiany części nie są wymagane do sprzedaży, ale pomagają przedstawić historię samochodu.</p></div>
+    <div class="doc opt"><b>Karta pojazdu — jeśli ją posiadasz</b><p>Od 4 września 2022 roku karty pojazdu nie są już wydawane. Jeżeli karta została wydana wcześniej i nadal ją masz, warto przygotować ją razem z pozostałymi dokumentami. <a href="https://www.gov.pl/web/infrastruktura/od-4-wrzesnia-2022-r-nie-beda-juz-wydawane-karty-pojazdu-i-nalepki-kontrolne" rel="noopener nofollow" target="_blank">Ministerstwo Infrastruktury</a></p></div>
   </div>
 
-  <div class="proza" style="margin-top:44px">
-    <h2>Umowa kupna-sprzedaży — co musi w niej być</h2>
-    <p>Umowa nie wymaga notariusza ani żadnej szczególnej formy, ale musi jednoznacznie identyfikować auto i obie strony. Powinna zawierać datę i miejsce zawarcia, dane sprzedającego i kupującego wraz z numerami dokumentów tożsamości, dane pojazdu — markę, model, rok produkcji, numer VIN, numer rejestracyjny i przebieg — cenę zapisaną cyfrą i słownie, oświadczenie o stanie prawnym auta oraz podpisy obu stron.</p>
-    <p>Umowę sporządza się w dwóch egzemplarzach, po jednym dla każdej ze stron. <strong>Nie oddawaj swojego egzemplarza</strong> — będzie potrzebny do zgłoszenia zbycia i do ubezpieczyciela. I przeczytaj ją przed podpisem, nawet jeśli druga strona zapewnia, że to zwykły formularz.</p>
+  <div class="proza" style="margin-top:46px">
+    <h2>Samochód ma współwłaściciela? Ustal to przed spotkaniem</h2>
+    <p>To jedna z rzeczy, które najczęściej zatrzymują transakcję w ostatniej chwili. Jeżeli samochód należy do kilku osób, sprzedaż wymaga zgody wszystkich właścicieli.</p>
+    <p>Najprostsze rozwiązanie to obecność i podpis każdego współwłaściciela na umowie. Gdy któraś osoba nie może uczestniczyć w transakcji, należy wcześniej przygotować odpowiednie pełnomocnictwo.</p>
+    <p>Przed umówieniem spotkania sprawdź, ilu właścicieli widnieje w dokumentach. Pozwoli to uniknąć sytuacji, w której kupujący jest gotowy, ale samochodu nie można skutecznie sprzedać.</p>
 
-    <h2>Po sprzedaży: dwa terminy, o których trzeba pamiętać</h2>
-    <p>To jest część, na której najwięcej osób się potyka, bo o niej po prostu zapominają. Po sprzedaży auto formalnie nadal figuruje na Ciebie, dopóki nie zgłosisz zbycia.</p>
+    <h2>Co warto zapisać w umowie sprzedaży auta?</h2>
+    <p>Nie chodzi o długość dokumentu, lecz o to, aby jednoznacznie wskazywał strony transakcji, samochód oraz uzgodnione warunki.</p>
+    <p>Dobrze przygotowana umowa kupna-sprzedaży samochodu powinna zawierać:</p>
+    <ul>
+      <li>datę, godzinę i miejsce zawarcia umowy;</li>
+      <li>imiona, nazwiska, adresy oraz dane identyfikacyjne stron;</li>
+      <li>markę, model, rok produkcji i numer rejestracyjny;</li>
+      <li>numer VIN;</li>
+      <li>aktualny stan licznika;</li>
+      <li>uzgodnioną cenę i sposób zapłaty;</li>
+      <li>informację o terminie przekazania samochodu;</li>
+      <li>opis znanych uszkodzeń lub istotnych usterek;</li>
+      <li>informację o liczbie przekazanych kluczyków i dokumentów;</li>
+      <li>podpisy wszystkich stron.</li>
+    </ul>
+    <p>Godzina przekazania nie jest zbędnym szczegółem. Może mieć znaczenie, jeśli tego samego dnia samochód zostanie zarejestrowany przez kamerę, otrzyma opłatę parkingową albo weźmie udział w zdarzeniu drogowym.</p>
+    <p>Umowę przygotuj w co najmniej dwóch jednobrzmiących egzemplarzach. Jeden z nich musi zostać u sprzedającego — będzie potrzebny do zgłoszenia zbycia pojazdu i powiadomienia ubezpieczyciela.</p>
+
+    <h2>Przed wydaniem kluczyków sprawdź trzy rzeczy</h2>
+    <p>Sam podpis na umowie nie zamyka jeszcze całej transakcji. Przed przekazaniem samochodu upewnij się, że:</p>
   </div>
 
-  <div class="duo" style="margin-top:26px">
+  <div class="docs" style="margin-top:24px">
+    <div class="doc"><b>Umowa jest kompletna</b><p>Nie zostawiaj pustych miejsc przeznaczonych na cenę, dane kupującego, datę albo informacje o pojeździe. Każdą poprawkę nanieś na obu egzemplarzach i potwierdź podpisami stron.</p></div>
+    <div class="doc"><b>Zapłata została wykonana</b><p>Przy płatności gotówką można potwierdzić jej otrzymanie w umowie. Przy przelewie sprawdź zaksięgowanie środków lub ustal jednoznaczne warunki przekazania pojazdu.</p></div>
+    <div class="doc"><b>Przekazanie auta jest udokumentowane</b><p>Zapisz stan licznika, liczbę kluczyków oraz przekazane dokumenty. Można zrobić to bezpośrednio w umowie albo w krótkim protokole zdawczo-odbiorczym.</p></div>
+  </div>
+
+  <div class="proza" style="margin-top:24px">
+    <p>Dopiero po zakończeniu tych czynności przekaż samochód, dokumenty i kluczyki.</p>
+
+    <h2>Po sprzedaży pozostają dwa ważne terminy</h2>
+    <p>Po podpisaniu umowy warto od razu ustawić dwa przypomnienia. Obu formalności można dopełnić bez czekania, aż kupujący zarejestruje samochód.</p>
+  </div>
+
+  <div class="duo" style="margin-top:24px">
     <div class="box">
-      <h3>30 dni — wydział komunikacji</h3>
-      <p>Zgłoszenie zbycia pojazdu składa sprzedający w wydziale komunikacji właściwym dla swojego miejsca zamieszkania. Można to zrobić przez internet albo osobiście, załączając kopię umowy.</p>
-      <p style="margin-top:12px">Po co to robić: dopóki zbycie nie jest zgłoszone, auto widnieje w rejestrze jako Twoje. Za niezgłoszenie w terminie grozi kara pieniężna.</p>
+      <h3>Do 30 dni: zgłoś zbycie pojazdu</h3>
+      <p>Zbycie samochodu zgłasza dotychczasowy właściciel. Zawiadomienie należy przekazać do wydziału komunikacji właściwego dla miejsca zamieszkania. Można zrobić to w urzędzie albo elektronicznie.</p>
+      <p style="margin-top:12px">Potrzebna będzie kopia lub czytelne zdjęcie dokumentu potwierdzającego sprzedaż. Usługa jest bezpłatna. Za niedopełnienie obowiązku w terminie może zostać nałożona kara w wysokości 250 zł. <a href="https://www.gov.pl/web/gov/zglos-zbycie-lub-nabycie-pojazdu-na-przyklad-sprzedaz-kupno-darowizne" rel="noopener nofollow" target="_blank">Instrukcja zgłoszenia na Gov.pl</a></p>
+      <p style="margin-top:12px">Zachowaj potwierdzenie wysłania lub złożenia zawiadomienia.</p>
     </div>
     <div class="box">
-      <h3>14 dni — ubezpieczyciel</h3>
-      <p>Trzeba powiadomić swojego ubezpieczyciela o sprzedaży auta, podając dane nabywcy. Polisa OC przechodzi na kupującego razem z pojazdem.</p>
-      <p style="margin-top:12px">Jeśli kupujący wypowie polisę, niewykorzystana część składki wraca do Ciebie. O zwrot występujesz sam, bezpośrednio u ubezpieczyciela.</p>
+      <h3>Do 14 dni: powiadom ubezpieczyciela</h3>
+      <p>Sprzedający ma 14 dni na przekazanie ubezpieczycielowi informacji o sprzedaży oraz danych nabywcy.</p>
+      <p style="margin-top:12px">Dotychczasowe OC przechodzi na nowego właściciela. Nabywca może z niego korzystać albo je wypowiedzieć. Jeżeli umowa zostanie wypowiedziana, sprzedającemu przysługuje zwrot składki za niewykorzystany okres ochrony.</p>
+      <p style="margin-top:12px">Warto przy okazji przekazać ubezpieczycielowi aktualny numer rachunku bankowego. <a href="https://rf.gov.pl/oc-komunikacyjne-5-wskazowek-dla-zbywcy-pojazdu/" rel="noopener nofollow" target="_blank">Wyjaśnienia Rzecznika Finansowego</a></p>
     </div>
   </div>
 
-  <div class="proza" style="margin-top:44px">
-    <h2>Najczęstsze błędy przy sprzedaży auta</h2>
-    <p><strong>Oddanie obu egzemplarzy umowy.</strong> Bez swojego egzemplarza nie zgłosisz zbycia i nie załatwisz niczego u ubezpieczyciela.</p>
-    <p><strong>Odpuszczenie zgłoszenia zbycia.</strong> Przez kilka miesięcy nic się nie dzieje, a potem przychodzi mandat za przejazd, którego nie było, albo wezwanie do wskazania kierującego.</p>
-    <p><strong>Wpisanie w umowie kwoty innej niż rzeczywista.</strong> Pomysł, żeby wpisać niższą cenę „dla podatku”, kończy się źle dla obu stron, a najczęściej dla sprzedającego.</p>
-    <p><strong>Puste pola w umowie.</strong> Nigdy nie podpisuj umowy z nieuzupełnionymi rubrykami, choćby druga strona zapewniała, że „dopisze później”.</p>
-    <p><strong>Wydanie auta przed otrzymaniem pieniędzy.</strong> Kolejność jest zawsze ta sama: umowa, zapłata, dopiero potem kluczyki. U nas również.</p>
+  <div class="proza" style="margin-top:46px">
+    <h2>Czy po sprzedaży samochodu trzeba zapłacić podatek?</h2>
+    <p>W niektórych sytuacjach sprzedaż prywatnego samochodu trzeba wykazać w rocznym zeznaniu PIT. Dotyczy to auta sprzedanego przed upływem pół roku, licząc od końca miesiąca, w którym zostało kupione.</p>
+    <p>Obowiązek wykazania sprzedaży może powstać zarówno wtedy, gdy sprzedający osiągnął dochód, jak i wtedy, gdy poniósł stratę. Sprzedaży dokonanej po upływie tego okresu nie wykazuje się w PIT.</p>
+    <p>To zagadnienie dotyczy sprzedaży samochodu należącego do prywatnego majątku. Inne zasady mogą obowiązywać przy aucie firmowym. <a href="https://www.podatki.gov.pl/pit/rozliczenie-ze-sprzedazy-rzeczy-ruchomej/" rel="noopener nofollow" target="_blank">Informacje Ministerstwa Finansów</a></p>
 
-    <h2>Jak to wygląda, gdy sprzedajesz auto nam</h2>
-    <p>Umowę przywozimy gotową i wypełniamy przy Tobie. Podpisujecie oba egzemplarze, jeden zostaje u Ciebie. Płacimy ustaloną kwotę — gotówką na miejscu albo przelewem, jak wolisz — i dopiero potem zabieramy auto.</p>
-    <p>Zgłoszenie zbycia w wydziale komunikacji oraz powiadomienie ubezpieczyciela zostają po Twojej stronie, bo tak wynika z przepisów: obowiązek dotyczy sprzedającego. Powiemy dokładnie, co i gdzie złożyć, żeby zajęło to kilkanaście minut przez internet.</p>
+    <h2>Najczęstsze błędy podczas sprzedaży samochodu</h2>
+    <p><strong>Brak własnego egzemplarza umowy.</strong> Bez dokumentu trudno zgłosić zbycie, powiadomić ubezpieczyciela i wyjaśnić ewentualne wezwania dotyczące samochodu.</p>
+    <p><strong>Pominięcie współwłaściciela.</strong> Jeżeli auto ma kilku właścicieli, jedna osoba nie powinna samodzielnie podpisywać umowy bez odpowiedniego umocowania.</p>
+    <p><strong>Niepełne dane kupującego.</strong> Nie wystarczy imię, nazwisko i numer telefonu. Dane muszą pozwalać jednoznacznie zidentyfikować nabywcę i zgłosić sprzedaż ubezpieczycielowi oraz w urzędzie.</p>
+    <p><strong>Puste pola i ustalenia „na później”.</strong> Cena, data, dane stron i informacje o samochodzie powinny zostać wpisane przed podpisaniem dokumentu.</p>
+    <p><strong>Brak potwierdzenia zapłaty.</strong> Sposób rozliczenia należy zapisać w umowie. Warto również zachować potwierdzenie przelewu albo pokwitowanie odbioru gotówki.</p>
+    <p><strong>Zapomnienie o urzędzie i ubezpieczycielu.</strong> Przekazanie samochodu kupującemu nie wykonuje automatycznie obowiązków sprzedającego. Zgłoszenie zbycia i powiadomienie ubezpieczyciela to dwie osobne czynności.</p>
+
+    <h2>Jak wygląda sprzedaż samochodu firmie TINA?</h2>
+    <p>Zacznij od telefonu albo <a href="/wycena">formularza wyceny</a>. Podaj markę, model, rocznik, przebieg, stan samochodu oraz jego lokalizację. Zdjęcia pozwolą nam lepiej przygotować się do rozmowy.</p>
+    <p>Następnie umawiamy oględziny pod wskazanym adresem. Po sprawdzeniu samochodu przedstawiamy ofertę — o tym, <a href="/ile-placimy">co wpływa na kwotę</a>, piszemy osobno. Jeżeli ją zaakceptujesz, przygotowujemy dokumenty, finalizujemy rozliczenie i odbieramy pojazd. W przypadku <a href="/auta-uszkodzone-powypadkowe">auta niejeżdżącego</a> możemy przyjechać lawetą.</p>
+    <p>Po transakcji otrzymujesz swój egzemplarz dokumentu sprzedaży. Zgłoszenie zbycia w urzędzie i powiadomienie ubezpieczyciela nadal należą do obowiązków sprzedającego, ale wyjaśnimy, jakie dokumenty będą potrzebne.</p>
   </div>
 </section></div>
 
 <div class="w"><section>
-  <Naglowek eyebrow="Pytania" tytul='Formalności — <span class="gold">pytania</span>' />
+  <Naglowek eyebrow="Pytania" tytul='Formalności po sprzedaży — <span class="gold">pytania i odpowiedzi</span>' />
   <Faq pary={FAQ} />
+  <div class="proza" style="margin-top:34px">
+    <p class="data">Artykuł ma charakter informacyjny. Stan informacji: 14 września 2026 roku.</p>
+  </div>
 </section></div>
 
 <Cta
-  tytul='Chcesz mieć to <span class="gold">z głowy w jeden dzień</span>'
-  opis="Umowa po naszej stronie, pieniądze na miejscu, auto zabieramy lawetą. Zostaje Ci tylko zgłoszenie zbycia — podpowiemy, jak zrobić to przez internet."
+  tytul='Chcesz <span class="gold">sprzedać samochód?</span>'
+  opis="Prześlij podstawowe informacje o pojeździe i kilka zdjęć. Wstępnie ocenimy zgłoszenie, skontaktujemy się z Tobą i ustalimy możliwość oględzin oraz odbioru auta."
 />
 
 </Base>
