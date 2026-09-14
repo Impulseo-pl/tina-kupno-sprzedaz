@@ -538,35 +538,51 @@ body.scrolled .logo img{height:46px}
 @media (max-width:1000px){.steps.cztery{grid-template-columns:1fr 1fr}}
 
 /* ---------- mapa obszaru dzialania ---------- */
-/* Mapa stoi bez ramki obok kafelka z informacjami — stad align-items na siatce. */
-.local.z-mapa{align-items:center;gap:34px}
+/* Mapa stoi bez ramki obok kafelka z informacjami i dostaje szersza kolumne,
+   zeby wypelnic wysokosc kafelka. */
+.local.z-mapa{grid-template-columns:1.2fr .8fr;align-items:center;gap:30px}
 .mapa-woj{margin:0}
 .mapa-woj svg{display:block;width:100%;height:auto}
-.mapa-woj .obrys{fill:var(--g1);stroke:var(--g3);stroke-width:1.6;stroke-linejoin:round}
+.mapa-woj .obrys{fill:var(--g1);stroke:var(--g3);stroke-width:1.5;stroke-linejoin:round}
 .mapa-woj .pin circle{fill:var(--g4)}
 .mapa-woj .pin.baza circle{fill:#4a3a0c}
 .mapa-woj .pin .aura{fill:var(--g4);opacity:.22}
-.mapa-woj .pin text{font-family:Manrope,sans-serif;font-size:7px;font-weight:700;fill:var(--ink);
-  paint-order:stroke;stroke:var(--g1);stroke-width:2.2px;stroke-linejoin:round}
+.mapa-woj .pin text{font-family:Manrope,sans-serif;font-size:6px;font-weight:700;fill:var(--ink);
+  paint-order:stroke;stroke:var(--g1);stroke-width:1.9px;stroke-linejoin:round}
 .mapa-woj .pin.baza text{fill:#4a3a0c}
+.mapa-woj .pin circle{r:2.2px}
+.mapa-woj .pin.baza circle{r:3.4px}
+.mapa-woj .pin .aura{r:7px}
 .mapa-woj figcaption{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;margin-top:14px;
   font-size:13px;color:var(--muted)}
 .mapa-woj .leg{display:inline-flex;align-items:center;gap:8px}
 .mapa-woj .leg i{width:9px;height:9px;border-radius:50%;background:var(--g4);flex:none}
 .mapa-woj .leg i.b{width:13px;height:13px;background:#4a3a0c;box-shadow:0 0 0 4px rgba(74,58,12,.18)}
 
-/* Tekst i punkty w SVG skaluja sie razem z viewBox, wiec przy wezszym kadrze
-   trzeba je powiekszyc w jednostkach mapy, inaczej robia sie nieczytelne. */
-@media (max-width:1000px){
-  .local.z-mapa{gap:26px}
-  .mapa-woj .pin text{font-size:9px;stroke-width:2.8px}
-  .mapa-woj .pin circle{r:3.2px}
-  .mapa-woj .pin.baza circle{r:5px}
-  .mapa-woj .pin .aura{r:10px}
+/* Tekst i punkty w SVG skaluja sie razem z viewBox, wiec przy kazdej zmianie
+   szerokosci mapy trzeba je przeliczyc, zeby na ekranie mialy stale ~14 px.
+   Mnoznik = szerokosc mapy / 301 jednostek viewBox. */
+@media (max-width:1000px){            /* siatka zwija sie do jednej kolumny, mapa rosnie */
+  .mapa-woj .pin text{font-size:4.6px;stroke-width:1.5px}
+  .mapa-woj .pin circle{r:1.7px}
+  .mapa-woj .pin.baza circle{r:2.6px}
+  .mapa-woj .pin .aura{r:5.4px}
 }
-@media (max-width:620px){
-  .mapa-woj .pin text{font-size:12px;stroke-width:3.6px}
-  .mapa-woj .pin circle{r:4.2px}
-  .mapa-woj .pin.baza circle{r:6.5px}
-  .mapa-woj .pin .aura{r:13px}
+@media (max-width:760px){
+  .mapa-woj .pin text{font-size:6px;stroke-width:1.9px}
+  .mapa-woj .pin circle{r:2.2px}
+  .mapa-woj .pin.baza circle{r:3.4px}
+  .mapa-woj .pin .aura{r:7px}
+}
+@media (max-width:560px){
+  .mapa-woj .pin text{font-size:8.5px;stroke-width:2.7px}
+  .mapa-woj .pin circle{r:3px}
+  .mapa-woj .pin.baza circle{r:4.6px}
+  .mapa-woj .pin .aura{r:9.5px}
+}
+@media (max-width:430px){
+  .mapa-woj .pin text{font-size:11.5px;stroke-width:3.6px}
+  .mapa-woj .pin circle{r:4px}
+  .mapa-woj .pin.baza circle{r:6px}
+  .mapa-woj .pin .aura{r:12.5px}
 }
