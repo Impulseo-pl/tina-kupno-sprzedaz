@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import Chero from '../components/Chero.astro';
+import Naglowek from '../components/Naglowek.astro';
+import Kroki from '../components/Kroki.astro';
+import Formularz from '../components/Formularz.astro';
+import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
+import { okruszki, faqLd } from '../dane/firma';
+
+const FAQ: [string, string][] = [
+  ['Jakie dostawcze odkupujecie?', 'Furgony, blaszaki, skrzyniowe, wywrotki, brygadówki i busy osobowe do 3,5 tony. Zarówno pojedyncze auta, jak i kilka sztuk naraz przy wymianie floty.'],
+  ['Kupicie auto na firmę, z odliczonym VAT-em?', 'Tak. Przy autach firmowych rozliczenie wygląda inaczej niż przy prywatnych — powiedz o tym przez telefon, ustalimy szczegóły przed przyjazdem.'],
+  ['Auto ma zabudowę, chłodnię albo windę. To problem?', 'Nie, ale ma wpływ na kwotę. Zabudowa potrafi podnieść wartość auta, jeśli jest zadbana i popularna, albo ją obniżyć, jeśli jest zniszczona i trzeba ją zdejmować.'],
+  ['Dostawczak ma milion kilometrów. Kupicie?', 'Przy dostawczych wysokie przebiegi to norma i nie skreślają auta. Liczy się bardziej stan blacharki, podłogi ładunkowej i silnika niż sam licznik.'],
+  ['Odbierzecie kilka aut naraz?', 'Tak. Przy wymianie floty umawiamy jeden termin i zabieramy wszystkie auta za jednym razem.'],
+];
+---
+<Base
+  title="Skup samochodów dostawczych i busów — Mazowsze | TINA"
+  description="Skup aut dostawczych do 3,5 tony: furgony, skrzyniowe, wywrotki, brygadówki i busy. Pojedyncze auta i całe floty, odbiór lawetą, płatność na miejscu."
+  path="/skup-aut-dostawczych"
+  schema={[okruszki([['/skup-aut-dostawczych', 'Samochody dostawcze']]), faqLd(FAQ)]}
+>
+
+<Chero
+  okruszek="Samochody dostawcze"
+  lede="Furgony, blaszaki, skrzyniowe, wywrotki i busy do 3,5 tony. Odkupujemy pojedyncze auta i całe floty — także z zabudową, z wysokim przebiegiem i po intensywnej eksploatacji."
+  sub="Skup busów i aut dostawczych na terenie całego Mazowsza."
+><span>Skup <span class="gold">samochodów dostawczych</span></span></Chero>
+
+<div class="w"><section>
+  <div class="proza">
+    <h2>Dostawczaka wycenia się inaczej niż osobówkę</h2>
+    <p>Przy samochodzie osobowym pierwsze pytanie dotyczy przebiegu. Przy dostawczym przebieg schodzi na drugi plan, bo te auta z założenia jeżdżą dużo — czterysta czy pięćset tysięcy kilometrów w siedmioletnim furgonie nie jest niczym dziwnym. Liczy się co innego.</p>
+    <p>Patrzymy na stan podłogi ładunkowej i progów, bo tam najszybciej wchodzi korozja. Na tylne zawieszenie, które przy ciągłej jeździe z ładunkiem zbiera najwięcej. Na sprzęgło i skrzynię, bo w aucie dostawczym pracują najciężej. I na to, czy auto było serwisowane regularnie, czy jeździło do pierwszej awarii.</p>
+  </div>
+
+  <div class="docs" style="margin-top:26px">
+    <div class="doc"><b>Furgony i blaszaki</b><p>Krótkie, długie, podwyższone. Najczęściej spotykany typ i ten, który najłatwiej sprzedać dalej.</p></div>
+    <div class="doc"><b>Skrzyniowe i wywrotki</b><p>Z plandeką albo bez, z burtami. Przy wywrotkach patrzymy dodatkowo na stan siłownika i ramy.</p></div>
+    <div class="doc"><b>Brygadówki</b><p>Podwójna kabina, skrzynia z tyłu. Klasyka na budowach i jeden z popularniejszych typów na rynku wtórnym.</p></div>
+    <div class="doc"><b>Busy osobowe</b><p>Dziewięcioosobowe i przewozowe. Tutaj z kolei liczy się stan wnętrza, bo to auto wozi ludzi.</p></div>
+    <div class="doc"><b>Auta z zabudową</b><p>Chłodnie, izotermy, windy załadowcze, zabudowy warsztatowe. Zabudowa potrafi zarówno podnieść, jak i obniżyć wartość.</p></div>
+    <div class="doc"><b>Całe floty</b><p>Przy wymianie taboru odbieramy kilka aut jednego dnia, jednym transportem i na jednej umowie.</p></div>
+  </div>
+
+  <div class="proza" style="margin-top:44px">
+    <h2>Auta firmowe i rozliczenie</h2>
+    <p>Dostawcze prawie zawsze są autami firmowymi, a to zmienia sposób rozliczenia w stosunku do sprzedaży prywatnej. Jeśli auto jest środkiem trwałym w firmie i przy zakupie odliczono VAT, sprzedaż wygląda inaczej niż zwykła umowa kupna-sprzedaży między osobami prywatnymi.</p>
+    <p>Nie ma w tym nic skomplikowanego, ale warto powiedzieć o tym w pierwszej rozmowie, żebyśmy przyjechali z właściwymi dokumentami. To samo dotyczy aut po leasingu — istotne jest, czy leasing został już wykupiony i na kogo auto jest dziś zarejestrowane.</p>
+
+    <h2>Kiedy warto sprzedać dostawczaka</h2>
+    <p>Najczęstszy moment to ten, w którym auto zaczyna kosztować więcej, niż zarabia: kolejna naprawa za kilka tysięcy w samochodzie, który i tak stoi połowę miesiąca w warsztacie. Drugi to wymiana floty, kiedy nowe auta już są, a stare zajmują plac i ubezpieczenie.</p>
+    <p>W obu przypadkach zasada jest ta sama co przy osobówkach: im dłużej auto stoi nieużywane, tym mniej jest warte. Dostawczak, który przestoi zimę, potrafi stracić więcej niż przez cały poprzedni rok jeżdżenia.</p>
+  </div>
+
+  <Kroki />
+</section></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Pytania" tytul='Dostawcze — <span class="gold">najczęstsze pytania</span>' />
+  <Faq pary={FAQ} />
+</section></div>
+
+<Formularz strona="dostawcze" />
+<Cta
+  tytul='Sprzedaj dostawczaka <span class="gold">bez ogłoszeń</span>'
+  opis="Jedno auto czy cała flota — umawiamy termin, przyjeżdżamy i rozliczamy wszystko na miejscu."
+/>
+
+</Base>

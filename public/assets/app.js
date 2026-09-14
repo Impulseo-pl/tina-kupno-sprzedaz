@@ -1,34 +1,12 @@
 /* TINA Skup Aut — skrypt strony.
-   Statyczny HTML: tresc siedzi w plikach, skrypt obsluguje tylko to, co zywe —
-   kalkulator widelek, formularz krokowy, galerie, animacje przewijania. */
+   Tresc generuje Astro, skrypt obsluguje tylko to, co zywe: formularz krokowy,
+   galerie ze zdjeciami, liczniki i animacje przewijania.
+   Kwot nie liczymy nigdzie — wycene podaje czlowiek przez telefon. */
 
 /* Adres strony podziekowania — formularz wraca na nia po wyslaniu. */
 const ORIGIN = location.origin + location.pathname.replace(/[^/]*$/, '').replace(/\/$/, '');
 
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-
-/* ================= kalkulator widelek ================= */
-const ROK_TERAZ=new Date().getFullYear();
-const PLN=n=>Math.round(n).toLocaleString('pl-PL').replace(/ /g,' ')+' zł';
-const F_STAN={'Jeżdżący, sprawny':1,'Jeżdżący, drobne usterki':.86,'Uszkodzony, ale jeździ':.60,'Powypadkowy, nie jeździ':.38,'Bez ważnego OC lub przeglądu':.80,'Do kasacji, na części':.15};
-const F_PAL={'Benzyna':1,'Diesel':1.05,'Benzyna + LPG':.95,'Hybryda':1.12,'Elektryk':1.02};
-
-function wycena(d){
-  const rok=parseInt(d.rok,10), km=parseInt(d.km,10)||0;
-  if(!rok||rok<1950||rok>ROK_TERAZ+1) return null;
-  const wiek=Math.max(0,ROK_TERAZ-rok);
-  let v=64000*Math.pow(.883,wiek)+2200;
-  if(km>0){
-    const norma=Math.max(25000,wiek*15000);
-    v*=Math.min(1.16,Math.max(.56,1-((km-norma)/norma)*.20));
-  }
-  v*=F_PAL[d.paliwo]||1;
-  v*=F_STAN[d.stan]||1;
-  v*=1+Math.min(.10,(d.plus||0)*.018);
-  v*=.82;                                   /* marza na przygotowanie do dalszej sprzedazy */
-  v=Math.max(700,v);
-  return [Math.round(v*.90/100)*100, Math.round(v*1.09/100)*100];
-}
 
 /* ================= formularz krokowy ================= */
 function bindForm(){
@@ -40,25 +18,6 @@ function bindForm(){
   const back=wf.querySelector('.b-back'), next=wf.querySelector('.b-next'),
         send=wf.querySelector('.b-send'), err=wf.querySelector('.err');
   let i=0, picked=[];
-
-  /* ---------- kalkulator widelek ---------- */
-  const calc=()=>{
-    const plus=wf.querySelectorAll('.chip input:checked').length;
-    const r=wycena({rok:($('rok').value||'').replace(/\D/g,''),km:($('przebieg').value||'').replace(/\D/g,''),
-                    paliwo:$('paliwo').value, stan:$('stan').value, plus});
-    const v=$('estv'), b=$('estb'), lo=$('estlo');
-    if(!v) return;
-    if(!r){ v.textContent='Uzupełnij rocznik i przebieg'; v.classList.add('dim');
-            b.style.left='36%'; b.style.right='36%'; lo.textContent='gdzie to leży na rynku'; return null; }
-    v.classList.remove('dim');
-    v.textContent=PLN(r[0])+' – '+PLN(r[1]);
-    const MAX=95000;
-    const l=Math.min(84,r[0]/MAX*100);
-    const rt=Math.min(100-l-6,Math.max(4,100-r[1]/MAX*100));
-    b.style.left=l+'%'; b.style.right=rt+'%';
-    lo.textContent=r[1]>=45000?'górna półka rynku':(r[1]>=16000?'środek rynku':'dolna półka rynku');
-    return r;
-  };
 
   /* ---------- kroki ---------- */
   const show=(k,scroll)=>{
@@ -106,25 +65,17 @@ function bindForm(){
     if(!sprawdz(3)) return;
     if(!$('zgoda').checked){ err.textContent='Zaznacz zgodę na kontakt — bez niej nie możemy oddzwonić.'; $('zgoda').focus(); return; }
     err.textContent='';
-    const r=calc();
     const auto=[($('marka').value||'').trim(),($('model').value||'').trim(),($('rok').value||'').trim()].filter(Boolean).join(' ');
-    const h=document.getElementById('hwidelki');
-    if(h) h.value = r ? (PLN(r[0])+' – '+PLN(r[1])) : 'brak danych do wyliczenia';
     const nx=wf.querySelector('input[name="_next"]');
     if(nx){
       const q=new URLSearchParams();
       if(auto) q.set('a',auto);
-      if(r) q.set('w',PLN(r[0])+' – '+PLN(r[1]));
       const t=($('tel').value||'').trim(); if(t) q.set('t',t);
-      nx.value=ORIGIN+'/dziekujemy.html'+(q.toString()?'?'+q.toString():'');
+      nx.value=ORIGIN+'/dziekujemy'+(q.toString()?'?'+q.toString():'');
     }
     send.disabled=true; send.textContent='Wysyłam…';
     wf.submit();
   });
-
-  wf.addEventListener('input',calc);
-  wf.addEventListener('change',calc);
-  calc();
 
   /* ---------- szybka wycena z hero ---------- */
   const qf=document.getElementById('qf');
@@ -137,7 +88,6 @@ function bindForm(){
     if(qr) $('rok').value=qr;
     const qt=(document.getElementById('qt').value||'').trim();
     if(qt) $('tel').value=qt;
-    calc();
     document.getElementById('wycena').scrollIntoView({behavior:'smooth',block:'start'});
     setTimeout(()=>{ show(0); $(mm[0]?'przebieg':'marka').focus({preventScroll:true}); },420);
   });

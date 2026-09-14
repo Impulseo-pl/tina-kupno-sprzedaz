@@ -1,0 +1,9 @@
+---
+/* Lista pytan i odpowiedzi. Te same pary ida do JSON-LD na stronie. */
+const { pary } = Astro.props;
+---
+<div class="faq">
+  {pary.map(([p, o]: [string, string]) => (
+    <details><summary>{p}</summary><p set:html={o} /></details>
+  ))}
+</div>

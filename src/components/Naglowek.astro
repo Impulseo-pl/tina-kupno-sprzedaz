@@ -1,0 +1,10 @@
+---
+/* Naglowek sekcji: nadtytul, H2 i opcjonalny akapit wprowadzajacy. */
+const { eyebrow, tytul, opis = '' } = Astro.props;
+---
+<div class="sechead">
+  <p class="eyebrow">{eyebrow}</p>
+  <h2 set:html={tytul} />
+  <div class="hr"></div>
+  {opis && <p set:html={opis} />}
+</div>

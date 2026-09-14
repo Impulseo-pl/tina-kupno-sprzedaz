@@ -1,0 +1,115 @@
+---
+/* Formularz wyceny. Zbiera dane — nie liczy zadnej kwoty.
+   Wycene podaje czlowiek przez telefon; to byla wyrazna decyzja klienta. */
+import Telefon from './Telefon.astro';
+import { FIRMA } from '../dane/firma';
+const { strona } = Astro.props;
+---
+<div class="darker" id="wycena"><div class="w"><section><div class="fgrid">
+  <div class="fintro">
+    <p class="eyebrow">Wycena auta</p>
+    <h2 style="margin-top:14px"><span>Opisz auto,</span><br><span class="gold">oddzwonimy z kwotą</span></h2>
+    <p>Nie liczymy ceny automatem, bo żaden automat nie widzi, w jakim stanie naprawdę jest auto. Wypełniasz formularz, my dzwonimy i podajemy konkretną kwotę.</p>
+    <ul class="tick" style="margin-top:22px">
+      <li>Wycena jest bezpłatna i nie zobowiązuje do sprzedaży</li>
+      <li>Zdjęcia nie są obowiązkowe, ale przyspieszają sprawę</li>
+      <li>Napisz, ile chcesz za auto — to skraca całą rozmowę</li>
+    </ul>
+    <div class="or">
+      <span class="eyebrow">Wolisz od razu porozmawiać</span>
+      <Telefon />
+    </div>
+  </div>
+
+  <form class="card" id="wf" autocomplete="off" novalidate method="POST" action={`https://formsubmit.co/${FIRMA.mail}`} enctype="multipart/form-data">
+    <input type="hidden" name="_subject" value="Wycena auta ze strony tinaskupaut.pl">
+    <input type="hidden" name="_next" value="">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="Strona" value={strona}>
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <div class="wiz">
+      <div class="on" data-w="0"><i><em>I</em></i>Auto</div>
+      <div data-w="1"><i><em>II</em></i>Stan i cena</div>
+      <div data-w="2"><i><em>III</em></i>Zdjęcia</div>
+      <div data-w="3"><i><em>IV</em></i>Kontakt</div>
+    </div>
+
+    <div class="stp on">
+      <fieldset>
+        <legend>Pojazd</legend>
+        <div class="g g3">
+          <div class="f"><label for="marka">Marka <i>*</i></label><input id="marka" name="Marka" placeholder="Audi"></div>
+          <div class="f"><label for="model">Model <i>*</i></label><input id="model" name="Model" placeholder="A4 Avant"></div>
+          <div class="f"><label for="rok">Rok produkcji <i>*</i></label><input id="rok" name="Rok produkcji" inputmode="numeric" maxlength="4" placeholder="2012"></div>
+        </div>
+        <div class="g g3" style="margin-top:14px">
+          <div class="f"><label for="przebieg">Przebieg (km) <i>*</i></label><input id="przebieg" name="Przebieg km" inputmode="numeric" placeholder="186 000"></div>
+          <div class="f"><label for="paliwo">Paliwo</label><select id="paliwo" name="Paliwo"><option>Benzyna</option><option>Diesel</option><option>Benzyna + LPG</option><option>Hybryda</option></select></div>
+          <div class="f"><label for="poj">Pojemność (cm³)</label><input id="poj" name="Pojemnosc" inputmode="numeric" placeholder="1968"></div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="stp">
+      <fieldset>
+        <legend>Stan i oczekiwana kwota</legend>
+        <div class="g g2">
+          <div class="f"><label for="stan">Stan auta</label><select id="stan" name="Stan techniczny"><option>Jeżdżący, sprawny</option><option>Jeżdżący, drobne usterki</option><option>Uszkodzony, ale jeździ</option><option>Powypadkowy, nie jeździ</option><option>Bez ważnego OC lub przeglądu</option></select></div>
+          <div class="f"><label for="cena">Ile chcesz za auto (zł)</label><input id="cena" name="Oczekiwana cena" inputmode="numeric" placeholder="18 000"></div>
+        </div>
+        <p class="hint" style="margin-top:12px">Kwota nie musi być ostateczna. Podaj, na czym Ci zależy — powiemy wprost, czy jesteśmy w stanie ją dać, zamiast targować się w nieskończoność.</p>
+      </fieldset>
+      <fieldset style="margin-top:18px">
+        <legend>Co wyróżnia to auto</legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" id="c0" name="Auto" value="Bezwypadkowy"><span>Bezwypadkowy</span></label>
+          <label class="chip"><input type="checkbox" id="c1" name="Auto" value="Garażowany"><span>Garażowany</span></label>
+          <label class="chip"><input type="checkbox" id="c2" name="Auto" value="Fabryczny lakier"><span>Fabryczny lakier</span></label>
+          <label class="chip"><input type="checkbox" id="c3" name="Auto" value="Serwisowany w ASO"><span>Serwisowany w ASO</span></label>
+          <label class="chip"><input type="checkbox" id="c4" name="Auto" value="Pierwszy właściciel"><span>Pierwszy właściciel</span></label>
+          <label class="chip"><input type="checkbox" id="c5" name="Auto" value="Zarejestrowany w Polsce"><span>Zarejestrowany w Polsce</span></label>
+          <label class="chip"><input type="checkbox" id="c6" name="Auto" value="Komplet kluczy"><span>Komplet kluczy</span></label>
+          <label class="chip"><input type="checkbox" id="c7" name="Auto" value="Książka serwisowa"><span>Książka serwisowa</span></label>
+        </div>
+        <div class="f" style="margin-top:18px"><label for="uwagi">Co jeszcze powinniśmy wiedzieć</label><textarea id="uwagi" name="Dodatkowe informacje" rows="4" placeholder="Np. wymieniony rozrząd w zeszłym roku, wgnieciony tylny błotnik, auto stoi w garażu i nie odpala od zimy."></textarea></div>
+      </fieldset>
+    </div>
+
+    <div class="stp">
+      <fieldset>
+        <legend>Zdjęcia auta</legend>
+        <label class="drop" for="files">
+          <b>Dodaj zdjęcia</b>
+          <span>Przód, tył, wnętrze, licznik i ewentualne uszkodzenia. Do pięciu zdjęć, krok nieobowiązkowy.</span>
+          <input type="file" id="files" name="attachment" accept="image/*" multiple>
+        </label>
+        <div class="thumbs" id="thumbs"></div>
+        <p class="hint">Ze zdjęciami podamy pewniejszą kwotę już przez telefon. Bez nich też oddzwonimy — po prostu zapytamy o więcej szczegółów.</p>
+      </fieldset>
+    </div>
+
+    <div class="stp">
+      <fieldset>
+        <legend>Kontakt</legend>
+        <div class="g g2">
+          <div class="f"><label for="tel">Twój telefon <i>*</i></label><input id="tel" name="Telefon" inputmode="tel" placeholder="600 000 000"></div>
+          <div class="f"><label for="miasto">Miejscowość</label><input id="miasto" name="Miejscowosc" placeholder="Sochaczew"></div>
+        </div>
+        <div class="g g2" style="margin-top:14px">
+          <div class="f"><label for="mail">E-mail (nieobowiązkowo)</label><input id="mail" name="Email" type="email" placeholder="jan@example.com"></div>
+          <div class="f"><label for="kiedy">Kiedy oddzwonić</label><select id="kiedy" name="Kiedy oddzwonic"><option>Jak najszybciej</option><option>Rano</option><option>Po południu</option><option>Wieczorem</option></select></div>
+        </div>
+        <label class="zgoda"><input type="checkbox" id="zgoda" name="Zgoda" value="tak"><span>Wyrażam zgodę na kontakt telefoniczny w sprawie wyceny auta i na przetwarzanie moich danych przez TINA Rafał Kocimski. Szczegóły w <a href="/polityka-prywatnosci">polityce prywatności</a>.</span></label>
+        <p class="err"></p>
+      </fieldset>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn plain b-back" style="display:none">Wstecz</button>
+      <button type="button" class="btn k b-next">Dalej</button>
+      <button type="button" class="btn k b-send" style="display:none">Wyślij zgłoszenie</button>
+    </div>
+  </form>
+</div></section></div></div>

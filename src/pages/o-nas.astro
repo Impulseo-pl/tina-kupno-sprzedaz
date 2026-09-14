@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import Chero from '../components/Chero.astro';
+import Naglowek from '../components/Naglowek.astro';
+import Kupujemy from '../components/Kupujemy.astro';
+import Cta from '../components/Cta.astro';
+import { okruszki, FIRMA } from '../dane/firma';
+---
+<Base
+  title="O nas — TINA Skup Aut, Sochaczew i Mazowsze"
+  description="W motoryzacji od 1999 roku, od giełdy samochodowej do własnej działalności. Skup i sprzedaż aut na terenie całego Mazowsza, baza pod Sochaczewem."
+  path="/o-nas"
+  schema={okruszki([['/o-nas', 'O nas']])}
+>
+
+<Chero
+  okruszek="O nas"
+  lede="Zaczęło się od zamiłowania do motoryzacji, a skończyło na tym, że robimy to zawodowo od ponad dwudziestu lat. Najpierw giełda samochodowa, dziś własna firma z bazą pod Sochaczewem."
+  sub="TINA Rafał Kocimski · skup i sprzedaż aut · całe Mazowsze"
+  akcje={false}
+><span>Kim <span class="gold">jesteśmy</span></span></Chero>
+
+<div class="w"><section>
+  <div class="proza">
+    <h2>Od giełdy do własnej firmy</h2>
+    <p>W motoryzacji jesteśmy od 1999 roku. Zaczęło się zwyczajnie — od zamiłowania do samochodów, które z czasem przerodziło się w sposób na życie. Przez lata była to fizyczna giełda samochodowa: soboty od świtu, auta stojące w rzędach i handel twarzą w twarz, gdzie o wartości auta decydowało oko, a nie tabelka w internecie.</p>
+    <p>Z czasem wyrosła z tego własna działalność, zarejestrowana w {FIRMA.odRoku} roku. Zmieniła się skala i zmieniły się narzędzia, ale sposób pracy został ten sam: patrzymy na auto, mówimy, ile jest dla nas warte, i tej kwoty się trzymamy.</p>
+
+    <h2>Dlaczego Mazowsze</h2>
+    <p>Bazę mamy w Kozłowie Biskupim pod Sochaczewem i to jest nasz rynek. Znamy go, jeździmy po nim codziennie i wiemy, ile w tej okolicy realnie kosztują auta — a to nie jest to samo, co ceny w Warszawie czy na Śląsku. Dlatego obsługujemy całe województwo mazowieckie i nie udajemy, że jesteśmy ogólnopolską siecią z oddziałem w każdym mieście.</p>
+    <p>Jeśli mieszkasz dalej, zadzwoń mimo wszystko. Przy odpowiednim aucie jesteśmy otwarci na rozmowę także poza regionem — ale wolimy powiedzieć to wprost, niż obiecywać dojazd wszędzie.</p>
+
+    <h2>Skup i sprzedaż — obie strony</h2>
+    <p>Prowadzimy jedno i drugie: odkupujemy auta i sprzedajemy te, które wcześniej kupiliśmy. To nie jest przypadek, tylko sposób pracy. Ktoś, kto tylko skupuje, zna wyłącznie dolną połowę rynku. Ktoś, kto tylko sprzedaje, nie wie, ile auto jest warte przy odbiorze. My stoimy po obu stronach, więc kwota, którą podajemy, wynika z tego, za ile realnie da się takie auto potem sprzedać.</p>
+    <p><strong>Nie jesteśmy komisem.</strong> Nie przyjmujemy aut w pośrednictwo i nie bierzemy prowizji — kupujemy je na siebie i płacimy od ręki. Różnicę między jednym a drugim opisaliśmy dokładniej na stronie <a href="/komis-czy-skup-aut">komis czy skup</a>.</p>
+  </div>
+</section></div>
+
+<div class="w"><section>
+  <Naglowek
+    eyebrow="Zakres"
+    tytul='Czym się <span class="gold">zajmujemy</span>'
+    opis="I czego nie robimy — bo to też warto wiedzieć, zanim ktoś zadzwoni."
+  />
+  <Kupujemy />
+</section></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Konkrety" tytul='Jak <span class="gold">pracujemy</span>' />
+  <div class="docs">
+    <div class="doc"><b>Cena z telefonu jest wiążąca</b><p>Jeśli auto zgadza się z opisem, płacimy dokładnie tyle, ile ustaliliśmy w rozmowie. Bez schodzenia przy podpisie.</p></div>
+    <div class="doc"><b>Dojazd i laweta za darmo</b><p>Przyjeżdżamy na własny koszt, także wtedy, gdy ostatecznie nie dochodzi do transakcji.</p></div>
+    <div class="doc"><b>Bez rzeczoznawców</b><p>Oglądamy auto i robimy krótką jazdę. Nie wysyłamy nikogo na diagnostykę i nie przekładamy terminu.</p></div>
+    <div class="doc"><b>Pieniądze przed załadunkiem</b><p>Umowa, wypłata, dopiero potem auto wjeżdża na lawetę. Nigdy odwrotnie.</p></div>
+    <div class="doc"><b>Siedem dni w tygodniu</b><p>Odbieramy telefon codziennie, także w weekendy. Jeśli nie odbierzemy, jesteśmy w trasie i oddzwonimy.</p></div>
+    <div class="doc"><b>Mówimy „nie”, gdy trzeba</b><p>Jeśli nie kupujemy danego typu auta, powiemy to w pierwszej minucie rozmowy zamiast umawiać przyjazd donikąd.</p></div>
+  </div>
+</section></div>
+
+<Cta />
+
+</Base>

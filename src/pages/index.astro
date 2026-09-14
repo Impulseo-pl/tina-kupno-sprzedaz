@@ -1,0 +1,222 @@
+---
+import Base from '../layouts/Base.astro';
+import PasFaktow from '../components/PasFaktow.astro';
+import Naglowek from '../components/Naglowek.astro';
+import Kupujemy from '../components/Kupujemy.astro';
+import Kroki from '../components/Kroki.astro';
+import Formularz from '../components/Formularz.astro';
+import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
+import { FIRMA_LD, faqLd } from '../dane/firma';
+
+const FAQ: [string, string][] = [
+  ['Ile trwa wycena auta?', 'Kwotę ustalamy przez telefon, zwykle w trakcie pierwszej rozmowy. Wycena jest bezpłatna i nie zobowiązuje do sprzedaży — jeśli kwota Ci nie pasuje, po prostu nie podpisujesz umowy.'],
+  ['Czy odbierzecie auto, które nie jeździ?', 'Tak. Auta niejeżdżące i powypadkowe zabieramy lawetą, transport jest po naszej stronie i nic nie kosztuje.'],
+  ['Czy kupicie auto bez ważnego OC albo przeglądu?', 'Tak. Brak OC lub przeglądu nie blokuje sprzedaży, wpływa tylko na kwotę.'],
+  ['Kiedy dostanę pieniądze?', 'Na miejscu, zaraz po podpisaniu umowy kupna-sprzedaży — gotówką albo przelewem, jak wolisz. Auto ładujemy na lawetę dopiero po wypłacie.'],
+  ['Czy kupujecie samochody elektryczne?', 'Nie. Hybrydy odkupujemy normalnie, natomiast aut w pełni elektrycznych nie kupujemy. Nie bierzemy też motocykli, kamperów ani przyczep.'],
+  ['Czy przyjedziecie do Warszawy albo na drugi koniec Mazowsza?', 'Tak. Działamy na terenie całego województwa mazowieckiego, a bazę mamy pod Sochaczewem. Dojazd jest bezpłatny niezależnie od tego, jak daleko jedziemy.'],
+];
+---
+<Base
+  title="Skup aut za gotówkę — całe Mazowsze | TINA Skup Aut"
+  description="Skup samochodów osobowych, dostawczych i hybryd na terenie całego Mazowsza. Cena ustalona przez telefon, przyjazd tego samego dnia, dojazd i laweta za 0 zł."
+  path="/"
+  schema={[FIRMA_LD, faqLd(FAQ)]}
+>
+
+<div class="hero">
+  <img src="/img/hero.jpg" srcset="/img/hero-m.jpg 780w, /img/hero.jpg 1050w" sizes="100vw" alt="" fetchpriority="high">
+  <div class="w">
+    <p class="tag">Skup i sprzedaż samochodów · całe Mazowsze</p>
+    <h1><span>Skup aut</span> za gotówkę<span class="l2 gold">na terenie całego Mazowsza</span></h1>
+    <p class="lede">Odkupujemy samochody osobowe, dostawcze i hybrydy — sprawne, uszkodzone i powypadkowe. Cenę ustalamy przez telefon, przyjeżdżamy <span>tego samego dnia</span>, płacimy na miejscu. Dojazd i laweta nic nie kosztują.</p>
+
+    <form class="qf" id="qf" autocomplete="off">
+      <div class="row">
+        <div><label for="qm">Marka i model</label><input id="qm" placeholder="Audi A4 Avant"></div>
+        <div><label for="qr">Rocznik</label><input id="qr" inputmode="numeric" maxlength="4" placeholder="2012"></div>
+        <div><label for="qt">Twój telefon</label><input id="qt" inputmode="tel" placeholder="600 000 000"></div>
+        <button class="btn g" type="submit">Wyceń auto</button>
+      </div>
+      <p class="hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path></svg>
+        Wycena jest bezpłatna i nie zobowiązuje do sprzedaży. Kwotę podajemy przez telefon — bez kalkulatorów i bez widełek wziętych z sufitu.
+      </p>
+    </form>
+
+    <div class="acts" style="margin-top:18px">
+      <a class="btn o" href="/sprzedaz">Nie sprzedaję — szukam auta dla siebie</a>
+    </div>
+
+    <div class="pillars">
+      <div>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"><path d="M12 2 4 5.5v6c0 5 3.4 9.4 8 10.5 4.6-1.1 8-5.5 8-10.5v-6L12 2z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>
+        <b>Cena ustalona przez telefon</b>
+      </div>
+      <div>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"><path d="M2 8h20v11H2z"></path><path d="M2 8l4-5h12l4 5"></path><path d="M12 12v4"></path><path d="M9.5 13.6h5"></path></svg>
+        <b>Dojazd i laweta za 0 zł</b>
+      </div>
+      <div>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path></svg>
+        <b>Piętnaście minut na miejscu</b>
+      </div>
+      <div>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"><path d="M8 2v3M16 2v3M3.5 8.5h17"></path><rect x="3.5" y="5" width="17" height="16" rx="2"></rect></svg>
+        <b>Siedem dni w tygodniu</b>
+      </div>
+    </div>
+  </div>
+</div>
+
+<PasFaktow />
+
+<div class="darker"><div class="w"><section>
+  <Naglowek
+    eyebrow="Cztery rzeczy, od których nie odstępujemy"
+    tytul='Na czym możesz <span class="gold">polegać</span>'
+    opis="W skupie aut ludzie parzą się rzadko na cenie, a często na tym, że ktoś zmienił zdanie w ostatniej chwili. Dlatego zaczynamy od tego, a nie od obietnic."
+  />
+  <div class="vows">
+    <div class="vow">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5.5v6c0 5 3.4 9.4 8 10.5 4.6-1.1 8-5.5 8-10.5v-6L12 2z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>
+      <div><h3>Kwota z telefonu nie zmienia się przy podpisie</h3><p>Najstarsza zagrywka w tej branży: przez telefon kwota wysoka, a na miejscu nagle znajduje się dziesięć powodów, żeby zejść. Jeśli auto zgadza się z tym, co nam powiedziałeś, płacimy dokładnie tyle, ile ustaliliśmy.</p></div>
+    </div>
+    <div class="vow">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h20v11H2z"></path><path d="M2 8l4-5h12l4 5"></path><path d="M12 12v4"></path><path d="M9.5 13.6h5"></path></svg>
+      <div><h3>Dojazd i laweta kosztują zero — także gdy się nie dogadamy</h3><p>Przyjeżdżamy na własny koszt, z lawetą. Jeśli po obejrzeniu auta uznasz, że kwota Ci nie odpowiada, nie podpisujesz umowy i nie płacisz nic. Nie wystawiamy faktur za przyjazd.</p></div>
+    </div>
+    <div class="vow">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path></svg>
+      <div><h3>Piętnaście minut, nie pół dnia</h3><p>Oglądamy auto i robimy krótką jazdę. Nie odsyłamy Cię na diagnostykę, nie wozimy auta do zaprzyjaźnionego mechanika, nie wracamy „jutro z rzeczoznawcą”. Widzimy wystarczająco dużo w kwadrans.</p></div>
+    </div>
+    <div class="vow">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M8.5 14.5l2 2 4-4.5"></path></svg>
+      <div><h3>Umowa na miejscu, pieniądze przed załadunkiem</h3><p>Umowę kupna-sprzedaży przywozimy gotową i podpisujemy przy Tobie — jeden egzemplarz zostaje u Ciebie. Pieniądze dostajesz zanim auto wjedzie na lawetę, nigdy odwrotnie.</p></div>
+    </div>
+  </div>
+</section></div></div>
+
+<div class="w"><section id="co-kupujemy">
+  <Naglowek
+    eyebrow="Zakres skupu"
+    tytul='Jakie auta <span class="gold">odkupujemy</span>'
+    opis="Mówimy wprost także o tym, czego nie bierzemy. Krótki telefon, w którym słyszysz „nie”, jest uczciwszy niż umówiony przyjazd, z którego nic nie wychodzi."
+  />
+  <Kupujemy />
+  <div class="links" style="margin-top:26px">
+    <a href="/auta-uszkodzone-powypadkowe"><b>Auta uszkodzone i powypadkowe</b>Po stłuczce, po gradzie, po zalaniu</a>
+    <a href="/skup-aut-dostawczych"><b>Samochody dostawcze i busy</b>Furgony, skrzyniowe, brygadówki</a>
+    <a href="/ile-placimy"><b>Ile płacimy za auto</b>Co realnie decyduje o kwocie</a>
+    <a href="/jak-sprzedac-auto"><b>Jak sprzedać auto</b>Formalności krok po kroku</a>
+  </div>
+</section></div>
+
+<div class="w"><section id="jak">
+  <Naglowek
+    eyebrow="Przebieg sprawy"
+    tytul='Od telefonu do gotówki w <span class="gold">jeden dzień</span>'
+    opis="Bez wystawiania ogłoszeń, bez oglądaczy pod domem, bez czekania na przelew od nieznajomego."
+  />
+  <Kroki />
+</section></div>
+
+<div class="w"><section>
+  <Naglowek
+    eyebrow="Dwie strony jednej transakcji"
+    tytul='Skupujemy <span class="gold">i sprzedajemy</span>'
+    opis="Większość firm w tej branży robi tylko jedno. My stoimy po obu stronach, dlatego wiemy, ile auto jest naprawdę warte — nie w ogłoszeniu, tylko w transakcji."
+  />
+  <div class="two">
+    <div class="pane">
+      <img src="/img/auto-05.jpg" alt="">
+      <div class="in">
+        <h3><span>Skup</span><span>Chcę sprzedać auto</span></h3>
+        <p>Odkupujemy auto na siebie i płacimy od ręki. Nie pośredniczymy, nie bierzemy prowizji, nie czekamy, aż znajdzie się kupiec.</p>
+        <ul>
+          <li>Osobowe, dostawcze i hybrydy — każda marka i rocznik</li>
+          <li>Uszkodzone i powypadkowe, jeśli da się je jeszcze naprawić</li>
+          <li>Także bez ważnego OC albo przeglądu</li>
+          <li>Płatność gotówką na miejscu albo przelewem</li>
+        </ul>
+        <div class="go"><a class="btn g" href="/wycena">Wyceń auto</a></div>
+      </div>
+    </div>
+    <div class="pane">
+      <img src="/img/auto-14.jpg" alt="">
+      <div class="in">
+        <h3><span>Sprzedaż</span><span>Szukam auta dla siebie</span></h3>
+        <p>Sprzedajemy samochody, które sami wcześniej odkupiliśmy. Każde znamy od podszewki, bo przeszło przez nasze ręce.</p>
+        <ul>
+          <li>Auta z naszego skupu, nie w pośrednictwie</li>
+          <li>Wiemy, skąd auto pochodzi i co było w nim robione</li>
+          <li>Oglądasz na spokojnie, bez presji i bez opłat rezerwacyjnych</li>
+          <li>Aktualną ofertę pokazujemy telefonicznie i na Facebooku</li>
+        </ul>
+        <div class="go"><a class="btn o" style="color:var(--g);border-color:var(--g3)" href="/sprzedaz">Zobacz, jak kupić u nas auto</a></div>
+      </div>
+    </div>
+  </div>
+</section></div>
+
+<div class="dark"><div class="w"><section>
+  <Naglowek
+    eyebrow="Dowód, nie deklaracja"
+    tytul='Auta, które <span class="gold">już odkupiliśmy</span>'
+    opis="Prawdziwe transakcje i prawdziwe zdjęcia — od trzydziestoletniego mercedesa po skrzyniowego craftera."
+  />
+  <div class="grid4">
+    <figure class="shot"><img src="/img/auto-01.jpg" alt="Opel Movano, furgon" loading="lazy"><figcaption><b>Opel Movano</b><span>furgon</span></figcaption></figure>
+    <figure class="shot"><img src="/img/auto-02.jpg" alt="BMW serii 1, osobowy" loading="lazy"><figcaption><b>BMW serii 1</b><span>osobowy</span></figcaption></figure>
+    <figure class="shot"><img src="/img/auto-03.jpg" alt="VW Golf GTI, osobowy" loading="lazy"><figcaption><b>VW Golf GTI</b><span>osobowy</span></figcaption></figure>
+    <figure class="shot"><img src="/img/auto-04.jpg" alt="Ford Mondeo, kombi" loading="lazy"><figcaption><b>Ford Mondeo</b><span>kombi</span></figcaption></figure>
+    <figure class="shot"><img src="/img/auto-05.jpg" alt="Audi A6, osobowy" loading="lazy"><figcaption><b>Audi A6</b><span>osobowy</span></figcaption></figure>
+    <figure class="shot"><img src="/img/auto-06.jpg" alt="Citroën Jumper, furgon" loading="lazy"><figcaption><b>Citroën Jumper</b><span>furgon</span></figcaption></figure>
+    <figure class="shot"><img src="/img/auto-07.jpg" alt="VW Transporter, bus 9-osobowy" loading="lazy"><figcaption><b>VW Transporter</b><span>bus 9-osobowy</span></figcaption></figure>
+    <figure class="shot"><img src="/img/auto-08.jpg" alt="Dodge Charger, powypadkowy" loading="lazy"><figcaption><b>Dodge Charger</b><span class="dm">powypadkowy</span></figcaption></figure>
+  </div>
+  <div style="text-align:center;margin-top:30px"><a class="btn o" href="/realizacje">Zobacz wszystkie realizacje</a></div>
+</section></div></div>
+
+<div class="w"><section id="gdzie">
+  <Naglowek
+    eyebrow="Obszar działania"
+    tytul='Całe <span class="gold">Mazowsze</span>'
+    opis="Bazę mamy pod Sochaczewem, ale jeździmy po całym województwie. Dojazd kosztuje tyle samo wszędzie — zero złotych."
+  />
+  <div class="local">
+    <div class="box">
+      <h3>Najczęściej jeździmy tutaj</h3>
+      <p style="margin-bottom:14px">To kierunki, w których bywamy regularnie. Jeśli Twojej miejscowości nie ma na liście, to nie znaczy, że nie przyjedziemy — po prostu zadzwoń i zapytaj.</p>
+      <div class="near">
+        <a href="/skup-aut-sochaczew">Sochaczew</a>
+        <a href="/skup-aut-warszawa">Warszawa</a>
+        <span>Żyrardów</span><span>Grodzisk Mazowiecki</span><span>Błonie</span><span>Ożarów Mazowiecki</span>
+        <span>Pruszków</span><span>Piaseczno</span><span>Nowy Dwór Mazowiecki</span><span>Legionowo</span>
+        <span>Płock</span><span>Radom</span><span>Wyszogród</span><span>Łowicz</span>
+      </div>
+    </div>
+    <div class="box">
+      <h3>Jak umawiamy przyjazd</h3>
+      <ul class="tick">
+        <li>Przyjeżdżamy pod adres, który podasz — dom, praca, warsztat, parking</li>
+        <li>Umawiamy konkretną godzinę, nie „gdzieś po południu”</li>
+        <li>Jedziemy tego samego dnia, także w weekend</li>
+        <li>Nie musisz nigdzie dowozić auta ani szukać lawety</li>
+      </ul>
+      <p style="margin-top:16px;font-size:15px;color:#5a616e">Odbieramy telefon siedem dni w tygodniu. Jeśli nie odbierzemy od razu, jesteśmy w trasie — oddzwonimy.</p>
+    </div>
+  </div>
+</section></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Pytania" tytul='Zanim <span class="gold">zadzwonisz</span>' />
+  <Faq pary={FAQ} />
+  <div style="text-align:center;margin-top:30px"><a class="btn k" href="/pytania">Wszystkie pytania i odpowiedzi</a></div>
+</section></div>
+
+<Formularz strona="strona glowna" />
+<Cta />
+
+</Base>

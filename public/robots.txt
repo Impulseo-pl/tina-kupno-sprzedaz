@@ -1,0 +1,7 @@
+# Strona jest w budowie i celowo zamknieta przed wyszukiwarkami.
+# W dniu uruchomienia na tinaskupaut.pl: zamienic na "Allow: /", odkomentowac Sitemap
+# i zdjac <meta name="robots"> z src/layouts/Base.astro.
+User-agent: *
+Disallow: /
+
+# Sitemap: https://tinaskupaut.pl/sitemap.xml

@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import Chero from '../components/Chero.astro';
+import Naglowek from '../components/Naglowek.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { okruszki, faqLd } from '../dane/firma';
+
+const WYCENA: [string, string][] = [
+  ['Ile trwa wycena i czy jest płatna?', 'Wycena jest bezpłatna. Kwotę ustalamy przez telefon, zwykle w trakcie pierwszej rozmowy. Nie zobowiązuje ona do sprzedaży — jeśli Ci nie odpowiada, po prostu nie podpisujesz umowy.'],
+  ['Dlaczego nie ma kalkulatora na stronie?', 'Bo kalkulator zna tylko rocznik, przebieg i paliwo, a to są akurat te rzeczy, które o wartości auta decydują najmniej. Wyceniłby identycznie auto garażowane i auto po dachowaniu. Wolimy podać jedną konkretną kwotę po rozmowie niż widełki, których i tak nie da się dotrzymać.'],
+  ['Czy kwota z telefonu może się zmienić na miejscu?', 'Tylko jeśli auto różni się od opisu — na przykład okazuje się, że jest po szkodzie, o której nie było mowy. Gdy wszystko się zgadza, płacimy dokładnie tyle, ile ustaliliśmy.'],
+  ['Mogę podać swoją cenę?', 'Tak i prosimy o to. Jeśli od razu wiemy, na jakiej kwocie Ci zależy, w jednej rozmowie ustalamy, czy jest o czym rozmawiać.'],
+];
+
+const ZAKRES: [string, string][] = [
+  ['Jakie auta kupujecie?', 'Osobowe, dostawcze do 3,5 tony i hybrydy. Sprawne, uszkodzone, powypadkowe i niejeżdżące. Każda marka i każdy rocznik.'],
+  ['Czego nie kupujecie?', 'Samochodów w pełni elektrycznych, motocykli, kamperów i przyczep. Nie bierzemy też aut, które nadają się już wyłącznie na części albo na złom.'],
+  ['Czy prowadzicie kasację i wystawiacie zaświadczenie o demontażu?', 'Nie. Nie jesteśmy stacją demontażu, więc takiego dokumentu nie wydajemy. Auto przeznaczone na złom trzeba oddać do stacji demontażu — tylko ona wystawi zaświadczenie potrzebne do wyrejestrowania.'],
+  ['Kupicie auto bez ważnego OC albo przeglądu?', 'Tak. Brak OC czy przeglądu wpływa na kwotę, ale nie blokuje sprzedaży.'],
+  ['A auto, które nie odpala i stoi od lat?', 'Tak, o ile da się je jeszcze odratować. Przyjeżdżamy lawetą, transport jest po naszej stronie.'],
+  ['Kupujecie hybrydy?', 'Tak, także te z przepracowaną baterią. Elektryków natomiast nie kupujemy — to często mylone, więc piszemy wprost.'],
+];
+
+const PRZEBIEG: [string, string][] = [
+  ['Jak szybko przyjeżdżacie?', 'Zwykle tego samego dnia, w którym dzwonisz. W Sochaczewie i okolicy bywa, że w ciągu godziny.'],
+  ['Czy dojazd i laweta są płatne?', 'Nie. Kosztują zero złotych, także wtedy, gdy po obejrzeniu auta nie dochodzi do transakcji. Nie doliczamy ich też do wyceny.'],
+  ['Czy muszę gdzieś dowieźć auto?', 'Nie. Przyjeżdżamy pod wskazany adres — pod dom, pod pracę, do warsztatu, na parking.'],
+  ['Ile to trwa na miejscu?', 'Około kwadransa. Oglądamy auto, robimy krótką jazdę, podpisujemy umowę i płacimy. Bez rzeczoznawców i bez odsyłania na diagnostykę.'],
+  ['Pracujecie w weekendy?', 'Odbieramy telefon siedem dni w tygodniu i w weekendy też jeździmy.'],
+];
+
+const FORMALNOSCI: [string, string][] = [
+  ['Co muszę mieć przy sobie?', 'Dowód rejestracyjny, dowód osobisty i komplet kluczy. Jeśli została wydana karta pojazdu — również ją.'],
+  ['Kto przygotowuje umowę?', 'My. Przywozimy ją gotową, wypełniamy przy Tobie i podpisujemy na miejscu. Jeden egzemplarz zostaje u Ciebie.'],
+  ['Kiedy dostanę pieniądze?', 'Zaraz po podpisaniu umowy, jeszcze zanim auto wjedzie na lawetę. Gotówką na miejscu albo przelewem — jak wolisz.'],
+  ['Kto zgłasza zbycie pojazdu?', 'Zgodnie z przepisami robi to sprzedający, czyli Ty. Masz na to 30 dni i możesz to załatwić przez internet. Podpowiadamy, co i gdzie złożyć.'],
+  ['Co z ubezpieczeniem OC?', 'Polisa przechodzi na kupującego razem z autem. Ty masz obowiązek powiadomić ubezpieczyciela w ciągu 14 dni. Jeśli nabywca wypowie polisę, zwrot niewykorzystanej składki należy się Tobie — występujesz o niego u swojego ubezpieczyciela.'],
+  ['Auto ma współwłaściciela. Da się je sprzedać?', 'Tak, ale umowę muszą podpisać wszyscy właściciele wpisani w dowodzie rejestracyjnym. Jeśli ktoś nie może być obecny, potrzebne jest jego pisemne pełnomocnictwo.'],
+];
+
+const WSZYSTKIE = [...WYCENA, ...ZAKRES, ...PRZEBIEG, ...FORMALNOSCI];
+---
+<Base
+  title="Pytania i odpowiedzi — skup aut | TINA Skup Aut"
+  description="Wycena, zakres skupu, przebieg transakcji i formalności po sprzedaży auta. Odpowiedzi na pytania, które padają w każdej rozmowie."
+  path="/pytania"
+  schema={[okruszki([['/pytania', 'Pytania i odpowiedzi']]), faqLd(WSZYSTKIE)]}
+>
+
+<Chero
+  okruszek="Pytania i odpowiedzi"
+  lede="Zebraliśmy pytania, które padają w prawie każdej rozmowie. Jeśli czegoś tu nie ma, zadzwoń — odpowiemy od ręki."
+  sub="Odbieramy telefon siedem dni w tygodniu."
+><span>Pytania <span class="gold">i odpowiedzi</span></span></Chero>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Wycena" tytul='Ile i <span class="gold">na jakiej podstawie</span>' />
+  <Faq pary={WYCENA} />
+</section></div>
+
+<div class="darker"><div class="w"><section>
+  <Naglowek eyebrow="Zakres" tytul='Co kupujemy, a <span class="gold">czego nie</span>' />
+  <Faq pary={ZAKRES} />
+</section></div></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Przebieg" tytul='Jak wygląda <span class="gold">odbiór auta</span>' />
+  <Faq pary={PRZEBIEG} />
+</section></div>
+
+<div class="darker"><div class="w"><section>
+  <Naglowek eyebrow="Formalności" tytul='Umowa, zbycie <span class="gold">i ubezpieczenie</span>' />
+  <Faq pary={FORMALNOSCI} />
+  <p style="max-width:70ch;margin:26px auto 0;text-align:center;color:var(--onk-mut)">Więcej szczegółów o dokumentach i terminach znajdziesz w poradniku <a href="/jak-sprzedac-auto" style="color:var(--g4);font-weight:700">jak sprzedać auto</a>.</p>
+</section></div></div>
+
+<Cta />
+
+</Base>

@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import Chero from '../components/Chero.astro';
+import Naglowek from '../components/Naglowek.astro';
+import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
+import { okruszki, faqLd } from '../dane/firma';
+
+const FAQ: [string, string][] = [
+  ['Co muszę mieć przy sobie przy sprzedaży auta?', 'Dowód rejestracyjny, dowód osobisty i komplet kluczy. Jeśli została wydana karta pojazdu, ona również. Reszta — książka serwisowa, faktury za naprawy — nie jest obowiązkowa, ale podnosi wartość auta.'],
+  ['Kto przygotowuje umowę kupna-sprzedaży?', 'My. Przywozimy ją gotową i podpisujemy na miejscu, a jeden egzemplarz zostaje u Ciebie. Zawsze przeczytaj ją przed podpisem — również u nas.'],
+  ['Kto zgłasza zbycie pojazdu?', 'Zgłoszenia dokonuje sprzedający, czyli Ty. Masz na to 30 dni od podpisania umowy i możesz to zrobić przez internet albo w wydziale komunikacji. My podpowiadamy, co i gdzie złożyć.'],
+  ['Co z ubezpieczeniem OC po sprzedaży?', 'Polisa przechodzi na kupującego wraz z autem, a Ty masz obowiązek poinformować ubezpieczyciela o sprzedaży w ciągu 14 dni. Jeśli nabywca wypowie polisę, zwrot niewykorzystanej składki należy się Tobie — załatwiasz go bezpośrednio u swojego ubezpieczyciela.'],
+  ['Czy mogę sprzedać auto, którego jestem współwłaścicielem?', 'Tak, ale umowę muszą podpisać wszyscy właściciele wpisani w dowodzie rejestracyjnym. Jeśli któryś nie może być obecny, potrzebne jest jego pisemne pełnomocnictwo.'],
+];
+---
+<Base
+  title="Jak sprzedać auto — formalności krok po kroku | TINA"
+  description="Dokumenty, umowa kupna-sprzedaży, zgłoszenie zbycia w wydziale komunikacji i sprawa OC. Praktyczny poradnik sprzedaży samochodu bez niespodzianek."
+  path="/jak-sprzedac-auto"
+  schema={[okruszki([['/jak-sprzedac-auto', 'Jak sprzedać auto']]), faqLd(FAQ)]}
+>
+
+<Chero
+  okruszek="Jak sprzedać auto"
+  lede="Co przygotować, co musi znaleźć się w umowie i o czym pamiętać po sprzedaży, żeby za pół roku nie przyszło wezwanie do zapłaty za cudze mandaty."
+  sub="Poradnik dla sprzedających — niezależnie od tego, komu sprzedajesz auto."
+><span>Jak <span class="gold">sprzedać auto</span></span></Chero>
+
+<div class="w"><section>
+  <div class="proza">
+    <h2>Co przygotować przed sprzedażą</h2>
+    <p>Lista jest krótsza, niż się powszechnie sądzi. Nie potrzebujesz badania technicznego na sprzedaż, nie musisz myć auta ani naprawiać usterek. Potrzebujesz dokumentów i kluczy.</p>
+  </div>
+
+  <div class="docs" style="margin-top:26px">
+    <div class="doc"><b>Dowód rejestracyjny</b><p>Podstawowy dokument. Sprawdź, czy dane właściciela w nim są aktualne — to najczęstsze źródło komplikacji przy sprzedaży.</p></div>
+    <div class="doc"><b>Karta pojazdu</b><p>Tylko jeśli została wydana. Dla aut zarejestrowanych po 2020 roku zwykle nie istnieje i nikt jej nie będzie wymagał.</p></div>
+    <div class="doc"><b>Dowód osobisty</b><p>Potrzebny do spisania umowy. Dane muszą zgadzać się z tymi w dowodzie rejestracyjnym.</p></div>
+    <div class="doc"><b>Komplet kluczy</b><p>Drugi kluczyk realnie podnosi wartość auta. Jeśli go nie ma, powiedz o tym od razu — to nie problem, tylko informacja.</p></div>
+    <div class="doc"><b>Polisa OC</b><p>Przyda się numer polisy i nazwa ubezpieczyciela. Polisa przechodzi na kupującego razem z autem.</p></div>
+    <div class="doc opt"><b>Historia serwisowa</b><p>Książka, faktury, potwierdzenia napraw. Nieobowiązkowe, ale każdy taki papier podnosi kwotę.</p></div>
+  </div>
+
+  <div class="proza" style="margin-top:44px">
+    <h2>Umowa kupna-sprzedaży — co musi w niej być</h2>
+    <p>Umowa nie wymaga notariusza ani żadnej szczególnej formy, ale musi jednoznacznie identyfikować auto i obie strony. Powinna zawierać datę i miejsce zawarcia, dane sprzedającego i kupującego wraz z numerami dokumentów tożsamości, dane pojazdu — markę, model, rok produkcji, numer VIN, numer rejestracyjny i przebieg — cenę zapisaną cyfrą i słownie, oświadczenie o stanie prawnym auta oraz podpisy obu stron.</p>
+    <p>Umowę sporządza się w dwóch egzemplarzach, po jednym dla każdej ze stron. <strong>Nie oddawaj swojego egzemplarza</strong> — będzie potrzebny do zgłoszenia zbycia i do ubezpieczyciela. I przeczytaj ją przed podpisem, nawet jeśli druga strona zapewnia, że to zwykły formularz.</p>
+
+    <h2>Po sprzedaży: dwa terminy, o których trzeba pamiętać</h2>
+    <p>To jest część, na której najwięcej osób się potyka, bo o niej po prostu zapominają. Po sprzedaży auto formalnie nadal figuruje na Ciebie, dopóki nie zgłosisz zbycia.</p>
+  </div>
+
+  <div class="duo" style="margin-top:26px">
+    <div class="box">
+      <h3>30 dni — wydział komunikacji</h3>
+      <p>Zgłoszenie zbycia pojazdu składa sprzedający w wydziale komunikacji właściwym dla swojego miejsca zamieszkania. Można to zrobić przez internet albo osobiście, załączając kopię umowy.</p>
+      <p style="margin-top:12px">Po co to robić: dopóki zbycie nie jest zgłoszone, auto widnieje w rejestrze jako Twoje. Za niezgłoszenie w terminie grozi kara pieniężna.</p>
+    </div>
+    <div class="box">
+      <h3>14 dni — ubezpieczyciel</h3>
+      <p>Trzeba powiadomić swojego ubezpieczyciela o sprzedaży auta, podając dane nabywcy. Polisa OC przechodzi na kupującego razem z pojazdem.</p>
+      <p style="margin-top:12px">Jeśli kupujący wypowie polisę, niewykorzystana część składki wraca do Ciebie. O zwrot występujesz sam, bezpośrednio u ubezpieczyciela.</p>
+    </div>
+  </div>
+
+  <div class="proza" style="margin-top:44px">
+    <h2>Najczęstsze błędy przy sprzedaży auta</h2>
+    <p><strong>Oddanie obu egzemplarzy umowy.</strong> Bez swojego egzemplarza nie zgłosisz zbycia i nie załatwisz niczego u ubezpieczyciela.</p>
+    <p><strong>Odpuszczenie zgłoszenia zbycia.</strong> Przez kilka miesięcy nic się nie dzieje, a potem przychodzi mandat za przejazd, którego nie było, albo wezwanie do wskazania kierującego.</p>
+    <p><strong>Wpisanie w umowie kwoty innej niż rzeczywista.</strong> Pomysł, żeby wpisać niższą cenę „dla podatku”, kończy się źle dla obu stron, a najczęściej dla sprzedającego.</p>
+    <p><strong>Puste pola w umowie.</strong> Nigdy nie podpisuj umowy z nieuzupełnionymi rubrykami, choćby druga strona zapewniała, że „dopisze później”.</p>
+    <p><strong>Wydanie auta przed otrzymaniem pieniędzy.</strong> Kolejność jest zawsze ta sama: umowa, zapłata, dopiero potem kluczyki. U nas również.</p>
+
+    <h2>Jak to wygląda, gdy sprzedajesz auto nam</h2>
+    <p>Umowę przywozimy gotową i wypełniamy przy Tobie. Podpisujecie oba egzemplarze, jeden zostaje u Ciebie. Płacimy ustaloną kwotę — gotówką na miejscu albo przelewem, jak wolisz — i dopiero potem zabieramy auto.</p>
+    <p>Zgłoszenie zbycia w wydziale komunikacji oraz powiadomienie ubezpieczyciela zostają po Twojej stronie, bo tak wynika z przepisów: obowiązek dotyczy sprzedającego. Powiemy dokładnie, co i gdzie złożyć, żeby zajęło to kilkanaście minut przez internet.</p>
+  </div>
+</section></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Pytania" tytul='Formalności — <span class="gold">pytania</span>' />
+  <Faq pary={FAQ} />
+</section></div>
+
+<Cta
+  tytul='Chcesz mieć to <span class="gold">z głowy w jeden dzień</span>'
+  opis="Umowa po naszej stronie, pieniądze na miejscu, auto zabieramy lawetą. Zostaje Ci tylko zgłoszenie zbycia — podpowiemy, jak zrobić to przez internet."
+/>
+
+</Base>

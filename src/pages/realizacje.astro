@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import Chero from '../components/Chero.astro';
+import Naglowek from '../components/Naglowek.astro';
+import Cta from '../components/Cta.astro';
+import { okruszki } from '../dane/firma';
+
+/* Zdjecia od klienta — auta, ktore realnie przeszly przez jego rece.
+   Zadnych stockow: jesli czegos nie ma na zdjeciu, nie ma tego na stronie. */
+const AUTA = [
+  ['auto-01', 'Opel Movano', 'furgon', ''],
+  ['auto-02', 'BMW serii 1', 'osobowy', ''],
+  ['auto-03', 'VW Golf GTI', 'osobowy', ''],
+  ['auto-04', 'Ford Mondeo', 'kombi', ''],
+  ['auto-05', 'Audi A6', 'osobowy', ''],
+  ['auto-06', 'Citroën Jumper', 'furgon', ''],
+  ['auto-07', 'VW Transporter', 'bus 9-osobowy', ''],
+  ['auto-08', 'Dodge Charger', 'powypadkowy', 'dm'],
+  ['auto-09', 'Mercedes W124', 'klasyk', ''],
+  ['auto-10', 'VW Crafter', 'skrzyniowy', ''],
+  ['auto-11', 'Peugeot Boxer', 'furgon', ''],
+  ['auto-12', 'Suzuki Swift', 'osobowy', ''],
+  ['auto-13', 'Audi A4', 'uszkodzony tył', 'dm'],
+  ['auto-14', 'Dacia Duster', 'SUV', ''],
+  ['auto-15', 'Honda Civic', 'osobowy', ''],
+  ['auto-16', 'Land Cruiser', 'terenowy', ''],
+  ['auto-17', 'Fiat Fiorino', 'dostawczy', ''],
+  ['auto-18', 'Toyota Tundra', 'pickup', ''],
+];
+---
+<Base
+  title="Realizacje — auta, które odkupiliśmy | TINA Skup Aut"
+  description="Zdjęcia samochodów, które realnie przeszły przez nasze ręce: osobowe, dostawcze, klasyki i auta powypadkowe. Prawdziwe transakcje, nie zdjęcia ze stocka."
+  path="/realizacje"
+  schema={okruszki([['/realizacje', 'Realizacje']])}
+>
+
+<Chero
+  okruszek="Realizacje"
+  lede="Osiemnaście samochodów, które przeszły przez nasze ręce. Od trzydziestoletniego mercedesa, przez skrzyniowego craftera, po amerykańskiego pickupa i auta po szkodzie."
+  sub="Wszystkie zdjęcia są nasze. Żadnych obrazków ze stocka."
+  akcje={false}
+><span>Auta, które <span class="gold">odkupiliśmy</span></span></Chero>
+
+<div class="w"><section>
+  <div class="proza">
+    <h2>Dlaczego pokazujemy to, co pokazujemy</h2>
+    <p>W tej branży łatwo napisać „skupujemy każde auto” i wstawić obok zdjęcie lśniącego kombi z banku zdjęć. Poniżej są prawdziwe samochody, które kupiliśmy — także te brzydkie, stare i rozbite, bo one też przez nas przechodzą i nie ma powodu ich ukrywać.</p>
+  </div>
+</section></div>
+
+<div class="dark"><div class="w"><section>
+  <div class="grid4">
+    {AUTA.map(([plik, nazwa, opis, klasa]) => (
+      <figure class="shot">
+        <img src={`/img/${plik}.jpg`} alt={`${nazwa}, ${opis}`} loading="lazy">
+        <figcaption><b>{nazwa}</b><span class={klasa}>{opis}</span></figcaption>
+      </figure>
+    ))}
+  </div>
+</section></div></div>
+
+<div class="w"><section>
+  <Naglowek
+    eyebrow="Co z tego wynika"
+    tytul='Zakres jest <span class="gold">szerszy, niż się wydaje</span>'
+    opis="Na zdjęciach jest wszystko: osobówki, dostawcze, klasyk, terenowe, pickup i auta po szkodzie. To nie jest przypadek — tak wygląda przekrój tego, co realnie odkupujemy."
+  />
+  <div class="links">
+    <a href="/auta-uszkodzone-powypadkowe"><b>Auta uszkodzone</b>Po stłuczce, po gradzie, niejeżdżące</a>
+    <a href="/skup-aut-dostawczych"><b>Dostawcze i busy</b>Furgony, skrzyniowe, brygadówki</a>
+    <a href="/ile-placimy"><b>Ile płacimy</b>Co decyduje o kwocie</a>
+    <a href="/wycena"><b>Wycena auta</b>Formularz i kontakt</a>
+  </div>
+</section></div>
+
+<Cta />
+
+</Base>

@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Chero from '../components/Chero.astro';
+import Naglowek from '../components/Naglowek.astro';
+import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
+import Telefon from '../components/Telefon.astro';
+import { okruszki, faqLd, FIRMA } from '../dane/firma';
+
+const FAQ: [string, string][] = [
+  ['Gdzie mogę zobaczyć aktualną ofertę?', 'Najszybciej telefonicznie — powiedz, czego szukasz i w jakim budżecie, a powiemy, co mamy w tej chwili. Część aut pokazujemy też na naszym Facebooku.'],
+  ['Czy jesteście komisem?', 'Nie. Sprzedajemy wyłącznie auta, które wcześniej sami odkupiliśmy i które są naszą własnością. Nie pośredniczymy w sprzedaży cudzych samochodów.'],
+  ['Czy mogę obejrzeć auto przed zakupem?', 'Oczywiście. Umawiamy się na konkretną godzinę, oglądasz auto na spokojnie i zadajesz pytania. Nie pobieramy żadnych opłat rezerwacyjnych.'],
+  ['Powiecie prawdę o stanie auta?', 'Tak, łącznie z rzeczami, które są do poprawy. Auto i tak przeszło przez nasze ręce, więc wiemy o nim więcej niż jakikolwiek pośrednik — nie ma sensu tego ukrywać.'],
+];
+---
+<Base
+  title="Samochody na sprzedaż — auta z naszego skupu | TINA"
+  description="Sprzedajemy samochody, które sami wcześniej odkupiliśmy. Nie jesteśmy komisem — każde auto jest naszą własnością i znamy jego historię."
+  path="/sprzedaz"
+  schema={[okruszki([['/sprzedaz', 'Sprzedaż']]), faqLd(FAQ)]}
+  cta={{ label: 'Zapytaj o auto', href: `tel:${FIRMA.tel1tel}` }}
+>
+
+<Chero
+  okruszek="Sprzedaż"
+  lede="Sprzedajemy auta, które wcześniej sami odkupiliśmy. Każde przeszło przez nasze ręce, więc wiemy o nim wszystko — łącznie z tym, co jest w nim do poprawy."
+  sub="Nie jesteśmy komisem. Auta, które sprzedajemy, są naszą własnością."
+  akcje={false}
+><span>Samochody <span class="gold">na sprzedaż</span></span></Chero>
+
+<div class="w"><section>
+  <div class="proza">
+    <h2>Kupujesz od właściciela, nie od pośrednika</h2>
+    <p>To jest cała różnica między nami a komisem. W komisie auto należy do kogoś innego, a osoba, która Ci je pokazuje, zna je wyłącznie z opisu poprzedniego właściciela. My sprzedajemy samochody, które sami kupiliśmy — byliśmy przy ich odbiorze, widzieliśmy je na miejscu, przejechaliśmy się nimi i rozmawialiśmy z poprzednim właścicielem.</p>
+    <p>Dlatego na pytanie „co w nim było robione” odpowiadamy konkretnie, a nie „tak było, jak przyjechało”. I dlatego mówimy też o tym, co w aucie jest do poprawy — bo i tak zobaczysz to przy pierwszym przeglądzie, a my wolimy sprzedać auto raz, uczciwie, niż tłumaczyć się tydzień później.</p>
+
+    <h2>Jak sprawdzić, co mamy w tej chwili</h2>
+    <p>Oferta zmienia się z tygodnia na tydzień, bo auta pojawiają się i znikają w tempie, w jakim je kupujemy i sprzedajemy. Najszybszą drogą jest telefon: powiedz, jakiego auta szukasz, na jaki budżet i do czego ma służyć, a powiemy, co mamy teraz i czego spodziewamy się w najbliższym czasie.</p>
+    <p>Część samochodów pokazujemy też na naszym profilu na Facebooku.</p>
+  </div>
+
+  <div class="duo" style="margin-top:26px">
+    <div class="box">
+      <h3>Zapytaj o dostępne auta</h3>
+      <p style="margin-bottom:16px">Powiedz, czego szukasz — marka, nadwozie, paliwo, budżet. Jeśli nie mamy teraz nic pasującego, powiemy to wprost zamiast namawiać na cokolwiek innego.</p>
+      <div class="acts"><Telefon /></div>
+      <p style="margin-top:16px;font-size:15px;color:#5a616e">Odbieramy 7 dni w tygodniu. Drugi numer: <a href={`tel:${FIRMA.tel2tel}`}>{FIRMA.tel2}</a></p>
+    </div>
+    <div class="box">
+      <h3>Zobacz na Facebooku</h3>
+      <p style="margin-bottom:16px">Bieżące auta wrzucamy na nasz profil. Tam najszybciej zobaczysz zdjęcia tego, co akurat stoi.</p>
+      <div class="acts"><a class="btn o" href={FIRMA.fb} rel="noopener" target="_blank">Profil TINA Skup Aut</a></div>
+    </div>
+  </div>
+
+  <div class="proza" style="margin-top:44px">
+    <h2>Jak wygląda zakup</h2>
+    <p>Umawiamy się na konkretną godzinę i oglądasz auto bez pośpiechu. Możesz je odpalić, przejechać się, zajrzeć pod maskę i pod auto. Nie pobieramy opłat rezerwacyjnych i nie stosujemy żadnych sztuczek z „drugim zainteresowanym, który ma przyjechać za godzinę”.</p>
+    <p>Jeśli auto Ci odpowiada, spisujemy umowę i rozliczamy się. Jeśli nie — rozstajemy się bez urazy i bez żadnych kosztów po Twojej stronie.</p>
+
+    <h2>Masz auto do oddania w rozliczeniu</h2>
+    <p>Skoro prowadzimy też skup, to jest naturalna sytuacja: sprzedajemy Ci jedno auto i odkupujemy Twoje stare. Wyceniamy je na tych samych zasadach co każde inne, a rozliczamy różnicę. Powiedz o tym przy pierwszej rozmowie, żebyśmy od razu wiedzieli, o czym mówimy.</p>
+  </div>
+</section></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Pytania" tytul='Zakup auta — <span class="gold">pytania</span>' />
+  <Faq pary={FAQ} />
+</section></div>
+
+<Cta
+  tytul='A może chcesz <span class="gold">sprzedać swoje auto</span>'
+  opis="Prowadzimy przede wszystkim skup. Opisz auto, a oddzwonimy z konkretną kwotą — dojazd i laweta po naszej stronie."
+/>
+
+</Base>

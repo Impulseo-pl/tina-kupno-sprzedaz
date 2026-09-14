@@ -5,41 +5,64 @@ NIP 522-234-50-44 · REGON 142742668 · Przyszła 2B, 96-513 Kozłów Biskupi ·
 
 Docelowy adres: **tinaskupaut.pl**
 Podgląd roboczy: **https://tina-skup-aut.pages.dev** (CF Pages, `git push` = deploy)
-Stary link dla klienta: https://impulseo-pl.github.io/tina-kupno-sprzedaz/
+⚠️ Stary link na GitHub Pages **już nie działa** — do podmiany w CRM na adres Cloudflare.
 
 ---
 
 ## Jak to jest zbudowane
 
-Statyczny HTML, bez build-stepu. Każda podstrona to osobny plik, który edytuje się wprost —
-otwierasz w edytorze, zapisujesz, `git push`. Nic się nie generuje, nic nie trzeba instalować.
+**Astro** — generator stron statycznych. Ten sam stack co strona firmowa impulseo.pl, więc
+konwencje są identyczne: `build.format: 'file'`, budowanie przez `bash build.sh`, katalog `dist`.
 
 ```
-index.html                 strona główna
-skup.html                  skup aut
-sprzedaz.html              sprzedaż aut
-wycena.html                formularz wyceny
-realizacje.html            galeria odkupionych aut (18 zdjęć klienta)
-pytania.html               FAQ
-polityka-prywatnosci.html
-dziekujemy.html            po wysłaniu formularza
-404.html
-assets/styles.css          jeden arkusz dla całej strony
-assets/app.js              formularz, galeria, animacje (11 kB)
-img/                       zdjęcia klienta, logo, og.jpg
+src/pages/*.astro        jedna podstrona = jeden plik
+src/layouts/Base.astro   nagłówek, nawigacja, stopka, pasek CTA — w jednym miejscu
+src/components/          powtarzalne bloki: formularz, kroki, co kupujemy, FAQ, CTA
+src/dane/firma.ts        dane firmy, menu, schema.org — zmiana numeru = jedna edycja
+src/pages/sitemap.xml.ts sitemapa z jawnej listy adresów
+public/assets/           styles.css i app.js (kopiowane bez zmian)
+public/img/              zdjęcia klienta, logo, og.jpg
+public/robots.txt
 ```
 
-Nagłówek i stopka są powielone w każdym pliku — zmiana w nawigacji oznacza poprawkę
-we wszystkich podstronach (jest ich osiem).
+Praca na co dzień: `npm run dev` (podgląd na żywo), `npm run build` (to samo, co robi Cloudflare).
+Pierwsze uruchomienie wymaga `npm install`.
+
+**Dlaczego Astro, a nie płaskie pliki .html:** nagłówek i stopka były skopiowane w każdym pliku,
+więc zmiana jednego linku w menu oznaczała szesnaście edycji. Przy blogu i kolejnych podstronach
+miejscowości byłoby tego kilkadziesiąt. Astro robi z tego jeden layout.
+
+⚠️ **To nie zwalnia z myślenia o treści.** Szablon ułatwia produkowanie podstron miejscowości
+hurtem — czyli dokładnie to, co dało poprzedniej wersji 37 doorway pages różniących się w 4%.
+Zasada zostaje: **jedna miejscowość = jeden własny tekst**, dopisywany etapami, nigdy z szablonu.
+
+## Podstrony
+
+| Plik | Adres | Fraza główna |
+|---|---|---|
+| `index.astro` | `/` | skup aut za gotówkę, skup aut mazowieckie |
+| `ile-placimy.astro` | `/ile-placimy` | skup aut cennik |
+| `auta-uszkodzone-powypadkowe.astro` | `/auta-uszkodzone-powypadkowe` | skup aut uszkodzonych, powypadkowych |
+| `skup-aut-dostawczych.astro` | `/skup-aut-dostawczych` | skup aut dostawczych |
+| `skup-aut-sochaczew.astro` | `/skup-aut-sochaczew` | skup aut sochaczew |
+| `skup-aut-warszawa.astro` | `/skup-aut-warszawa` | skup aut warszawa |
+| `komis-czy-skup-aut.astro` | `/komis-czy-skup-aut` | komis czy skup, ile bierze komis |
+| `jak-sprzedac-auto.astro` | `/jak-sprzedac-auto` | jak sprzedać auto, zgłoszenie zbycia |
+| `sprzedaz.astro` | `/sprzedaz` | samochody na sprzedaż |
+| `wycena.astro` | `/wycena` | wycena auta — cel konwersji |
+| `o-nas.astro`, `realizacje.astro`, `pytania.astro`, `kontakt.astro` | — | wsparcie, zaufanie |
+| `polityka-prywatnosci.astro`, `dziekujemy.astro`, `404.astro` | — | wymogi i obsługa |
 
 ## Gdzie to stoi
 
 Projekt Cloudflare Pages **`tina-skup-aut`**, git connection z tym repo, branch `main`,
-**bez build-stepu** (pusty build command, output = katalog główny). Push na `main` idzie na żywo.
-GitHub Pages nadal działa równolegle, bo link do niego siedzi w CRM u klienta.
+budowanie `bash build.sh` → `dist`. Push na `main` idzie na żywo: **https://tina-skup-aut.pages.dev**
 
-Strona jest zamknięta przed Google: `noindex` na wszystkich podstronach + `robots.txt`
-z `Disallow: /`. Tak zostaje do dnia go-live.
+GitHub Pages zostało **wyłączone** przy przejściu na Astro — serwowało katalog główny repo, w którym
+po migracji nie ma już gotowego HTML-a. Link w CRM trzeba podmienić na adres Cloudflare.
+
+Strona jest zamknięta przed Google: `noindex` w `Base.astro` + `robots.txt` z `Disallow: /`.
+Tak zostaje do dnia go-live.
 
 ## Stan treści
 
@@ -68,13 +91,9 @@ telefon → przyjazd → oględziny wizualne i krótka jazda, bez mechaników i 
 
 ## ⛔ Zanim strona pójdzie na tinaskupaut.pl
 
-1. **Zdjąć noindex** ze wszystkich podstron i przestawić `robots.txt` na `Allow: /`
-   (plus wpis `Sitemap:`). Bez tego Google jej nie pokaże.
-2. **Zamienić linki wewnętrzne z `.html` na czyste adresy** (`href="skup.html"` → `href="/skup"`).
-   Canonical i `sitemap.xml` są już czyste; dziś CF robi z `.html` przekierowanie 308 samo,
-   ale to zbędny skok przy każdym kliknięciu. Ta zamiana zabija wersję na GitHub Pages,
-   więc robi się ją razem z wyłączeniem GH Pages.
-3. **Przenieść formularz** z FormSubmit na Cloudflare Pages Function + Resend, jak u reszty
+1. **Zdjąć noindex** — jedna linijka w `src/layouts/Base.astro` — i przestawić `public/robots.txt`
+   na `Allow: /` wraz z odkomentowaniem wpisu `Sitemap:`. Bez tego Google strony nie pokaże.
+2. **Przenieść formularz** z FormSubmit na Cloudflare Pages Function + Resend, jak u reszty
    klientów. Dziś mail klienta siedzi jawnie w HTML-u.
 4. **Podpiąć domenę** (`tinaskupaut.pl` wskazuje dziś na parking OVH) — kolejność z runbooka:
    DNSSEC → NS → custom domain → `www` → analityka → GSC.
@@ -91,7 +110,9 @@ Twarde blokady:
 Reszta:
 - dolna granica: od jakiej kwoty i od jakiego rocznika w ogóle jadą
 - czy gotówka obowiązuje też przy aucie za 40–50 tys.
-- deklarowany czas oddzwonienia po wysłaniu formularza
+- **deklarowany czas oddzwonienia** — na `/dziekujemy` stoi dziś „zwykle tego samego dnia”,
+  przyjęte na podstawie tego, że firma pracuje 7 dni w tygodniu i przyjeżdża tego samego dnia.
+  Do potwierdzenia przez klienta przed go-live
 - auta na sprzedaż: ile sztuk, gdzie są wystawione (OTOMOTO / OLX / FB), gdzie się je ogląda
 - ile aut miesięcznie realnie odkupują — jedyne liczby, które mają prawo trafić na stronę
 - wizytówka Google: dostęp albo zgoda na założenie + zgoda na przepisanie 3–5 opinii

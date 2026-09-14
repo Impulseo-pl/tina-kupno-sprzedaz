@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro';
+import Chero from '../components/Chero.astro';
+import Naglowek from '../components/Naglowek.astro';
+import Formularz from '../components/Formularz.astro';
+import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
+import { okruszki, faqLd } from '../dane/firma';
+
+const FAQ: [string, string][] = [
+  ['Dlaczego nie ma cennika skupu aut?', 'Bo cennik w skupie aut zawsze jest nieprawdziwy. Dwa takie same roczniki tego samego modelu potrafią różnić się o kilka tysięcy złotych ze względu na stan blacharki, historię serwisową i to, czy auto ma komplet kluczy i dokumentów. Zamiast tabelki podajemy konkretną kwotę przez telefon.'],
+  ['Czy kwota z telefonu może się zmienić po oględzinach?', 'Tylko wtedy, gdy auto różni się od opisu — na przykład okazuje się, że jest po szkodzie, o której nie było mowy. Jeśli wszystko się zgadza, płacimy dokładnie tyle, ile powiedzieliśmy.'],
+  ['Czy mogę podać własną cenę?', 'Tak i bardzo o to prosimy. Jeśli od razu napiszesz, ile chcesz za auto, w jednej rozmowie wiemy, czy jest o czym rozmawiać. Oszczędza to czas obu stronom.'],
+  ['Płacicie gotówką czy przelewem?', 'Jak wolisz. Gotówkę mamy ze sobą na miejscu, przelew robimy od razu przy podpisaniu umowy.'],
+  ['Czy za auto w złym stanie też zapłacicie?', 'Zależy, jak złym. Auta uszkodzone i powypadkowe odkupujemy, jeśli da się je jeszcze naprawić. Aut nadających się wyłącznie na części albo na złom nie kupujemy i nie prowadzimy kasacji.'],
+];
+---
+<Base
+  title="Ile płacimy za auto — skup aut bez cennika | TINA"
+  description="Co naprawdę decyduje o kwocie w skupie aut: model, rocznik, przebieg, blacharka, dokumenty. Bez cennika i bez kalkulatora — konkretną kwotę podajemy przez telefon."
+  path="/ile-placimy"
+  schema={[okruszki([['/ile-placimy', 'Ile płacimy']]), faqLd(FAQ)]}
+>
+
+<Chero
+  okruszek="Ile płacimy"
+  lede="Nie mamy cennika i nie udajemy, że da się go zrobić. Zamiast tego tłumaczymy dokładnie, co decyduje o kwocie — żebyś wiedział, czego się spodziewać, zanim podniesiesz słuchawkę."
+  sub="Skup aut za gotówkę na terenie całego Mazowsza."
+><span>Ile płacimy <span class="gold">za auto</span></span></Chero>
+
+<div class="w"><section>
+  <div class="proza">
+    <h2>Dlaczego nie znajdziesz tu tabelki z cenami</h2>
+    <p>Strony, które podają „cennik skupu aut”, robią jedną z dwóch rzeczy: albo wpisują kwoty tak niskie, że każda realna oferta wypada przy nich lepiej, albo tak wysokie, żeby ktoś zadzwonił — a prawdziwa cena pada dopiero na miejscu, przy aucie. Obie metody kończą się tak samo: klient traci pół dnia i wychodzi z poczuciem, że został wpuszczony w maliny.</p>
+    <p>My robimy inaczej. Kwotę podajemy przez telefon, na podstawie tego, co nam powiesz, i tej kwoty się trzymamy. Jeśli auto zgadza się z opisem, przy podpisie nie schodzimy ani złotówki. To jedyny sposób, żeby cena w ogóle coś znaczyła.</p>
+
+    <h2>Co naprawdę decyduje o kwocie</h2>
+    <p>Kolejność nie jest przypadkowa — tak właśnie patrzymy na auto, gdy dzwonisz.</p>
+  </div>
+
+  <div class="docs" style="margin-top:26px">
+    <div class="doc"><b>Model i popyt na niego</b><p>Najważniejsza rzecz, o której mało kto mówi. Są auta, które sprzedają się same, i takie, które stoją miesiącami niezależnie od stanu. To odbija się na kwocie bardziej niż sam rocznik.</p></div>
+    <div class="doc"><b>Rocznik i przebieg razem</b><p>Osobno nie znaczą wiele. Dziesięcioletnie auto z przebiegiem 120 tysięcy i takie samo z przebiegiem 380 tysięcy to dwie różne sprawy — ale przebieg 90 tysięcy w aucie z 2009 roku też zapala lampkę.</p></div>
+    <div class="doc"><b>Blacharka i lakier</b><p>Najdroższa część każdej naprawy. Wgniecenia, ogniska korozji, ślady szpachli i różnice w odcieniu lakieru widać od razu — i od razu widać, ile będzie kosztowało doprowadzenie auta do porządku.</p></div>
+    <div class="doc"><b>Silnik i skrzynia</b><p>Czy odpala na zimno, czy nie kopci, czy skrzynia nie szarpie. Krótka jazda mówi nam o aucie więcej niż godzina oglądania go na postoju.</p></div>
+    <div class="doc"><b>Historia i dokumenty</b><p>Książka serwisowa, faktury, komplet kluczy, dowód rejestracyjny i karta pojazdu. Auto z papierami jest warte więcej, bo łatwiej je potem sprzedać dalej.</p></div>
+    <div class="doc"><b>Pochodzenie auta</b><p>Kupione w Polsce jako nowe, sprowadzone, po firmie czy po pierwszym właścicielu. Każda z tych historii inaczej wygląda w oczach następnego kupującego.</p></div>
+  </div>
+
+  <div class="proza" style="margin-top:44px">
+    <h2>Co podnosi cenę, a co ją obniża</h2>
+  </div>
+  <div class="duo" style="margin-top:22px">
+    <div class="box">
+      <h3>Na plus</h3>
+      <ul class="tick">
+        <li>Komplet kluczy i pełna dokumentacja</li>
+        <li>Udokumentowana historia serwisowa</li>
+        <li>Fabryczny lakier bez śladów naprawy</li>
+        <li>Pierwszy właściciel, auto kupione w Polsce</li>
+        <li>Ważne OC i przegląd</li>
+        <li>Opony, akumulator i wydech w dobrym stanie</li>
+      </ul>
+    </div>
+    <div class="box no">
+      <h3>Na minus</h3>
+      <ul class="tick x">
+        <li>Korozja progów, nadkoli i podłogi</li>
+        <li>Ślady poważnej naprawy blacharskiej</li>
+        <li>Niesprawna skrzynia automatyczna albo silnik na wymianę</li>
+        <li>Brak drugiego kluczyka albo karty pojazdu</li>
+        <li>Auto niezarejestrowane albo długo stojące bez ruchu</li>
+        <li>Przebieg, który nie pasuje do stanu wnętrza</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="proza" style="margin-top:44px">
+    <h2>Dlaczego pytamy, ile chcesz za auto</h2>
+    <p>Prawie zawsze zadajemy to pytanie na początku rozmowy i nie jest to zagrywka negocjacyjna. Większość ludzi ma w głowie jakąś kwotę — sprawdzili ogłoszenia, ktoś im coś powiedział albo po prostu wiedzą, ile im się opłaca. Jeśli nam ją podasz, w minutę wiemy, czy w ogóle jest o czym rozmawiać.</p>
+    <p>Jeśli Twoja kwota mieści się w tym, co możemy dać, umawiamy przyjazd. Jeśli jest wyraźnie wyższa, mówimy to od razu i tłumaczymy dlaczego, zamiast przyjeżdżać i próbować zbić cenę na miejscu. Nikt nie traci dnia.</p>
+
+    <h2>Jak sprawdzić wartość auta, zanim zadzwonisz</h2>
+    <p>Najprostszy sposób to przejrzeć ogłoszenia tego samego modelu, z tym samym rocznikiem i zbliżonym przebiegiem. Trzeba jednak pamiętać o dwóch rzeczach, o których portale ogłoszeniowe nie mówią.</p>
+    <p>Po pierwsze, cena w ogłoszeniu to nie jest cena transakcyjna. Auta prywatne sprzedają się zwykle za mniej, niż widnieje w ogłoszeniu, a te wystawione przez firmy mają w cenie marżę, przygotowanie i czas stania na placu. Po drugie, sprzedaż prywatna to realnie kilka tygodni telefonów, oglądaczy, jazd próbnych i negocjacji, a potem jeszcze formalności. Różnica między ceną ze skupu a tym, co wyciągniesz z ogłoszenia, to cena za załatwienie sprawy w jeden dzień.</p>
+    <p>Jeśli masz czas i cierpliwość, sprzedaż prywatna zwykle da więcej. Jeśli auto ma zniknąć z podwórka dziś, z gotówką w ręce i bez papierów na głowie — po to jest skup.</p>
+
+    <h2>Czego nie robimy</h2>
+    <p>Nie wyceniamy aut kalkulatorem na stronie. Widełki wyliczone z rocznika i przebiegu wyglądają profesjonalnie, ale nie mają nic wspólnego z tym, ile ktokolwiek zapłaci za konkretny samochód — ten sam algorytm wyceniłby tak samo auto garażowane i auto po dachowaniu.</p>
+    <p>Nie zaniżamy też kwoty na miejscu. Jeśli auto jest takie, jak je opisałeś, płacimy to, co ustaliliśmy przez telefon. A jeśli po oględzinach okaże się, że jest lepsze, niż wynikało z rozmowy, powiemy o tym również.</p>
+  </div>
+</section></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Pytania o pieniądze" tytul='To, o co pytacie <span class="gold">najczęściej</span>' />
+  <Faq pary={FAQ} />
+</section></div>
+
+<Formularz strona="ile placimy" />
+<Cta
+  tytul='Powiedz, ile chcesz <span class="gold">za swoje auto</span>'
+  opis="Podaj markę, rocznik, przebieg i kwotę, na której Ci zależy. Oddzwonimy i powiemy wprost, czy jesteśmy w stanie ją dać."
+/>
+
+</Base>

@@ -1,0 +1,20 @@
+---
+/* Naglowek podstrony: zdjecie w tle, okruszki, H1, lead i wezwanie. */
+import Telefon from './Telefon.astro';
+const { okruszek, lede, sub = '', obraz = 'hero2', akcje = true } = Astro.props;
+---
+<div class="chero">
+  <img src={`/img/${obraz}.jpg`} srcset={`/img/${obraz}-m.jpg 780w, /img/${obraz}.jpg 1280w`} sizes="100vw" alt="" fetchpriority="high">
+  <div class="w">
+    <p class="crumb"><a href="/">TINA</a> / {okruszek}</p>
+    <h1><slot /></h1>
+    <p class="lede" set:html={lede} />
+    {akcje && (
+      <div class="acts">
+        <a class="btn g" href="/wycena">Wyceń swoje auto</a>
+        <Telefon />
+      </div>
+    )}
+    {sub && <p class="sub">{sub}</p>}
+  </div>
+</div>

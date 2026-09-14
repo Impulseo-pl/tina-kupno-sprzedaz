@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import Chero from '../components/Chero.astro';
+import Naglowek from '../components/Naglowek.astro';
+import Formularz from '../components/Formularz.astro';
+import Telefon from '../components/Telefon.astro';
+import { okruszki, FIRMA, FIRMA_LD } from '../dane/firma';
+---
+<Base
+  title="Kontakt — TINA Skup Aut, Sochaczew | całe Mazowsze"
+  description="Telefon, e-mail i adres. Odbieramy 7 dni w tygodniu, przyjeżdżamy pod wskazany adres na terenie całego Mazowsza."
+  path="/kontakt"
+  schema={[FIRMA_LD, okruszki([['/kontakt', 'Kontakt']])]}
+>
+
+<Chero
+  okruszek="Kontakt"
+  lede="Najszybciej przez telefon — odbieramy siedem dni w tygodniu. Jeśli nie odbierzemy od razu, jesteśmy w trasie i oddzwonimy."
+  sub="Nie musisz do nas przyjeżdżać. To my przyjeżdżamy pod wskazany adres."
+  akcje={false}
+><span>Kontakt</span></Chero>
+
+<div class="w"><section>
+  <div class="local">
+    <div class="box">
+      <h3>Zadzwoń</h3>
+      <p style="margin-bottom:16px">Najprostsza droga. Powiedz, jakie masz auto i ile za nie chcesz — resztę ustalimy w jednej rozmowie.</p>
+      <div class="acts"><Telefon /></div>
+      <p style="margin-top:16px">Drugi numer: <a href={`tel:${FIRMA.tel2tel}`}>{FIRMA.tel2}</a></p>
+      <p style="margin-top:6px">E-mail: <a href={`mailto:${FIRMA.mail}`}>{FIRMA.mail}</a></p>
+      <p style="margin-top:16px;font-size:15px;color:#5a616e">Odbieramy 7 dni w tygodniu, także w weekendy.</p>
+    </div>
+    <div class="box">
+      <h3>Gdzie jesteśmy</h3>
+      <p>{FIRMA.podmiot}<br>{FIRMA.ulica}<br>{FIRMA.kod} {FIRMA.miasto}<br>powiat sochaczewski, woj. mazowieckie</p>
+      <p style="margin-top:16px">NIP {FIRMA.nip}<br>REGON {FIRMA.regon}</p>
+      <p style="margin-top:16px;font-size:15px;color:#5a616e">To adres firmy, nie plac handlowy. Auta odbieramy u klientów — pod domem, pod pracą, w warsztacie albo na parkingu.</p>
+      <div class="acts" style="margin-top:18px"><a class="btn o" href={FIRMA.fb} rel="noopener" target="_blank">Facebook</a></div>
+    </div>
+  </div>
+</section></div>
+
+<div class="w"><section>
+  <Naglowek
+    eyebrow="Obszar działania"
+    tytul='Jeździmy po <span class="gold">całym Mazowszu</span>'
+    opis="Bazę mamy pod Sochaczewem. Dojazd i laweta kosztują zero złotych niezależnie od odległości."
+  />
+  <div class="near" style="justify-content:center">
+    <a href="/skup-aut-sochaczew">Sochaczew</a>
+    <a href="/skup-aut-warszawa">Warszawa</a>
+    <span>Żyrardów</span><span>Grodzisk Mazowiecki</span><span>Błonie</span><span>Ożarów Mazowiecki</span>
+    <span>Pruszków</span><span>Piaseczno</span><span>Nowy Dwór Mazowiecki</span><span>Legionowo</span>
+    <span>Płock</span><span>Radom</span><span>Wyszogród</span><span>Łowicz</span>
+  </div>
+</section></div>
+
+<Formularz strona="kontakt" />
+
+</Base>
