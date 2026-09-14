@@ -4,7 +4,7 @@ import PasFaktow from '../components/PasFaktow.astro';
 import Naglowek from '../components/Naglowek.astro';
 import Kupujemy from '../components/Kupujemy.astro';
 import ProcesKola from '../components/ProcesKola.astro';
-import MapaMazowsza from '../components/MapaMazowsza.astro';
+import MapaPolski from '../components/MapaPolski.astro';
 import Formularz from '../components/Formularz.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
@@ -169,20 +169,10 @@ const FAQ: [string, string][] = [
     tytul='Całe <span class="gold">Mazowsze</span>'
     opis="Bazę mamy pod Sochaczewem, ale jeździmy po całym województwie. Dojazd kosztuje tyle samo wszędzie — zero złotych."
   />
-  <div class="local">
-    <div class="box">
-      <h3>Gdzie jeździmy</h3>
-      <MapaMazowsza />
-      <div class="near" style="margin-top:20px">
-        <a href="/skup-aut-sochaczew">Sochaczew</a>
-        <a href="/skup-aut-warszawa">Warszawa</a>
-        <span>Żyrardów</span><span>Grodzisk Mazowiecki</span><span>Błonie</span><span>Ożarów Mazowiecki</span>
-        <span>Pruszków</span><span>Piaseczno</span><span>Nowy Dwór Mazowiecki</span><span>Legionowo</span>
-        <span>Płock</span><span>Radom</span><span>Wyszogród</span><span>Ciechanów</span>
-        <span>Ostrołęka</span><span>Siedlce</span><span>Mińsk Mazowiecki</span><span>Garwolin</span>
-      </div>
-      <p style="margin-top:16px;font-size:15px;color:#5a616e">Jeśli Twojej miejscowości nie ma na mapie, to nie znaczy, że nie przyjedziemy — obsługujemy całe województwo. Po prostu zadzwoń i zapytaj.</p>
-    </div>
+
+  <MapaPolski />
+
+  <div class="local" style="margin-top:44px">
     <div class="box">
       <h3>Jak umawiamy przyjazd</h3>
       <ul class="tick">
@@ -192,13 +182,19 @@ const FAQ: [string, string][] = [
         <li>Nie musisz nigdzie dowozić auta ani szukać lawety</li>
       </ul>
       <p style="margin-top:16px;font-size:15px;color:#5a616e">Odbieramy telefon siedem dni w tygodniu. Jeśli nie odbierzemy od razu, jesteśmy w trasie — oddzwonimy.</p>
-
-      <h3 style="margin-top:32px">Skąd do Ciebie jedziemy</h3>
-      <p>Baza jest w Kozłowie Biskupim pod Sochaczewem, przy trasie w stronę Warszawy. Do stolicy i do
-      miejscowości po zachodniej stronie województwa jedziemy codziennie, więc terminy są tam najkrótsze.</p>
-      <p style="margin-top:12px">Do Radomia, Siedlec czy Ostrołęki też przyjeżdżamy — po prostu warto
-      zadzwonić rano, żeby zdążyć tego samego dnia. <strong>Odległość nie wpływa na kwotę</strong>:
-      kilometrów nie doliczamy do wyceny, a laweta jest w cenie niezależnie od tego, jak daleko jedziemy.</p>
+    </div>
+    <div class="box">
+      <h3>Skąd do Ciebie jedziemy</h3>
+      <p>Baza jest w Kozłowie Biskupim pod Sochaczewem, przy trasie w stronę Warszawy. Codziennie
+      jeździmy po zachodniej stronie województwa — <strong>Żyrardów, Grodzisk Mazowiecki, Błonie,
+      Ożarów Mazowiecki, Pruszków, Piaseczno, Legionowo, Nowy Dwór Mazowiecki i Wyszogród</strong> —
+      więc tam terminy są najkrótsze.</p>
+      <p style="margin-top:12px">Do <strong>Warszawy</strong> jedziemy każdego dnia, a do
+      <strong>Płocka, Ciechanowa, Ostrołęki, Siedlec, Mińska Mazowieckiego, Garwolina i Radomia</strong>
+      wystarczy zadzwonić rano, żeby zdążyć tego samego dnia.</p>
+      <p style="margin-top:12px"><strong>Odległość nie wpływa na kwotę</strong>: kilometrów nie doliczamy
+      do wyceny, a laweta jest w cenie niezależnie od tego, jak daleko jedziemy. Jeśli Twojej miejscowości
+      nie ma na mapie, i tak zadzwoń — obsługujemy całe województwo.</p>
     </div>
   </div>
 </section></div>

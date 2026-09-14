@@ -538,6 +538,49 @@ body.scrolled .logo img{height:46px}
 @media (max-width:1000px){.steps.cztery{grid-template-columns:1fr 1fr}}
 
 /* ---------- mapa obszaru dzialania ---------- */
+.mapa-pl{margin:0}
+.mapa-pl svg{display:block;width:100%;height:auto;max-width:860px;margin-inline:auto}
+.mapa-pl .woj{fill:var(--w2);stroke:var(--w1);stroke-width:1.2;stroke-linejoin:round}
+.mapa-pl .woj.nasze{fill:var(--g1);stroke:var(--g3);stroke-width:1.8}
+.mapa-pl .pin circle{fill:var(--g4)}
+.mapa-pl .pin.baza circle{fill:var(--g3)}
+.mapa-pl .pin .aura{fill:var(--g3);opacity:.22}
+.mapa-pl .pin text{font-family:Manrope,sans-serif;font-size:12.5px;font-weight:700;fill:var(--ink);
+  paint-order:stroke;stroke:var(--w1);stroke-width:3px;stroke-linejoin:round}
+.mapa-pl .pin.baza text{fill:#5a4410}
+.mapa-pl figcaption{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;margin-top:18px;
+  font-size:13px;color:var(--muted)}
+.mapa-pl .leg{display:inline-flex;align-items:center;gap:8px}
+.mapa-pl .leg i{width:9px;height:9px;border-radius:50%;background:var(--g4);flex:none}
+.mapa-pl .leg i.b{width:13px;height:13px;background:var(--g3);box-shadow:0 0 0 4px rgba(160,125,33,.22)}
+@media (max-width:620px){.mapa-pl .pin text{font-size:15px}}
+
+/* ---------- proces w czterech krokach (kola z numerami) ---------- */
+.proces{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:6px}
+.proces .krok{position:relative;text-align:center}
+/* kreska prowadzaca do nastepnego kola; dystans miedzy srodkami = szerokosc kolumny + odstep */
+.proces .krok:not(:last-child)::after{content:"";position:absolute;top:34px;left:calc(50% + 44px);
+  width:calc(100% - 62px);height:1px;background:linear-gradient(90deg,var(--g3),var(--line))}
+.proces .nr{width:68px;height:68px;margin:0 auto 18px;border-radius:50%;background:var(--goldgrad);
+  color:var(--k0);display:grid;place-items:center;font-family:Unbounded,sans-serif;font-weight:800;
+  font-size:25px;box-shadow:0 14px 30px -16px rgba(212,175,55,.85)}
+.proces h3{font-size:18px;margin-bottom:9px}
+.proces p{font-size:15px;color:var(--muted);max-width:32ch;margin-inline:auto}
+@media (max-width:900px){
+  .proces{grid-template-columns:1fr 1fr;gap:34px 22px}
+  .proces .krok:nth-child(2n)::after{display:none}
+}
+@media (max-width:560px){
+  .proces{grid-template-columns:1fr;gap:28px}
+  .proces .krok::after{display:none}
+  .proces .nr{width:58px;height:58px;font-size:22px;margin-bottom:14px}
+}
+
+/* Cztery kroki w ukladzie kafelkowym — domyslna siatka ma trzy kolumny. */
+.steps.cztery{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1000px){.steps.cztery{grid-template-columns:1fr 1fr}}
+
+/* ---------- mapa obszaru dzialania ---------- */
 .mapa-woj{margin:0}
 .mapa-woj svg{display:block;width:100%;height:auto;max-width:440px;margin-inline:auto}
 .mapa-woj .obrys{fill:var(--w2);stroke:var(--g3);stroke-width:1.4;stroke-linejoin:round}
