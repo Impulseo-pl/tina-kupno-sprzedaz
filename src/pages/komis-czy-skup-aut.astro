@@ -2,97 +2,166 @@
 import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
 import Naglowek from '../components/Naglowek.astro';
+import Telefon from '../components/Telefon.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Ile bierze komis za sprzedaż samochodu?', 'Zależy od komisu i od wartości auta — prowizja bywa liczona procentowo albo jako z góry ustalona kwota. Warto zapytać o nią przed podpisaniem umowy komisowej i sprawdzić, czy obejmuje też przygotowanie auta, zdjęcia i ogłoszenia.'],
-  ['Czy jesteście komisem?', 'Nie. Nie przyjmujemy aut w pośrednictwo i nie bierzemy prowizji. Odkupujemy auto na siebie, płacimy od ręki i od tego momentu jest ono naszą własnością.'],
-  ['Co się bardziej opłaca — komis czy skup?', 'Komis zwykle wyciągnie za auto więcej, ale trwa to tygodniami i pieniądze dostajesz dopiero po sprzedaży. Skup daje mniej, za to od razu i bez żadnego ryzyka po Twojej stronie. Wybór zależy od tego, czy bardziej zależy Ci na kwocie, czy na czasie.'],
-  ['Czy auto w komisie jest ubezpieczone?', 'To jedna z rzeczy, które trzeba wyjaśnić przed oddaniem auta: kto odpowiada za nie w czasie, gdy stoi na placu, i co się dzieje w razie uszkodzenia albo kradzieży. Do momentu sprzedaży auto zwykle pozostaje Twoją własnością.'],
+  ['Ile kosztuje sprzedaż samochodu przez komis?', 'Nie ma jednej obowiązującej stawki. Komis może pobierać procent od ceny sprzedaży, ustaloną kwotę albo dodatkowe opłaty za konkretne usługi. Wszystkie koszty należy sprawdzić przed podpisaniem umowy.'],
+  ['Czy komis kupuje ode mnie samochód?', 'Zasadniczo nie. W typowej umowie komisowej komis zajmuje się sprzedażą samochodu na rachunek jego właściciela. Bezpośredni zakup auta wymaga osobnej transakcji.'],
+  ['Co bardziej się opłaca: komis czy skup?', 'Zależy od priorytetu sprzedającego. Komis może dać szansę na uzyskanie wyższej ceny, ale wymaga oczekiwania na kupca. Skup pozwala sprzedać samochód bez prowadzenia dalszych poszukiwań.'],
+  ['Czy można wcześniej odebrać auto z komisu?', 'Zależy to od zapisów podpisanej umowy. Przed pozostawieniem samochodu należy sprawdzić czas jej obowiązywania, sposób wypowiedzenia oraz ewentualne opłaty.'],
+  ['Czy podczas pozostawienia samochodu w komisie zgłasza się jego zbycie?', 'Nie. Samochód nie został jeszcze sprzedany. Zbycie zgłasza się po zawarciu transakcji z właściwym nabywcą.'],
+  ['Czy skup pobiera prowizję?', 'Skup jest kupującym, a nie pośrednikiem, dlatego nie pobiera prowizji za znalezienie kolejnego nabywcy. Przedstawia własną ofertę zakupu samochodu.'],
+  ['Czy uszkodzony samochód można sprzedać do skupu?', 'Tak, o ile dany skup jest zainteresowany takim pojazdem. TINA odkupuje również wybrane samochody uszkodzone, powypadkowe i niejeżdżące.'],
+];
+
+/* Tabela porownawcza: [kwestia, komis, skup] */
+const POROWNANIE: [string, string, string][] = [
+  ['Rola firmy', 'Pośredniczy w sprzedaży', 'Kupuje samochód'],
+  ['Właściciel auta', 'Do sprzedaży pozostajesz właścicielem', 'Firma staje się nabywcą'],
+  ['Termin otrzymania pieniędzy', 'Po znalezieniu kupującego i rozliczeniu transakcji', 'Po zaakceptowaniu oferty i zawarciu transakcji'],
+  ['Wynagrodzenie firmy', 'Zwykle prowizja lub opłaty określone w umowie', 'Bez osobnej prowizji za pośrednictwo'],
+  ['Czas oczekiwania', 'Zależy od zainteresowania konkretnym autem', 'Nie trzeba czekać na kolejnego kupującego'],
+  ['Ustalanie ceny', 'Warunki określa umowa z komisem', 'Oferta wynika z oględzin i oceny auta'],
+  ['Prezentowanie samochodu', 'Zajmuje się tym komis', 'Nie jest potrzebne'],
+  ['Ryzyko braku zainteresowania', 'Samochód może przez dłuższy czas czekać na kupca', 'Po sprzedaży nie dotyczy poprzedniego właściciela'],
 ];
 ---
 <Base
-  title="Komis czy skup aut — co się bardziej opłaca | TINA"
-  description="Czym różni się komis samochodowy od skupu aut: prowizja, czas oczekiwania, moment wypłaty i ryzyko. Porównanie obu dróg sprzedaży samochodu."
+  title="Komis czy skup aut — czym się różnią i co wybrać | TINA"
+  description="Komis pośredniczy w sprzedaży, skup sam kupuje samochód. Porównanie: prowizja, czas oczekiwania, moment wypłaty, formalności i o co zapytać przed umową komisową."
   path="/komis-czy-skup-aut"
   schema={[okruszki([['/komis-czy-skup-aut', 'Komis czy skup']]), faqLd(FAQ)]}
 >
 
 <Chero
   okruszek="Komis czy skup"
-  lede="Dwie zupełnie różne drogi sprzedaży auta, które w potocznej mowie często wrzuca się do jednego worka. Poniżej różnice bez owijania — łącznie z tym, kiedy komis wypada lepiej od nas."
-  sub="Nie jesteśmy komisem. Odkupujemy auto na siebie i płacimy od ręki."
-><span>Komis czy <span class="gold">skup aut</span></span></Chero>
+  lede="Komis pomaga znaleźć kupującego, natomiast skup sam kupuje samochód. Ta jedna różnica wpływa na czas oczekiwania, sposób ustalania ceny, moment otrzymania pieniędzy i zakres formalności."
+  sub="Nie ma rozwiązania najlepszego dla każdego. Jeżeli możesz poczekać i zależy Ci przede wszystkim na cenie, warto rozważyć komis lub sprzedaż prywatną. Jeśli ważniejsze są sprawna transakcja i odbiór auta bez samodzielnego szukania kupca, lepiej może sprawdzić się skup."
+>
+  <span>Komis czy skup aut <span class="gold">— czym się różnią?</span></span>
+  <Fragment slot="akcje">
+    <a class="btn g" href="/wycena">Wycena samochodu</a>
+    <Telefon />
+  </Fragment>
+</Chero>
 
 <div class="w"><section>
   <div class="proza">
-    <h2>Na czym polega różnica</h2>
-    <p>W komisie auto zostaje Twoje. Oddajesz je na plac, komis wystawia ogłoszenie i szuka kupca, a Ty czekasz. Pieniądze dostajesz dopiero wtedy, gdy ktoś auto kupi — a komis potrąca z tego swoją prowizję. Jeśli kupiec się nie znajdzie, po kilku tygodniach odbierasz auto z powrotem, zwykle z pytaniem, czy nie zejść z ceny.</p>
-    <p>W skupie auto przestaje być Twoje w dniu transakcji. Nie pośredniczymy w sprzedaży, tylko kupujemy auto na siebie: podpisujesz umowę, dostajesz pieniądze i sprawa jest zamknięta. To, czy potem uda nam się je sprzedać z zyskiem, jest wyłącznie naszym problemem.</p>
+    <h2>Dwa różne sposoby sprzedaży samochodu</h2>
+    <p>Choć komis i skup aut działają na tym samym rynku, ich rola jest zupełnie inna.</p>
+
+    <h3>Jak działa komis samochodowy?</h3>
+    <p>Oddajesz samochód do sprzedaży, ale komis nie kupuje go od Ciebie. Jego zadaniem jest przygotowanie oferty, prezentowanie pojazdu zainteresowanym i doprowadzenie do transakcji z właściwym kupującym.</p>
+    <p>Zgodnie z Kodeksem cywilnym komis dokonuje sprzedaży we własnym imieniu, ale na rachunek właściciela samochodu i pobiera za tę usługę wynagrodzenie, najczęściej nazywane prowizją. <a href="https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19640160093" rel="noopener nofollow" target="_blank">Kodeks cywilny, art. 765</a></p>
+    <p>Do czasu sprzedaży samochód nadal należy do Ciebie. Na wypłatę czekasz więc tak długo, jak długo komis szuka nabywcy. Szczegółowe zasady dotyczące ceny, prowizji, czasu trwania umowy i odbioru niesprzedanego auta powinny znaleźć się w umowie komisowej.</p>
+
+    <h3>Jak działa skup samochodów?</h3>
+    <p>Skup nie szuka kupującego w Twoim imieniu. Sam staje się nabywcą pojazdu.</p>
+    <p>Po przekazaniu informacji o samochodzie umawiane są oględziny. Na podstawie rzeczywistego stanu auta skup przedstawia ofertę. Jeżeli ją zaakceptujesz, podpisujecie dokument sprzedaży, następuje rozliczenie i przekazanie pojazdu.</p>
+    <p>Nie czekasz na kolejną osobę zainteresowaną samochodem. Dalsze przygotowanie auta i znalezienie dla niego nowego właściciela przechodzą na firmę, która je odkupiła.</p>
+
+    <h2>Komis i skup aut — najważniejsze różnice</h2>
   </div>
 
-  <div class="duo" style="margin-top:26px">
-    <div class="box">
-      <h3>Komis samochodowy</h3>
-      <ul class="tick">
-        <li>Auto zostaje Twoją własnością aż do sprzedaży</li>
-        <li>Pieniądze dopiero po znalezieniu kupca</li>
-        <li>Prowizja potrącana od ceny sprzedaży</li>
-        <li>Realny czas: zwykle tygodnie, czasem miesiące</li>
-        <li>Końcowa kwota zwykle wyższa niż w skupie</li>
-        <li>Ryzyko, że auto nie sprzeda się wcale, zostaje po Twojej stronie</li>
-      </ul>
-    </div>
-    <div class="box no">
-      <h3>Skup aut — czyli my</h3>
-      <ul class="tick">
-        <li>Auto sprzedajesz od razu, na własność kupującego</li>
-        <li>Pieniądze na miejscu, przy podpisaniu umowy</li>
-        <li>Żadnej prowizji — kwota, którą słyszysz, jest kwotą, którą dostajesz</li>
-        <li>Realny czas: jeden dzień</li>
-        <li>Kwota niższa niż przy cierpliwej sprzedaży prywatnej</li>
-        <li>Ryzyko przechodzi na nas w momencie podpisu</li>
-      </ul>
-    </div>
+  <div class="tabela">
+    <table>
+      <thead>
+        <tr><th scope="col">Kwestia</th><th scope="col">Komis samochodowy</th><th scope="col">Skup aut</th></tr>
+      </thead>
+      <tbody>
+        {POROWNANIE.map(([kwestia, komis, skup]) => (
+          <tr><th scope="row">{kwestia}</th><td>{komis}</td><td>{skup}</td></tr>
+        ))}
+      </tbody>
+    </table>
   </div>
 
-  <div class="proza" style="margin-top:44px">
-    <h2>Kiedy komis ma sens</h2>
-    <p>Jeśli auto jest w dobrym stanie, popularne na rynku i nie musisz się z niczym spieszyć — komis albo sprzedaż prywatna prawie zawsze dadzą więcej pieniędzy. Płacisz za to czasem: ogłoszeniem, telefonami, jazdami próbnymi i kilkoma tygodniami niepewności. Jeśli Ci to nie przeszkadza, to jest rozsądna droga i nie będziemy nikogo od niej odwodzić.</p>
+  <div class="proza" style="margin-top:46px">
+    <h2>Kiedy warto wybrać komis?</h2>
+    <p>Komis może być dobrym rozwiązaniem, gdy samochód jest sprawny, atrakcyjny dla kupujących i nie zależy Ci na szybkim zakończeniu sprzedaży.</p>
+    <p>Wybierając komis, nie musisz samodzielnie przygotowywać ogłoszenia, odpowiadać na wszystkie telefony ani umawiać każdej prezentacji. Możesz również zachować wpływ na oczekiwaną cenę, o ile zasady jej ustalania zostały odpowiednio zapisane w umowie.</p>
+    <p>Trzeba jednak uwzględnić, że znalezienie nabywcy nie jest gwarantowane. Czas sprzedaży zależy od ceny, stanu auta, popularności modelu i aktualnej sytuacji rynkowej. Należy też wcześniej sprawdzić wysokość prowizji oraz ewentualne dodatkowe opłaty.</p>
+    <p><strong>Komis warto rozważyć, jeśli:</strong></p>
+    <ul>
+      <li>nie potrzebujesz pieniędzy w określonym terminie;</li>
+      <li>samochód może przez pewien czas pozostać na placu;</li>
+      <li>akceptujesz prowizję za obsługę sprzedaży;</li>
+      <li>zależy Ci na szansie uzyskania ceny zbliżonej do sprzedaży prywatnej;</li>
+      <li>nie chcesz samodzielnie prezentować auta zainteresowanym.</li>
+    </ul>
 
-    <h2>Kiedy sensowniejszy jest skup</h2>
-    <p>Kiedy auto ma zniknąć szybko. Bo kupiłeś następne i nie masz gdzie trzymać obu. Bo stoi po szkodzie i z każdym tygodniem jest warte mniej. Bo potrzebujesz pieniędzy teraz, a nie „jak się sprzeda”. Bo nie masz ochoty na rozmowy z ludźmi, którzy pytają o ostateczną cenę, zanim zobaczą auto.</p>
-    <p>W tych sytuacjach różnica w kwocie przestaje być najważniejsza. Liczy się to, że sprawa kończy się w jeden dzień, a Ty nie musisz nic więcej robić.</p>
+    <h2>Kiedy lepiej sprawdzi się skup aut?</h2>
+    <p>Skup jest przeznaczony dla właścicieli, którzy nie chcą czekać na znalezienie kolejnego kupującego. Samochód ogląda firma zainteresowana jego bezpośrednim odkupieniem.</p>
+    <p>Takie rozwiązanie może być szczególnie wygodne w przypadku <a href="/auta-uszkodzone-powypadkowe">auta uszkodzonego, powypadkowego</a>, niejeżdżącego, bez ważnego badania technicznego lub wymagającego kosztownych napraw. Właściciel nie musi najpierw przygotowywać pojazdu do prezentacji ani prowadzić wielu rozmów z zainteresowanymi.</p>
+    <p><strong>Skup warto rozważyć, gdy:</strong></p>
+    <ul>
+      <li>zależy Ci na sprawnym zakończeniu sprzedaży;</li>
+      <li>nie chcesz publikować ogłoszeń i organizować jazd próbnych;</li>
+      <li>kupiłeś już inny samochód i nie potrzebujesz dwóch pojazdów;</li>
+      <li>auto jest uszkodzone albo nie może samodzielnie poruszać się po drodze;</li>
+      <li>nie chcesz inwestować w naprawy przed sprzedażą;</li>
+      <li>potrzebujesz odbioru samochodu pod wskazanym adresem.</li>
+    </ul>
+    <p>Oferta skupu może być niższa od ceny oczekiwanej przy sprzedaży prywatnej. Wynika to z kosztów transportu, przygotowania pojazdu, ewentualnych napraw oraz ryzyka dalszej sprzedaży. W zamian sprzedający nie musi samodzielnie szukać nabywcy. Piszemy o tym szerzej na stronie <a href="/ile-placimy">ile płacimy za auto</a>.</p>
 
-    <h2>O co zapytać, zanim oddasz auto do komisu</h2>
+    <h2>Co daje największą szansę na wyższą cenę?</h2>
+    <p>Najwyższą cenę można często uzyskać podczas samodzielnej sprzedaży bezpośrednio kolejnemu użytkownikowi samochodu. Wymaga to jednak przygotowania ogłoszenia, wykonania zdjęć, odpowiadania na wiadomości, prezentowania auta i negocjowania z zainteresowanymi.</p>
+    <p>Komis przejmuje część tych obowiązków, ale pobiera wynagrodzenie za swoją pracę. Skup proponuje bezpośredni zakup, dlatego w wycenie uwzględnia późniejsze koszty oraz ryzyko.</p>
+    <p>Ostateczny wynik zależy od konkretnego samochodu. Popularny, zadbany model może szybko znaleźć nabywcę prywatnego. Auto uszkodzone albo wymagające napraw może natomiast przez długi czas nie wzbudzać zainteresowania, nawet przy atrakcyjnej cenie.</p>
+    <p><strong>Dlatego przed wyborem warto odpowiedzieć sobie na dwa pytania:</strong></p>
+    <ol>
+      <li>Jak długo mogę czekać na sprzedaż?</li>
+      <li>Ile własnego czasu chcę przeznaczyć na znalezienie kupującego?</li>
+    </ol>
+
+    <h2>O co zapytać przed podpisaniem umowy z komisem?</h2>
+    <p>Warunki współpracy mogą się różnić, dlatego nie warto opierać decyzji wyłącznie na rozmowie. Najważniejsze ustalenia powinny znaleźć się w umowie.</p>
   </div>
 
-  <div class="docs" style="margin-top:26px">
-    <div class="doc"><b>Ile wynosi prowizja</b><p>Procent od ceny czy stała kwota, i czy jest w niej zawarte przygotowanie auta, zdjęcia i wystawienie ogłoszeń.</p></div>
-    <div class="doc"><b>Kto odpowiada za auto</b><p>Kto płaci, jeśli auto zostanie uszkodzone albo skradzione z placu, i czy jest wtedy objęte jakimkolwiek ubezpieczeniem.</p></div>
-    <div class="doc"><b>Jak długo obowiązuje umowa</b><p>Na ile tygodni podpisujesz umowę komisową i czy możesz odebrać auto wcześniej bez żadnych opłat.</p></div>
-    <div class="doc"><b>Kto ustala cenę</b><p>Czy cena wywoławcza jest Twoja, czy komisu, i czy do jej obniżenia potrzebna jest Twoja zgoda.</p></div>
-    <div class="doc"><b>Kiedy dostaniesz pieniądze</b><p>Od razu po sprzedaży czy po rozliczeniu z kupującym — to bywa różnica kilku tygodni.</p></div>
-    <div class="doc"><b>Kto zgłasza zbycie</b><p>Dopóki auto jest Twoją własnością, formalności i ewentualne mandaty pozostają po Twojej stronie.</p></div>
+  <div class="docs" style="margin-top:24px">
+    <div class="doc"><b>Ile wynosi prowizja?</b><p>Sprawdź, czy komis pobiera określony procent ceny, stałą kwotę czy jedno i drugie. Zapytaj również o opłaty za przygotowanie samochodu, zdjęcia, ogłoszenia, plac lub dodatkową promocję.</p></div>
+    <div class="doc"><b>Jak długo obowiązuje umowa?</b><p>Ustal, przez jaki czas komis może oferować samochód i czy umowę można wcześniej zakończyć. Sprawdź, czy wcześniejszy odbiór auta wiąże się z kosztami.</p></div>
+    <div class="doc"><b>Kto decyduje o obniżeniu ceny?</b><p>Umowa powinna określać cenę minimalną oraz zasady jej zmiany. Komis nie powinien mieć nieograniczonej możliwości obniżania ceny bez wiedzy właściciela.</p></div>
+    <div class="doc"><b>Kto odpowiada za samochód?</b><p>Zapytaj, co stanie się w przypadku uszkodzenia, kradzieży albo zdarzenia podczas jazdy próbnej. Sprawdź również, czy plac i znajdujące się na nim samochody są odpowiednio zabezpieczone.</p></div>
+    <div class="doc"><b>Kiedy nastąpi rozliczenie?</b><p>Ustal, w jakim terminie po sprzedaży otrzymasz pieniądze i jakie dokumenty potwierdzające transakcję przekaże Ci komis.</p></div>
+    <div class="doc"><b>Co stanie się, jeśli samochód nie znajdzie kupca?</b><p>Sprawdź, kiedy możesz odebrać auto, czy trzeba wcześniej wypowiedzieć umowę i czy przy odbiorze pojawią się dodatkowe koszty.</p></div>
   </div>
 
-  <div class="proza" style="margin-top:44px">
-    <h2>Żeby nie było niedomówień</h2>
-    <p><strong>Nie jesteśmy komisem i nie prowadzimy komisu.</strong> Nie przyjmujemy aut w pośrednictwo, nie bierzemy prowizji i nie stawiamy cudzych samochodów na placu. Odkupujemy auto na siebie, płacimy od ręki i od tego momentu jest ono nasze.</p>
-    <p>Jeśli szukasz miejsca, które weźmie Twoje auto w komis i będzie je sprzedawać w Twoim imieniu, to nie tutaj. Jeśli chcesz sprzedać auto dziś i mieć to z głowy — zadzwoń albo wypełnij formularz.</p>
+  <div class="proza" style="margin-top:46px">
+    <h2>Nie zgłaszaj sprzedaży w chwili pozostawienia auta w komisie</h2>
+    <p>Samo przekazanie samochodu do komisu nie oznacza jeszcze jego sprzedaży. Właściciel zmienia się dopiero po zawarciu właściwej transakcji z kupującym.</p>
+    <p>Dopiero wtedy otrzymujesz dokument potwierdzający sprzedaż i możesz <a href="/jak-sprzedac-auto">zgłosić zbycie pojazdu</a> w wydziale komunikacji oraz powiadomić ubezpieczyciela.</p>
+    <p>Przy odbiorze dokumentów sprawdź datę sprzedaży i dane nabywcy. Będą potrzebne do wykonania późniejszych formalności.</p>
+
+    <h2>Jak wygląda sprzedaż samochodu firmie TINA?</h2>
+    <p>TINA prowadzi bezpośredni skup samochodów. Nie czekamy na znalezienie innego kupującego, zanim będziemy mogli sfinalizować transakcję.</p>
+    <p><strong>Proces zaczyna się od krótkiej rozmowy lub formularza:</strong></p>
+    <ol>
+      <li>Przekazujesz podstawowe informacje o samochodzie i jego lokalizacji.</li>
+      <li>Wstępnie oceniamy zgłoszenie i umawiamy oględziny.</li>
+      <li>Sprawdzamy rzeczywisty stan pojazdu.</li>
+      <li>Przedstawiamy ofertę zakupu.</li>
+      <li>Jeśli ją zaakceptujesz, przygotowujemy dokumenty i ustalamy rozliczenie.</li>
+      <li>Odbieramy samochód, a w razie potrzeby organizujemy transport lawetą.</li>
+    </ol>
+    <p>Na wycenę wpływają między innymi marka, model, rocznik, przebieg, stan techniczny, zakres uszkodzeń i aktualne zainteresowanie danym pojazdem.</p>
   </div>
 </section></div>
 
 <div class="w"><section>
-  <Naglowek eyebrow="Pytania" tytul='Komis i skup — <span class="gold">pytania</span>' />
+  <Naglowek eyebrow="Pytania" tytul='Komis czy skup aut — <span class="gold">najczęstsze pytania</span>' />
   <Faq pary={FAQ} />
+  <div class="proza" style="margin-top:34px">
+    <p class="data">Artykuł ma charakter informacyjny. Stan informacji: 14 września 2026 roku.</p>
+  </div>
 </section></div>
 
 <Cta
-  tytul='Nie chcesz czekać — <span class="gold">sprzedaj od ręki</span>'
-  opis="Opisz auto, a oddzwonimy z konkretną kwotą. Bez prowizji, bez umowy komisowej i bez czekania na kupca."
+  tytul='Nadal nie wiesz, <span class="gold">które rozwiązanie wybrać?</span>'
+  opis="Jeśli możesz poczekać i zależy Ci przede wszystkim na możliwie wysokiej cenie, rozważ komis albo samodzielną sprzedaż. Jeżeli ważniejsze są wygoda, odbiór pojazdu i brak oczekiwania na kolejnego kupującego, prześlij samochód do wyceny — podaj markę, model, rocznik, przebieg, stan auta i jego lokalizację."
 />
 
 </Base>

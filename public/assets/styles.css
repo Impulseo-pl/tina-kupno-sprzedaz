@@ -214,6 +214,17 @@ summary:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 .proza li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:1px;background:var(--g3)}
 .proza a{color:var(--g4);text-decoration:underline;text-underline-offset:3px}
 .proza .data{font-size:13.5px;color:var(--muted);margin-top:6px}
+/* Lista numerowana w prozie — myslnik z .proza li zastapiony cyfra. */
+.proza ol{margin-top:10px;padding-left:0;list-style:none;counter-reset:krok}
+.proza ol li{padding-left:28px;counter-increment:krok}
+.proza ol li::before{content:counter(krok) ".";top:0;left:2px;width:auto;height:auto;background:none;color:var(--g4);font-weight:700}
+/* Tabela porownawcza — na waskich ekranach przewija sie w poziomie. */
+.tabela{max-width:78ch;margin:22px auto 0;overflow-x:auto;border:1px solid var(--line);background:var(--w0)}
+.tabela table{border-collapse:collapse;width:100%;min-width:620px;font-size:15.5px}
+.tabela th,.tabela td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;color:#3c414b;line-height:1.5}
+.tabela thead th{font-family:Unbounded,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g4);background:var(--w1);white-space:nowrap}
+.tabela tbody th{font-weight:700;color:var(--ink);font-size:15.5px}
+.tabela tbody tr:last-child th,.tabela tbody tr:last-child td{border-bottom:0}
 .dziek{max-width:62ch;margin-inline:auto;text-align:center}
 .dziek .kwota{margin-top:10px;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.04em;
   background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent}
