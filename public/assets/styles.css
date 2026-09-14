@@ -163,6 +163,8 @@ legend{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:upperca
 .box{background:var(--w0);border:1px solid var(--line);padding:28px 30px 32px}
 .box.no{background:var(--w2)}
 .box h3{font-size:20px;margin-bottom:16px}
+.duo .box{display:flex;flex-direction:column}
+.duo .box .acts{margin-top:auto;padding-top:22px}
 /* listy tak/nie -- reguly nizej, po naprawie lamania wierszy */
 
 /* ---------- siatki linków ---------- */
