@@ -1,0 +1,19 @@
+---
+/* Proces sprzedazy w czterech krokach — wersja na strone glowna.
+   Te same cztery kroki co w Kroki.astro, tylko podane jako sciezka z numerami. */
+const KROKI = [
+  ['Zadzwoń albo wyślij formularz', 'Podajesz markę, rocznik, przebieg, stan auta i kwotę, jakiej oczekujesz.'],
+  ['Ustalamy cenę przez telefon', 'Rozmawiamy o kwocie, zanim ktokolwiek gdziekolwiek jedzie. Nie dogadamy się — nikt nie traci dnia.'],
+  ['Przyjeżdżamy tego samego dnia', 'Oglądamy auto i robimy krótką jazdę. Bez rzeczoznawcy i bez kolejnego terminu.'],
+  ['Umowa, gotówka, laweta', 'Piętnaście minut na miejscu. Pieniądze dostajesz, zanim auto wjedzie na lawetę.'],
+];
+---
+<div class="proces">
+  {KROKI.map(([tytul, opis], i) => (
+    <div class="krok">
+      <div class="nr">{i + 1}</div>
+      <h3>{tytul}</h3>
+      <p>{opis}</p>
+    </div>
+  ))}
+</div>

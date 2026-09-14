@@ -3,7 +3,8 @@ import Base from '../layouts/Base.astro';
 import PasFaktow from '../components/PasFaktow.astro';
 import Naglowek from '../components/Naglowek.astro';
 import Kupujemy from '../components/Kupujemy.astro';
-import Kroki from '../components/Kroki.astro';
+import ProcesKola from '../components/ProcesKola.astro';
+import MapaMazowsza from '../components/MapaMazowsza.astro';
 import Formularz from '../components/Formularz.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
@@ -54,6 +55,16 @@ const FAQ: [string, string][] = [
 
 <PasFaktow />
 
+<div class="w"><section id="jak">
+  <Naglowek
+    eyebrow="Przebieg sprawy"
+    tytul='Od telefonu do gotówki w <span class="gold">jeden dzień</span>'
+    opis="Bez wystawiania ogłoszeń, bez oglądaczy pod domem, bez czekania na przelew od nieznajomego."
+  />
+  <ProcesKola />
+  <div style="text-align:center;margin-top:38px"><a class="btn g" href="/wycena">Zamów wycenę auta</a></div>
+</section></div>
+
 <div class="darker"><div class="w"><section>
   <Naglowek
     eyebrow="Cztery rzeczy, od których nie odstępujemy"
@@ -93,15 +104,6 @@ const FAQ: [string, string][] = [
     <a href="/ile-placimy"><b>Ile płacimy za auto</b>Co realnie decyduje o kwocie</a>
     <a href="/jak-sprzedac-auto"><b>Jak sprzedać auto</b>Formalności krok po kroku</a>
   </div>
-</section></div>
-
-<div class="w"><section id="jak">
-  <Naglowek
-    eyebrow="Przebieg sprawy"
-    tytul='Od telefonu do gotówki w <span class="gold">jeden dzień</span>'
-    opis="Bez wystawiania ogłoszeń, bez oglądaczy pod domem, bez czekania na przelew od nieznajomego."
-  />
-  <Kroki />
 </section></div>
 
 <div class="w"><section>
@@ -169,15 +171,17 @@ const FAQ: [string, string][] = [
   />
   <div class="local">
     <div class="box">
-      <h3>Najczęściej jeździmy tutaj</h3>
-      <p style="margin-bottom:14px">To kierunki, w których bywamy regularnie. Jeśli Twojej miejscowości nie ma na liście, to nie znaczy, że nie przyjedziemy — po prostu zadzwoń i zapytaj.</p>
-      <div class="near">
+      <h3>Gdzie jeździmy</h3>
+      <MapaMazowsza />
+      <div class="near" style="margin-top:20px">
         <a href="/skup-aut-sochaczew">Sochaczew</a>
         <a href="/skup-aut-warszawa">Warszawa</a>
         <span>Żyrardów</span><span>Grodzisk Mazowiecki</span><span>Błonie</span><span>Ożarów Mazowiecki</span>
         <span>Pruszków</span><span>Piaseczno</span><span>Nowy Dwór Mazowiecki</span><span>Legionowo</span>
-        <span>Płock</span><span>Radom</span><span>Wyszogród</span><span>Łowicz</span>
+        <span>Płock</span><span>Radom</span><span>Wyszogród</span><span>Ciechanów</span>
+        <span>Ostrołęka</span><span>Siedlce</span><span>Mińsk Mazowiecki</span><span>Garwolin</span>
       </div>
+      <p style="margin-top:16px;font-size:15px;color:#5a616e">Jeśli Twojej miejscowości nie ma na mapie, to nie znaczy, że nie przyjedziemy — obsługujemy całe województwo. Po prostu zadzwoń i zapytaj.</p>
     </div>
     <div class="box">
       <h3>Jak umawiamy przyjazd</h3>

@@ -142,7 +142,7 @@ function counters(){
 
 /* ================= odslanianie przy przewijaniu ================= */
 const RV_SOLO=['.sechead','.faq','.fgrid','.gscore','.cmpwrap'];
-const RV_STAG=['.two','.steps','.duo','.grid4','.brands','.links','.revs','.local','.dchip','.near','.vows','.docs','.proof .in'];
+const RV_STAG=['.two','.steps','.duo','.grid4','.brands','.links','.revs','.local','.dchip','.near','.vows','.docs','.proces','.proof .in'];
 let rvObs=null;
 function reveal(){
   if(rvObs) rvObs.disconnect();

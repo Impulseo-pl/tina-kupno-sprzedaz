@@ -1,22 +1,41 @@
-<div class="duo">
-  <div class="box">
-    <h3>Co odkupujemy</h3>
-    <ul class="tick">
-      <li><b>Samochody osobowe</b> — każda marka, każdy rocznik</li>
-      <li><b>Samochody dostawcze i busy</b> — furgony, skrzyniowe, brygadówki</li>
-      <li><b>Hybrydy</b> — także te z przepracowaną baterią</li>
-      <li><b>Auta uszkodzone i powypadkowe</b>, które da się jeszcze naprawić</li>
-      <li><b>Auta niejeżdżące</b> — zabieramy lawetą, transport po naszej stronie</li>
-      <li><b>Bez ważnego OC albo przeglądu</b> — to wpływa na kwotę, nie blokuje sprzedaży</li>
-    </ul>
-  </div>
-  <div class="box no">
-    <h3>Czego nie odkupujemy</h3>
-    <ul class="tick x">
-      <li><b>Samochodów elektrycznych</b> — hybrydy tak, elektryki nie</li>
-      <li><b>Motocykli, kamperów i przyczep</b></li>
-      <li><b>Aut nadających się już tylko na części albo na złom</b></li>
-    </ul>
-    <p style="margin-top:16px;font-size:15px;color:#5a616e">Nie prowadzimy kasacji i nie wystawiamy zaświadczeń o demontażu — po taki dokument trzeba pojechać do stacji demontażu. Piszemy to wprost, żeby nikt nie tracił czasu na telefon do nas.</p>
-  </div>
+---
+/* Zakres skupu. Rozbite na kategorie, bo tak ludzie tego szukaja:
+   osobno "skup aut uszkodzonych", osobno "skup aut dostawczych", osobno "bez OC". */
+const RODZAJE: [string, string][] = [
+  ['Samochody osobowe',
+   'Każda marka i każdy rocznik — hatchbacki, kombi, sedany, SUV-y i auta terenowe. Zarówno auta zadbane, po jednym właścicielu, jak i takie, które mają już swoje lata i kolejną naprawę przed sobą.'],
+  ['Samochody dostawcze i busy',
+   'Furgony, blaszaki, skrzyniowe, wywrotki i brygadówki do 3,5 tony, a także busy dziewięcioosobowe. Odkupujemy pojedyncze auta i całe floty przy wymianie taboru.'],
+  ['Auta uszkodzone i powypadkowe',
+   'Po stłuczce, po gradzie, z uszkodzonym przodem, tyłem albo bokiem. Także po szkodzie uznanej przez ubezpieczyciela za całkowitą — o ile auto da się jeszcze naprawić.'],
+  ['Auta niejeżdżące',
+   'Nie odpala, nie ma jak dojechać, stoi pod wiatą od kilku lat. Przyjeżdżamy lawetą, transport jest po naszej stronie i nic nie kosztuje.'],
+  ['Bez ważnego OC i przeglądu',
+   'Brak aktualnego ubezpieczenia albo badania technicznego nie blokuje sprzedaży. Wpływa na kwotę, ale nie przekreśla transakcji i nie wymaga niczego załatwiać przed naszym przyjazdem.'],
+  ['Hybrydy',
+   'Odkupujemy samochody hybrydowe, także te z przepracowaną baterią, której wymiana przestała się właścicielowi opłacać. Aut w pełni elektrycznych nie kupujemy.'],
+  ['Auta z wysokim przebiegiem',
+   'Trzysta, czterysta czy pięćset tysięcy kilometrów nie skreśla auta — zwłaszcza przy dieslach i dostawczych. Patrzymy na stan, nie na sam licznik.'],
+  ['Auta firmowe i po działalności',
+   'Środki trwałe, auta na fakturę, samochody zostające po zamkniętej działalności. Powiedz o tym przez telefon, żebyśmy przyjechali z właściwymi dokumentami.'],
+  ['Auta używane każdego rocznika',
+   'Od kilkuletnich po takie z lat dziewięćdziesiątych. Nie mamy sztywnej granicy rocznika — liczy się to, czy auto ma jeszcze wartość dla następnego kupującego.'],
+];
+---
+<div class="docs">
+  {RODZAJE.map(([tytul, opis]) => (
+    <div class="doc"><b>{tytul}</b><p>{opis}</p></div>
+  ))}
+</div>
+
+<div class="proza" style="margin-top:40px">
+  <h3>Marki, które przechodzą przez nasze ręce</h3>
+  <p>Nie ograniczamy się do wybranych producentów — odkupujemy każdą markę. Najczęściej trafiają do nas
+  Volkswageny, Opel, Ford, Audi, BMW i Mercedes, obok nich Toyota, Renault, Peugeot, Citroën, Škoda,
+  Fiat, Hyundai, Kia, Nissan, Honda, Mazda, Seat, Dacia, Suzuki i Volvo. Zdarzają się też auta
+  amerykańskie i starsze klasyki — w naszych <a href="/realizacje">realizacjach</a> stoi obok siebie
+  trzydziestoletni mercedes i pickup Toyoty.</p>
+  <p>Na kwotę wpływa nie tyle sam znaczek na masce, ile to, jak łatwo takie auto sprzedać dalej.
+  Popularny model w dobrym stanie zawsze wyceni się lepiej niż nisza, na którą trzeba miesiącami
+  szukać kupca. Piszemy o tym szerzej na stronie <a href="/ile-placimy">ile płacimy za auto</a>.</p>
 </div>

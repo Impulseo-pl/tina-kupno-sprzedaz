@@ -1,0 +1,90 @@
+---
+/* Uproszczony zarys wojewodztwa mazowieckiego z zaznaczonymi miejscowosciami.
+   Rysowany z wspolrzednych geograficznych, zeby punkty lezaly tam, gdzie naprawde leza:
+   rzut rownoodleglosciowy ze skalowaniem dlugosci przez cosinus szerokosci srodkowej. */
+
+/* Zarys granicy wojewodztwa, [dlugosc, szerokosc], zgodnie z ruchem wskazowek od polnocnego zachodu. */
+const GRANICA: [number, number][] = [
+  [19.90, 53.08], [20.38, 53.42], [21.10, 53.49], [21.60, 53.40], [21.95, 53.08],
+  [22.22, 52.92], [22.28, 52.60], [22.60, 52.38], [22.92, 52.22], [22.70, 51.98],
+  [22.30, 51.88], [21.95, 51.62], [21.90, 51.36], [21.78, 51.12], [21.52, 51.02],
+  [21.20, 51.14], [20.86, 51.20], [20.52, 51.34], [20.42, 51.62], [20.22, 51.80],
+  [20.02, 52.08], [19.62, 52.32], [19.42, 52.50], [19.58, 52.72], [19.62, 52.94],
+];
+
+type Miasto = { nazwa: string; lon: number; lat: number; baza?: boolean; etykieta?: boolean };
+const MIASTA: Miasto[] = [
+  { nazwa: 'Sochaczew',           lon: 20.24, lat: 52.23, baza: true, etykieta: true },
+  { nazwa: 'Warszawa',            lon: 21.01, lat: 52.23, etykieta: true },
+  { nazwa: 'Płock',               lon: 19.71, lat: 52.55, etykieta: true },
+  { nazwa: 'Radom',               lon: 21.15, lat: 51.40, etykieta: true },
+  { nazwa: 'Żyrardów',            lon: 20.45, lat: 52.05 },
+  { nazwa: 'Grodzisk Mazowiecki', lon: 20.63, lat: 52.11 },
+  { nazwa: 'Błonie',              lon: 20.61, lat: 52.20 },
+  { nazwa: 'Ożarów Mazowiecki',   lon: 20.81, lat: 52.21 },
+  { nazwa: 'Pruszków',            lon: 20.81, lat: 52.17 },
+  { nazwa: 'Piaseczno',           lon: 21.02, lat: 52.08 },
+  { nazwa: 'Legionowo',           lon: 20.93, lat: 52.40 },
+  { nazwa: 'Nowy Dwór Mazowiecki',lon: 20.72, lat: 52.43 },
+  { nazwa: 'Wyszogród',           lon: 20.19, lat: 52.39 },
+  { nazwa: 'Ciechanów',           lon: 20.62, lat: 52.88 },
+  { nazwa: 'Ostrołęka',           lon: 21.57, lat: 53.08 },
+  { nazwa: 'Siedlce',             lon: 22.28, lat: 52.17 },
+  { nazwa: 'Mińsk Mazowiecki',    lon: 21.57, lat: 52.18 },
+  { nazwa: 'Garwolin',            lon: 21.62, lat: 51.90 },
+];
+
+const LAT0 = 52.3;
+const K = Math.cos((LAT0 * Math.PI) / 180);
+const rzut = (lon: number, lat: number): [number, number] => [lon * K, -lat];
+
+const punkty = GRANICA.map(([lo, la]) => rzut(lo, la));
+const xs = punkty.map((p) => p[0]);
+const ys = punkty.map((p) => p[1]);
+const minX = Math.min(...xs), maxX = Math.max(...xs);
+const minY = Math.min(...ys), maxY = Math.max(...ys);
+
+const SZER = 440;
+const MARG = 14;
+const skala = (SZER - 2 * MARG) / (maxX - minX);
+const WYS = Math.round((maxY - minY) * skala + 2 * MARG);
+
+const naEkran = (lon: number, lat: number): [number, number] => {
+  const [x, y] = rzut(lon, lat);
+  return [
+    Math.round(((x - minX) * skala + MARG) * 10) / 10,
+    Math.round(((y - minY) * skala + MARG) * 10) / 10,
+  ];
+};
+
+const sciezka =
+  punkty
+    .map((_, i) => {
+      const [x, y] = naEkran(GRANICA[i][0], GRANICA[i][1]);
+      return `${i === 0 ? 'M' : 'L'}${x} ${y}`;
+    })
+    .join(' ') + ' Z';
+
+const znaczniki = MIASTA.map((m) => {
+  const [x, y] = naEkran(m.lon, m.lat);
+  return { ...m, x, y };
+});
+---
+<figure class="mapa-woj">
+  <svg viewBox={`0 0 ${SZER} ${WYS}`} role="img" aria-label="Mapa województwa mazowieckiego z zaznaczonymi miejscowościami, w których odbieramy auta">
+    <path d={sciezka} class="obrys" />
+    {znaczniki.map((m) => (
+      <g class={m.baza ? 'pin baza' : 'pin'}>
+        {m.baza && <circle cx={m.x} cy={m.y} r="11" class="aura" />}
+        <circle cx={m.x} cy={m.y} r={m.baza ? 5 : 3.4} />
+        {m.etykieta && (
+          <text x={m.x + (m.nazwa === 'Warszawa' ? 9 : 9)} y={m.y + 4}>{m.nazwa}</text>
+        )}
+      </g>
+    ))}
+  </svg>
+  <figcaption>
+    <span class="leg"><i class="b"></i>Sochaczew — nasza baza</span>
+    <span class="leg"><i></i>miejscowości, w których bywamy regularnie</span>
+  </figcaption>
+</figure>
