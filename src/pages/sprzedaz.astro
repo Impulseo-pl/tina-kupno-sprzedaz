@@ -2,76 +2,136 @@
 import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
 import Naglowek from '../components/Naglowek.astro';
-import Cta from '../components/Cta.astro';
+import ProcesKola from '../components/ProcesKola.astro';
 import Faq from '../components/Faq.astro';
 import Telefon from '../components/Telefon.astro';
 import { okruszki, faqLd, FIRMA } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Gdzie mogę zobaczyć aktualną ofertę?', 'Najszybciej telefonicznie — powiedz, czego szukasz i w jakim budżecie, a powiemy, co mamy w tej chwili. Część aut pokazujemy też na naszym Facebooku.'],
-  ['Czy jesteście komisem?', 'Nie. Sprzedajemy wyłącznie auta, które wcześniej sami odkupiliśmy i które są naszą własnością. Nie pośredniczymy w sprzedaży cudzych samochodów.'],
-  ['Czy mogę obejrzeć auto przed zakupem?', 'Oczywiście. Umawiamy się na konkretną godzinę, oglądasz auto na spokojnie i zadajesz pytania. Nie pobieramy żadnych opłat rezerwacyjnych.'],
-  ['Powiecie prawdę o stanie auta?', 'Tak, łącznie z rzeczami, które są do poprawy. Auto i tak przeszło przez nasze ręce, więc wiemy o nim więcej niż jakikolwiek pośrednik — nie ma sensu tego ukrywać.'],
+  ['Gdzie znajdę aktualną ofertę?', 'Aktualne samochody prezentujemy na profilu firmy na Facebooku. Możesz również zadzwonić pod numer 692 493 797 lub 693 649 549 i powiedzieć, jakiego auta szukasz.'],
+  ['Czy TINA jest komisem samochodowym?', 'Nie. Sprzedajemy samochody, które wcześniej sami odkupiliśmy i które należą do naszej firmy.'],
+  ['Czy mogę odbyć jazdę próbną?', 'Tak. Oględziny i jazdę próbną ustalamy wcześniej telefonicznie, aby zarezerwować odpowiednią ilość czasu.'],
+  ['Czy mogę sprawdzić samochód przed zakupem?', 'Tak. Zachęcamy do dokładnego obejrzenia pojazdu i zadawania pytań dotyczących jego stanu.'],
+  ['Czy przyjmujecie samochody w rozliczeniu?', 'Tak. Prowadzimy skup samochodów, dlatego możemy wycenić Twoje obecne auto i rozliczyć je przy zakupie innego pojazdu.'],
+];
+
+const ZAKUP: [string, string][] = [
+  ['Sprawdzasz aktualną ofertę', 'Zadzwoń lub odwiedź nasz profil na Facebooku, aby dowiedzieć się, jakie samochody są obecnie dostępne.'],
+  ['Umawiasz oględziny', 'Ustalamy dogodny termin spotkania w naszej bazie w Kozłowie Biskupim pod Sochaczewem.'],
+  ['Oglądasz samochód', 'Możesz spokojnie obejrzeć pojazd, uruchomić go i odbyć jazdę próbną. Odpowiemy również na pytania dotyczące jego stanu.'],
+  ['Podejmujesz decyzję', 'Jeżeli samochód spełnia Twoje oczekiwania, przygotowujemy dokumenty i finalizujemy sprzedaż. Jeżeli nie — oględziny nie zobowiązują Cię do zakupu.'],
 ];
 ---
 <Base
-  title="Samochody na sprzedaż — auta z naszego skupu | TINA"
-  description="Sprzedajemy samochody, które sami wcześniej odkupiliśmy. Nie jesteśmy komisem — każde auto jest naszą własnością i znamy jego historię."
+  title="Samochody używane na sprzedaż — auta z naszego skupu | TINA"
+  description="Sprzedajemy samochody, które wcześniej sami odkupiliśmy. Nie jesteśmy komisem — auta należą do nas, więc znamy ich stan. Oględziny i jazda próbna po umówieniu."
   path="/sprzedaz"
-  schema={[okruszki([['/sprzedaz', 'Sprzedaż']]), faqLd(FAQ)]}
+  schema={[okruszki([['/sprzedaz', 'Samochody na sprzedaż']]), faqLd(FAQ)]}
   cta={{ label: 'Zapytaj o auto', href: `tel:${FIRMA.tel1tel}` }}
 >
 
 <Chero
-  okruszek="Sprzedaż"
-  lede="Sprzedajemy auta, które wcześniej sami odkupiliśmy. Każde przeszło przez nasze ręce, więc wiemy o nim wszystko — łącznie z tym, co jest w nim do poprawy."
-  sub="Nie jesteśmy komisem. Auta, które sprzedajemy, są naszą własnością."
+  okruszek="Samochody na sprzedaż"
+  lede="Sprzedajemy samochody, które wcześniej sami odkupiliśmy. Nie działamy jako komis — oferowane auta należą do nas, dlatego możemy rzeczowo opowiedzieć o ich stanie i odpowiedzieć na pytania dotyczące konkretnego egzemplarza."
+  sub="Oględziny i jazdę próbną umawiamy telefonicznie."
   akcje={false}
-><span>Samochody <span class="gold">na sprzedaż</span></span></Chero>
+><span>Samochody używane <span class="gold">na sprzedaż</span></span></Chero>
+
+<div class="w"><section style="text-align:center;padding-block:34px 0">
+  <div class="acts" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+    <a class="btn g" href={`tel:${FIRMA.tel1tel}`}>Zapytaj o dostępne auta</a>
+  </div>
+</section></div>
 
 <div class="w"><section>
   <div class="proza">
-    <h2>Kupujesz od właściciela, nie od pośrednika</h2>
-    <p>To jest cała różnica między nami a komisem. W komisie auto należy do kogoś innego, a osoba, która Ci je pokazuje, zna je wyłącznie z opisu poprzedniego właściciela. My sprzedajemy samochody, które sami kupiliśmy — byliśmy przy ich odbiorze, widzieliśmy je na miejscu, przejechaliśmy się nimi i rozmawialiśmy z poprzednim właścicielem.</p>
-    <p>Dlatego na pytanie „co w nim było robione” odpowiadamy konkretnie, a nie „tak było, jak przyjechało”. I dlatego mówimy też o tym, co w aucie jest do poprawy — bo i tak zobaczysz to przy pierwszym przeglądzie, a my wolimy sprzedać auto raz, uczciwie, niż tłumaczyć się tydzień później.</p>
-
-    <h2>Jak sprawdzić, co mamy w tej chwili</h2>
-    <p>Oferta zmienia się z tygodnia na tydzień, bo auta pojawiają się i znikają w tempie, w jakim je kupujemy i sprzedajemy. Najszybszą drogą jest telefon: powiedz, jakiego auta szukasz, na jaki budżet i do czego ma służyć, a powiemy, co mamy teraz i czego spodziewamy się w najbliższym czasie.</p>
-    <p>Część samochodów pokazujemy też na naszym profilu na Facebooku.</p>
+    <h2>Auto, które możesz dokładnie sprawdzić</h2>
+    <p>Zakup używanego samochodu wymaga spokojnej decyzji. Dlatego przed zakupem możesz dokładnie obejrzeć auto, uruchomić silnik, zajrzeć pod maskę i odbyć jazdę próbną.</p>
+    <p>Przekazujemy informacje, które posiadamy o pojeździe, w tym również o widocznych śladach użytkowania lub elementach wymagających uwagi. Zależy nam, aby kupujący wiedział, jaki samochód wybiera.</p>
   </div>
+</section></div>
 
-  <div class="duo" style="margin-top:26px">
+<div class="darker"><div class="w"><section>
+  <Naglowek
+    eyebrow="Ważne rozróżnienie"
+    tytul='Nie jesteśmy <span class="gold">komisem</span>'
+  />
+  <div class="proza" style="color:var(--onk-mut)">
+    <p style="color:var(--onk-mut)">Samochody znajdujące się w naszej ofercie zostały wcześniej odkupione przez firmę TINA. Nie pośredniczymy pomiędzy właścicielem a kupującym i nie opieramy się wyłącznie na treści pozostawionej przez osobę wystawiającą ogłoszenie.</p>
+    <p style="color:var(--onk-mut)">Każde auto trafia najpierw do nas. Dzięki temu możemy je wcześniej zobaczyć, sprawdzić podczas jazdy i przygotować konkretne informacje dla kolejnego właściciela.</p>
+  </div>
+</section></div></div>
+
+<div class="w"><section>
+  <Naglowek
+    eyebrow="Oferta"
+    tytul='Jakie samochody znajdziesz <span class="gold">w ofercie?</span>'
+    opis="Oferta zmienia się na bieżąco. Trafiają do nas samochody osobowe różnych marek, roczników i typów nadwozia, a także auta dostawcze i busy."
+  />
+  <div class="duo">
     <div class="box">
-      <h3>Zapytaj o dostępne auta</h3>
-      <p style="margin-bottom:16px">Powiedz, czego szukasz — marka, nadwozie, paliwo, budżet. Jeśli nie mamy teraz nic pasującego, powiemy to wprost zamiast namawiać na cokolwiek innego.</p>
-      <div class="acts"><Telefon /></div>
-      <p style="margin-top:16px;font-size:15px;color:#5a616e">Odbieramy 7 dni w tygodniu. Drugi numer: <a href={`tel:${FIRMA.tel2tel}`}>{FIRMA.tel2}</a></p>
+      <h3>Możesz zapytać między innymi o</h3>
+      <ul class="tick">
+        <li>samochody miejskie,</li>
+        <li>sedany, kombi i hatchbacki,</li>
+        <li>SUV-y i auta terenowe,</li>
+        <li>samochody rodzinne,</li>
+        <li>auta dostawcze i busy,</li>
+        <li>samochody w różnych przedziałach cenowych.</li>
+      </ul>
+      <p style="margin-top:18px;font-size:15px;color:#5a616e">Nie prowadzimy stałego katalogu, ponieważ część samochodów znajduje nowych właścicieli niedługo po przyjęciu. Aktualną dostępność najlepiej sprawdzić telefonicznie lub na profilu firmy na Facebooku.</p>
     </div>
     <div class="box">
-      <h3>Zobacz na Facebooku</h3>
-      <p style="margin-bottom:16px">Bieżące auta wrzucamy na nasz profil. Tam najszybciej zobaczysz zdjęcia tego, co akurat stoi.</p>
-      <div class="acts"><a class="btn o" href={FIRMA.fb} rel="noopener" target="_blank">Profil TINA Skup Aut</a></div>
+      <h3>Powiedz, jakiego auta szukasz</h3>
+      <p style="margin-bottom:14px">Nie musisz znać konkretnego modelu. Wystarczy, że określisz najważniejsze wymagania:</p>
+      <ul class="tick">
+        <li>planowany budżet,</li>
+        <li>rodzaj nadwozia,</li>
+        <li>benzyna, diesel lub hybryda,</li>
+        <li>samochód prywatny albo do firmy,</li>
+        <li>przewidywany sposób użytkowania.</li>
+      </ul>
+      <p style="margin-top:18px">Sprawdzimy, czy mamy obecnie samochód odpowiadający tym kryteriom. Jeśli w danym momencie nie posiadamy odpowiedniego auta, poinformujemy o tym podczas rozmowy.</p>
+      <div class="acts" style="margin-top:20px"><Telefon /></div>
+      <p style="margin-top:12px;font-size:15px;color:#5a616e">Drugi numer: <a href={`tel:${FIRMA.tel2tel}`}>{FIRMA.tel2}</a></p>
     </div>
-  </div>
-
-  <div class="proza" style="margin-top:44px">
-    <h2>Jak wygląda zakup</h2>
-    <p>Umawiamy się na konkretną godzinę i oglądasz auto bez pośpiechu. Możesz je odpalić, przejechać się, zajrzeć pod maskę i pod auto. Nie pobieramy opłat rezerwacyjnych i nie stosujemy żadnych sztuczek z „drugim zainteresowanym, który ma przyjechać za godzinę”.</p>
-    <p>Jeśli auto Ci odpowiada, spisujemy umowę i rozliczamy się. Jeśli nie — rozstajemy się bez urazy i bez żadnych kosztów po Twojej stronie.</p>
-
-    <h2>Masz auto do oddania w rozliczeniu</h2>
-    <p>Skoro prowadzimy też skup, to jest naturalna sytuacja: sprzedajemy Ci jedno auto i odkupujemy Twoje stare. Wyceniamy je na tych samych zasadach co każde inne, a rozliczamy różnicę. Powiedz o tym przy pierwszej rozmowie, żebyśmy od razu wiedzieli, o czym mówimy.</p>
   </div>
 </section></div>
 
 <div class="w"><section>
-  <Naglowek eyebrow="Pytania" tytul='Zakup auta — <span class="gold">pytania</span>' />
+  <Naglowek eyebrow="Krok po kroku" tytul='Jak wygląda <span class="gold">zakup samochodu?</span>' />
+  <ProcesKola kroki={ZAKUP} />
+</section></div>
+
+<div class="w"><section>
+  <div class="duo">
+    <div class="box">
+      <h3>Zostaw swoje auto w rozliczeniu</h3>
+      <p>Chcesz kupić inny samochód, ale najpierw musisz sprzedać obecny? Prowadzimy również skup aut, dlatego możemy wycenić Twój samochód i odkupić go w ramach jednej transakcji.</p>
+      <p style="margin-top:12px">Po oględzinach ustalamy wartość obecnego auta, a następnie rozliczamy różnicę. Powiedz o takiej możliwości już podczas pierwszej rozmowy — przygotujemy wstępną wycenę i ustalimy dalsze kroki.</p>
+      <div class="acts" style="margin-top:20px"><a class="btn g" href="/wycena">Wycena auta online</a></div>
+    </div>
+    <div class="box">
+      <h3>Aktualne samochody na Facebooku</h3>
+      <p>Zdjęcia wybranych samochodów dostępnych w sprzedaży publikujemy na profilu TINA Skup Aut. Ponieważ oferta zmienia się dynamicznie, dostępność konkretnego pojazdu warto potwierdzić telefonicznie.</p>
+      <div class="acts" style="margin-top:20px"><a class="btn o" href={FIRMA.fb} rel="noopener" target="_blank">Zobacz profil TINA Skup Aut</a></div>
+    </div>
+  </div>
+</section></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Pytania" tytul='Najczęściej zadawane <span class="gold">pytania</span>' />
   <Faq pary={FAQ} />
 </section></div>
 
-<Cta
-  tytul='A może chcesz <span class="gold">sprzedać swoje auto</span>'
-  opis="Prowadzimy przede wszystkim skup. Opisz auto, a oddzwonimy z konkretną kwotą — dojazd i laweta po naszej stronie."
-/>
+<div class="darker"><div class="w"><section style="text-align:center">
+  <p class="eyebrow">Szukasz samochodu?</p>
+  <h2 style="margin-top:14px;font-size:clamp(22px,3.1vw,38px)">Zapytaj, co mamy <span class="gold">obecnie</span></h2>
+  <p style="margin:18px auto 0;font-size:17px;color:var(--onk-mut);max-width:62ch">Oferta zmienia się regularnie. Zadzwoń i powiedz, jakiego samochodu potrzebujesz oraz jaki budżet planujesz przeznaczyć na zakup. Przekażemy informacje o aktualnie dostępnych pojazdach.</p>
+  <div class="acts" style="margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+    <a class="btn g" href={`tel:${FIRMA.tel1tel}`}>Zadzwoń: {FIRMA.tel1}</a>
+    <a class="btn o" href={FIRMA.fb} rel="noopener" target="_blank">Zobacz auta na Facebooku</a>
+  </div>
+</section></div></div>
 
 </Base>
