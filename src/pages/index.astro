@@ -18,6 +18,12 @@ const FAQ: [string, string][] = [
   ['Czy kupujecie samochody elektryczne?', 'Nie. Hybrydy odkupujemy normalnie, natomiast aut w pełni elektrycznych nie kupujemy. Nie bierzemy też motocykli, kamperów ani przyczep.'],
   ['Czy przyjedziecie do Warszawy albo na drugi koniec Mazowsza?', 'Tak. Działamy na terenie całego województwa mazowieckiego, a bazę mamy pod Sochaczewem. Dojazd jest bezpłatny niezależnie od tego, jak daleko jedziemy.'],
 ];
+const SKROT: [string][] = [
+  ['Ustalamy cenę przez telefon'],
+  ['Przyjeżdżamy pod wskazany adres'],
+  ['Oglądamy auto i krótka jazda'],
+  ['Umowa, gotówka, laweta'],
+];
 ---
 <Base
   title="Skup aut za gotówkę — całe Mazowsze | TINA Skup Aut"
@@ -167,33 +173,34 @@ const FAQ: [string, string][] = [
   <Naglowek
     eyebrow="Obszar działania"
     tytul='Całe <span class="gold">Mazowsze</span>'
-    opis="Bazę mamy pod Sochaczewem, ale jeździmy po całym województwie. Dojazd kosztuje tyle samo wszędzie — zero złotych."
+    opis="Bazę mamy pod Sochaczewem i jeździmy po całym województwie. Dojazd oraz laweta kosztują zero złotych niezależnie od odległości."
   />
 
   <div class="local z-mapa">
     <MapaMazowsza />
-    <div class="box">
-      <h3>Jak umawiamy przyjazd</h3>
-      <ul class="tick">
-        <li>Przyjeżdżamy pod adres, który podasz — dom, praca, warsztat, parking</li>
-        <li>Umawiamy konkretną godzinę, nie „gdzieś po południu”</li>
-        <li>Jedziemy tego samego dnia, także w weekend</li>
-        <li>Nie musisz nigdzie dowozić auta ani szukać lawety</li>
-      </ul>
-      <p style="margin-top:16px;font-size:15px;color:#5a616e">Odbieramy telefon siedem dni w tygodniu. Jeśli nie odbierzemy od razu, jesteśmy w trasie — oddzwonimy.</p>
-
-      <h3 style="margin-top:32px">Skąd do Ciebie jedziemy</h3>
-      <p>Baza jest w Kozłowie Biskupim pod Sochaczewem, przy trasie w stronę Warszawy. Codziennie
-      jeździmy po zachodniej stronie województwa — <strong>Żyrardów, Grodzisk Mazowiecki, Błonie,
-      Ożarów Mazowiecki, Pruszków, Piaseczno, Legionowo, Nowy Dwór Mazowiecki i Wyszogród</strong> —
-      więc tam terminy są najkrótsze.</p>
-      <p style="margin-top:12px">Do <strong>Warszawy</strong> jedziemy każdego dnia, a do <strong>Płocka,
-      Ciechanowa, Ostrołęki, Siedlec, Mińska Mazowieckiego, Garwolina i Radomia</strong> wystarczy
-      zadzwonić rano, żeby zdążyć tego samego dnia.</p>
-      <p style="margin-top:12px"><strong>Odległość nie wpływa na kwotę</strong>: kilometrów nie doliczamy
-      do wyceny, a laweta jest w cenie niezależnie od tego, jak daleko jedziemy. Jeśli Twojej miejscowości
-      nie ma na mapie, i tak zadzwoń — obsługujemy całe województwo.</p>
+    <div>
+      <p class="tyt-lista">Od ustalenia ceny do zakupu</p>
+      <ProcesKola pion kroki={SKROT} />
     </div>
+  </div>
+
+  <p class="tyt-lista" style="margin-top:56px">Miasta</p>
+  <div class="kafle">
+    <a href="/skup-aut-sochaczew">Sochaczew</a>
+    <span>Radom</span><span>Płock</span><span>Siedlce</span><span>Pruszków</span><span>Legionowo</span>
+    <span>Ostrołęka</span><span>Ciechanów</span><span>Żyrardów</span><span>Piaseczno</span><span>Otwock</span>
+    <span>Mińsk Mazowiecki</span><span>Grodzisk Mazowiecki</span><span>Wołomin</span><span>Nowy Dwór Mazowiecki</span>
+    <span>Błonie</span><span>Ożarów Mazowiecki</span><span>Garwolin</span><span>Wyszków</span><span>Płońsk</span>
+    <span>Sokołów Podlaski</span><span>Wyszogród</span>
+  </div>
+
+  <p class="tyt-lista" style="margin-top:40px">Warszawa</p>
+  <div class="kafle">
+    <a href="/skup-aut-warszawa">Cała Warszawa</a>
+    <span>Bemowo</span><span>Białołęka</span><span>Bielany</span><span>Mokotów</span><span>Ochota</span>
+    <span>Praga-Południe</span><span>Praga-Północ</span><span>Rembertów</span><span>Śródmieście</span>
+    <span>Targówek</span><span>Ursus</span><span>Ursynów</span><span>Wawer</span><span>Wesoła</span>
+    <span>Wilanów</span><span>Włochy</span><span>Wola</span><span>Żoliborz</span>
   </div>
 </section></div>
 
