@@ -29,6 +29,7 @@ export const NAW = [
   { href: '/sprzedaz', label: 'Sprzedaż' },
   { href: '/realizacje', label: 'Realizacje' },
   { href: '/pytania', label: 'Pytania' },
+  { href: '/o-nas', label: 'O nas' },
   { href: '/kontakt', label: 'Kontakt' },
 ];
 
