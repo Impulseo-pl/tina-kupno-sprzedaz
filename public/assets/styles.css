@@ -551,3 +551,4 @@ body.scrolled .logo img{height:46px}
 .mapa-woj .leg{display:inline-flex;align-items:center;gap:7px}
 .mapa-woj .leg i{width:9px;height:9px;border-radius:50%;background:var(--g3);flex:none}
 .mapa-woj .leg i.b{width:12px;height:12px;background:var(--g);box-shadow:0 0 0 4px rgba(212,175,55,.2)}
+.mapa-woj .zrodlo{width:100%;text-align:center;font-size:11px;opacity:.65}
