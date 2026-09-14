@@ -4,7 +4,7 @@ import PasFaktow from '../components/PasFaktow.astro';
 import Naglowek from '../components/Naglowek.astro';
 import Kupujemy from '../components/Kupujemy.astro';
 import ProcesKola from '../components/ProcesKola.astro';
-import MapaPolski from '../components/MapaPolski.astro';
+import MapaMazowsza from '../components/MapaMazowsza.astro';
 import Formularz from '../components/Formularz.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
@@ -170,9 +170,8 @@ const FAQ: [string, string][] = [
     opis="Bazę mamy pod Sochaczewem, ale jeździmy po całym województwie. Dojazd kosztuje tyle samo wszędzie — zero złotych."
   />
 
-  <MapaPolski />
-
-  <div class="local" style="margin-top:44px">
+  <div class="local z-mapa">
+    <MapaMazowsza />
     <div class="box">
       <h3>Jak umawiamy przyjazd</h3>
       <ul class="tick">
@@ -182,9 +181,8 @@ const FAQ: [string, string][] = [
         <li>Nie musisz nigdzie dowozić auta ani szukać lawety</li>
       </ul>
       <p style="margin-top:16px;font-size:15px;color:#5a616e">Odbieramy telefon siedem dni w tygodniu. Jeśli nie odbierzemy od razu, jesteśmy w trasie — oddzwonimy.</p>
-    </div>
-    <div class="box">
-      <h3>Skąd do Ciebie jedziemy</h3>
+
+      <h3 style="margin-top:32px">Skąd do Ciebie jedziemy</h3>
       <p>Baza jest w Kozłowie Biskupim pod Sochaczewem, przy trasie w stronę Warszawy. Codziennie
       jeździmy po zachodniej stronie województwa — <strong>Żyrardów, Grodzisk Mazowiecki, Błonie,
       Ożarów Mazowiecki, Pruszków, Piaseczno, Legionowo, Nowy Dwór Mazowiecki i Wyszogród</strong> —

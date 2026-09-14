@@ -538,6 +538,65 @@ body.scrolled .logo img{height:46px}
 @media (max-width:1000px){.steps.cztery{grid-template-columns:1fr 1fr}}
 
 /* ---------- mapa obszaru dzialania ---------- */
+/* Mapa stoi bez ramki obok kafelka z informacjami — stad align-items na siatce. */
+.local.z-mapa{align-items:center;gap:34px}
+.mapa-woj{margin:0}
+.mapa-woj svg{display:block;width:100%;height:auto}
+.mapa-woj .obrys{fill:var(--g1);stroke:var(--g3);stroke-width:1.6;stroke-linejoin:round}
+.mapa-woj .pin circle{fill:var(--g4)}
+.mapa-woj .pin.baza circle{fill:#4a3a0c}
+.mapa-woj .pin .aura{fill:var(--g4);opacity:.22}
+.mapa-woj .pin text{font-family:Manrope,sans-serif;font-size:7px;font-weight:700;fill:var(--ink);
+  paint-order:stroke;stroke:var(--g1);stroke-width:2.2px;stroke-linejoin:round}
+.mapa-woj .pin.baza text{fill:#4a3a0c}
+.mapa-woj figcaption{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;margin-top:14px;
+  font-size:13px;color:var(--muted)}
+.mapa-woj .leg{display:inline-flex;align-items:center;gap:8px}
+.mapa-woj .leg i{width:9px;height:9px;border-radius:50%;background:var(--g4);flex:none}
+.mapa-woj .leg i.b{width:13px;height:13px;background:#4a3a0c;box-shadow:0 0 0 4px rgba(74,58,12,.18)}
+
+/* Tekst i punkty w SVG skaluja sie razem z viewBox, wiec przy wezszym kadrze
+   trzeba je powiekszyc w jednostkach mapy, inaczej robia sie nieczytelne. */
+@media (max-width:1000px){
+  .local.z-mapa{gap:26px}
+  .mapa-woj .pin text{font-size:9px;stroke-width:2.8px}
+  .mapa-woj .pin circle{r:3.2px}
+  .mapa-woj .pin.baza circle{r:5px}
+  .mapa-woj .pin .aura{r:10px}
+}
+@media (max-width:620px){
+  .mapa-woj .pin text{font-size:12px;stroke-width:3.6px}
+  .mapa-woj .pin circle{r:4.2px}
+  .mapa-woj .pin.baza circle{r:6.5px}
+  .mapa-woj .pin .aura{r:13px}
+}
+
+/* ---------- proces w czterech krokach (kola z numerami) ---------- */
+.proces{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:6px}
+.proces .krok{position:relative;text-align:center}
+/* kreska prowadzaca do nastepnego kola; dystans miedzy srodkami = szerokosc kolumny + odstep */
+.proces .krok:not(:last-child)::after{content:"";position:absolute;top:34px;left:calc(50% + 44px);
+  width:calc(100% - 62px);height:1px;background:linear-gradient(90deg,var(--g3),var(--line))}
+.proces .nr{width:68px;height:68px;margin:0 auto 18px;border-radius:50%;background:var(--goldgrad);
+  color:var(--k0);display:grid;place-items:center;font-family:Unbounded,sans-serif;font-weight:800;
+  font-size:25px;box-shadow:0 14px 30px -16px rgba(212,175,55,.85)}
+.proces h3{font-size:18px;margin-bottom:9px}
+.proces p{font-size:15px;color:var(--muted);max-width:32ch;margin-inline:auto}
+@media (max-width:900px){
+  .proces{grid-template-columns:1fr 1fr;gap:34px 22px}
+  .proces .krok:nth-child(2n)::after{display:none}
+}
+@media (max-width:560px){
+  .proces{grid-template-columns:1fr;gap:28px}
+  .proces .krok::after{display:none}
+  .proces .nr{width:58px;height:58px;font-size:22px;margin-bottom:14px}
+}
+
+/* Cztery kroki w ukladzie kafelkowym — domyslna siatka ma trzy kolumny. */
+.steps.cztery{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1000px){.steps.cztery{grid-template-columns:1fr 1fr}}
+
+/* ---------- mapa obszaru dzialania ---------- */
 .mapa-pl{margin:0}
 .mapa-pl svg{display:block;width:100%;height:auto;max-width:860px;margin-inline:auto}
 .mapa-pl .woj{fill:#eae6dc;stroke:#d6d0c1;stroke-width:1.1;stroke-linejoin:round}
