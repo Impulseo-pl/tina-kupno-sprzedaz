@@ -1,98 +1,102 @@
 ---
 import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
-import Naglowek from '../components/Naglowek.astro';
-import Kroki from '../components/Kroki.astro';
-import Formularz from '../components/Formularz.astro';
+import Telefon from '../components/Telefon.astro';
 import Cta from '../components/Cta.astro';
-import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Kupicie auto po poważnej szkodzie?', 'Tak, jeśli auto da się jeszcze naprawić. Odkupujemy samochody po stłuczkach, po gradzie, z uszkodzonym przodem czy tyłem, także takie, które nie nadają się do jazdy. Nie kupujemy natomiast wraków nadających się już tylko na części.'],
-  ['Czy muszę je gdzieś dowieźć?', 'Nie. Przyjeżdżamy z lawetą pod wskazany adres — pod dom, na parking, do warsztatu albo na parking policyjny. Transport jest po naszej stronie i nic nie kosztuje.'],
-  ['Auto stoi po szkodzie i czeka na decyzję ubezpieczyciela. Co wtedy?', 'Odszkodowanie należy się temu, kto był właścicielem w dniu zdarzenia, więc sprzedaż auta tego nie zabiera. Zwykle jednak prościej jest najpierw zamknąć sprawę z ubezpieczycielem, a potem sprzedać auto. Zadzwoń, powiemy, jak to najczęściej wygląda w praktyce.'],
-  ['Czy wystawicie zaświadczenie o demontażu?', 'Nie. Nie prowadzimy kasacji ani stacji demontażu, więc takiego dokumentu nie wydajemy. Jeśli auto nadaje się wyłącznie na złom, trzeba je oddać do stacji demontażu.'],
-  ['Auto nie ma ważnego OC ani przeglądu po szkodzie. Kupicie?', 'Tak. Brak OC i przeglądu jest przy aucie stojącym po wypadku czymś normalnym. Wpływa na kwotę, ale nie blokuje sprzedaży.'],
+  ['Czy kupujecie auta po poważnych wypadkach?', 'Rozpatrujemy również samochody z poważniejszymi uszkodzeniami. Decyzja zależy od kompletności pojazdu i możliwości jego dalszego przygotowania.'],
+  ['Czy samochód musi być sprawny?', 'Nie. Odkupujemy także wybrane auta nieodpalające i niejeżdżące.'],
+  ['Czy muszę dostarczyć auto na miejsce?', 'Nie zawsze. Jeżeli samochód wymaga transportu, możemy ustalić odbiór lawetą pod wskazanym adresem.'],
+  ['Czy kupujecie auta po szkodzie całkowitej?', 'Takie pojazdy również mogą zostać wycenione. Szkoda całkowita jest sposobem rozliczenia przyjętym przez ubezpieczyciela i nie zawsze oznacza, że samochodu nie można naprawić.'],
+  ['Czy wystawiacie zaświadczenie o demontażu?', 'Nie. Zajmujemy się skupem samochodów, a nie ich kasacją. Zaświadczenie o demontażu może wystawić uprawniona stacja demontażu pojazdów.'],
+  ['Czy zdjęcia wystarczą do wyceny?', 'Zdjęcia i opis pozwalają przygotować wstępną ocenę. Ostateczna oferta powstaje po sprawdzeniu auta.'],
 ];
 ---
 <Base
-  title="Skup aut uszkodzonych i powypadkowych — Mazowsze | TINA"
-  description="Skup samochodów po stłuczce, po gradzie i po poważnej szkodzie. Odbiór lawetą z dowolnego miejsca na Mazowszu, płatność na miejscu, dojazd bezpłatny."
+  title="Skup aut uszkodzonych i powypadkowych | Mazowsze"
+  description="Sprzedaj samochód uszkodzony, powypadkowy lub niejeżdżący. Bezpłatna wycena i możliwość odbioru auta lawetą na terenie Mazowsza."
   path="/auta-uszkodzone-powypadkowe"
   schema={[okruszki([['/auta-uszkodzone-powypadkowe', 'Auta uszkodzone i powypadkowe']]), faqLd(FAQ)]}
 >
 
 <Chero
   okruszek="Auta uszkodzone i powypadkowe"
-  lede="Odkupujemy samochody po stłuczkach, po gradzie i po poważniejszych szkodach — także takie, które nie odpalają i nie nadają się do jazdy. Przyjeżdżamy z lawetą, płacimy na miejscu."
+  lede="Odkupujemy samochody po stłuczkach, po gradzie i po poważniejszych szkodach — także takie, które nie odpalają i nie nadają się do jazdy. Możemy ustalić odbiór lawetą pod wskazanym adresem."
   sub="Skup aut powypadkowych na terenie całego Mazowsza."
-><span>Skup aut <span class="gold">uszkodzonych i powypadkowych</span></span></Chero>
+>
+  <span>Skup aut <span class="gold">uszkodzonych i powypadkowych</span></span>
+  <Fragment slot="akcje">
+    <a class="btn g" href="/wycena">Wycena samochodu</a>
+    <Telefon />
+  </Fragment>
+</Chero>
 
 <div class="w"><section>
   <div class="proza">
-    <h2>Auto po szkodzie z każdym tygodniem jest warte mniej</h2>
-    <p>Samochód po wypadku ma jedną niewygodną cechę: stojąc, traci. Korozja wchodzi w odsłonięte po uderzeniu miejsca, akumulator się rozładowuje, opony robią się kwadratowe, a w środku pojawia się wilgoć. Do tego dochodzi miejsce, które auto zajmuje, i doba parkingowa, jeśli stoi na parkingu strzeżonym.</p>
-    <p>Dlatego przy autach powypadkowych liczy się przede wszystkim tempo. Odbieramy je zwykle tego samego dnia, w którym dzwonisz, z lawetą, i płacimy na miejscu.</p>
-  </div>
+    <h2>Skup aut uszkodzonych i powypadkowych</h2>
+    <p>Odkupujemy samochody po kolizjach, wypadkach i innych zdarzeniach — również pojazdy niejeżdżące oraz wymagające kosztownej naprawy. Prześlij zdjęcia i opis uszkodzeń, a sprawdzimy możliwość zakupu i odbioru auta lawetą.</p>
 
-  <div class="duo" style="margin-top:26px">
-    <div class="box">
-      <h3>Bierzemy</h3>
-      <ul class="tick">
-        <li>Po stłuczce i kolizji — uszkodzony przód, tył albo bok</li>
-        <li>Po gradzie i po drzewie, z pogiętą blachą i wybitymi szybami</li>
-        <li>Niejeżdżące i nieodpalające, stojące od miesięcy</li>
-        <li>Z odpaloną poduszką powietrzną</li>
-        <li>Po szkodzie całkowitej z punktu widzenia ubezpieczyciela</li>
-        <li>Bez ważnego OC i bez przeglądu</li>
-        <li>Stojące w warsztacie, na parkingu strzeżonym albo policyjnym</li>
-      </ul>
-    </div>
-    <div class="box no">
-      <h3>Nie bierzemy</h3>
-      <ul class="tick x">
-        <li>Aut, których nie da się już odratować — nadających się wyłącznie na części</li>
-        <li>Aut przeznaczonych na złom</li>
-        <li>Motocykli, kamperów i przyczep</li>
-        <li>Samochodów w pełni elektrycznych</li>
-      </ul>
-      <p style="margin-top:16px;font-size:15px;color:#5a616e">Granica jest prosta: jeśli auto po naprawie ma jeszcze szansę wrócić na drogę, rozmawiamy. Jeśli została z niego skorupa, nie jesteśmy właściwym adresem, bo nie prowadzimy kasacji.</p>
-    </div>
-  </div>
+    <h2>Jakie uszkodzone samochody odkupujemy?</h2>
+    <p>Rozpatrujemy zgłoszenia dotyczące samochodów osobowych, <a href="/skup-aut-dostawczych">dostawczych i busów</a> w różnym stanie technicznym. Mogą to być między innymi auta:</p>
+    <ul>
+      <li>po stłuczce lub poważniejszym wypadku;</li>
+      <li>z uszkodzonym przodem, tyłem albo bokiem;</li>
+      <li>po gradobiciu lub uderzeniu drzewa;</li>
+      <li>z uruchomionymi poduszkami powietrznymi;</li>
+      <li>z uszkodzonym silnikiem, skrzynią biegów lub zawieszeniem;</li>
+      <li>nieodpalające i niejeżdżące;</li>
+      <li>po szkodzie całkowitej orzeczonej przez ubezpieczyciela;</li>
+      <li>bez ważnego badania technicznego lub OC.</li>
+    </ul>
+    <p>Każdy przypadek oceniamy indywidualnie. Możliwość zakupu zależy od rodzaju pojazdu, zakresu uszkodzeń i kosztów potrzebnych do jego dalszego przygotowania.</p>
 
-  <div class="proza" style="margin-top:44px">
-    <h2>Naprawiać czy sprzedać</h2>
-    <p>To pytanie wraca w prawie każdej rozmowie, więc odpowiemy uczciwie: zależy od tego, ile kosztuje naprawa w stosunku do wartości auta po naprawie. Jeżeli blacharz wycenia robotę na połowę tego, ile auto będzie warte po wszystkim, naprawa rzadko ma sens — chyba że znasz to auto od lat i po prostu chcesz je zatrzymać.</p>
-    <p>Druga rzecz, o której warsztaty nie mówią wprost: przy szkodzie z blacharką i lakierem kosztorys prawie zawsze rośnie w trakcie. Po zdjęciu zderzaka okazuje się, że pękło wzmocnienie, przy wzmocnieniu leży chłodnica, a przy chłodnicy zaczyna się pas przedni. Auto po takiej naprawie i tak zostanie w historii jako powypadkowe, co odbije się na cenie przy następnej sprzedaży.</p>
-    <p>Trzecia to czas. Naprawa oznacza zwykle kilka tygodni bez auta i czekanie na części. Sprzedaż to jeden telefon i jeden przyjazd.</p>
+    <h2>Naprawić samochód czy sprzedać go po szkodzie?</h2>
+    <p>Nie każda naprawa jest ekonomicznie uzasadniona. Przed podjęciem decyzji warto porównać przewidywany koszt prac z wartością sprawnego samochodu.</p>
+    <p>Trzeba uwzględnić nie tylko części i pracę warsztatu, ale również możliwość pojawienia się dodatkowych uszkodzeń po demontażu elementów nadwozia. Znaczenie ma także czas oczekiwania na naprawę oraz późniejsza wartość samochodu z historią powypadkową.</p>
+    <p>Jeżeli nie masz pewności, czy naprawa się opłaci, możesz najpierw sprawdzić wartość pojazdu w obecnym stanie. Wycena nie zobowiązuje Cię do sprzedaży.</p>
 
-    <h2>Jak wygląda odbiór auta po szkodzie</h2>
-    <p>W praktyce różni się od odbioru sprawnego auta jednym: zawsze przyjeżdżamy lawetą, nawet jeśli auto teoretycznie jeździ. Przy uszkodzonym zawieszeniu albo rozszczelnionym układzie chłodzenia jazda własnym kołem to proszenie się o kłopoty — wolimy zabrać auto na platformę i mieć spokój.</p>
-  </div>
+    <h2>Od czego zależy wycena auta powypadkowego?</h2>
+    <p>Przy wycenie bierzemy pod uwagę:</p>
+    <ul>
+      <li>markę, model i rok produkcji;</li>
+      <li>przebieg i wersję wyposażenia;</li>
+      <li>miejsce oraz zakres uszkodzeń;</li>
+      <li>stan silnika i skrzyni biegów;</li>
+      <li>możliwość uruchomienia samochodu;</li>
+      <li>stan elementów konstrukcyjnych;</li>
+      <li>kompletność pojazdu;</li>
+      <li>dokumenty i liczbę kluczyków;</li>
+      <li>lokalizację auta i sposób jego odbioru.</li>
+    </ul>
+    <p>Na podstawie rozmowy i zdjęć możemy wstępnie ocenić zgłoszenie. Ostateczną ofertę przedstawiamy po sprawdzeniu rzeczywistego stanu samochodu.</p>
 
-  <Kroki />
+    <h2>Jak sprzedać uszkodzony samochód?</h2>
+    <p><strong>1. Prześlij zgłoszenie.</strong> Podaj markę, model, rocznik, przebieg oraz lokalizację samochodu. Opisz uszkodzenia i napisz, czy pojazd odpala oraz może samodzielnie jechać.</p>
+    <p><strong>2. Dołącz zdjęcia.</strong> Najlepiej sfotografuj całe auto z kilku stron, wnętrze, licznik oraz uszkodzone elementy. Zdjęcia pomagają ocenić zakres szkody przed oględzinami.</p>
+    <p><strong>3. Umawiamy oględziny.</strong> Po przeanalizowaniu zgłoszenia kontaktujemy się z Tobą i ustalamy możliwość zakupu oraz termin spotkania.</p>
+    <p><strong>4. Otrzymujesz ofertę.</strong> Po obejrzeniu samochodu przedstawiamy ostateczną kwotę. Jeśli ją zaakceptujesz, przygotowujemy dokumenty i finalizujemy sprzedaż.</p>
+    <p><strong>5. Odbieramy pojazd.</strong> Gdy stan samochodu nie pozwala na bezpieczną jazdę, możemy zorganizować jego odbiór lawetą.</p>
 
-  <div class="proza" style="margin-top:44px">
-    <h2>Auto stoi na parkingu policyjnym albo w warsztacie</h2>
-    <p>To częsty przypadek i nie stanowi problemu — odbieramy auta również stamtąd. Trzeba pamiętać o dwóch rzeczach. Po pierwsze, parking strzeżony nalicza opłatę za każdą rozpoczętą dobę, więc im szybciej auto stamtąd zniknie, tym mniej zapłacisz. Po drugie, wydanie auta z parkingu wymaga zwykle Twojej obecności albo pisemnego upoważnienia, bo to Ty jesteś właścicielem.</p>
-    <p>Jeśli auto stoi w warsztacie, warto wcześniej wyjaśnić, czy warsztat nie ma roszczenia z tytułu już wykonanych prac. Rozliczenie z warsztatem zostaje po stronie właściciela.</p>
+    <h2>Auto stoi w warsztacie lub na parkingu?</h2>
+    <p>Samochód może zostać odebrany również z warsztatu albo parkingu, jeżeli właściciel ma prawo nim dysponować i możliwe jest jego wydanie.</p>
+    <p>Przed sprzedażą sprawdź, czy wszystkie opłaty zostały uregulowane oraz jakie dokumenty lub upoważnienia będą potrzebne do odbioru pojazdu. Szczegóły najlepiej ustalić z administratorem parkingu lub warsztatem.</p>
+    <p>Jeżeli trwa postępowanie dotyczące odszkodowania, przed sprzedażą skontaktuj się z ubezpieczycielem i upewnij się, jakie dokumenty należy zachować.</p>
 
-    <h2>Co z ubezpieczeniem po sprzedaży</h2>
-    <p>Sprzedaż auta powypadkowego nie zamyka automatycznie sprawy z ubezpieczycielem. Odszkodowanie za szkodę należy się temu, kto był właścicielem w dniu zdarzenia — czyli Tobie — niezależnie od tego, że auto zmieni właściciela później.</p>
-    <p>Po sprzedaży pamiętaj o zgłoszeniu zbycia pojazdu w wydziale komunikacji oraz o poinformowaniu ubezpieczyciela. Terminy i wzory pism opisaliśmy w poradniku <a href="/jak-sprzedac-auto">jak sprzedać auto</a>.</p>
+    <h2>Najczęstsze pytania</h2>
+    {FAQ.map(([pytanie, odpowiedz]) => (
+      <>
+        <h3>{pytanie}</h3>
+        <p>{odpowiedz}</p>
+      </>
+    ))}
   </div>
 </section></div>
 
-<div class="w"><section>
-  <Naglowek eyebrow="Pytania" tytul='Auta po szkodzie — <span class="gold">co pytacie najczęściej</span>' />
-  <Faq pary={FAQ} />
-</section></div>
-
-<Formularz strona="auta uszkodzone" />
 <Cta
-  tytul='Opisz szkodę, <span class="gold">podamy kwotę</span>'
-  opis="Wystarczy kilka zdjęć i krótki opis uszkodzeń. Oddzwonimy z konkretną kwotą, a lawetę przywieziemy ze sobą."
+  tytul='Sprawdź wartość <span class="gold">uszkodzonego samochodu</span>'
+  opis="Nie musisz najpierw go naprawiać ani organizować transportu. Prześlij kilka zdjęć, opisz uszkodzenia i podaj lokalizację pojazdu. Sprawdzimy możliwość zakupu i skontaktujemy się z Tobą w sprawie dalszych kroków."
 />
 
 </Base>

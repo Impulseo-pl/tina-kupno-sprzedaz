@@ -1,72 +1,118 @@
 ---
 import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
-import Naglowek from '../components/Naglowek.astro';
-import Kroki from '../components/Kroki.astro';
-import Formularz from '../components/Formularz.astro';
+import Telefon from '../components/Telefon.astro';
 import Cta from '../components/Cta.astro';
-import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Jakie dostawcze odkupujecie?', 'Furgony, blaszaki, skrzyniowe, wywrotki, brygadówki i busy osobowe do 3,5 tony. Zarówno pojedyncze auta, jak i kilka sztuk naraz przy wymianie floty.'],
-  ['Kupicie auto na firmę, z odliczonym VAT-em?', 'Tak. Przy autach firmowych rozliczenie wygląda inaczej niż przy prywatnych — powiedz o tym przez telefon, ustalimy szczegóły przed przyjazdem.'],
-  ['Auto ma zabudowę, chłodnię albo windę. To problem?', 'Nie, ale ma wpływ na kwotę. Zabudowa potrafi podnieść wartość auta, jeśli jest zadbana i popularna, albo ją obniżyć, jeśli jest zniszczona i trzeba ją zdejmować.'],
-  ['Dostawczak ma milion kilometrów. Kupicie?', 'Przy dostawczych wysokie przebiegi to norma i nie skreślają auta. Liczy się bardziej stan blacharki, podłogi ładunkowej i silnika niż sam licznik.'],
-  ['Odbierzecie kilka aut naraz?', 'Tak. Przy wymianie floty umawiamy jeden termin i zabieramy wszystkie auta za jednym razem.'],
+  ['Czy wysoki przebieg wyklucza sprzedaż?', 'Nie. W samochodach dostawczych duży przebieg jest częsty. Na wycenę wpływa również stan silnika, skrzyni biegów, podwozia, przestrzeni ładunkowej i historia serwisowa.'],
+  ['Czy odkupujecie auta z zabudową?', 'Tak. Możemy wycenić między innymi chłodnie, izotermy, kontenery, windy załadowcze oraz zabudowy warsztatowe.'],
+  ['Czy kupujecie uszkodzone dostawczaki?', 'Rozpatrujemy również pojazdy uszkodzone i niejeżdżące. Możliwość zakupu zależy od zakresu usterek oraz kompletności auta.'],
+  ['Czy mogę sprzedać kilka samochodów jednocześnie?', 'Tak. Przy wymianie floty możesz przesłać zestawienie wszystkich pojazdów. Każdy z nich zostanie oceniony indywidualnie.'],
+  ['Czy odbierzecie samochód lawetą?', 'Jeśli pojazd nie może bezpiecznie poruszać się po drodze, możemy ustalić odbiór odpowiednim transportem.'],
+  ['Czy kupujecie samochody firmowe?', 'Tak, pod warunkiem że sprzedający ma prawo rozporządzać pojazdem i może przygotować właściwy dokument sprzedaży.'],
 ];
 ---
 <Base
-  title="Skup samochodów dostawczych i busów — Mazowsze | TINA"
-  description="Skup aut dostawczych do 3,5 tony: furgony, skrzyniowe, wywrotki, brygadówki i busy. Pojedyncze auta i całe floty, odbiór lawetą, płatność na miejscu."
+  title="Skup samochodów dostawczych i busów | Mazowsze"
+  description="Skup samochodów dostawczych, busów i pojazdów z zabudową. Wyceniamy pojedyncze auta oraz floty na terenie całego Mazowsza."
   path="/skup-aut-dostawczych"
-  schema={[okruszki([['/skup-aut-dostawczych', 'Samochody dostawcze']]), faqLd(FAQ)]}
+  schema={[okruszki([['/skup-aut-dostawczych', 'Skup aut dostawczych']]), faqLd(FAQ)]}
 >
 
 <Chero
   okruszek="Samochody dostawcze"
   lede="Furgony, blaszaki, skrzyniowe, wywrotki i busy do 3,5 tony. Odkupujemy pojedyncze auta i całe floty — także z zabudową, z wysokim przebiegiem i po intensywnej eksploatacji."
   sub="Skup busów i aut dostawczych na terenie całego Mazowsza."
-><span>Skup <span class="gold">samochodów dostawczych</span></span></Chero>
+>
+  <span>Skup <span class="gold">samochodów dostawczych</span></span>
+  <Fragment slot="akcje">
+    <a class="btn g" href="/wycena">Wycena samochodu</a>
+    <Telefon />
+  </Fragment>
+</Chero>
 
 <div class="w"><section>
   <div class="proza">
-    <h2>Dostawczaka wycenia się inaczej niż osobówkę</h2>
-    <p>Przy samochodzie osobowym pierwsze pytanie dotyczy przebiegu. Przy dostawczym przebieg schodzi na drugi plan, bo te auta z założenia jeżdżą dużo — czterysta czy pięćset tysięcy kilometrów w siedmioletnim furgonie nie jest niczym dziwnym. Liczy się co innego.</p>
-    <p>Patrzymy na stan podłogi ładunkowej i progów, bo tam najszybciej wchodzi korozja. Na tylne zawieszenie, które przy ciągłej jeździe z ładunkiem zbiera najwięcej. Na sprzęgło i skrzynię, bo w aucie dostawczym pracują najciężej. I na to, czy auto było serwisowane regularnie, czy jeździło do pierwszej awarii.</p>
+    <h2>Skup samochodów dostawczych i busów</h2>
+    <p>Odkupujemy samochody dostawcze różnych marek i typów — od niewielkich furgonów po busy, wywrotki i pojazdy ze specjalistyczną zabudową. Wyceniamy zarówno pojedyncze auta, jak i kilka pojazdów sprzedawanych podczas wymiany floty.</p>
+    <p>Samochód może być sprawny, intensywnie eksploatowany, uszkodzony albo niejeżdżący. Każdy pojazd oceniamy indywidualnie.</p>
+
+    <h2>Jakie samochody dostawcze odkupujemy?</h2>
+    <ul>
+      <li><strong>Furgony i blaszaki.</strong> Samochody w różnych wersjach długości i wysokości, wykorzystywane w transporcie, usługach, handlu oraz dostawach.</li>
+      <li><strong>Skrzyniowe i wywrotki.</strong> Pojazdy z otwartą skrzynią, plandeką, burtami lub mechanizmem wywrotu. Przy wycenie sprawdzamy również ramę i działanie zabudowy.</li>
+      <li><strong>Brygadówki.</strong> Samochody z podwójną kabiną i przestrzenią ładunkową, często używane przez firmy budowlane, instalacyjne oraz ekipy techniczne.</li>
+      <li><strong>Busy osobowe.</strong> Pojazdy przeznaczone do przewozu osób. Oprócz podzespołów mechanicznych oceniamy stan foteli, tapicerki, drzwi i wyposażenia wnętrza.</li>
+      <li><strong>Auta ze specjalistyczną zabudową.</strong> Chłodnie, izotermy, windy załadowcze, kontenery i zabudowy warsztatowe. Ich stan, kompletność i sprawność mają istotny wpływ na wartość całego pojazdu.</li>
+      <li><strong>Samochody uszkodzone i niejeżdżące.</strong> Rozpatrujemy także auta z usterką silnika, skrzyni biegów, zawieszenia lub zabudowy. Jeśli samochód nie może bezpiecznie poruszać się po drodze, możemy ustalić jego <a href="/auta-uszkodzone-powypadkowe">odbiór lawetą</a>.</li>
+    </ul>
+
+    <h2>Co wpływa na wartość dostawczaka?</h2>
+    <p>Przebieg jest ważny, ale w samochodzie użytkowym nie mówi wszystkiego. Dostawczaki z założenia pokonują duże odległości, dlatego podczas wyceny analizujemy cały pojazd. Sprawdzamy przede wszystkim:</p>
+    <ul>
+      <li>pracę silnika i skrzyni biegów;</li>
+      <li>stan sprzęgła, zawieszenia i hamulców;</li>
+      <li>ramę, progi oraz podwozie;</li>
+      <li>podłogę i ściany przestrzeni ładunkowej;</li>
+      <li>ślady przeciążania pojazdu;</li>
+      <li>stan oraz działanie zabudowy;</li>
+      <li>historię serwisową;</li>
+      <li>przebieg i sposób dotychczasowego użytkowania;</li>
+      <li>dokumenty i stan prawny samochodu;</li>
+      <li>możliwość samodzielnej jazdy.</li>
+    </ul>
+    <p>Regularnie serwisowany samochód z wysokim przebiegiem może być wart więcej niż młodszy egzemplarz wymagający poważnej naprawy. Szerzej o tym, <a href="/ile-placimy">od czego zależy wycena</a>, piszemy na osobnej stronie.</p>
+
+    <h2>Sprzedaż pojedynczego auta lub całej floty</h2>
+    <p>Odkupujemy pojedyncze samochody oraz kilka pojazdów należących do jednej firmy. Przy sprzedaży floty każdy samochód wyceniamy osobno, ponieważ auta mogą różnić się przebiegiem, stanem, wersją wyposażenia i rodzajem zabudowy.</p>
+    <p>Aby otrzymać wstępną ocenę kilku pojazdów, przygotuj prostą listę zawierającą:</p>
+    <ul>
+      <li>markę i model;</li>
+      <li>rok produkcji;</li>
+      <li>przebieg;</li>
+      <li>rodzaj zabudowy;</li>
+      <li>najważniejsze informacje o stanie;</li>
+      <li>lokalizację;</li>
+      <li>zdjęcia każdego samochodu.</li>
+    </ul>
+    <p>Na tej podstawie ustalimy, które pojazdy możemy odkupić i jak zorganizować ich oględziny.</p>
+
+    <h2>Samochód firmowy lub po leasingu</h2>
+    <p>Przed sprzedażą auta firmowego warto sprawdzić, kto jest jego aktualnym właścicielem oraz jaki dokument powinien potwierdzać transakcję.</p>
+    <p>Jeżeli pojazd nadal znajduje się w leasingu, jego właścicielem co do zasady pozostaje firma leasingowa. Sprzedaż przez dotychczasowego użytkownika jest możliwa dopiero po wykupie albo na zasadach uzgodnionych z leasingodawcą (<a href="https://biznes.gov.pl/pl/firma/rozwoj-firmy/chce-znalezc-finanse-na-rozwoj-firmy/gdzie-szukac-pieniedzy-na-rozwoj-firmy/na-czym-polega-leasing" rel="noopener nofollow" target="_blank">Biznes.gov.pl</a>).</p>
+    <p>W przypadku pojazdu należącego do firmy sposób udokumentowania i rozliczenia sprzedaży zależy między innymi od formy działalności, statusu podatkowego oraz historii nabycia samochodu. Przed transakcją warto potwierdzić te kwestie z księgowością.</p>
+    <p>Do rozmowy przygotuj:</p>
+    <ul>
+      <li>dowód rejestracyjny;</li>
+      <li>dokument potwierdzający własność;</li>
+      <li>dane firmy;</li>
+      <li>informacje dotyczące VAT;</li>
+      <li>dokument wykupu, jeżeli samochód był leasingowany;</li>
+      <li>dane wszystkich właścicieli pojazdu.</li>
+    </ul>
+
+    <h2>Jak wygląda sprzedaż samochodu dostawczego?</h2>
+    <p><strong>1. Przekazujesz dane pojazdu.</strong> Podaj markę, model, rocznik, przebieg, rodzaj zabudowy, stan samochodu i jego lokalizację. Możesz również przesłać zdjęcia.</p>
+    <p><strong>2. Analizujemy zgłoszenie.</strong> Oceniamy podstawowe parametry auta i kontaktujemy się z Tobą, aby uzupełnić informacje oraz ustalić możliwość zakupu.</p>
+    <p><strong>3. Umawiamy oględziny.</strong> Sprawdzamy stan techniczny, przestrzeń ładunkową oraz wyposażenie i działanie zabudowy.</p>
+    <p><strong>4. Przedstawiamy ofertę.</strong> Ostateczna kwota wynika z rzeczywistego stanu pojazdu. Po jej otrzymaniu decydujesz, czy chcesz sprzedać samochód.</p>
+    <p><strong>5. Finalizujemy transakcję.</strong> Po zaakceptowaniu oferty przygotowujemy dokumenty, ustalamy sposób rozliczenia i organizujemy odbiór auta.</p>
+
+    <h2>Najczęstsze pytania</h2>
+    {FAQ.map(([pytanie, odpowiedz]) => (
+      <>
+        <h3>{pytanie}</h3>
+        <p>{odpowiedz}</p>
+      </>
+    ))}
   </div>
-
-  <div class="docs" style="margin-top:26px">
-    <div class="doc"><b>Furgony i blaszaki</b><p>Krótkie, długie, podwyższone. Najczęściej spotykany typ i ten, który najłatwiej sprzedać dalej.</p></div>
-    <div class="doc"><b>Skrzyniowe i wywrotki</b><p>Z plandeką albo bez, z burtami. Przy wywrotkach patrzymy dodatkowo na stan siłownika i ramy.</p></div>
-    <div class="doc"><b>Brygadówki</b><p>Podwójna kabina, skrzynia z tyłu. Klasyka na budowach i jeden z popularniejszych typów na rynku wtórnym.</p></div>
-    <div class="doc"><b>Busy osobowe</b><p>Dziewięcioosobowe i przewozowe. Tutaj z kolei liczy się stan wnętrza, bo to auto wozi ludzi.</p></div>
-    <div class="doc"><b>Auta z zabudową</b><p>Chłodnie, izotermy, windy załadowcze, zabudowy warsztatowe. Zabudowa potrafi zarówno podnieść, jak i obniżyć wartość.</p></div>
-    <div class="doc"><b>Całe floty</b><p>Przy wymianie taboru odbieramy kilka aut jednego dnia, jednym transportem i na jednej umowie.</p></div>
-  </div>
-
-  <div class="proza" style="margin-top:44px">
-    <h2>Auta firmowe i rozliczenie</h2>
-    <p>Dostawcze prawie zawsze są autami firmowymi, a to zmienia sposób rozliczenia w stosunku do sprzedaży prywatnej. Jeśli auto jest środkiem trwałym w firmie i przy zakupie odliczono VAT, sprzedaż wygląda inaczej niż zwykła umowa kupna-sprzedaży między osobami prywatnymi.</p>
-    <p>Nie ma w tym nic skomplikowanego, ale warto powiedzieć o tym w pierwszej rozmowie, żebyśmy przyjechali z właściwymi dokumentami. To samo dotyczy aut po leasingu — istotne jest, czy leasing został już wykupiony i na kogo auto jest dziś zarejestrowane.</p>
-
-    <h2>Kiedy warto sprzedać dostawczaka</h2>
-    <p>Najczęstszy moment to ten, w którym auto zaczyna kosztować więcej, niż zarabia: kolejna naprawa za kilka tysięcy w samochodzie, który i tak stoi połowę miesiąca w warsztacie. Drugi to wymiana floty, kiedy nowe auta już są, a stare zajmują plac i ubezpieczenie.</p>
-    <p>W obu przypadkach zasada jest ta sama co przy osobówkach: im dłużej auto stoi nieużywane, tym mniej jest warte. Dostawczak, który przestoi zimę, potrafi stracić więcej niż przez cały poprzedni rok jeżdżenia.</p>
-  </div>
-
-  <Kroki />
 </section></div>
 
-<div class="w"><section>
-  <Naglowek eyebrow="Pytania" tytul='Dostawcze — <span class="gold">najczęstsze pytania</span>' />
-  <Faq pary={FAQ} />
-</section></div>
-
-<Formularz strona="dostawcze" />
 <Cta
-  tytul='Sprzedaj dostawczaka <span class="gold">bez ogłoszeń</span>'
-  opis="Jedno auto czy cała flota — umawiamy termin, przyjeżdżamy i rozliczamy wszystko na miejscu."
+  tytul='Wyceń samochód dostawczy <span class="gold">lub flotę</span>'
+  opis="Prześlij podstawowe informacje o pojeździe, opisz jego stan i rodzaj zabudowy. Jeśli sprzedajesz kilka samochodów, przygotuj ich krótką listę wraz ze zdjęciami. Przeanalizujemy zgłoszenie i skontaktujemy się z Tobą, aby ustalić oględziny oraz dalsze kroki."
 />
 
 </Base>
