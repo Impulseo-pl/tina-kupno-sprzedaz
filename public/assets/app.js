@@ -195,3 +195,13 @@ document.addEventListener('click',e=>{
 bindForm();
 reveal();
 counters();
+
+/* ---------- proste formularze bez kreatora ---------- */
+/* FormSubmit wymaga pelnego adresu powrotu, a ten zalezy od hosta —
+   na podgladzie inny niz na docelowej domenie. Uzupelniamy go przy wysylce. */
+document.querySelectorAll('form[data-dziekujemy]').forEach(function (f) {
+  f.addEventListener('submit', function () {
+    var nx = f.querySelector('input[name="_next"]');
+    if (nx) nx.value = ORIGIN + '/dziekujemy';
+  });
+});

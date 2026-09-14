@@ -1,0 +1,64 @@
+---
+/* Zapytanie o auto z oferty. Prosty formularz bez kreatora — kupujacy podaje
+   kryteria, nie dane pojazdu, wiec nie ma czego dzielic na kroki.
+   Pole _next uzupelnia app.js adresem biezacego hosta. */
+import Telefon from './Telefon.astro';
+import { FIRMA } from '../dane/firma';
+---
+<div class="darker" id="zapytanie"><div class="w"><section><div class="fgrid">
+  <div class="fintro">
+    <p class="eyebrow">Szukasz samochodu?</p>
+    <h2 style="margin-top:14px"><span>Powiedz, jakiego</span><br><span class="gold">auta szukasz</span></h2>
+    <p>Nie musisz znać konkretnego modelu. Wystarczy, że określisz najważniejsze wymagania — budżet, rodzaj nadwozia i to, do czego auto ma służyć.</p>
+    <p style="margin-top:14px">Sprawdzimy, czy mamy obecnie samochód odpowiadający tym kryteriom. Jeśli w danym momencie nie posiadamy odpowiedniego auta, poinformujemy o tym podczas rozmowy.</p>
+    <ul class="tick" style="margin-top:22px">
+      <li>Zapytanie nie zobowiązuje do zakupu</li>
+      <li>Odpowiadamy telefonicznie, siedem dni w tygodniu</li>
+      <li>Jeśli nic nie pasuje, powiemy to wprost</li>
+    </ul>
+    <div class="or">
+      <span class="eyebrow">Wolisz od razu porozmawiać</span>
+      <Telefon />
+    </div>
+    <p style="margin-top:12px;font-size:15px;color:var(--onk-mut)">Drugi numer: <a href={`tel:${FIRMA.tel2tel}`} style="color:var(--g4);font-weight:700">{FIRMA.tel2}</a> · <a href={FIRMA.fb} rel="noopener" target="_blank" style="color:var(--g4);font-weight:700">auta na Facebooku</a></p>
+  </div>
+
+  <form class="card" id="zf" method="POST" action={`https://formsubmit.co/${FIRMA.mail}`} data-dziekujemy>
+    <input type="hidden" name="_subject" value="Zapytanie o auto ze strony tinaskupaut.pl">
+    <input type="hidden" name="_next" value="">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="Strona" value="sprzedaz">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <fieldset>
+      <legend>Czego szukasz</legend>
+      <div class="g g2">
+        <div class="f"><label for="budzet">Planowany budżet (zł)</label><input id="budzet" name="Budzet" inputmode="numeric" placeholder="35 000"></div>
+        <div class="f"><label for="nadwozie">Rodzaj nadwozia</label><select id="nadwozie" name="Nadwozie"><option>Bez znaczenia</option><option>Hatchback</option><option>Sedan</option><option>Kombi</option><option>SUV lub terenowe</option><option>Bus lub dostawcze</option></select></div>
+      </div>
+      <div class="g g2" style="margin-top:14px">
+        <div class="f"><label for="paliwo2">Paliwo</label><select id="paliwo2" name="Paliwo"><option>Bez znaczenia</option><option>Benzyna</option><option>Diesel</option><option>Benzyna + LPG</option><option>Hybryda</option></select></div>
+        <div class="f"><label for="komu">Auto dla</label><select id="komu" name="Auto dla"><option>Do użytku prywatnego</option><option>Do firmy</option></select></div>
+      </div>
+      <div class="f" style="margin-top:14px"><label for="uzytek">Jak będziesz z niego korzystać</label><textarea id="uzytek" name="Sposob uzytkowania" rows="3" placeholder="Np. codzienne dojazdy do pracy po mieście, kilka razy w roku dłuższa trasa z rodziną."></textarea></div>
+    </fieldset>
+
+    <fieldset style="margin-top:18px">
+      <legend>Kontakt</legend>
+      <div class="g g2">
+        <div class="f"><label for="ztel">Twój telefon <i>*</i></label><input id="ztel" name="Telefon" inputmode="tel" required placeholder="600 000 000"></div>
+        <div class="f"><label for="zimie">Imię</label><input id="zimie" name="Imie" placeholder="Jan"></div>
+      </div>
+      <div class="g g2" style="margin-top:14px">
+        <div class="f"><label for="zmail">E-mail (nieobowiązkowo)</label><input id="zmail" name="Email" type="email" placeholder="jan@example.com"></div>
+        <div class="f"><label for="zkiedy">Kiedy oddzwonić</label><select id="zkiedy" name="Kiedy oddzwonic"><option>Jak najszybciej</option><option>Rano</option><option>Po południu</option><option>Wieczorem</option></select></div>
+      </div>
+      <label class="zgoda"><input type="checkbox" name="Zgoda" value="tak" required><span>Wyrażam zgodę na kontakt telefoniczny w sprawie zapytania o samochód i na przetwarzanie moich danych przez TINA Rafał Kocimski. Szczegóły w <a href="/polityka-prywatnosci">polityce prywatności</a>.</span></label>
+    </fieldset>
+
+    <div class="actions">
+      <button type="submit" class="btn k">Wyślij zapytanie</button>
+    </div>
+  </form>
+</div></section></div></div>

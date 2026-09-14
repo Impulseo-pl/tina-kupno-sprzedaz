@@ -5,6 +5,7 @@ import Naglowek from '../components/Naglowek.astro';
 import ProcesKola from '../components/ProcesKola.astro';
 import Faq from '../components/Faq.astro';
 import Telefon from '../components/Telefon.astro';
+import FormularzSzukam from '../components/FormularzSzukam.astro';
 import { okruszki, faqLd, FIRMA } from '../dane/firma';
 
 const FAQ: [string, string][] = [
@@ -37,7 +38,8 @@ const ZAKUP: [string, string][] = [
 >
   <span>Samochody używane <span class="gold">na sprzedaż</span></span>
   <Fragment slot="akcje">
-    <a class="btn g" href={`tel:${FIRMA.tel1tel}`}>Zapytaj o dostępne auta</a>
+    <a class="btn g" href="#zapytanie">Zapytaj o dostępne auta</a>
+    <Telefon />
   </Fragment>
 </Chero>
 
@@ -66,33 +68,17 @@ const ZAKUP: [string, string][] = [
     tytul='Jakie samochody znajdziesz <span class="gold">w ofercie?</span>'
     opis="Oferta zmienia się na bieżąco. Trafiają do nas samochody osobowe różnych marek, roczników i typów nadwozia, a także auta dostawcze i busy."
   />
-  <div class="duo">
-    <div class="box">
-      <h3>Możesz zapytać między innymi o</h3>
-      <ul class="tick">
-        <li>samochody miejskie,</li>
-        <li>sedany, kombi i hatchbacki,</li>
-        <li>SUV-y i auta terenowe,</li>
-        <li>samochody rodzinne,</li>
-        <li>auta dostawcze i busy,</li>
-        <li>samochody w różnych przedziałach cenowych.</li>
-      </ul>
-      <p style="margin-top:18px;font-size:15px;color:#5a616e">Nie prowadzimy stałego katalogu, ponieważ część samochodów znajduje nowych właścicieli niedługo po przyjęciu. Aktualną dostępność najlepiej sprawdzić telefonicznie lub na profilu firmy na Facebooku.</p>
-    </div>
-    <div class="box">
-      <h3>Powiedz, jakiego auta szukasz</h3>
-      <p style="margin-bottom:14px">Nie musisz znać konkretnego modelu. Wystarczy, że określisz najważniejsze wymagania:</p>
-      <ul class="tick">
-        <li>planowany budżet,</li>
-        <li>rodzaj nadwozia,</li>
-        <li>benzyna, diesel lub hybryda,</li>
-        <li>samochód prywatny albo do firmy,</li>
-        <li>przewidywany sposób użytkowania.</li>
-      </ul>
-      <p style="margin-top:18px">Sprawdzimy, czy mamy obecnie samochód odpowiadający tym kryteriom. Jeśli w danym momencie nie posiadamy odpowiedniego auta, poinformujemy o tym podczas rozmowy.</p>
-      <div class="acts" style="margin-top:20px"><Telefon /></div>
-      <p style="margin-top:12px;font-size:15px;color:#5a616e">Drugi numer: <a href={`tel:${FIRMA.tel2tel}`}>{FIRMA.tel2}</a></p>
-    </div>
+  <div class="docs">
+    <div class="doc"><b>Samochody miejskie</b><p>Małe, zwrotne i tanie w utrzymaniu. Do codziennych dojazdów, nauki jazdy i parkowania tam, gdzie większe auto się nie zmieści.</p></div>
+    <div class="doc"><b>Sedany, kombi i hatchbacki</b><p>Najszerszy wybór na rynku wtórnym. Kombi, gdy liczy się bagażnik, sedan do trasy, hatchback jako uniwersalne auto do wszystkiego.</p></div>
+    <div class="doc"><b>SUV-y i auta terenowe</b><p>Wyższe zawieszenie, wygodniejsze wsiadanie, część z napędem na cztery koła. Sprawdzają się poza asfaltem i zimą.</p></div>
+    <div class="doc"><b>Samochody rodzinne</b><p>Pięć pełnowymiarowych miejsc, duży bagażnik i zaczepy na foteliki. Auta pomyślane o wyjazdach z dziećmi i bagażem.</p></div>
+    <div class="doc"><b>Auta dostawcze i busy</b><p>Furgony, blaszaki, brygadówki i busy dziewięcioosobowe do 3,5 tony — do pracy, przeprowadzki albo przewozu ludzi.</p></div>
+    <div class="doc"><b>Różne przedziały cenowe</b><p>Od tanich aut na start, przez środek rynku, po droższe egzemplarze. Powiedz, jaki masz budżet, a sprawdzimy, co w nim mamy.</p></div>
+  </div>
+
+  <div class="proza" style="margin-top:36px">
+    <p>Nie prowadzimy stałego katalogu, ponieważ część samochodów znajduje nowych właścicieli niedługo po przyjęciu. Aktualną dostępność najlepiej sprawdzić telefonicznie lub na profilu firmy na Facebooku.</p>
   </div>
 </section></div>
 
@@ -122,14 +108,6 @@ const ZAKUP: [string, string][] = [
   <Faq pary={FAQ} />
 </section></div>
 
-<div class="darker"><div class="w"><section style="text-align:center">
-  <p class="eyebrow">Szukasz samochodu?</p>
-  <h2 style="margin-top:14px;font-size:clamp(22px,3.1vw,38px)">Zapytaj, co mamy <span class="gold">obecnie</span></h2>
-  <p style="margin:18px auto 0;font-size:17px;color:var(--onk-mut);max-width:62ch">Oferta zmienia się regularnie. Zadzwoń i powiedz, jakiego samochodu potrzebujesz oraz jaki budżet planujesz przeznaczyć na zakup. Przekażemy informacje o aktualnie dostępnych pojazdach.</p>
-  <div class="acts" style="margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-    <a class="btn g" href={`tel:${FIRMA.tel1tel}`}>Zadzwoń: {FIRMA.tel1}</a>
-    <a class="btn o" href={FIRMA.fb} rel="noopener" target="_blank">Zobacz auta na Facebooku</a>
-  </div>
-</section></div></div>
+<FormularzSzukam />
 
 </Base>
