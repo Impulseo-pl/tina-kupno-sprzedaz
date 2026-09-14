@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
-import Naglowek from '../components/Naglowek.astro';
 import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
 import { okruszki, faqLd } from '../dane/firma';
@@ -55,25 +54,9 @@ const WSZYSTKIE = [...WYCENA, ...ZAKRES, ...PRZEBIEG, ...FORMALNOSCI];
 ><span>Pytania <span class="gold">i odpowiedzi</span></span></Chero>
 
 <div class="w"><section>
-  <Naglowek eyebrow="Wycena" tytul='Ile i <span class="gold">na jakiej podstawie</span>' />
-  <Faq pary={WYCENA} />
+  <Faq pary={WSZYSTKIE} />
+  <p style="max-width:70ch;margin:30px auto 0;text-align:center;color:var(--muted)">Więcej szczegółów o dokumentach i terminach znajdziesz w poradniku <a href="/jak-sprzedac-auto" style="color:var(--g4);font-weight:700">jak sprzedać auto</a>.</p>
 </section></div>
-
-<div class="darker"><div class="w"><section>
-  <Naglowek eyebrow="Zakres" tytul='Co kupujemy, a <span class="gold">czego nie</span>' />
-  <Faq pary={ZAKRES} />
-</section></div></div>
-
-<div class="w"><section>
-  <Naglowek eyebrow="Przebieg" tytul='Jak wygląda <span class="gold">odbiór auta</span>' />
-  <Faq pary={PRZEBIEG} />
-</section></div>
-
-<div class="darker"><div class="w"><section>
-  <Naglowek eyebrow="Formalności" tytul='Umowa, zbycie <span class="gold">i ubezpieczenie</span>' />
-  <Faq pary={FORMALNOSCI} />
-  <p style="max-width:70ch;margin:26px auto 0;text-align:center;color:var(--onk-mut)">Więcej szczegółów o dokumentach i terminach znajdziesz w poradniku <a href="/jak-sprzedac-auto" style="color:var(--g4);font-weight:700">jak sprzedać auto</a>.</p>
-</section></div></div>
 
 <Cta />
 
