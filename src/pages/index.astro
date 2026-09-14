@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import HeroSkup from '../components/HeroSkup.astro';
+import LinkiTematyczne from '../components/LinkiTematyczne.astro';
 import PasFaktow from '../components/PasFaktow.astro';
 import Naglowek from '../components/Naglowek.astro';
 import Kupujemy from '../components/Kupujemy.astro';
@@ -32,32 +34,10 @@ const SKROT: [string][] = [
   schema={[FIRMA_LD, faqLd(FAQ)]}
 >
 
-<div class="hero">
-  <img src="/img/hero.jpg" srcset="/img/hero-m.jpg 780w, /img/hero.jpg 1050w" sizes="100vw" alt="" fetchpriority="high">
-  <div class="w">
-    <p class="tag">Skup i sprzedaż samochodów · całe Mazowsze</p>
-    <h1><span>Skup aut</span> za gotówkę<span class="l2 gold">na terenie całego Mazowsza</span></h1>
-    <p class="lede">Odkupujemy samochody osobowe, dostawcze i hybrydy — sprawne, uszkodzone i powypadkowe. Ustalamy cenę, przyjeżdżamy <span>tego samego dnia</span>, płacimy na miejscu. Dojazd i laweta nic nie kosztują.</p>
-
-    <form class="qf" id="qf" autocomplete="off">
-      <div class="row">
-        <div><label for="qm">Marka i model</label><input id="qm" placeholder="Audi A4 Avant"></div>
-        <div><label for="qr">Rocznik</label><input id="qr" inputmode="numeric" maxlength="4" placeholder="2012"></div>
-        <div><label for="qt">Twój telefon</label><input id="qt" inputmode="tel" placeholder="600 000 000"></div>
-        <button class="btn g" type="submit">Wyceń auto</button>
-      </div>
-      <p class="hint">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path></svg>
-        Wycena jest bezpłatna i nie zobowiązuje do sprzedaży.
-      </p>
-    </form>
-
-    <div class="acts" style="margin-top:18px">
-      <a class="btn o" href="/sprzedaz">Nie sprzedaję — szukam auta dla siebie</a>
-    </div>
-
-  </div>
-</div>
+<HeroSkup
+  tag="Skup i sprzedaż samochodów · całe Mazowsze"
+  lede='Odkupujemy samochody osobowe, dostawcze i hybrydy — sprawne, uszkodzone i powypadkowe. Ustalamy cenę, przyjeżdżamy <span>tego samego dnia</span>, płacimy na miejscu. Dojazd i laweta nic nie kosztują.'
+><span>Skup aut</span> za gotówkę<span class="l2 gold">na terenie całego Mazowsza</span></HeroSkup>
 
 <PasFaktow />
 
@@ -104,12 +84,7 @@ const SKROT: [string][] = [
     opis="Odkupujemy samochody różnych marek, roczników i w różnym stanie technicznym. Interesują nas zarówno sprawne auta osobowe i dostawcze, jak również pojazdy uszkodzone, powypadkowe oraz niejeżdżące. Sprawdź pełny zakres naszego skupu."
   />
   <Kupujemy />
-  <div class="links" style="margin-top:26px">
-    <a href="/auta-uszkodzone-powypadkowe"><b>Auta uszkodzone i powypadkowe</b>Po stłuczce, po gradzie, po zalaniu</a>
-    <a href="/skup-aut-dostawczych"><b>Samochody dostawcze i busy</b>Furgony, skrzyniowe, brygadówki</a>
-    <a href="/ile-placimy"><b>Ile płacimy za auto</b>Co realnie decyduje o kwocie</a>
-    <a href="/jak-sprzedac-auto"><b>Jak sprzedać auto</b>Formalności krok po kroku</a>
-  </div>
+  <LinkiTematyczne />
 </section></div>
 
 <div class="w"><section>

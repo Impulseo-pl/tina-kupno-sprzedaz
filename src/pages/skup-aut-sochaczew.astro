@@ -1,87 +1,102 @@
 ---
+/* Podstrona miejscowosci — ten sam szablon co /skup-aut-warszawa. */
 import Base from '../layouts/Base.astro';
-import Chero from '../components/Chero.astro';
+import HeroSkup from '../components/HeroSkup.astro';
 import Naglowek from '../components/Naglowek.astro';
-import Kroki from '../components/Kroki.astro';
+import ProcesKola from '../components/ProcesKola.astro';
+import Kupujemy from '../components/Kupujemy.astro';
+import LinkiTematyczne from '../components/LinkiTematyczne.astro';
 import Formularz from '../components/Formularz.astro';
-import Cta from '../components/Cta.astro';
-import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Gdzie dokładnie jesteście?', 'Bazę mamy w Kozłowie Biskupim pod Sochaczewem, przy ulicy Przyszłej 2B. Nie musisz jednak tu przyjeżdżać — to my przyjeżdżamy pod wskazany adres.'],
-  ['Ile czekam na przyjazd w Sochaczewie i okolicy?', 'Zwykle jesteśmy tego samego dnia, w którym dzwonisz. W samym Sochaczewie i sąsiednich gminach to kwestia najbliższych godzin.'],
-  ['Czy muszę przyjechać do was z autem?', 'Nie. Przyjeżdżamy pod dom, pod warsztat albo w miejsce, w którym auto stoi. Jeśli nie jeździ, przywozimy lawetę.'],
-  ['Odbierzecie auto z gminy poza Sochaczewem?', 'Tak. Obsługujemy cały powiat sochaczewski i całe Mazowsze. Dojazd jest bezpłatny niezależnie od odległości.'],
+  ['Gdzie dokładnie jesteście?', 'Bazę mamy w Kozłowie Biskupim pod Sochaczewem, przy ulicy Przyszłej 2B. Nie musisz jednak tu przyjeżdżać — to my dojeżdżamy pod wskazany adres.'],
+  ['Czy muszę przyjechać do was z autem?', 'Nie. Oględziny umawiamy pod domem, na osiedlowym parkingu, w warsztacie albo na terenie firmy. Jeżeli samochód nie może jechać, ustalamy transport lawetą.'],
+  ['Odbierzecie auto z gminy poza Sochaczewem?', 'Tak. Obsługujemy cały powiat sochaczewski — gminy Sochaczew, Teresin, Rybno, Nowa Sucha, Iłów, Młodzieszyn, Brochów i Kampinos — oraz pozostałe powiaty Mazowsza.'],
+  ['Czy odkupujecie auta stojące od dłuższego czasu?', 'Tak, rozpatrujemy również samochody odstawione na posesję, nieodpalające i bez ważnych dokumentów. Przy takich autach zwykle planujemy odbiór lawetą.'],
+  ['Kupujecie samochody dostawcze od lokalnych firm?', 'Tak. Odkupujemy pojedyncze dostawczaki i busy, a także kilka pojazdów naraz przy wymianie floty. Każdy samochód wyceniamy osobno.'],
+  ['Czy mogę u was kupić samochód w Sochaczewie?', 'Tak. Auta, które wcześniej odkupiliśmy, sprzedajemy dalej. Oględziny i jazdę próbną umawiamy w Kozłowie Biskupim, po wcześniejszym telefonie.'],
 ];
 ---
 <Base
-  title="Skup aut Sochaczew — auto skup, gotówka od ręki | TINA"
-  description="Skup samochodów w Sochaczewie i całym powiecie. Baza w Kozłowie Biskupim, przyjazd zwykle w godzinę, dojazd i laweta bezpłatne, płatność na miejscu."
+  title="Skup aut Sochaczew i powiat — skup samochodów | TINA"
+  description="Skup samochodów w Sochaczewie i całym powiecie sochaczewskim. Baza w Kozłowie Biskupim, bezpłatna wycena, odbiór auta pod wskazanym adresem, także lawetą."
   path="/skup-aut-sochaczew"
   schema={[okruszki([['/skup-aut-sochaczew', 'Skup aut Sochaczew']]), faqLd(FAQ)]}
 >
 
-<Chero
-  okruszek="Skup aut Sochaczew"
-  lede="Jesteśmy stąd. Baza w Kozłowie Biskupim, kilka minut od Sochaczewa — w mieście i okolicznych gminach jesteśmy zwykle w ciągu godziny od telefonu."
-  sub="Skup samochodów w Sochaczewie i całym powiecie sochaczewskim."
-><span>Skup aut <span class="gold">Sochaczew</span></span></Chero>
+<HeroSkup
+  tag="Skup i sprzedaż samochodów · Sochaczew"
+  lede='Odkupujemy samochody osobowe, dostawcze i hybrydy — sprawne, uszkodzone i niejeżdżące. Bazę mamy <span>w Kozłowie Biskupim</span> pod Sochaczewem, więc po miasto i okoliczne gminy mamy najbliżej.'
+><span>Skup aut</span> za gotówkę<span class="l2 gold">w Sochaczewie</span></HeroSkup>
 
 <div class="w"><section>
   <div class="proza">
-    <h2>Skup aut na miejscu, nie z drugiego końca Polski</h2>
-    <p>Sporą część ogłoszeń o skupie aut w Sochaczewie wystawiają firmy, które są tu wyłącznie na papierze — numer telefonu jest warszawski albo łódzki, a przyjazd trzeba umówić na przyszły tydzień, bo ktoś musi „ułożyć trasę”. My mamy bazę w Kozłowie Biskupim przy ulicy Przyszłej, czyli kilka minut od centrum Sochaczewa.</p>
-    <p>W praktyce oznacza to jedno: w Sochaczewie i sąsiednich gminach jesteśmy zwykle w ciągu godziny od rozmowy, a nie następnego dnia. Nie musimy nic układać w trasę, bo to jest nasza trasa codziennie.</p>
+    {/* ——— tresc unikalna dla miasta ——— */}
+    <h2>Lokalny skup z bazą pod Sochaczewem</h2>
+    <p>TINA działa w Kozłowie Biskupim, bezpośrednio przy Sochaczewie. Nie jest to więc miejscowość obsługiwana okazjonalnie podczas przejazdu przez Mazowsze, lecz podstawowy obszar działalności firmy.</p>
+    <p>Znamy układ miasta rozciągającego się od Chodakowa przez centrum i Trojanów aż po Boryszew. Oględziny możemy ustalić przy domu, na osiedlowym parkingu, w warsztacie lub na terenie firmy. Dotyczy to także samochodów znajdujących się w okolicznych gminach powiatu sochaczewskiego.</p>
+    <p>Bliskość bazy jest szczególnie istotna przy samochodach <a href="/auta-uszkodzone-powypadkowe">uszkodzonych i niejeżdżących</a>, których właściciel nie chce lub nie może dostarczyć do kupującego.</p>
 
-    <h2>Gdzie odbieramy auta w powiecie</h2>
-    <p>Obsługujemy cały powiat sochaczewski — miasto i gminę Sochaczew oraz gminy Teresin, Rybno, Nowa Sucha, Iłów, Młodzieszyn, Brochów i Kampinos. Regularnie jeździmy też w stronę Żyrardowa, Błonia, Łowicza i Wyszogrodu.</p>
-    <p>Przyjeżdżamy pod adres, który podasz. Może to być podwórko pod domem, parking pod blokiem na Chodakowie czy Trojanowie, warsztat, w którym auto stoi po naprawie, albo działka, na której samochód nie ruszał się od dwóch lat. Przy autach stojących długo bez ruchu zawsze bierzemy lawetę — nawet jeśli teoretycznie odpalają.</p>
+    <h2>Samochody używane w mieście i na trasie</h2>
+    <p>Sochaczew leży przy drogach krajowych nr 50 i 92. Tutejsze samochody często łączą krótkie przejazdy po mieście z regularnymi trasami w stronę Warszawy, Płocka, Łowicza czy Żyrardowa.</p>
+    <p>W praktyce oznacza to bardzo różne sposoby eksploatacji. Jedno auto może mieć niewielki przebieg, ale być używane głównie na krótkich odcinkach. Inne codziennie pokonuje kilkadziesiąt kilometrów, lecz jest regularnie serwisowane i większość przebiegu zrobiło w trasie.</p>
+    <p>Podczas wyceny nie patrzymy więc wyłącznie na wskazanie licznika. Liczy się ogólny stan pojazdu, historia użytkowania oraz to, jak samochód był utrzymywany — piszemy o tym szerzej na stronie <a href="/ile-placimy">od czego zależy wycena</a>.</p>
+
+    <h2>Lokalny rynek to nie tylko samochody osobowe</h2>
+    <p>W Sochaczewie i okolicznych gminach samochód często służy jednocześnie do życia prywatnego i pracy. Obok miejskich aut osobowych spotykamy <a href="/skup-aut-dostawczych">dostawczaki wykorzystywane przez lokalne firmy</a>, busy, samochody po działalności oraz pojazdy, które po awarii zostały odstawione na posesję.</p>
+    <p>Zdarzają się również auta odziedziczone, drugie samochody w rodzinie albo pojazdy kupione z myślą o naprawie, która ostatecznie przestała się opłacać. W takich przypadkach właściciel nie zawsze chce przygotowywać samochód do ogłoszenia i czekać na kupującego z innego regionu.</p>
+    <p>Wycena skupu pozwala najpierw sprawdzić, ile samochód jest wart w obecnym stanie. Dopiero po poznaniu oferty właściciel decyduje, czy wybiera sprzedaż bezpośrednią, komis czy dalsze poszukiwanie nabywcy.</p>
   </div>
+</section></div>
 
-  <div class="local" style="margin-top:26px">
-    <div class="box">
-      <h3>Powiat sochaczewski</h3>
-      <div class="near">
-        <span>Sochaczew</span><span>Chodaków</span><span>Trojanów</span><span>Boryszew</span>
-        <span>Teresin</span><span>Rybno</span><span>Nowa Sucha</span><span>Iłów</span>
-        <span>Młodzieszyn</span><span>Brochów</span><span>Kampinos</span><span>Kozłów Biskupi</span>
-      </div>
-      <p style="margin-top:16px;font-size:15px;color:#5a616e">Jeśli Twojej miejscowości tu nie ma, zadzwoń mimo wszystko. Jeździmy po całym Mazowszu, a nie tylko po powiecie.</p>
-    </div>
-    <div class="box">
-      <h3>Dalej na Mazowszu</h3>
-      <div class="near">
-        <a href="/skup-aut-warszawa">Warszawa</a>
-        <span>Żyrardów</span><span>Grodzisk Mazowiecki</span><span>Błonie</span>
-        <span>Ożarów Mazowiecki</span><span>Nowy Dwór Mazowiecki</span><span>Płock</span><span>Łowicz</span>
-      </div>
-      <p style="margin-top:16px;font-size:15px;color:#5a616e">Dojazd i laweta kosztują zero złotych niezależnie od tego, jak daleko jedziemy. Nie doliczamy kilometrów do wyceny.</p>
-    </div>
-  </div>
+<div class="w"><section id="jak">
+  <Naglowek
+    eyebrow="Przebieg sprawy"
+    tytul='Jak wygląda skup auta <span class="gold">w Sochaczewie</span>'
+    opis="Bez wystawiania ogłoszeń, bez oglądaczy pod domem, bez czekania na przelew od nieznajomego."
+  />
+  <ProcesKola />
+  <div style="text-align:center;margin-top:38px"><a class="btn g" href="#wycena">Zamów wycenę auta</a></div>
+</section></div>
 
-  <div class="proza" style="margin-top:44px">
-    <h2>Co najczęściej odkupujemy w okolicy</h2>
-    <p>Struktura zgłoszeń w Sochaczewie i okolicznych gminach wygląda inaczej niż w dużym mieście. Trafia do nas sporo aut z przebiegami, które w Warszawie byłyby nie do pomyślenia — bo tutaj samochód służy do codziennych dojazdów w stronę stolicy i nabija po czterdzieści tysięcy kilometrów rocznie.</p>
-    <p>Druga rzecz to auta stojące. Samochód po zmarłym krewnym, który od kilku lat stoi pod wiatą. Drugie auto w rodzinie, które przestało być potrzebne, gdy dzieci wyjechały. Dostawczak po zamkniętej działalności. W każdym z tych przypadków im dłużej auto stoi, tym mniej jest warte — zostawione na dworze traci wyraźnie z roku na rok.</p>
-
-    <h2>Dlaczego nie wystawiać ogłoszenia</h2>
-    <p>Sprzedaż prywatna w mniejszym mieście ma jedną specyficzną wadę: rynek lokalny jest mały, więc albo czekasz tygodniami na kogoś z okolicy, albo umawiasz się z ludźmi, którzy przyjadą z daleka i będą chcieli zbić cenę za sam dojazd. Do tego dochodzi to, co wszędzie — telefony o nieludzkich porach, oglądacze, którzy się nie pojawiają, i pytanie „ostateczna cena?” przy pierwszym kontakcie.</p>
-    <p>Skup nie da tyle, ile najlepsza sprzedaż prywatna po miesiącu szukania. Da natomiast konkretną kwotę dziś, bez ogłoszenia, bez jazdy próbnej z nieznajomym i bez czekania na przelew.</p>
-  </div>
-
-  <Kroki />
+<div class="w"><section id="co-kupujemy">
+  <Naglowek
+    eyebrow="Zakres skupu"
+    tytul='Jakie auta skupujemy <span class="gold">w Sochaczewie</span>'
+    opis="Odkupujemy samochody różnych marek, roczników i w różnym stanie technicznym. Interesują nas zarówno sprawne auta osobowe i dostawcze, jak również pojazdy uszkodzone, powypadkowe oraz niejeżdżące."
+  />
+  <Kupujemy />
+  <LinkiTematyczne />
 </section></div>
 
 <div class="w"><section>
-  <Naglowek eyebrow="Pytania" tytul='Sochaczew i okolice — <span class="gold">pytania</span>' />
-  <Faq pary={FAQ} />
+  <Naglowek
+    eyebrow="Szukasz auta dla siebie?"
+    tytul='Sprzedaż samochodów <span class="gold">w Sochaczewie</span>'
+    opis="Nie tylko odkupujemy auta — część z nich trafia później do dalszej sprzedaży."
+  />
+  <div class="proza">
+    {/* ——— tresc unikalna dla miasta ——— */}
+    <p>Samochody wystawiane przez nas do sprzedaży wcześniej sami odkupiliśmy, więc znamy ich stan z oględzin, a nie z opisu poprzedniego właściciela. Dla kupującego z Sochaczewa i okolic oznacza to rozmowę na miejscu, bez jazdy na giełdę do Warszawy czy Łodzi.</p>
+    <p>W ofercie pojawiają się zarówno auta miejskie i rodzinne kombi, jak i pojazdy dostawcze, na które jest tu stały popyt wśród lokalnych firm. Dostępność zmienia się na bieżąco, dlatego konkretny model najlepiej potwierdzić telefonicznie lub na naszym profilu na Facebooku.</p>
+    <p>Oględziny i jazdę próbną umawiamy w Kozłowie Biskupim, kilka minut od centrum miasta. Jeśli chcesz przy okazji sprzedać obecny samochód, możemy go wycenić i rozliczyć przy zakupie kolejnego.</p>
+    <div class="go" style="margin-top:22px"><a class="btn o" href="/sprzedaz">Zobacz samochody na sprzedaż</a></div>
+  </div>
+</section></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Pytania" tytul='Skup aut Sochaczew — <span class="gold">najczęstsze pytania</span>' />
+  <div class="proza">
+    {FAQ.map(([pytanie, odpowiedz]) => (
+      <>
+        <h3>{pytanie}</h3>
+        <p>{odpowiedz}</p>
+      </>
+    ))}
+  </div>
 </section></div>
 
 <Formularz strona="sochaczew" />
-<Cta
-  tytul='Sprzedaj auto <span class="gold">w Sochaczewie</span>'
-  opis="Jesteśmy stąd, więc zwykle jesteśmy u Ciebie tego samego dnia. Dojazd i laweta nic nie kosztują."
-/>
 
 </Base>

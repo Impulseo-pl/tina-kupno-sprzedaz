@@ -1,75 +1,105 @@
 ---
+/* SZABLON PODSTRONY MIEJSCOWOSCI
+   Powtarzalne: hero z szybka wycena, proces w czterech krokach, zakres
+   skupu z kaflami linkow, sekcja o sprzedazy aut, formularz wyceny.
+   Unikalne dla miasta: tekst lokalny, naglowki sekcji, lokalne FAQ. */
 import Base from '../layouts/Base.astro';
-import Chero from '../components/Chero.astro';
+import HeroSkup from '../components/HeroSkup.astro';
 import Naglowek from '../components/Naglowek.astro';
-import Kroki from '../components/Kroki.astro';
+import ProcesKola from '../components/ProcesKola.astro';
+import Kupujemy from '../components/Kupujemy.astro';
+import LinkiTematyczne from '../components/LinkiTematyczne.astro';
 import Formularz from '../components/Formularz.astro';
-import Cta from '../components/Cta.astro';
-import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Przyjedziecie do Warszawy tego samego dnia?', 'Tak. Z bazy pod Sochaczewem do Warszawy jedziemy trasą, którą pokonujemy codziennie. Przy zgłoszeniu z rana jesteśmy zwykle tego samego dnia.'],
-  ['Auto stoi w garażu podziemnym. Da się je odebrać?', 'Tak, ale laweta nie zjedzie na poziom -1. Jeśli auto jeździ, wyprowadzamy je na powierzchnię. Jeśli nie odpala, potrzebny jest dostęp windą towarową albo wyciągnięcie auta na zewnątrz — powiedz o tym przez telefon, przygotujemy się.'],
-  ['Auto stoi w strefie płatnego parkowania. Co wtedy?', 'Nie ma problemu, po prostu umawiamy konkretną godzinę, żeby nie stać tam dłużej niż trzeba. Cała transakcja trwa kwadrans.'],
-  ['Czy dojazd do Warszawy jest dodatkowo płatny?', 'Nie. Dojazd i laweta kosztują zero złotych niezależnie od odległości i nie doliczamy ich do wyceny.'],
-  ['Obsługujecie całą Warszawę czy tylko wybrane dzielnice?', 'Całe miasto. Najczęściej bywamy po zachodniej stronie — Bemowo, Wola, Ursus, Włochy, Bielany — bo tak prowadzi nasza trasa, ale jeździmy na wszystkie dzielnice.'],
+  ['Czy obsługujecie wszystkie dzielnice Warszawy?', 'Tak, przyjeżdżamy na teren całego miasta — od Ursusa, Włoch, Bemowa i Woli po Mokotów, Ursynów, Białołękę, Targówek, Pragę i Wawer. Termin ustalamy indywidualnie, zależnie od adresu i dostępności.'],
+  ['Auto stoi w garażu podziemnym. Da się je odebrać?', 'Zwykle tak, ale trzeba wcześniej sprawdzić wysokość garażu, szerokość wyjazdu oraz możliwość przetoczenia samochodu. Jeżeli auto jeździ, najprościej wyprowadzić je na powierzchnię przed oględzinami.'],
+  ['Samochód stoi w strefie płatnego parkowania. Co wtedy?', 'Umawiamy konkretną godzinę, żeby oględziny i odbiór odbyły się bez zbędnego postoju. Wystarczy podać dokładny adres i ewentualne ograniczenia w dojeździe.'],
+  ['Czy dojazd do Warszawy jest dodatkowo płatny?', 'Nie. Dojazd i transport lawetą są po naszej stronie i nie pomniejszają kwoty ustalonej za samochód.'],
+  ['Czy kupujecie w Warszawie auta uszkodzone i niejeżdżące?', 'Tak, rozpatrujemy również samochody po kolizjach, z usterką silnika lub skrzyni biegów oraz takie, które nie mogą samodzielnie jechać. W takim przypadku ustalamy sposób transportu.'],
+  ['Czy mogę kupić u was samochód, mieszkając w Warszawie?', 'Tak. Auta, które wcześniej odkupiliśmy, sprzedajemy dalej. Oględziny i jazdę próbną umawiamy w naszej bazie pod Sochaczewem, po wcześniejszym telefonie.'],
 ];
 ---
 <Base
-  title="Skup aut Warszawa — wszystkie dzielnice, gotówka | TINA"
-  description="Skup samochodów w Warszawie: odbiór spod bloku, z garażu, z parkingu i z warsztatu. Przyjazd tego samego dnia, dojazd i laweta bezpłatne."
+  title="Skup aut Warszawa — skup samochodów za gotówkę | TINA"
+  description="Skup samochodów w Warszawie — wszystkie dzielnice. Bezpłatna wycena, odbiór spod bloku, z garażu podziemnego, parkingu lub warsztatu, także lawetą."
   path="/skup-aut-warszawa"
   schema={[okruszki([['/skup-aut-warszawa', 'Skup aut Warszawa']]), faqLd(FAQ)]}
 >
 
-<Chero
-  okruszek="Skup aut Warszawa"
-  lede="Dojeżdżamy do wszystkich dzielnic. Trasa Sochaczew — Warszawa to nasza codzienność, więc przy porannym zgłoszeniu jesteśmy u Ciebie jeszcze tego samego dnia."
-  sub="Skup samochodów w Warszawie i w całej aglomeracji."
-><span>Skup aut <span class="gold">Warszawa</span></span></Chero>
+<HeroSkup
+  tag="Skup i sprzedaż samochodów · Warszawa"
+  lede='Odkupujemy samochody osobowe, dostawcze i hybrydy — sprawne, uszkodzone i powypadkowe. Przyjeżdżamy pod wskazany adres w każdej dzielnicy, a jeśli auto nie jeździ, <span>zabieramy je lawetą</span>. Dojazd nic nie kosztuje.'
+><span>Skup aut</span> za gotówkę<span class="l2 gold">w Warszawie</span></HeroSkup>
 
 <div class="w"><section>
   <div class="proza">
-    <h2>Sprzedaż auta w Warszawie ma swoje własne problemy</h2>
-    <p>W mniejszym mieście auto stoi pod domem i nikomu nie przeszkadza. W Warszawie każdy tydzień stania kosztuje — miejscem postojowym, o które na osiedlu toczy się cicha wojna, opłatą za garaż podziemny albo strefą płatnego parkowania, jeśli auto zostało na ulicy. Dlatego tutaj ludzie najczęściej nie pytają najpierw „ile dostanę”, tylko „kiedy możecie to zabrać”.</p>
-    <p>Odpowiadamy na oba pytania w jednej rozmowie. Kwotę ustalamy przez telefon, a termin zwykle wypada tego samego dnia.</p>
+    {/* ——— tresc unikalna dla miasta ——— */}
+    <h2>Sprzedaż samochodu w Warszawie wygląda inaczej</h2>
+    <p>W Warszawie nieużywany samochód szybko zaczyna przeszkadzać. Zajmuje miejsce na osiedlowym parkingu, generuje koszt garażu albo stoi w strefie płatnego parkowania. Dotyczy to szczególnie drugiego auta w rodzinie, samochodu pozostałego po zmianie pracy lub pojazdu, który po awarii przestał być używany.</p>
+    <p>Sprzedaż prywatna teoretycznie daje dostęp do dużej liczby kupujących, ale oznacza również rywalizację z tysiącami innych ogłoszeń. Trzeba przygotować zdjęcia, odpowiadać na telefony i znaleźć czas na prezentowanie samochodu. Im popularniejszy model, tym większy wybór ma kupujący i tym łatwiej porównuje każde uszkodzenie, wyposażenie oraz cenę.</p>
+    <p>Skup jest rozwiązaniem dla osób, które wolą najpierw poznać konkretną ofertę, a dopiero później zdecydować, czy chcą dalej wystawiać auto samodzielnie. Różnice między obiema drogami opisujemy na stronie <a href="/komis-czy-skup-aut">komis czy skup aut</a>.</p>
 
-    <h2>Gdzie odbieramy auta w Warszawie</h2>
-    <p>Jeździmy na wszystkie dzielnice. Najczęściej bywamy po zachodniej stronie miasta — Bemowo, Wola, Ursus, Włochy, Bielany — po prostu dlatego, że tamtędy prowadzi nasza trasa z Sochaczewa. To nie znaczy jednak, że Mokotów, Praga czy Białołęka są dla nas dalej: różnica to kwadrans jazdy.</p>
+    <h2>Odbiór auta dopasowany do warunków miasta</h2>
+    <p>Samochód w Warszawie nie zawsze stoi na otwartym podjeździe. Może znajdować się w garażu podziemnym, na ciasnym parkingu osiedlowym, w warsztacie albo na terenie firmy. Dlatego przy zgłoszeniu ważny jest nie tylko stan pojazdu, ale również dokładne miejsce i warunki dostępu.</p>
+    <p>W przypadku garażu podziemnego trzeba sprawdzić jego wysokość, szerokość wyjazdu oraz możliwość przetoczenia samochodu. Jeżeli auto znajduje się w warsztacie lub na parkingu strzeżonym, przed odbiorem należy ustalić zasady jego wydania. Takie informacje pozwalają właściwie zaplanować oględziny i ewentualny transport.</p>
+    <p>Obsługujemy wszystkie dzielnice Warszawy — od Ursusa, Włoch, Bemowa i Woli po Mokotów, Ursynów, Białołękę, Targówek, Pragę i Wawer. Termin przyjazdu ustalamy indywidualnie, zależnie od adresu oraz dostępności.</p>
+
+    <h2>Nie oceniamy auta po warszawskim adresie</h2>
+    <p>Samochód używany w Warszawie może mieć niski przebieg, ale wiele godzin pracy w korkach. Inny egzemplarz może codziennie pokonywać trasę poza miastem i mimo wyższego przebiegu pozostawać w dobrym stanie technicznym.</p>
+    <p>Dlatego nie zakładamy z góry, że „auto miejskie” jest lepsze albo gorsze. Liczy się sposób użytkowania oraz rzeczywisty stan silnika, skrzyni biegów, sprzęgła, zawieszenia, hamulców, nadwozia i wnętrza.</p>
+    <p>Obtarcia parkingowe, niewielkie wgniecenia czy ślady miejskiej eksploatacji nie zamykają drogi do sprzedaży. Warto pokazać je na zdjęciach już podczas zgłoszenia — dzięki temu możemy lepiej przygotować się do oględzin.</p>
   </div>
+</section></div>
 
-  <div class="docs" style="margin-top:26px">
-    <div class="doc"><b>Auto pod blokiem</b><p>Najprostszy przypadek. Umawiamy godzinę, przyjeżdżamy, oglądamy i zabieramy. Laweta potrzebuje kilku metrów miejsca, nie całego parkingu.</p></div>
-    <div class="doc"><b>Garaż podziemny</b><p>Laweta nie zjedzie na poziom -1. Jeśli auto jeździ, wyprowadzamy je na górę. Jeśli nie odpala, trzeba to zaplanować — powiedz o tym od razu przez telefon.</p></div>
-    <div class="doc"><b>Strefa płatnego parkowania</b><p>Umawiamy konkretną godzinę i nie stoimy dłużej, niż trzeba. Transakcja zajmuje kwadrans, więc nie ma mowy o blokowaniu miejsca na pół dnia.</p></div>
-    <div class="doc"><b>Parking strzeżony</b><p>Odbieramy również stamtąd. Pamiętaj tylko, że doba parkingowa leci do momentu wyjazdu auta, więc im szybciej, tym taniej dla Ciebie.</p></div>
-    <div class="doc"><b>Warsztat lub blacharnia</b><p>Częsty adres przy autach po szkodzie. Przed odbiorem warto wyjaśnić, czy warsztat nie ma roszczenia za już wykonane prace.</p></div>
-    <div class="doc"><b>Miejsce pracy</b><p>Jeśli tak Ci wygodniej, przyjeżdżamy pod biuro albo na parking firmowy. Umowę podpisujemy na miejscu, wszystko trwa kwadrans.</p></div>
-  </div>
+<div class="w"><section id="jak">
+  <Naglowek
+    eyebrow="Przebieg sprawy"
+    tytul='Jak wygląda skup auta <span class="gold">w Warszawie</span>'
+    opis="Bez wystawiania ogłoszeń, bez oglądaczy pod domem, bez czekania na przelew od nieznajomego."
+  />
+  <ProcesKola />
+  <div style="text-align:center;margin-top:38px"><a class="btn g" href="#wycena">Zamów wycenę auta</a></div>
+</section></div>
 
-  <div class="proza" style="margin-top:44px">
-    <h2>Auta warszawskie wyceniają się trochę inaczej</h2>
-    <p>Samochód jeżdżący głównie po mieście ma zwykle niższy przebieg niż ten z okolic, ale przejechany w najgorszy możliwy sposób: krótkie dystanse, ciągłe zatrzymywanie, silnik często nie dochodzi do temperatury pracy. Widać to po stanie sprzęgła, hamulców, a przy dieslach po filtrze cząstek stałych. Trzydzieści tysięcy kilometrów rocznie po mieście zużywa auto szybciej niż sześćdziesiąt na trasie.</p>
-    <p>Druga rzecz to lakier i blacha. Auto parkowane latami na ulicy albo na ciasnym osiedlowym parkingu prawie zawsze ma obtarcia zderzaków, wgniecenia od drzwi sąsiada i rysy, których właściciel już nie zauważa. Nie skreśla to auta, ale wpływa na kwotę — i lepiej powiedzieć o tym od razu, niż udawać, że ich nie ma.</p>
-
-    <h2>Co odkupujemy w Warszawie</h2>
-    <p>Ten sam zakres co wszędzie: osobowe, dostawcze i hybrydy, sprawne i po szkodzie. W stolicy szczególnie często trafiają do nas dwa typy zgłoszeń. Pierwszy to auto po kolizji, którego właściciel nie chce naprawiać, bo naprawa blacharska w Warszawie kosztuje więcej niż gdziekolwiek indziej. Drugi to drugie auto w rodzinie, które przestało być potrzebne i zaczęło być wyłącznie kosztem.</p>
-    <p>Nie kupujemy aut w pełni elektrycznych, motocykli, kamperów ani przyczep. Nie prowadzimy też kasacji — jeśli auto nadaje się już tylko na złom, trzeba je oddać do stacji demontażu, bo tylko ona wystawi zaświadczenie potrzebne do wyrejestrowania.</p>
-  </div>
-
-  <Kroki />
+<div class="w"><section id="co-kupujemy">
+  <Naglowek
+    eyebrow="Zakres skupu"
+    tytul='Jakie auta skupujemy <span class="gold">w Warszawie</span>'
+    opis="Odkupujemy samochody różnych marek, roczników i w różnym stanie technicznym. Interesują nas zarówno sprawne auta osobowe i dostawcze, jak również pojazdy uszkodzone, powypadkowe oraz niejeżdżące."
+  />
+  <Kupujemy />
+  <LinkiTematyczne />
 </section></div>
 
 <div class="w"><section>
-  <Naglowek eyebrow="Pytania" tytul='Warszawa — <span class="gold">pytania</span>' />
-  <Faq pary={FAQ} />
+  <Naglowek
+    eyebrow="Szukasz auta dla siebie?"
+    tytul='Sprzedaż samochodów <span class="gold">dla Warszawy</span>'
+    opis="Nie tylko odkupujemy auta — część z nich trafia później do dalszej sprzedaży."
+  />
+  <div class="proza">
+    {/* ——— tresc unikalna dla miasta ——— */}
+    <p>Samochody, które wcześniej odkupiliśmy, sprzedajemy jako własne pojazdy. Dla kupującego z Warszawy oznacza to rozmowę z jednym właścicielem zamiast przeglądania kilkunastu ogłoszeń od osób prywatnych i pośredników.</p>
+    <p>W stolicy pytania dotyczą najczęściej kompaktów i aut miejskich na krótkie dystanse, ale równie często szukane są kombi i SUV-y do dojazdów spoza obwodnicy. Dostępność zmienia się z tygodnia na tydzień, dlatego konkretny model warto potwierdzić telefonicznie.</p>
+    <p>Oględziny i jazdę próbną umawiamy w naszej bazie w Kozłowie Biskupim pod Sochaczewem, kilkadziesiąt kilometrów od Warszawy drogą krajową nr 92. Jeśli przy okazji chcesz sprzedać obecne auto, możemy je wycenić i rozliczyć przy zakupie.</p>
+    <div class="go" style="margin-top:22px"><a class="btn o" href="/sprzedaz">Zobacz samochody na sprzedaż</a></div>
+  </div>
+</section></div>
+
+<div class="w"><section>
+  <Naglowek eyebrow="Pytania" tytul='Skup aut Warszawa — <span class="gold">najczęstsze pytania</span>' />
+  <div class="proza">
+    {FAQ.map(([pytanie, odpowiedz]) => (
+      <>
+        <h3>{pytanie}</h3>
+        <p>{odpowiedz}</p>
+      </>
+    ))}
+  </div>
 </section></div>
 
 <Formularz strona="warszawa" />
-<Cta
-  tytul='Sprzedaj auto <span class="gold">w Warszawie</span>'
-  opis="Umawiamy konkretną godzinę, przyjeżdżamy pod wskazany adres i rozliczamy się na miejscu. Dojazd i laweta bez opłat."
-/>
 
 </Base>
