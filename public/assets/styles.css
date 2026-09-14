@@ -385,7 +385,10 @@ body.scrolled .ctabar{transform:none}
 .qf input{font:inherit;font-size:15px;padding:11px 12px;width:100%;border:1px solid var(--hair);background:#0a0c10;color:var(--onk);border-radius:2px}
 .qf input::placeholder{color:#5b616b}
 .qf input:focus{outline:2px solid var(--g);border-color:transparent}
-.qf .btn{padding:13px 22px;white-space:nowrap}
+/* Przycisk ma byc dokladnie tej samej wysokosci co pola obok — stad min-height
+   rowne wysokosci inputa (11+11 padding, 2 ramki, 24 linia) i centrowanie w srodku. */
+.qf .btn{padding:0 22px;min-height:48px;display:inline-flex;align-items:center;
+  justify-content:center;white-space:nowrap}
 .qf .hint{margin-top:11px;font-size:12px;color:var(--onk-mut);display:flex;gap:8px;align-items:center}
 .qf .hint svg{flex:none}
 @media (max-width:820px){.qf .row{grid-template-columns:1fr 1fr}.qf .row .btn{grid-column:1/-1;width:100%;text-align:center}}
