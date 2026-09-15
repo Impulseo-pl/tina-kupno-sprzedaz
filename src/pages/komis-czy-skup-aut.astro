@@ -4,7 +4,7 @@ import Chero from '../components/Chero.astro';
 import Telefon from '../components/Telefon.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
-import { okruszki, faqLd } from '../dane/firma';
+import { okruszki, faqLd, artykulLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
   ['Ile kosztuje sprzedaż samochodu przez komis?', 'Nie ma jednej obowiązującej stawki. Komis może pobierać procent od ceny sprzedaży, ustaloną kwotę albo dodatkowe opłaty za konkretne usługi. Wszystkie koszty należy sprawdzić przed podpisaniem umowy.'],
@@ -32,7 +32,18 @@ const POROWNANIE: [string, string, string][] = [
   title="Komis czy skup aut: czym się różnią i co wybrać | TINA"
   description="Komis pośredniczy w sprzedaży, skup sam kupuje samochód. Porównanie: prowizja, czas oczekiwania, moment wypłaty, formalności i o co zapytać przed umową komisową."
   path="/komis-czy-skup-aut"
-  schema={[okruszki([['/komis-czy-skup-aut', 'Komis czy skup']]), faqLd(FAQ)]}
+  schema={[
+    okruszki([['/blog', 'Blog'], ['/komis-czy-skup-aut', 'Komis czy skup']]),
+    artykulLd({
+      sciezka: '/komis-czy-skup-aut',
+      tytul: 'Komis czy skup aut: czym się różnią i co wybrać?',
+      opis:
+        'Komis szuka kupującego, skup sam kupuje samochód. Porównanie prowizji, czasu oczekiwania i momentu wypłaty, a do tego lista pytań, które warto zadać przed podpisaniem umowy komisowej.',
+      obraz: '/img/blog/komis-czy-skup.jpg',
+      data: '2026-09-14',
+    }),
+    faqLd(FAQ),
+  ]}
 >
 
 <Chero
@@ -153,6 +164,7 @@ const POROWNANIE: [string, string, string][] = [
       <li>Odbieramy samochód, a w razie potrzeby organizujemy transport lawetą.</li>
     </ol>
     <p>Na wycenę wpływają między innymi marka, model, rocznik, przebieg, stan techniczny, zakres uszkodzeń i aktualne zainteresowanie danym pojazdem.</p>
+    <p>Samochody odkupujemy na terenie całego województwa mazowieckiego, w tym w <a href="/skup-aut-warszawa">Warszawie</a> i w <a href="/skup-aut-sochaczew">Sochaczewie</a>.</p>
 
     <h2 class="tyt-faq">Komis czy skup aut: najczęstsze pytania</h2>
     <Faq pary={FAQ} />

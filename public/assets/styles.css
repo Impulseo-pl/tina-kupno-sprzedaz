@@ -20,6 +20,11 @@ a{color:inherit}
 img{display:block}
 ul{margin:0;padding:0;list-style:none}
 .w{max-width:var(--w);margin-inline:auto;padding-inline:26px}
+/* Link dla klawiatury i czytnikow ekranu: widoczny dopiero po zlapaniu focusa. */
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--k0);color:var(--g);
+  padding:12px 20px;text-decoration:none;font-weight:700;font-size:14px}
+.skip:focus{left:0}
+main:focus{outline:none}
 .gold{background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .eyebrow{font-family:Manrope,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--g3)}
 .dark .eyebrow{color:var(--g)}

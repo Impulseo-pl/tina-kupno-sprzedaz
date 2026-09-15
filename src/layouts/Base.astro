@@ -8,13 +8,16 @@ export interface Props {
   schema?: object | object[];
   ogImage?: string;
   cta?: { label: string; href: string };
+  noindex?: boolean;          // strony techniczne: zostaja zamkniete takze po uruchomieniu
 }
 
-const { title, description, path, schema, ogImage, cta } = Astro.props;
+const { title, description, path, schema, ogImage, cta, noindex = false } = Astro.props;
+// Zdjac w dniu uruchomienia na tinaskupaut.pl, razem z Disallow w robots.txt.
+const W_BUDOWIE = true;
 const canonical = path === '/' ? `${SITE}/` : `${SITE}${path}`;
 const schematy = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 const przycisk = cta ?? { label: 'Wyceń auto', href: '/wycena' };
-const CSS_V = '20260915q';
+const CSS_V = '20260915r';
 // Na telefonie w pasku miesci sie tylko kilka pozycji — reszta chowa sie pod „Więcej”.
 const NAW_TELEFON = ['/', '/sprzedaz', '/kontakt'];
 ---
@@ -38,16 +41,18 @@ const NAW_TELEFON = ['/', '/sprzedaz', '/kontakt'];
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/img/ikona.png">
 <link rel="apple-touch-icon" href="/img/ikona.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap">
 <link rel="stylesheet" href={`/assets/styles.css?v=${CSS_V}`}>
 
-<!-- Strona jest w budowie i celowo zamknieta przed wyszukiwarkami.
-     Zdjac razem z robots.txt w dniu uruchomienia na tinaskupaut.pl. -->
-<meta name="robots" content="noindex, nofollow">
+<!-- Na czas budowy zamkniete calosciowo; po uruchomieniu zostaja same strony techniczne. -->
+{(W_BUDOWIE || noindex) && <meta name="robots" content="noindex, nofollow" />}
 
 {schematy.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
 </head>
 <body>
+<a class="skip" href="#app">Przejdź do treści</a>
 <header class="top">
   <div class="w">
     <span class="logo-slot"><a class="logo" href="/" aria-label="TINA Skup Aut, strona główna"><img class="l-jasne" src="/img/logo.png" width="626" height="245" alt="TINA Skup Aut"><img class="l-ciemne" src="/img/logo-ciemne.png" width="626" height="245" alt="" aria-hidden="true"></a></span>
@@ -63,7 +68,7 @@ const NAW_TELEFON = ['/', '/sprzedaz', '/kontakt'];
 </header>
 <div class="prog"></div>
 
-<main id="app">
+<main id="app" tabindex="-1">
 <slot />
 </main>
 
@@ -71,21 +76,21 @@ const NAW_TELEFON = ['/', '/sprzedaz', '/kontakt'];
   <div class="w">
     <div class="cols">
       <div>
-        <h4>TINA Skup Aut</h4>
+        <h3>TINA Skup Aut</h3>
         <p>{FIRMA.podmiot}<br>{FIRMA.ulica}<br>{FIRMA.kod} {FIRMA.miasto}<br>k. Sochaczewa, woj. mazowieckie</p>
         <p style="margin-top:12px">Skup i sprzedaż samochodów na terenie całego Mazowsza. W motoryzacji od {FIRMA.wBranzyOd} roku.</p>
       </div>
       <div>
-        <h4>Kontakt</h4>
+        <h3>Kontakt</h3>
         <p><a href={`tel:${FIRMA.tel1tel}`}>{FIRMA.tel1}</a><br><a href={`tel:${FIRMA.tel2tel}`}>{FIRMA.tel2}</a><br><a href={`mailto:${FIRMA.mail}`}>{FIRMA.mail}</a><br><a href={FIRMA.fb} rel="noopener" target="_blank">Facebook</a></p>
         <p style="margin-top:12px">Odbieramy 7 dni w tygodniu.</p>
       </div>
       <div>
-        <h4>Skup aut</h4>
+        <h3>Skup aut</h3>
         <p><a href="/">Skup aut za gotówkę</a><br><a href="/ile-placimy">Ile płacimy</a><br><a href="/auta-uszkodzone-powypadkowe">Auta uszkodzone i powypadkowe</a><br><a href="/skup-aut-dostawczych">Samochody dostawcze</a><br><a href="/wycena">Wycena online</a></p>
       </div>
       <div>
-        <h4>Więcej</h4>
+        <h3>Więcej</h3>
         <p><a href="/skup-aut-sochaczew">Skup aut Sochaczew</a><br><a href="/skup-aut-warszawa">Skup aut Warszawa</a><br><a href="/sprzedaz">Samochody na sprzedaż</a><br><a href="/jak-sprzedac-auto">Jak sprzedać auto</a><br><a href="/komis-czy-skup-aut">Komis czy skup</a><br><a href="/blog">Blog</a><br><a href="/o-nas">O nas</a><br><a href="/pytania">Pytania i odpowiedzi</a></p>
       </div>
     </div>

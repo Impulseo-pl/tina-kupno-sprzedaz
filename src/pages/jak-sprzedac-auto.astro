@@ -4,7 +4,7 @@ import Chero from '../components/Chero.astro';
 import Telefon from '../components/Telefon.astro';
 import Cta from '../components/Cta.astro';
 import Faq from '../components/Faq.astro';
-import { okruszki, faqLd } from '../dane/firma';
+import { okruszki, faqLd, artykulLd } from '../dane/firma';
 
 /* Te same pary ida do JSON-LD i do tekstu artykulu nizej. */
 const FAQ: [string, string][] = [
@@ -21,7 +21,18 @@ const FAQ: [string, string][] = [
   title="Jak sprzedać samochód: formalności krok po kroku | TINA"
   description="Dokumenty do sprzedaży auta, umowa kupna-sprzedaży, zgłoszenie zbycia pojazdu w 30 dni, powiadomienie ubezpieczyciela w 14 dni i podatek PIT. Poradnik krok po kroku."
   path="/jak-sprzedac-auto"
-  schema={[okruszki([['/jak-sprzedac-auto', 'Jak sprzedać auto']]), faqLd(FAQ)]}
+  schema={[
+    okruszki([['/blog', 'Blog'], ['/jak-sprzedac-auto', 'Jak sprzedać auto']]),
+    artykulLd({
+      sciezka: '/jak-sprzedac-auto',
+      tytul: 'Jak sprzedać samochód bez niepotrzebnych problemów?',
+      opis:
+        'Dokumenty do zebrania, co musi znaleźć się w umowie, trzy rzeczy do sprawdzenia przed wydaniem kluczyków oraz dwa terminy po sprzedaży: zgłoszenie zbycia w 30 dni i powiadomienie ubezpieczyciela w 14 dni.',
+      obraz: '/img/blog/jak-sprzedac-auto.jpg',
+      data: '2026-09-14',
+    }),
+    faqLd(FAQ),
+  ]}
 >
 
 <Chero
@@ -113,7 +124,7 @@ const FAQ: [string, string][] = [
 
     <h2>Jak wygląda sprzedaż samochodu firmie TINA?</h2>
     <p>Zacznij od telefonu albo <a href="/wycena">formularza wyceny</a>. Podaj markę, model, rocznik, przebieg, stan samochodu oraz jego lokalizację. Zdjęcia pozwolą nam lepiej przygotować się do rozmowy.</p>
-    <p>Następnie umawiamy oględziny pod wskazanym adresem. Po sprawdzeniu samochodu przedstawiamy ofertę, o tym, <a href="/ile-placimy">co wpływa na kwotę</a>, piszemy osobno. Jeżeli ją zaakceptujesz, przygotowujemy dokumenty, finalizujemy rozliczenie i odbieramy pojazd. W przypadku <a href="/auta-uszkodzone-powypadkowe">auta niejeżdżącego</a> możemy przyjechać lawetą.</p>
+    <p>Następnie umawiamy oględziny pod wskazanym adresem na terenie całego Mazowsza, od <a href="/skup-aut-warszawa">Warszawy</a> po <a href="/skup-aut-sochaczew">Sochaczew</a>. Po sprawdzeniu samochodu przedstawiamy ofertę, o tym, <a href="/ile-placimy">co wpływa na kwotę</a>, piszemy osobno. Jeżeli ją zaakceptujesz, przygotowujemy dokumenty, finalizujemy rozliczenie i odbieramy pojazd. W przypadku <a href="/auta-uszkodzone-powypadkowe">auta niejeżdżącego</a> możemy przyjechać lawetą.</p>
     <p>Po transakcji otrzymujesz swój egzemplarz dokumentu sprzedaży. Zgłoszenie zbycia w urzędzie i powiadomienie ubezpieczyciela nadal należą do obowiązków sprzedającego, ale wyjaśnimy, jakie dokumenty będą potrzebne.</p>
 
     <h2 class="tyt-faq">Formalności po sprzedaży: pytania i odpowiedzi</h2>

@@ -78,6 +78,37 @@ export function okruszki(sciezka: [string, string][]) {
   return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: el };
 }
 
+/** Artykul blogowy: te same dane, ktore opisuja wpis na liscie /blog. */
+export function artykulLd(a: {
+  sciezka: string;
+  tytul: string;
+  opis: string;
+  obraz: string;
+  data: string;
+  zmiana?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: a.tytul,
+    description: a.opis,
+    url: SITE + a.sciezka,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': SITE + a.sciezka },
+    image: SITE + a.obraz,
+    datePublished: a.data,
+    dateModified: a.zmiana ?? a.data,
+    inLanguage: 'pl-PL',
+    isPartOf: { '@type': 'Blog', name: 'Blog TINA Skup Aut', url: SITE + '/blog' },
+    author: { '@type': 'Organization', name: FIRMA.nazwa, url: SITE + '/' },
+    publisher: {
+      '@type': 'Organization',
+      name: FIRMA.nazwa,
+      url: SITE + '/',
+      logo: { '@type': 'ImageObject', url: SITE + '/img/logo.png' },
+    },
+  };
+}
+
 /** FAQPage z tych samych par, ktore renderujemy na stronie. */
 export function faqLd(pary: [string, string][]) {
   return {
