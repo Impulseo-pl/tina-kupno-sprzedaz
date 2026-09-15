@@ -8,21 +8,35 @@ const ORIGIN = location.origin + location.pathname.replace(/[^/]*$/, '').replace
 
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-/* ================= brak wysylki =================
-   Formularze zbieraja dane, ale nic jeszcze nie wysylaja: FormSubmit zostal
-   wyciety, a docelowa obsluga (Pages Function + Resend) ruszy razem z domena.
-   Zamiast po cichu gubic zgloszenie, pokazujemy komunikat z numerem telefonu. */
+/* ================= wysylka zgloszen =================
+   Formularze ida POST-em na /api/zgloszenie (Cloudflare Pages Function), ktora
+   wysyla maila przez Resend. Gdy cokolwiek pojdzie nie tak, nie gubimy zgloszenia
+   po cichu — pokazujemy numer telefonu i nie kasujemy wpisanych danych. */
 const TEL_KONTAKT = '692 493 797';
-function brakWysylki(form, przycisk){
-  if(form.querySelector('.uwaga')) return;
-  const box=document.createElement('p');
-  box.className='uwaga';
-  box.innerHTML='Wysyłka formularza ruszy razem z uruchomieniem strony na docelowym adresie. '+
-                'Do tego czasu zadzwoń: <a href="tel:+48692493797">'+TEL_KONTAKT+'</a>.';
-  const akcje=form.querySelector('.actions');
-  (akcje||form).parentNode.insertBefore(box, akcje||null);
-  if(przycisk){ przycisk.disabled=true; }
+function awaria(form, powod){
+  let box=form.querySelector('.uwaga');
+  if(!box){
+    box=document.createElement('p');
+    box.className='uwaga';
+    const akcje=form.querySelector('.actions');
+    (akcje||form).parentNode.insertBefore(box, akcje||null);
+  }
+  box.innerHTML=(powod ? powod+' ' : 'Nie udało się wysłać zgłoszenia. ')+
+                'Zadzwoń: <a href="tel:+48692493797">'+TEL_KONTAKT+'</a>.';
   box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+/* Zwraca true, gdy zgloszenie doszlo. Zalaczniki podaje sie osobno, bo lista
+   miniatur moze sie roznic od zawartosci <input type=file>. */
+async function wyslij(form, pliki){
+  const fd=new FormData(form);
+  fd.delete('attachment');
+  (pliki||[]).forEach(f=>fd.append('zdjecia[]', f));
+  const r=await fetch('/api/zgloszenie',{method:'POST',body:fd});
+  let j={};
+  try{ j=await r.json(); }catch(e){}
+  if(r.ok && j.ok) return true;
+  throw new Error(j.blad||'');
 }
 
 /* ================= formularz krokowy ================= */
@@ -73,24 +87,29 @@ function bindForm(){
 
   /* ---------- zdjecia ---------- */
   const files=$('files'), thumbs=$('thumbs');
-  const draw=()=>{ thumbs.innerHTML=picked.map((u,k)=>`<div><img src="${u}" alt="Zdjęcie ${k+1}"><button type="button" data-i="${k}" aria-label="Usuń zdjęcie">×</button></div>`).join(''); };
-  files.addEventListener('change',e=>{ for(const f of e.target.files){ if(picked.length>=5)break; picked.push(URL.createObjectURL(f)); } draw(); });
+  const draw=()=>{ thumbs.innerHTML=picked.map((p,k)=>`<div><img src="${p.u}" alt="Zdjęcie ${k+1}"><button type="button" data-i="${k}" aria-label="Usuń zdjęcie">×</button></div>`).join(''); };
+  files.addEventListener('change',e=>{ for(const f of e.target.files){ if(picked.length>=5)break; picked.push({f:f,u:URL.createObjectURL(f)}); } draw(); e.target.value=''; });
   thumbs.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; picked.splice(+b.dataset.i,1); draw(); });
 
   /* ---------- wyslanie ---------- */
-  send.addEventListener('click',()=>{
+  send.addEventListener('click',async ()=>{
     if(!sprawdz(3)) return;
     if(!$('zgoda').checked){ err.textContent='Zaznacz zgodę na kontakt — bez niej nie możemy oddzwonić.'; $('zgoda').focus(); return; }
     err.textContent='';
     const auto=[($('marka').value||'').trim(),($('model').value||'').trim(),($('rok').value||'').trim()].filter(Boolean).join(' ');
-    const nx=wf.querySelector('input[name="_next"]');
-    if(nx){
-      const q=new URLSearchParams();
-      if(auto) q.set('a',auto);
-      const t=($('tel').value||'').trim(); if(t) q.set('t',t);
-      nx.value=ORIGIN+'/dziekujemy'+(q.toString()?'?'+q.toString():'');
+    const q=new URLSearchParams();
+    if(auto) q.set('a',auto);
+    const nr=($('tel').value||'').trim(); if(nr) q.set('t',nr);
+
+    const napis=send.textContent;
+    send.disabled=true; send.textContent='Wysyłam…';
+    try{
+      await wyslij(wf, picked.map(p=>p.f));
+      location.href=ORIGIN+'/dziekujemy'+(q.toString()?'?'+q.toString():'');
+    }catch(e){
+      send.disabled=false; send.textContent=napis;
+      awaria(wf, e.message);
     }
-    brakWysylki(wf, send);
   });
 
   /* ---------- szybka wycena z hero ---------- */
@@ -233,9 +252,18 @@ counters();
 
 /* ---------- formularze bez kreatora ---------- */
 document.querySelectorAll('form[data-strona]:not(#wf)').forEach(function (f) {
-  f.addEventListener('submit', function (e) {
+  f.addEventListener('submit', async function (e) {
     e.preventDefault();
     if(!f.reportValidity()) return;
-    brakWysylki(f, f.querySelector('button[type=submit]'));
+    const btn=f.querySelector('button[type=submit]');
+    const napis=btn ? btn.textContent : '';
+    if(btn){ btn.disabled=true; btn.textContent='Wysyłam…'; }
+    try{
+      await wyslij(f, null);
+      location.href=ORIGIN+'/dziekujemy';
+    }catch(err){
+      if(btn){ btn.disabled=false; btn.textContent=napis; }
+      awaria(f, err.message);
+    }
   });
 });

@@ -1,7 +1,7 @@
 ---
 /* Zapytanie o auto z oferty. Prosty formularz bez kreatora, kupujacy podaje
    kryteria, nie dane pojazdu, wiec nie ma czego dzielic na kroki.
-   Pole _next uzupelnia app.js adresem biezacego hosta. */
+   Wysylka idzie POST-em na /api/zgloszenie. */
 import Telefon from './Telefon.astro';
 import { FIRMA } from '../dane/firma';
 ---
@@ -22,8 +22,11 @@ import { FIRMA } from '../dane/firma';
     </div>
   </div>
 
-  {/* Wysylka celowo nieaktywna, jak w formularzu wyceny. */}
   <form class="card" id="zf" novalidate data-strona="sprzedaz">
+
+    <input type="hidden" name="rodzaj" value="szukam">
+    <input type="hidden" name="skad" value="sprzedaz">
+    <div class="wabik" aria-hidden="true"><label>Nazwa firmy<input type="text" name="firma" tabindex="-1" autocomplete="off"></label></div>
 
     <div class="pad">
     <fieldset>

@@ -19,9 +19,12 @@ const { strona } = Astro.props;
     </div>
   </div>
 
-  {/* Wysylka celowo nieaktywna: docelowo Pages Function + Resend.
-      Do tego czasu przycisk pokazuje komunikat z numerem telefonu. */}
   <form class="card" id="wf" autocomplete="off" novalidate data-strona={strona}>
+
+    {/* Pola sluzbowe: skad przyszlo zgloszenie i pulapka na boty. */}
+    <input type="hidden" name="rodzaj" value="wycena">
+    <input type="hidden" name="skad" value={strona}>
+    <div class="wabik" aria-hidden="true"><label>Nazwa firmy<input type="text" name="firma" tabindex="-1" autocomplete="off"></label></div>
 
     <div class="wiz">
       <div class="on" data-w="0"><i><em>I</em></i>Auto</div>
