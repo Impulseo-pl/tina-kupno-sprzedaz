@@ -547,6 +547,27 @@ body.scrolled .ctabar{transform:none}
   .nav a:first-child{padding-left:0}
   .nav a:hover,.nav a:active{opacity:1;color:var(--g)}
 }
+
+/* ---------- telefon: skrocony pasek i rozwijane „Więcej” ---------- */
+/* Na duzym ekranie wszystkie pozycje stoja w pasku, wiec przycisku i listy nie ma. */
+.wiecej,.menu-wiecej{display:none}
+@media (max-width:1000px){
+  .nav a.tylko-duzy{display:none}
+  .wiecej{display:inline-flex;align-items:center;gap:6px;flex:none;cursor:pointer;
+    font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+    background:none;border:0;padding:5px 13px;color:var(--onk);opacity:.72;white-space:nowrap}
+  .wiecej svg{transition:transform .2s var(--ez)}
+  .wiecej[aria-expanded="true"]{opacity:1;color:var(--g)}
+  .wiecej[aria-expanded="true"] svg{transform:rotate(180deg)}
+  .menu-wiecej{display:block;background:var(--k1);border-top:1px solid var(--hair);
+    animation:dropin .18s var(--ez) both}
+  .menu-wiecej a{display:block;padding:13px 26px;color:var(--onk);text-decoration:none;opacity:.84;
+    font-size:13px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+    border-bottom:1px solid rgba(42,47,58,.65)}
+  .menu-wiecej a:last-child{border-bottom:0}
+  .menu-wiecej a:active{color:var(--g);opacity:1}
+  .menu-wiecej a[aria-current="page"]{color:var(--g);opacity:1}
+}
 @media (max-width:760px){
   .est{padding:20px 20px 22px}
   .wiz div{font-size:9.5px;letter-spacing:.06em;padding:11px 4px 9px}

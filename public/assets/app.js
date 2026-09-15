@@ -194,6 +194,25 @@ function reveal(){
 })();
 
 
+/* ---------- telefon: rozwijana lista „Więcej” w pasku ---------- */
+(function(){
+  const btn=document.querySelector('.wiecej'), menu=document.getElementById('menu-wiecej');
+  if(!btn||!menu) return;
+  const zamknij=()=>{ btn.setAttribute('aria-expanded','false'); menu.hidden=true; };
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    const otwarte=btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded',otwarte?'false':'true');
+    menu.hidden=otwarte;
+  });
+  /* Klikniecie obok listy albo Escape ja zwija. */
+  document.addEventListener('click',e=>{ if(!menu.hidden && !menu.contains(e.target)) zamknij(); });
+  addEventListener('keydown',e=>{ if(e.key==='Escape') zamknij(); });
+  /* Po obrocie telefonu na szeroki ekran lista jest niepotrzebna. */
+  addEventListener('resize',()=>{ if(innerWidth>1000) zamknij(); });
+})();
+
+
 /* ---------- kotwice w obrebie podstrony: bez zmiany adresu ---------- */
 document.addEventListener('click',e=>{
   const a=e.target.closest && e.target.closest('a[href^="#"]');
