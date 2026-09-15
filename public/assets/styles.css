@@ -192,6 +192,8 @@ summary::-webkit-details-marker{display:none}
 summary::before{content:"+";color:var(--g3);font-weight:700;font-size:19px;flex:none;line-height:1}
 details[open] summary::before{content:"\2212"}
 details p{padding:0 4px 20px 32px;font-size:16px;color:var(--muted);max-width:76ch}
+details p a{color:var(--g4);text-decoration:underline;text-underline-offset:3px}
+.dark details p a,.darker details p a{color:var(--g)}
 summary:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 
 /* ---------- podstrona miasta ---------- */

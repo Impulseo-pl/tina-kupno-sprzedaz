@@ -5,49 +5,60 @@ import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
-const WYCENA: [string, string][] = [
-  ['Ile trwa wycena i czy jest płatna?', 'Sama rozmowa to zwykle kilka minut — tyle wystarczy, żeby podać markę, rocznik, przebieg i stan auta, a od nas usłyszeć wstępną wycenę. Ostateczną ofertę przedstawiamy po obejrzeniu samochodu, już na miejscu. Wycena jest bezpłatna i nie zobowiązuje do sprzedaży.'],
-  ['Czy kwota z telefonu może się zmienić na miejscu?', 'Rozmowa i zdjęcia pozwalają przygotować wstępną wycenę. Ostateczną ofertę przedstawiamy po obejrzeniu samochodu, bo dopiero wtedy znamy jego rzeczywisty stan. Im dokładniejszy opis przekażesz przez telefon, tym bliżej wstępnej kwoty będzie oferta końcowa.'],
-  ['Mogę podać swoją cenę?', 'Tak i prosimy o to. Jeśli od razu wiemy, na jakiej kwocie Ci zależy, w jednej rozmowie ustalamy, czy jest o czym rozmawiać.'],
-];
+/* Jedna lista — kolejnosc tematyczna: wycena, zakres skupu, dojazd,
+   ogledziny i rozliczenie, dokumenty i formalnosci. */
+const WSZYSTKIE: [string, string][] = [
+  ['Ile trwa wycena auta i czy jest płatna?', 'Pierwsza rozmowa trwa zwykle kilka minut. Pytamy o markę, model, rocznik, przebieg, stan i lokalizację samochodu. Wstępną wycenę zamówisz też przez <a href="/wycena">formularz wyceny</a> — jest bezpłatna i nie zobowiązuje do sprzedaży. Ostateczną ofertę przedstawiamy po obejrzeniu pojazdu.'],
+  ['Czy kwota podana przez telefon może się zmienić?', 'Rozmowa i zdjęcia pozwalają przygotować wstępną wycenę. Ostateczna kwota zależy od rzeczywistego stanu samochodu potwierdzonego podczas oględzin. Im dokładniejszy opis i lepsze zdjęcia otrzymamy, tym trafniej możemy wstępnie ocenić auto.'],
+  ['Od czego zależy cena samochodu w skupie?', 'Bierzemy pod uwagę między innymi markę, model, rocznik, przebieg, wersję silnika, wyposażenie, stan techniczny, nadwozie, historię serwisową oraz zakres ewentualnych uszkodzeń — rozpisujemy to na stronie <a href="/ile-placimy">od czego zależy wycena</a>. Znaczenie ma również aktualne zainteresowanie danym modelem.'],
+  ['Czy mogę podać własne oczekiwania cenowe?', 'Tak. Możesz powiedzieć, jaka kwota Cię interesuje, ale nie jest to obowiązkowe. Najważniejsze są rzetelne informacje o samochodzie i jego rzeczywisty stan.'],
+  ['Jakie zdjęcia wysłać do wyceny auta?', 'Najlepiej sfotografować samochód z każdej strony, wnętrze, deskę rozdzielczą z widocznym przebiegiem oraz komorę silnika. Jeżeli auto jest uszkodzone, dołącz dokładne zdjęcia wszystkich uszkodzeń — możesz je wgrać w <a href="/wycena">formularzu wyceny</a>.'],
+  ['Czy przed wyceną muszę umyć lub naprawić samochód?', 'Nie. Możemy ocenić auto w jego obecnym stanie. Przed wykonywaniem kosztownej naprawy warto najpierw sprawdzić, jaka będzie oferta bez dodatkowych inwestycji.'],
 
-const ZAKRES: [string, string][] = [
-  ['Jakie auta kupujecie?', 'Osobowe, dostawcze do 3,5 tony i hybrydy. Sprawne, uszkodzone, powypadkowe i niejeżdżące. Każda marka i każdy rocznik.'],
-  ['Czego nie kupujecie?', 'Samochodów w pełni elektrycznych, motocykli, kamperów i przyczep. Nie bierzemy też aut, które nadają się już wyłącznie na części albo na złom.'],
-  ['Czy prowadzicie kasację i wystawiacie zaświadczenie o demontażu?', 'Nie. Nie jesteśmy stacją demontażu, więc takiego dokumentu nie wydajemy. Auto przeznaczone na złom trzeba oddać do stacji demontażu — tylko ona wystawi zaświadczenie potrzebne do wyrejestrowania.'],
-  ['Kupicie auto bez ważnego OC albo przeglądu?', 'Tak. Brak OC czy przeglądu wpływa na kwotę, ale nie blokuje sprzedaży.'],
-  ['A auto, które nie odpala i stoi od lat?', 'Tak, o ile da się je jeszcze odratować. Przyjeżdżamy lawetą, transport jest po naszej stronie.'],
-  ['Kupujecie hybrydy?', 'Tak, także te z przepracowaną baterią. Elektryków natomiast nie kupujemy — to często mylone, więc piszemy wprost.'],
-];
+  ['Jakie auta kupujecie?', 'Odkupujemy samochody osobowe, dostawcze do 3,5 tony oraz busy i hybrydy. Interesują nas auta różnych marek i roczników — sprawne, uszkodzone, powypadkowe oraz niejeżdżące.'],
+  ['Czy kupujecie samochody powypadkowe?', 'Tak. Rozpatrujemy <a href="/auta-uszkodzone-powypadkowe">auta po stłuczkach, wypadkach, gradobiciu</a> i innych szkodach. Możliwość zakupu zależy od rodzaju samochodu, kompletności pojazdu i zakresu uszkodzeń.'],
+  ['Czy kupicie samochód, który nie odpala?', 'Takie auto również możemy wycenić. Przy zgłoszeniu opisz usterkę, poinformuj nas, czy pojazd można przetoczyć, i dołącz zdjęcia. Jeżeli zdecydujemy się na zakup, ustalimy odpowiedni sposób odbioru.'],
+  ['Czy kupujecie auta z wysokim przebiegiem?', 'Tak. Wysoki przebieg nie przekreśla samochodu. Podczas wyceny sprawdzamy również stan silnika, skrzyni biegów, zawieszenia, nadwozia oraz historię serwisową.'],
+  ['Czy kupujecie samochody dostawcze i busy?', 'Tak. Wyceniamy między innymi <a href="/skup-aut-dostawczych">furgony, blaszaki, pojazdy skrzyniowe, wywrotki, brygadówki i busy</a> do 3,5 tony. Rozpatrujemy również samochody z zabudową specjalistyczną.'],
+  ['Czy odkupujecie samochody firmowe i całe floty?', 'Tak. Możemy wycenić pojedynczy samochód firmowy albo kilka pojazdów sprzedawanych podczas wymiany floty. Sposób udokumentowania transakcji ustalamy na podstawie sytuacji konkretnej firmy.'],
+  ['Czy kupujecie hybrydy?', 'Tak, również hybrydy wymagające naprawy lub diagnostyki baterii. Nie odkupujemy samochodów z napędem wyłącznie elektrycznym.'],
+  ['Jakich pojazdów nie odkupujecie?', 'Nie kupujemy samochodów całkowicie elektrycznych, motocykli, kamperów ani przyczep. Nie zajmujemy się również pojazdami przeznaczonymi wyłącznie do kasacji.'],
+  ['Czy prowadzicie kasację i wystawiacie zaświadczenie o demontażu?', 'Nie. Prowadzimy skup samochodów, a nie stację demontażu. Zaświadczenie potrzebne do wyrejestrowania pojazdu przeznaczonego na złom może wystawić uprawniona stacja demontażu.'],
 
-const PRZEBIEG: [string, string][] = [
-  ['Jak szybko przyjeżdżacie?', 'Zwykle tego samego dnia, w którym dzwonisz. W Sochaczewie i okolicy bywa, że w ciągu godziny.'],
-  ['Czy dojazd i laweta są płatne?', 'Nie. Kosztują zero złotych, także wtedy, gdy po obejrzeniu auta nie dochodzi do transakcji. Nie doliczamy ich też do wyceny.'],
-  ['Czy muszę gdzieś dowieźć auto?', 'Nie. Przyjeżdżamy pod wskazany adres — pod dom, pod pracę, do warsztatu, na parking.'],
-  ['Ile to trwa na miejscu?', 'Około kwadransa. Oglądamy auto, robimy krótką jazdę, podpisujemy umowę i płacimy. Bez rzeczoznawców i bez odsyłania na diagnostykę.'],
-  ['Pracujecie w weekendy?', 'Odbieramy telefon siedem dni w tygodniu i w weekendy też jeździmy.'],
-];
+  ['Na jakim terenie działacie?', 'Obsługujemy klientów na terenie całego województwa mazowieckiego, w szczególności w <a href="/skup-aut-sochaczew">Sochaczewie</a>, <a href="/skup-aut-warszawa">Warszawie</a> i okolicznych miejscowościach. Możliwość dojazdu do konkretnej lokalizacji potwierdzamy podczas rozmowy.'],
+  ['Jak szybko możecie przyjechać?', 'Zazwyczaj przyjeżdżamy jeszcze tego samego dnia, w ciągu kilku godzin od zgłoszenia. Dokładny czas dojazdu zależy od lokalizacji samochodu i odległości od naszej bazy.'],
+  ['Czy muszę przywozić samochód do waszej siedziby?', 'Nie. Oględziny możemy umówić pod domem, przy miejscu pracy, w warsztacie albo na parkingu. Przy zgłoszeniu podaj dokładny adres i warunki dostępu do auta.'],
+  ['Czy dojazd i laweta są płatne?', 'Dojazd na uzgodnione oględziny oraz ustalony z nami odbiór lawetą są bezpłatne. Szczegóły transportu potwierdzamy przed przyjazdem.'],
+  ['Czy odbierzecie auto z garażu podziemnego?', 'Jest to możliwe, ale wymaga wcześniejszego ustalenia warunków. Podaj wysokość garażu, poziom, szerokość wyjazdu oraz informację, czy auto odpala i można je przetoczyć.'],
+  ['Czy możecie odebrać samochód z warsztatu lub parkingu strzeżonego?', 'Tak, pod warunkiem że samochód może zostać wydany. Właściciel powinien wcześniej rozliczyć ewentualne należności i ustalić z administracją parkingu lub warsztatem wymagane dokumenty.'],
 
-const FORMALNOSCI: [string, string][] = [
-  ['Co muszę mieć przy sobie?', 'Dowód rejestracyjny, dowód osobisty i komplet kluczy. Jeśli została wydana karta pojazdu — również ją.'],
-  ['Kto przygotowuje umowę?', 'My. Przywozimy ją gotową, wypełniamy przy Tobie i podpisujemy na miejscu. Jeden egzemplarz zostaje u Ciebie.'],
-  ['Kiedy dostanę pieniądze?', 'Zaraz po podpisaniu umowy, jeszcze zanim auto wjedzie na lawetę. Gotówką na miejscu albo przelewem — jak wolisz.'],
-  ['Kto zgłasza zbycie pojazdu?', 'Zgodnie z przepisami robi to sprzedający, czyli Ty. Masz na to 30 dni i możesz to załatwić przez internet. Podpowiadamy, co i gdzie złożyć.'],
-  ['Co z ubezpieczeniem OC?', 'Polisa przechodzi na kupującego razem z autem. Ty masz obowiązek powiadomić ubezpieczyciela w ciągu 14 dni. Jeśli nabywca wypowie polisę, zwrot niewykorzystanej składki należy się Tobie — występujesz o niego u swojego ubezpieczyciela.'],
-  ['Auto ma współwłaściciela. Da się je sprzedać?', 'Tak, ale umowę muszą podpisać wszyscy właściciele wpisani w dowodzie rejestracyjnym. Jeśli ktoś nie może być obecny, potrzebne jest jego pisemne pełnomocnictwo.'],
-];
+  ['Ile trwają oględziny samochodu?', 'Zależy to od rodzaju i stanu auta. Sprawdzamy dokumenty, nadwozie, wnętrze oraz najważniejsze podzespoły. Jeżeli samochód jest sprawny, możemy również wykonać krótką jazdę.'],
+  ['Czy wycena zobowiązuje mnie do sprzedaży?', 'Nie. Po otrzymaniu oferty sam decydujesz, czy chcesz ją zaakceptować. Brak zgody na proponowaną kwotę nie zobowiązuje Cię do zawarcia transakcji.'],
+  ['Kiedy otrzymam pieniądze?', 'Rozliczenie następuje po podpisaniu dokumentu sprzedaży i przed odbiorem samochodu. Dostępne formy płatności ustalamy przed finalizacją transakcji.'],
+  ['Czy mogę otrzymać pieniądze przelewem?', 'Tak, sposób rozliczenia możemy ustalić indywidualnie. Przy płatności przelewem uzgadniamy również moment przekazania samochodu.'],
+  ['Czy skup aut pobiera prowizję?', 'Nie działamy jako pośrednik szukający kolejnego kupującego — różnice opisujemy na stronie <a href="/komis-czy-skup-aut">komis czy skup aut</a>. TINA bezpośrednio odkupuje samochód, dlatego nie pobieramy osobnej prowizji komisowej.'],
 
-const WSZYSTKIE = [...WYCENA, ...ZAKRES, ...PRZEBIEG, ...FORMALNOSCI];
+  ['Jakie dokumenty przygotować do sprzedaży auta?', 'Przygotuj dowód rejestracyjny, dokument tożsamości, informacje o polisie OC oraz wszystkie posiadane kluczyki. Przydatne będą również dokumenty serwisowe i karta pojazdu, jeżeli została wcześniej wydana. Pełną listę zebraliśmy w poradniku <a href="/jak-sprzedac-auto">jak sprzedać auto</a>.'],
+  ['Czy można sprzedać auto bez ważnego przeglądu?', 'Tak. Brak ważnego badania technicznego nie uniemożliwia zawarcia umowy sprzedaży. Samochód niedopuszczony do ruchu nie może jednak zostać odebrany poprzez jazdę po drodze publicznej.'],
+  ['Czy można sprzedać samochód bez ważnego OC?', 'Brak aktualnego OC nie uniemożliwia zawarcia umowy, ale może oznaczać konsekwencje dla dotychczasowego właściciela za okres bez ochrony. Pojazd bez ważnego OC nie powinien poruszać się po drodze, dlatego trzeba ustalić odpowiedni sposób odbioru.'],
+  ['Kto przygotowuje dokument sprzedaży?', 'Przygotowujemy dokumenty potrzebne do zawarcia transakcji i uzupełniamy je podczas spotkania. Przed podpisaniem sprawdzasz wszystkie dane, a jeden egzemplarz otrzymujesz dla siebie.'],
+  ['Czy mogę sprzedać auto należące do kilku osób?', 'Tak, ale sprzedaż wymaga zgody wszystkich współwłaścicieli. Najprościej, gdy każdy z nich podpisze dokument. Nieobecny współwłaściciel może działać przez osobę posiadającą odpowiednie pełnomocnictwo.'],
+  ['Czy mogę sprzedać samochód z trwającym leasingiem?', 'Samochód znajdujący się w leasingu należy co do zasady do firmy leasingowej. Przed sprzedażą trzeba zakończyć leasing, wykupić pojazd lub uzgodnić transakcję z jego właścicielem.'],
+  ['Czy kupujecie samochody po zmarłym właścicielu?', 'Sprzedaż jest możliwa po uregulowaniu spraw spadkowych i potwierdzeniu, kto ma prawo rozporządzać pojazdem. Wszyscy spadkobiercy będący właścicielami powinni uczestniczyć w transakcji albo udzielić pełnomocnictwa.'],
+  ['Kto zgłasza zbycie samochodu?', 'Zbycie zgłasza dotychczasowy właściciel. Ma na to 30 dni od dnia sprzedaży. Zgłoszenie można złożyć w odpowiednim wydziale komunikacji lub <a href="/jak-sprzedac-auto">elektronicznie</a>.'],
+  ['Czy po sprzedaży muszę wyrejestrować auto?', 'Nie. Przy zwykłej sprzedaży zgłaszasz zbycie pojazdu. Wyrejestrowanie to odrębna procedura dotycząca między innymi kasacji, kradzieży lub wywozu samochodu za granicę.'],
+  ['Co dzieje się z ubezpieczeniem OC?', 'Prawa i obowiązki z polisy OC przechodzą na nabywcę. Sprzedający ma 14 dni na powiadomienie ubezpieczyciela o sprzedaży i przekazanie danych kupującego.<br><br>Jeżeli nabywca wypowie dotychczasową polisę, sprzedającemu przysługuje zwrot składki za niewykorzystany okres. Ubezpieczyciel powinien dokonać zwrotu bez osobnego wniosku, ale warto przekazać mu aktualny numer rachunku bankowego.'],
+];
 ---
 <Base
-  title="Pytania i odpowiedzi — skup aut | TINA Skup Aut"
-  description="Wycena, zakres skupu, przebieg transakcji i formalności po sprzedaży auta. Odpowiedzi na pytania, które padają w każdej rozmowie."
+  title="FAQ — pytania i odpowiedzi o skupie aut | TINA"
+  description="Wycena, zakres skupu, dojazd i odbiór auta, rozliczenie oraz formalności po sprzedaży. Odpowiedzi na pytania, które padają w każdej rozmowie."
   path="/pytania"
-  schema={[okruszki([['/pytania', 'Pytania i odpowiedzi']]), faqLd(WSZYSTKIE)]}
+  schema={[okruszki([['/pytania', 'FAQ']]), faqLd(WSZYSTKIE)]}
 >
 
 <Chero
-  okruszek="Pytania i odpowiedzi"
+  okruszek="FAQ"
   lede="Zebraliśmy pytania, które padają w prawie każdej rozmowie. Jeśli czegoś tu nie ma, zadzwoń — odpowiemy od ręki."
   sub="Odbieramy telefon siedem dni w tygodniu."
 ><span>Pytania <span class="gold">i odpowiedzi</span></span></Chero>
