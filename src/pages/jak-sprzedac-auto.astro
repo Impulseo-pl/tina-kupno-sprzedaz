@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
 import Telefon from '../components/Telefon.astro';
 import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 /* Te same pary ida do JSON-LD i do tekstu artykulu nizej. */
@@ -17,7 +18,7 @@ const FAQ: [string, string][] = [
 ];
 ---
 <Base
-  title="Jak sprzedać samochód — formalności krok po kroku | TINA"
+  title="Jak sprzedać samochód: formalności krok po kroku | TINA"
   description="Dokumenty do sprzedaży auta, umowa kupna-sprzedaży, zgłoszenie zbycia pojazdu w 30 dni, powiadomienie ubezpieczyciela w 14 dni i podatek PIT. Poradnik krok po kroku."
   path="/jak-sprzedac-auto"
   schema={[okruszki([['/jak-sprzedac-auto', 'Jak sprzedać auto']]), faqLd(FAQ)]}
@@ -26,7 +27,7 @@ const FAQ: [string, string][] = [
 <Chero
   okruszek="Jak sprzedać auto"
   lede="Co przygotować, co musi znaleźć się w umowie i o czym pamiętać po sprzedaży, żeby za pół roku nie przyszło wezwanie do zapłaty za cudze mandaty."
-  sub="Poradnik dla sprzedających — niezależnie od tego, komu sprzedajesz auto."
+  sub="Poradnik dla sprzedających, niezależnie od tego, komu sprzedajesz auto."
 >
   <span>Jak <span class="gold">sprzedać auto</span></span>
   <Fragment slot="akcje">
@@ -39,7 +40,7 @@ const FAQ: [string, string][] = [
   <div class="proza">
     <h2>Jak sprzedać samochód bez niepotrzebnych problemów?</h2>
     <p>Sprzedaż auta nie kończy się w chwili przekazania kluczyków. Dobrze przygotowana umowa, potwierdzenie zapłaty i dwa zgłoszenia wykonane po transakcji pozwalają uniknąć późniejszych pytań o składkę OC, mandaty albo samochód, który nadal widnieje przy Twoich danych w urzędowym rejestrze.</p>
-    <p>Poniżej wyjaśniamy krok po kroku, co przygotować, co zapisać w umowie i o czym pamiętać po sprzedaży — niezależnie od tego, czy samochód kupuje osoba prywatna, firma czy skup aut.</p>
+    <p>Poniżej wyjaśniamy krok po kroku, co przygotować, co zapisać w umowie i o czym pamiętać po sprzedaży, niezależnie od tego, czy samochód kupuje osoba prywatna, firma czy skup aut.</p>
 
     <h2>Zanim wystawisz auto, zbierz najważniejsze informacje</h2>
     <p>Nie musisz od razu naprawiać każdej usterki ani przygotowywać samochodu jak do salonowej sesji zdjęciowej. Najważniejsze jest zebranie dokumentów oraz rzetelnych informacji o pojeździe.</p>
@@ -50,7 +51,7 @@ const FAQ: [string, string][] = [
       <li><strong>Potwierdzenie ubezpieczenia OC.</strong> Warto przygotować numer polisy oraz nazwę ubezpieczyciela. Ochrona wynikająca z obecnej umowy OC przechodzi na nabywcę wraz z samochodem.</li>
       <li><strong>Kluczyki i wyposażenie przekazywane z autem.</strong> Przygotuj wszystkie posiadane kluczyki, piloty, kody, instrukcje i dodatkowe wyposażenie. Najlepiej wymienić je później w umowie lub protokole przekazania.</li>
       <li><strong>Dokumenty dotyczące serwisu.</strong> Książka serwisowa, faktury za naprawy, wpisy z przeglądów i potwierdzenia wymiany części nie są wymagane do sprzedaży, ale pomagają przedstawić historię samochodu.</li>
-      <li><strong>Karta pojazdu — jeśli ją posiadasz.</strong> Od 4 września 2022 roku karty pojazdu nie są już wydawane. Jeżeli karta została wydana wcześniej i nadal ją masz, warto przygotować ją razem z pozostałymi dokumentami (<a href="https://www.gov.pl/web/infrastruktura/od-4-wrzesnia-2022-r-nie-beda-juz-wydawane-karty-pojazdu-i-nalepki-kontrolne" rel="noopener nofollow" target="_blank">komunikat Ministerstwa Infrastruktury</a>).</li>
+      <li><strong>Karta pojazdu, jeśli ją posiadasz.</strong> Od 4 września 2022 roku karty pojazdu nie są już wydawane. Jeżeli karta została wydana wcześniej i nadal ją masz, warto przygotować ją razem z pozostałymi dokumentami (<a href="https://www.gov.pl/web/infrastruktura/od-4-wrzesnia-2022-r-nie-beda-juz-wydawane-karty-pojazdu-i-nalepki-kontrolne" rel="noopener nofollow" target="_blank">komunikat Ministerstwa Infrastruktury</a>).</li>
     </ul>
 
     <h2>Samochód ma współwłaściciela? Ustal to przed spotkaniem</h2>
@@ -74,7 +75,7 @@ const FAQ: [string, string][] = [
       <li>podpisy wszystkich stron.</li>
     </ul>
     <p>Godzina przekazania nie jest zbędnym szczegółem. Może mieć znaczenie, jeśli tego samego dnia samochód zostanie zarejestrowany przez kamerę, otrzyma opłatę parkingową albo weźmie udział w zdarzeniu drogowym.</p>
-    <p>Umowę przygotuj w co najmniej dwóch jednobrzmiących egzemplarzach. Jeden z nich musi zostać u sprzedającego — będzie potrzebny do zgłoszenia zbycia pojazdu i powiadomienia ubezpieczyciela.</p>
+    <p>Umowę przygotuj w co najmniej dwóch jednobrzmiących egzemplarzach. Jeden z nich musi zostać u sprzedającego, będzie potrzebny do zgłoszenia zbycia pojazdu i powiadomienia ubezpieczyciela.</p>
 
     <h2>Przed wydaniem kluczyków sprawdź trzy rzeczy</h2>
     <p>Sam podpis na umowie nie zamyka jeszcze całej transakcji. Przed przekazaniem samochodu upewnij się, że:</p>
@@ -112,16 +113,11 @@ const FAQ: [string, string][] = [
 
     <h2>Jak wygląda sprzedaż samochodu firmie TINA?</h2>
     <p>Zacznij od telefonu albo <a href="/wycena">formularza wyceny</a>. Podaj markę, model, rocznik, przebieg, stan samochodu oraz jego lokalizację. Zdjęcia pozwolą nam lepiej przygotować się do rozmowy.</p>
-    <p>Następnie umawiamy oględziny pod wskazanym adresem. Po sprawdzeniu samochodu przedstawiamy ofertę — o tym, <a href="/ile-placimy">co wpływa na kwotę</a>, piszemy osobno. Jeżeli ją zaakceptujesz, przygotowujemy dokumenty, finalizujemy rozliczenie i odbieramy pojazd. W przypadku <a href="/auta-uszkodzone-powypadkowe">auta niejeżdżącego</a> możemy przyjechać lawetą.</p>
+    <p>Następnie umawiamy oględziny pod wskazanym adresem. Po sprawdzeniu samochodu przedstawiamy ofertę, o tym, <a href="/ile-placimy">co wpływa na kwotę</a>, piszemy osobno. Jeżeli ją zaakceptujesz, przygotowujemy dokumenty, finalizujemy rozliczenie i odbieramy pojazd. W przypadku <a href="/auta-uszkodzone-powypadkowe">auta niejeżdżącego</a> możemy przyjechać lawetą.</p>
     <p>Po transakcji otrzymujesz swój egzemplarz dokumentu sprzedaży. Zgłoszenie zbycia w urzędzie i powiadomienie ubezpieczyciela nadal należą do obowiązków sprzedającego, ale wyjaśnimy, jakie dokumenty będą potrzebne.</p>
 
-    <h2>Formalności po sprzedaży — pytania i odpowiedzi</h2>
-    {FAQ.map(([pytanie, odpowiedz]) => (
-      <>
-        <h3>{pytanie}</h3>
-        <p>{odpowiedz}</p>
-      </>
-    ))}
+    <h2>Formalności po sprzedaży: pytania i odpowiedzi</h2>
+    <Faq pary={FAQ} />
 
     <p class="data" style="margin-top:34px">Artykuł ma charakter informacyjny. Stan informacji: 14 września 2026 roku.</p>
   </div>

@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
 import Telefon from '../components/Telefon.astro';
 import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
@@ -28,7 +29,7 @@ const POROWNANIE: [string, string, string][] = [
 ];
 ---
 <Base
-  title="Komis czy skup aut — czym się różnią i co wybrać | TINA"
+  title="Komis czy skup aut: czym się różnią i co wybrać | TINA"
   description="Komis pośredniczy w sprzedaży, skup sam kupuje samochód. Porównanie: prowizja, czas oczekiwania, moment wypłaty, formalności i o co zapytać przed umową komisową."
   path="/komis-czy-skup-aut"
   schema={[okruszki([['/komis-czy-skup-aut', 'Komis czy skup']]), faqLd(FAQ)]}
@@ -36,7 +37,7 @@ const POROWNANIE: [string, string, string][] = [
 
 <Chero
   okruszek="Komis czy skup"
-  lede="Dwie zupełnie różne drogi sprzedaży auta, które w potocznej mowie często wrzuca się do jednego worka. Poniżej różnice bez owijania — łącznie z tym, kiedy komis wypada lepiej od nas."
+  lede="Dwie zupełnie różne drogi sprzedaży auta, które w potocznej mowie często wrzuca się do jednego worka. Poniżej różnice bez owijania, łącznie z tym, kiedy komis wypada lepiej od nas."
   sub="Nie jesteśmy komisem. Odkupujemy auto na siebie i płacimy od ręki."
 >
   <span>Komis czy <span class="gold">skup aut</span></span>
@@ -48,7 +49,7 @@ const POROWNANIE: [string, string, string][] = [
 
 <div class="w"><section>
   <div class="proza">
-    <h2>Komis czy skup aut — czym się różnią i co wybrać?</h2>
+    <h2>Komis czy skup aut: czym się różnią i co wybrać?</h2>
     <p>Komis pomaga znaleźć kupującego, natomiast skup sam kupuje samochód. Ta jedna różnica wpływa na czas oczekiwania, sposób ustalania ceny, moment otrzymania pieniędzy i zakres formalności.</p>
     <p>Nie ma rozwiązania najlepszego dla każdego. Jeżeli możesz poczekać i zależy Ci przede wszystkim na cenie, warto rozważyć komis lub sprzedaż prywatną. Jeśli ważniejsze są sprawna transakcja i odbiór auta bez samodzielnego szukania kupca, lepiej może sprawdzić się skup.</p>
 
@@ -65,7 +66,7 @@ const POROWNANIE: [string, string, string][] = [
     <p>Po przekazaniu informacji o samochodzie umawiane są oględziny. Na podstawie rzeczywistego stanu auta skup przedstawia ofertę. Jeżeli ją zaakceptujesz, podpisujecie dokument sprzedaży, następuje rozliczenie i przekazanie pojazdu.</p>
     <p>Nie czekasz na kolejną osobę zainteresowaną samochodem. Dalsze przygotowanie auta i znalezienie dla niego nowego właściciela przechodzą na firmę, która je odkupiła.</p>
 
-    <h2>Komis i skup aut — najważniejsze różnice</h2>
+    <h2>Komis i skup aut: najważniejsze różnice</h2>
   </div>
 
   <div class="tabela">
@@ -153,13 +154,8 @@ const POROWNANIE: [string, string, string][] = [
     </ol>
     <p>Na wycenę wpływają między innymi marka, model, rocznik, przebieg, stan techniczny, zakres uszkodzeń i aktualne zainteresowanie danym pojazdem.</p>
 
-    <h2>Komis czy skup aut — najczęstsze pytania</h2>
-    {FAQ.map(([pytanie, odpowiedz]) => (
-      <>
-        <h3>{pytanie}</h3>
-        <p>{odpowiedz}</p>
-      </>
-    ))}
+    <h2>Komis czy skup aut: najczęstsze pytania</h2>
+    <Faq pary={FAQ} />
 
     <p class="data" style="margin-top:34px">Artykuł ma charakter informacyjny. Stan informacji: 14 września 2026 roku.</p>
   </div>
@@ -167,7 +163,7 @@ const POROWNANIE: [string, string, string][] = [
 
 <Cta
   tytul='Nadal nie wiesz, <span class="gold">które rozwiązanie wybrać?</span>'
-  opis="Jeśli możesz poczekać i zależy Ci przede wszystkim na możliwie wysokiej cenie, rozważ komis albo samodzielną sprzedaż. Jeżeli ważniejsze są wygoda, odbiór pojazdu i brak oczekiwania na kolejnego kupującego, prześlij samochód do wyceny — podaj markę, model, rocznik, przebieg, stan auta i jego lokalizację."
+  opis="Jeśli możesz poczekać i zależy Ci przede wszystkim na możliwie wysokiej cenie, rozważ komis albo samodzielną sprzedaż. Jeżeli ważniejsze są wygoda, odbiór pojazdu i brak oczekiwania na kolejnego kupującego, prześlij samochód do wyceny, podaj markę, model, rocznik, przebieg, stan auta i jego lokalizację."
 />
 
 </Base>

@@ -5,17 +5,17 @@ import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
-/* Jedna lista — kolejnosc tematyczna: wycena, zakres skupu, dojazd,
+/* Jedna lista, kolejnosc tematyczna: wycena, zakres skupu, dojazd,
    ogledziny i rozliczenie, dokumenty i formalnosci. */
 const WSZYSTKIE: [string, string][] = [
-  ['Ile trwa wycena auta i czy jest płatna?', 'Pierwsza rozmowa trwa zwykle kilka minut. Pytamy o markę, model, rocznik, przebieg, stan i lokalizację samochodu. Wstępną wycenę zamówisz też przez <a href="/wycena">formularz wyceny</a> — jest bezpłatna i nie zobowiązuje do sprzedaży. Ostateczną ofertę przedstawiamy po obejrzeniu pojazdu.'],
+  ['Ile trwa wycena auta i czy jest płatna?', 'Pierwsza rozmowa trwa zwykle kilka minut. Pytamy o markę, model, rocznik, przebieg, stan i lokalizację samochodu. Wstępną wycenę zamówisz też przez <a href="/wycena">formularz wyceny</a>, jest bezpłatna i nie zobowiązuje do sprzedaży. Ostateczną ofertę przedstawiamy po obejrzeniu pojazdu.'],
   ['Czy kwota podana przez telefon może się zmienić?', 'Rozmowa i zdjęcia pozwalają przygotować wstępną wycenę. Ostateczna kwota zależy od rzeczywistego stanu samochodu potwierdzonego podczas oględzin. Im dokładniejszy opis i lepsze zdjęcia otrzymamy, tym trafniej możemy wstępnie ocenić auto.'],
-  ['Od czego zależy cena samochodu w skupie?', 'Bierzemy pod uwagę między innymi markę, model, rocznik, przebieg, wersję silnika, wyposażenie, stan techniczny, nadwozie, historię serwisową oraz zakres ewentualnych uszkodzeń — rozpisujemy to na stronie <a href="/ile-placimy">od czego zależy wycena</a>. Znaczenie ma również aktualne zainteresowanie danym modelem.'],
+  ['Od czego zależy cena samochodu w skupie?', 'Bierzemy pod uwagę między innymi markę, model, rocznik, przebieg, wersję silnika, wyposażenie, stan techniczny, nadwozie, historię serwisową oraz zakres ewentualnych uszkodzeń, rozpisujemy to na stronie <a href="/ile-placimy">od czego zależy wycena</a>. Znaczenie ma również aktualne zainteresowanie danym modelem.'],
   ['Czy mogę podać własne oczekiwania cenowe?', 'Tak. Możesz powiedzieć, jaka kwota Cię interesuje, ale nie jest to obowiązkowe. Najważniejsze są rzetelne informacje o samochodzie i jego rzeczywisty stan.'],
-  ['Jakie zdjęcia wysłać do wyceny auta?', 'Najlepiej sfotografować samochód z każdej strony, wnętrze, deskę rozdzielczą z widocznym przebiegiem oraz komorę silnika. Jeżeli auto jest uszkodzone, dołącz dokładne zdjęcia wszystkich uszkodzeń — możesz je wgrać w <a href="/wycena">formularzu wyceny</a>.'],
+  ['Jakie zdjęcia wysłać do wyceny auta?', 'Najlepiej sfotografować samochód z każdej strony, wnętrze, deskę rozdzielczą z widocznym przebiegiem oraz komorę silnika. Jeżeli auto jest uszkodzone, dołącz dokładne zdjęcia wszystkich uszkodzeń, możesz je wgrać w <a href="/wycena">formularzu wyceny</a>.'],
   ['Czy przed wyceną muszę umyć lub naprawić samochód?', 'Nie. Możemy ocenić auto w jego obecnym stanie. Przed wykonywaniem kosztownej naprawy warto najpierw sprawdzić, jaka będzie oferta bez dodatkowych inwestycji.'],
 
-  ['Jakie auta kupujecie?', 'Odkupujemy samochody osobowe, dostawcze do 3,5 tony oraz busy i hybrydy. Interesują nas auta różnych marek i roczników — sprawne, uszkodzone, powypadkowe oraz niejeżdżące.'],
+  ['Jakie auta kupujecie?', 'Odkupujemy samochody osobowe, dostawcze do 3,5 tony oraz busy i hybrydy. Interesują nas auta różnych marek i roczników, sprawne, uszkodzone, powypadkowe oraz niejeżdżące.'],
   ['Czy kupujecie samochody powypadkowe?', 'Tak. Rozpatrujemy <a href="/auta-uszkodzone-powypadkowe">auta po stłuczkach, wypadkach, gradobiciu</a> i innych szkodach. Możliwość zakupu zależy od rodzaju samochodu, kompletności pojazdu i zakresu uszkodzeń.'],
   ['Czy kupicie samochód, który nie odpala?', 'Takie auto również możemy wycenić. Przy zgłoszeniu opisz usterkę, poinformuj nas, czy pojazd można przetoczyć, i dołącz zdjęcia. Jeżeli zdecydujemy się na zakup, ustalimy odpowiedni sposób odbioru.'],
   ['Czy kupujecie auta z wysokim przebiegiem?', 'Tak. Wysoki przebieg nie przekreśla samochodu. Podczas wyceny sprawdzamy również stan silnika, skrzyni biegów, zawieszenia, nadwozia oraz historię serwisową.'],
@@ -36,7 +36,7 @@ const WSZYSTKIE: [string, string][] = [
   ['Czy wycena zobowiązuje mnie do sprzedaży?', 'Nie. Po otrzymaniu oferty sam decydujesz, czy chcesz ją zaakceptować. Brak zgody na proponowaną kwotę nie zobowiązuje Cię do zawarcia transakcji.'],
   ['Kiedy otrzymam pieniądze?', 'Rozliczenie następuje po podpisaniu dokumentu sprzedaży i przed odbiorem samochodu. Dostępne formy płatności ustalamy przed finalizacją transakcji.'],
   ['Czy mogę otrzymać pieniądze przelewem?', 'Tak, sposób rozliczenia możemy ustalić indywidualnie. Przy płatności przelewem uzgadniamy również moment przekazania samochodu.'],
-  ['Czy skup aut pobiera prowizję?', 'Nie działamy jako pośrednik szukający kolejnego kupującego — różnice opisujemy na stronie <a href="/komis-czy-skup-aut">komis czy skup aut</a>. TINA bezpośrednio odkupuje samochód, dlatego nie pobieramy osobnej prowizji komisowej.'],
+  ['Czy skup aut pobiera prowizję?', 'Nie działamy jako pośrednik szukający kolejnego kupującego, różnice opisujemy na stronie <a href="/komis-czy-skup-aut">komis czy skup aut</a>. TINA bezpośrednio odkupuje samochód, dlatego nie pobieramy osobnej prowizji komisowej.'],
 
   ['Jakie dokumenty przygotować do sprzedaży auta?', 'Przygotuj dowód rejestracyjny, dokument tożsamości, informacje o polisie OC oraz wszystkie posiadane kluczyki. Przydatne będą również dokumenty serwisowe i karta pojazdu, jeżeli została wcześniej wydana. Pełną listę zebraliśmy w poradniku <a href="/jak-sprzedac-auto">jak sprzedać auto</a>.'],
   ['Czy można sprzedać auto bez ważnego przeglądu?', 'Tak. Brak ważnego badania technicznego nie uniemożliwia zawarcia umowy sprzedaży. Samochód niedopuszczony do ruchu nie może jednak zostać odebrany poprzez jazdę po drodze publicznej.'],
@@ -51,7 +51,7 @@ const WSZYSTKIE: [string, string][] = [
 ];
 ---
 <Base
-  title="FAQ — pytania i odpowiedzi o skupie aut | TINA"
+  title="FAQ: pytania i odpowiedzi o skupie aut | TINA"
   description="Wycena, zakres skupu, dojazd i odbiór auta, rozliczenie oraz formalności po sprzedaży. Odpowiedzi na pytania, które padają w każdej rozmowie."
   path="/pytania"
   schema={[okruszki([['/pytania', 'FAQ']]), faqLd(WSZYSTKIE)]}
@@ -59,7 +59,7 @@ const WSZYSTKIE: [string, string][] = [
 
 <Chero
   okruszek="FAQ"
-  lede="Zebraliśmy pytania, które padają w prawie każdej rozmowie. Jeśli czegoś tu nie ma, zadzwoń — odpowiemy od ręki."
+  lede="Zebraliśmy pytania, które padają w prawie każdej rozmowie. Jeśli czegoś tu nie ma, zadzwoń, odpowiemy od ręki."
   sub="Odbieramy telefon siedem dni w tygodniu."
 ><span>Pytania <span class="gold">i odpowiedzi</span></span></Chero>
 

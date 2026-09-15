@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
 import Telefon from '../components/Telefon.astro';
 import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
@@ -23,7 +24,7 @@ const FAQ: [string, string][] = [
 
 <Chero
   okruszek="Auta uszkodzone i powypadkowe"
-  lede="Odkupujemy samochody po stłuczkach, po gradzie i po poważniejszych szkodach — także takie, które nie odpalają i nie nadają się do jazdy. Możemy ustalić odbiór lawetą pod wskazanym adresem."
+  lede="Odkupujemy samochody po stłuczkach, po gradzie i po poważniejszych szkodach, także takie, które nie odpalają i nie nadają się do jazdy. Możemy ustalić odbiór lawetą pod wskazanym adresem."
   sub="Skup aut powypadkowych na terenie całego Mazowsza."
 >
   <span>Skup aut <span class="gold">uszkodzonych i powypadkowych</span></span>
@@ -36,7 +37,7 @@ const FAQ: [string, string][] = [
 <div class="w"><section>
   <div class="proza">
     <h2>Skup aut uszkodzonych i powypadkowych</h2>
-    <p>Odkupujemy samochody po kolizjach, wypadkach i innych zdarzeniach — również pojazdy niejeżdżące oraz wymagające kosztownej naprawy. Prześlij zdjęcia i opis uszkodzeń, a sprawdzimy możliwość zakupu i odbioru auta lawetą.</p>
+    <p>Odkupujemy samochody po kolizjach, wypadkach i innych zdarzeniach, również pojazdy niejeżdżące oraz wymagające kosztownej naprawy. Prześlij zdjęcia i opis uszkodzeń, a sprawdzimy możliwość zakupu i odbioru auta lawetą.</p>
 
     <h2>Jakie uszkodzone samochody odkupujemy?</h2>
     <p>Rozpatrujemy zgłoszenia dotyczące samochodów osobowych, <a href="/skup-aut-dostawczych">dostawczych i busów</a> w różnym stanie technicznym. Mogą to być między innymi auta:</p>
@@ -85,12 +86,7 @@ const FAQ: [string, string][] = [
     <p>Jeżeli trwa postępowanie dotyczące odszkodowania, przed sprzedażą skontaktuj się z ubezpieczycielem i upewnij się, jakie dokumenty należy zachować.</p>
 
     <h2>Najczęstsze pytania</h2>
-    {FAQ.map(([pytanie, odpowiedz]) => (
-      <>
-        <h3>{pytanie}</h3>
-        <p>{odpowiedz}</p>
-      </>
-    ))}
+    <Faq pary={FAQ} />
   </div>
 </section></div>
 

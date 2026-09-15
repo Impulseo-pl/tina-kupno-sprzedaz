@@ -1,4 +1,4 @@
-/* Sitemapa budowana z jawnej listy — chcemy wiedziec, co do niej wchodzi,
+/* Sitemapa budowana z jawnej listy, chcemy wiedziec, co do niej wchodzi,
    zamiast wrzucac wszystko, co akurat lezy w src/pages. */
 import { SITE } from '../dane/firma';
 

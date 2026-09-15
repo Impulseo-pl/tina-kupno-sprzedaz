@@ -4,7 +4,7 @@ import { SITE, FIRMA, NAW } from '../dane/firma';
 export interface Props {
   title: string;
   description: string;
-  path: string;              // '/ile-placimy' — canonical, og:url, aria-current
+  path: string;              // '/ile-placimy', canonical, og:url, aria-current
   schema?: object | object[];
   ogImage?: string;
   cta?: { label: string; href: string };
@@ -48,7 +48,7 @@ const CSS_V = '20260915e';
 <body>
 <header class="top">
   <div class="w">
-    <span class="logo-slot"><a class="logo" href="/" aria-label="TINA Skup Aut — strona główna"><img class="l-jasne" src="/img/logo.png" width="626" height="245" alt="TINA Skup Aut"><img class="l-ciemne" src="/img/logo-ciemne.png" width="626" height="245" alt="" aria-hidden="true"></a></span>
+    <span class="logo-slot"><a class="logo" href="/" aria-label="TINA Skup Aut, strona główna"><img class="l-jasne" src="/img/logo.png" width="626" height="245" alt="TINA Skup Aut"><img class="l-ciemne" src="/img/logo-ciemne.png" width="626" height="245" alt="" aria-hidden="true"></a></span>
     <nav class="nav" aria-label="Główna">
       {NAW.map((p) => <a href={p.href} aria-current={p.href === path ? 'page' : undefined}>{p.label}</a>)}
     </nav>

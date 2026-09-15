@@ -14,7 +14,7 @@ import Formularz from '../components/Formularz.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Czy obsługujecie wszystkie dzielnice Warszawy?', 'Tak, przyjeżdżamy na teren całego miasta — od Ursusa, Włoch, Bemowa i Woli po Mokotów, Ursynów, Białołękę, Targówek, Pragę i Wawer. Termin ustalamy indywidualnie, zależnie od adresu i dostępności.'],
+  ['Czy obsługujecie wszystkie dzielnice Warszawy?', 'Tak, przyjeżdżamy na teren całego miasta, od Ursusa, Włoch, Bemowa i Woli po Mokotów, Ursynów, Białołękę, Targówek, Pragę i Wawer. Termin ustalamy indywidualnie, zależnie od adresu i dostępności.'],
   ['Auto stoi w garażu podziemnym. Da się je odebrać?', 'Zwykle tak, ale trzeba wcześniej sprawdzić wysokość garażu, szerokość wyjazdu oraz możliwość przetoczenia samochodu. Jeżeli auto jeździ, najprościej wyprowadzić je na powierzchnię przed oględzinami.'],
   ['Samochód stoi w strefie płatnego parkowania. Co wtedy?', 'Umawiamy konkretną godzinę, żeby oględziny i odbiór odbyły się bez zbędnego postoju. Wystarczy podać dokładny adres i ewentualne ograniczenia w dojeździe.'],
   ['Czy dojazd do Warszawy jest dodatkowo płatny?', 'Nie. Dojazd i transport lawetą są po naszej stronie i nie pomniejszają kwoty ustalonej za samochód.'],
@@ -23,15 +23,15 @@ const FAQ: [string, string][] = [
 ];
 ---
 <Base
-  title="Skup aut Warszawa — skup samochodów za gotówkę | TINA"
-  description="Skup samochodów w Warszawie — wszystkie dzielnice. Bezpłatna wycena, odbiór spod bloku, z garażu podziemnego, parkingu lub warsztatu, także lawetą."
+  title="Skup aut Warszawa: skup samochodów za gotówkę | TINA"
+  description="Skup samochodów w Warszawie: wszystkie dzielnice. Bezpłatna wycena, odbiór spod bloku, z garażu podziemnego, parkingu lub warsztatu, także lawetą."
   path="/skup-aut-warszawa"
   schema={[okruszki([['/skup-aut-warszawa', 'Skup aut Warszawa']]), faqLd(FAQ)]}
 >
 
 <HeroSkup
   tag="Skup i sprzedaż samochodów · Warszawa"
-  lede='Odkupujemy samochody osobowe, dostawcze i hybrydy — sprawne, uszkodzone i powypadkowe. Przyjeżdżamy pod wskazany adres w każdej dzielnicy, a jeśli auto nie jeździ, <span>zabieramy je lawetą</span>. Dojazd nic nie kosztuje.'
+  lede='Odkupujemy samochody osobowe, dostawcze i hybrydy, sprawne, uszkodzone i powypadkowe. Przyjeżdżamy pod wskazany adres w każdej dzielnicy, a jeśli auto nie jeździ, <span>zabieramy je lawetą</span>. Dojazd nic nie kosztuje.'
 ><span>Skup aut</span> za gotówkę<span class="l2 gold">w Warszawie</span></HeroSkup>
 
 <div class="w"><section>
@@ -56,7 +56,7 @@ const FAQ: [string, string][] = [
   <div class="proza">
     <p>Dlatego przy zgłoszeniu ważny jest nie tylko stan pojazdu, ale również dokładne miejsce i warunki dostępu.</p>
     <p>W przypadku garażu podziemnego trzeba sprawdzić jego wysokość, szerokość wyjazdu oraz możliwość przetoczenia samochodu. Jeżeli auto znajduje się w warsztacie lub na parkingu strzeżonym, przed odbiorem należy ustalić zasady jego wydania. Takie informacje pozwalają właściwie zaplanować oględziny i ewentualny transport.</p>
-    <p>Obsługujemy wszystkie dzielnice Warszawy — od Ursusa, Włoch, Bemowa i Woli po Mokotów, Ursynów, Białołękę, Targówek, Pragę i Wawer. Termin przyjazdu ustalamy indywidualnie, zależnie od adresu oraz dostępności.</p>
+    <p>Obsługujemy wszystkie dzielnice Warszawy, od Ursusa, Włoch, Bemowa i Woli po Mokotów, Ursynów, Białołękę, Targówek, Pragę i Wawer. Termin przyjazdu ustalamy indywidualnie, zależnie od adresu oraz dostępności.</p>
   </div>
 </section></div>
 
@@ -68,7 +68,7 @@ const FAQ: [string, string][] = [
   />
   <div class="proza">
     <p>Dlatego nie zakładamy z góry, że „auto miejskie” jest lepsze albo gorsze. Liczy się sposób użytkowania oraz rzeczywisty stan silnika, skrzyni biegów, sprzęgła, zawieszenia, hamulców, nadwozia i wnętrza.</p>
-    <p>Obtarcia parkingowe, niewielkie wgniecenia czy ślady miejskiej eksploatacji nie zamykają drogi do sprzedaży. Warto pokazać je na zdjęciach już podczas zgłoszenia — dzięki temu możemy lepiej przygotować się do oględzin.</p>
+    <p>Obtarcia parkingowe, niewielkie wgniecenia czy ślady miejskiej eksploatacji nie zamykają drogi do sprzedaży. Warto pokazać je na zdjęciach już podczas zgłoszenia, dzięki temu możemy lepiej przygotować się do oględzin.</p>
   </div>
 </section></div>
 
@@ -98,16 +98,16 @@ const FAQ: [string, string][] = [
       <p class="eyebrow">Szukasz auta dla siebie?</p>
       <h2>Samochody używane <span class="gold">na sprzedaż dla Warszawy</span></h2>
       <p>Samochody używane, które sprzedajemy, wcześniej sami odkupiliśmy i sprawdziliśmy podczas oględzin. Dla kupującego z Warszawy oznacza to jedną rozmowę z właścicielem pojazdu zamiast przeglądania kilkudziesięciu ogłoszeń od osób prywatnych i pośredników.</p>
-      <p>W stolicy najczęściej szukane są auta miejskie i kompakty na krótkie dystanse, ale równie często pytają o nie kierowcy potrzebujący kombi albo SUV-a do dojazdów spoza obwodnicy. Nie jesteśmy komisem — każdy samochód z naszej oferty jest naszą własnością, więc cenę ustalasz bezpośrednio z nami.</p>
+      <p>W stolicy najczęściej szukane są auta miejskie i kompakty na krótkie dystanse, ale równie często pytają o nie kierowcy potrzebujący kombi albo SUV-a do dojazdów spoza obwodnicy. Nie jesteśmy komisem, każdy samochód z naszej oferty jest naszą własnością, więc cenę ustalasz bezpośrednio z nami.</p>
       <p>Oględziny i jazdę próbną umawiamy w bazie w Kozłowie Biskupim pod Sochaczewem, kilkadziesiąt kilometrów od Warszawy drogą krajową nr 92. Jeśli przy okazji chcesz sprzedać obecne auto, możemy je wycenić i rozliczyć przy zakupie kolejnego.</p>
       <div class="acts" style="margin-top:24px"><a class="btn g" href="/sprzedaz">Zobacz samochody na sprzedaż</a></div>
     </div>
-    <figure><img src="/img/auto-02.jpg" alt="BMW serii 1 — samochody używane na sprzedaż dla kupujących z Warszawy" loading="lazy"></figure>
+    <figure><img src="/img/auto-02.jpg" alt="BMW serii 1, samochody używane na sprzedaż dla kupujących z Warszawy" loading="lazy"></figure>
   </div>
 </section></div></div>
 
 <div class="w"><section>
-  <Naglowek eyebrow="FAQ" tytul='Skup aut Warszawa — <span class="gold">najczęstsze pytania</span>' />
+  <Naglowek eyebrow="FAQ" tytul='Skup aut Warszawa, <span class="gold">najczęstsze pytania</span>' />
   <Faq pary={FAQ} />
 </section></div>
 

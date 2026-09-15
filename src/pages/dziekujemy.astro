@@ -19,11 +19,11 @@ import { FIRMA } from '../dane/firma';
 
 <div class="w"><section><div class="dziek">
   <p style="color:var(--muted);font-size:16.5px">
-    Zgłoszenie trafiło prosto do nas — nie do żadnej centrali ani pośrednika. Odezwiemy się na podany
+    Zgłoszenie trafiło prosto do nas, nie do żadnej centrali ani pośrednika. Odezwiemy się na podany
     numer, żeby dopytać o szczegóły i podać konkretną kwotę.
   </p>
   <p style="margin-top:16px;color:var(--muted);font-size:16.5px">
-    Jeśli spieszysz się ze sprzedażą, nie czekaj na nasz telefon — zadzwoń pod
+    Jeśli spieszysz się ze sprzedażą, nie czekaj na nasz telefon. Zadzwoń pod
     <a href={`tel:${FIRMA.tel1tel}`} style="color:var(--g4);font-weight:700">{FIRMA.tel1}</a>
     albo <a href={`tel:${FIRMA.tel2tel}`} style="color:var(--g4);font-weight:700">{FIRMA.tel2}</a>,
     ustalimy kwotę od ręki.
@@ -41,7 +41,7 @@ import { FIRMA } from '../dane/firma';
   var a = q.get('a'), t = q.get('t');
   if (!a && !t) return;
   var l = document.getElementById('dz-lede');
-  if (l) l.textContent = (a ? a + ' — o' : 'O') + 'ddzwaniamy' + (t ? ' pod ' + t : '') + ', zwykle tego samego dnia.';
+  if (l) l.textContent = (a ? a + ', o' : 'O') + 'ddzwaniamy' + (t ? ' pod ' + t : '') + ', zwykle tego samego dnia.';
 })();
 </script>
 

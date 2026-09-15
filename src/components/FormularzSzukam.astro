@@ -1,5 +1,5 @@
 ---
-/* Zapytanie o auto z oferty. Prosty formularz bez kreatora — kupujacy podaje
+/* Zapytanie o auto z oferty. Prosty formularz bez kreatora, kupujacy podaje
    kryteria, nie dane pojazdu, wiec nie ma czego dzielic na kroki.
    Pole _next uzupelnia app.js adresem biezacego hosta. */
 import Telefon from './Telefon.astro';
@@ -9,7 +9,7 @@ import { FIRMA } from '../dane/firma';
   <div class="fintro">
     <p class="eyebrow">Szukasz samochodu?</p>
     <h2 style="margin-top:14px"><span>Powiedz, jakiego</span><br><span class="gold">auta szukasz</span></h2>
-    <p>Nie musisz znać konkretnego modelu. Wystarczy, że określisz najważniejsze wymagania — budżet, rodzaj nadwozia i to, do czego auto ma służyć.</p>
+    <p>Nie musisz znać konkretnego modelu. Wystarczy, że określisz najważniejsze wymagania: budżet, rodzaj nadwozia i to, do czego auto ma służyć.</p>
     <p style="margin-top:14px">Sprawdzimy, czy mamy obecnie samochód odpowiadający tym kryteriom. Jeśli w danym momencie nie posiadamy odpowiedniego auta, poinformujemy o tym podczas rozmowy.</p>
     <ul class="tick" style="margin-top:22px">
       <li>Zapytanie nie zobowiązuje do zakupu</li>
@@ -22,7 +22,7 @@ import { FIRMA } from '../dane/firma';
     </div>
   </div>
 
-  {/* Wysylka celowo nieaktywna — jak w formularzu wyceny. */}
+  {/* Wysylka celowo nieaktywna, jak w formularzu wyceny. */}
   <form class="card" id="zf" novalidate data-strona="sprzedaz">
 
     <div class="pad">

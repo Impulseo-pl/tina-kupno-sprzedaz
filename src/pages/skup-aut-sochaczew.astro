@@ -1,5 +1,5 @@
 ---
-/* Podstrona miejscowosci — ten sam szablon co /skup-aut-warszawa. */
+/* Podstrona miejscowosci, ten sam szablon co /skup-aut-warszawa. */
 import Base from '../layouts/Base.astro';
 import HeroSkup from '../components/HeroSkup.astro';
 import Naglowek from '../components/Naglowek.astro';
@@ -11,16 +11,16 @@ import Formularz from '../components/Formularz.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Gdzie dokładnie jesteście?', 'Bazę mamy w Kozłowie Biskupim pod Sochaczewem, przy ulicy Przyszłej 2B. Nie musisz jednak tu przyjeżdżać — to my dojeżdżamy pod wskazany adres.'],
+  ['Gdzie dokładnie jesteście?', 'Bazę mamy w Kozłowie Biskupim pod Sochaczewem, przy ulicy Przyszłej 2B. Nie musisz jednak tu przyjeżdżać, to my dojeżdżamy pod wskazany adres.'],
   ['Czy muszę przyjechać do was z autem?', 'Nie. Oględziny umawiamy pod domem, na osiedlowym parkingu, w warsztacie albo na terenie firmy. Jeżeli samochód nie może jechać, ustalamy transport lawetą.'],
-  ['Odbierzecie auto z gminy poza Sochaczewem?', 'Tak. Obsługujemy cały powiat sochaczewski — gminy Sochaczew, Teresin, Rybno, Nowa Sucha, Iłów, Młodzieszyn, Brochów i Kampinos — oraz pozostałe powiaty Mazowsza.'],
+  ['Odbierzecie auto z gminy poza Sochaczewem?', 'Tak. Obsługujemy cały powiat sochaczewski, gminy Sochaczew, Teresin, Rybno, Nowa Sucha, Iłów, Młodzieszyn, Brochów i Kampinos, oraz pozostałe powiaty Mazowsza.'],
   ['Czy odkupujecie auta stojące od dłuższego czasu?', 'Tak, rozpatrujemy również samochody odstawione na posesję, nieodpalające i bez ważnych dokumentów. Przy takich autach zwykle planujemy odbiór lawetą.'],
   ['Kupujecie samochody dostawcze od lokalnych firm?', 'Tak. Odkupujemy pojedyncze dostawczaki i busy, a także kilka pojazdów naraz przy wymianie floty. Każdy samochód wyceniamy osobno.'],
   ['Czy mogę u was kupić samochód w Sochaczewie?', 'Tak. Auta, które wcześniej odkupiliśmy, sprzedajemy dalej. Oględziny i jazdę próbną umawiamy w Kozłowie Biskupim, po wcześniejszym telefonie.'],
 ];
 ---
 <Base
-  title="Skup aut Sochaczew i powiat — skup samochodów | TINA"
+  title="Skup aut Sochaczew i powiat sochaczewski | TINA"
   description="Skup samochodów w Sochaczewie i całym powiecie sochaczewskim. Baza w Kozłowie Biskupim, bezpłatna wycena, odbiór auta pod wskazanym adresem, także lawetą."
   path="/skup-aut-sochaczew"
   schema={[okruszki([['/skup-aut-sochaczew', 'Skup aut Sochaczew']]), faqLd(FAQ)]}
@@ -28,7 +28,7 @@ const FAQ: [string, string][] = [
 
 <HeroSkup
   tag="Skup i sprzedaż samochodów · Sochaczew"
-  lede='Odkupujemy samochody osobowe, dostawcze i hybrydy — sprawne, uszkodzone i niejeżdżące. Bazę mamy <span>w Kozłowie Biskupim</span> pod Sochaczewem, więc po miasto i okoliczne gminy mamy najbliżej.'
+  lede='Odkupujemy samochody osobowe, dostawcze i hybrydy, sprawne, uszkodzone i niejeżdżące. Bazę mamy <span>w Kozłowie Biskupim</span> pod Sochaczewem, więc po miasto i okoliczne gminy mamy najbliżej.'
 ><span>Skup aut</span> za gotówkę<span class="l2 gold">w Sochaczewie</span></HeroSkup>
 
 <div class="w"><section>
@@ -51,7 +51,7 @@ const FAQ: [string, string][] = [
   />
   <div class="proza">
     <p>W praktyce oznacza to bardzo różne sposoby eksploatacji. Jedno auto może mieć niewielki przebieg, ale być używane głównie na krótkich odcinkach. Inne codziennie pokonuje kilkadziesiąt kilometrów, lecz jest regularnie serwisowane i większość przebiegu zrobiło w trasie.</p>
-    <p>Podczas wyceny nie patrzymy więc wyłącznie na wskazanie licznika. Liczy się ogólny stan pojazdu, historia użytkowania oraz to, jak samochód był utrzymywany — piszemy o tym szerzej na stronie <a href="/ile-placimy">od czego zależy wycena</a>.</p>
+    <p>Podczas wyceny nie patrzymy więc wyłącznie na wskazanie licznika. Liczy się ogólny stan pojazdu, historia użytkowania oraz to, jak samochód był utrzymywany, piszemy o tym szerzej na stronie <a href="/ile-placimy">od czego zależy wycena</a>.</p>
   </div>
 </section></div>
 
@@ -93,17 +93,17 @@ const FAQ: [string, string][] = [
     <div>
       <p class="eyebrow">Szukasz auta dla siebie?</p>
       <h2>Samochody używane <span class="gold">na sprzedaż w Sochaczewie</span></h2>
-      <p>Samochody używane, które wystawiamy na sprzedaż, wcześniej sami odkupiliśmy — ich stan znamy z oględzin, a nie z opisu poprzedniego właściciela. Dla kupującego z Sochaczewa, Chodakowa czy Trojanowa oznacza to rozmowę na miejscu, bez jazdy na giełdę samochodową do Warszawy lub Łodzi.</p>
-      <p>W ofercie pojawiają się auta osobowe do jazdy po mieście, rodzinne kombi i SUV-y, a także samochody dostawcze, na które jest tu stały popyt wśród lokalnych firm. Nie prowadzimy komisu — każdy sprzedawany pojazd jest naszą własnością, dlatego cenę i warunki ustalasz bezpośrednio z nami.</p>
+      <p>Samochody używane, które wystawiamy na sprzedaż, wcześniej sami odkupiliśmy, ich stan znamy z oględzin, a nie z opisu poprzedniego właściciela. Dla kupującego z Sochaczewa, Chodakowa czy Trojanowa oznacza to rozmowę na miejscu, bez jazdy na giełdę samochodową do Warszawy lub Łodzi.</p>
+      <p>W ofercie pojawiają się auta osobowe do jazdy po mieście, rodzinne kombi i SUV-y, a także samochody dostawcze, na które jest tu stały popyt wśród lokalnych firm. Nie prowadzimy komisu, każdy sprzedawany pojazd jest naszą własnością, dlatego cenę i warunki ustalasz bezpośrednio z nami.</p>
       <p>Oględziny i jazdę próbną umawiamy w Kozłowie Biskupim, kilka minut od centrum miasta. Aktualną dostępność najlepiej potwierdzić telefonicznie albo na naszym profilu na Facebooku. Jeśli przy okazji chcesz sprzedać obecny samochód, wycenimy go i rozliczymy przy zakupie kolejnego.</p>
       <div class="acts" style="margin-top:24px"><a class="btn g" href="/sprzedaz">Zobacz samochody na sprzedaż</a></div>
     </div>
-    <figure><img src="/img/auto-04.jpg" alt="Ford Mondeo kombi — samochody używane na sprzedaż w Sochaczewie" loading="lazy"></figure>
+    <figure><img src="/img/auto-04.jpg" alt="Ford Mondeo kombi, samochody używane na sprzedaż w Sochaczewie" loading="lazy"></figure>
   </div>
 </section></div></div>
 
 <div class="w"><section>
-  <Naglowek eyebrow="FAQ" tytul='Skup aut Sochaczew — <span class="gold">najczęstsze pytania</span>' />
+  <Naglowek eyebrow="FAQ" tytul='Skup aut Sochaczew, <span class="gold">najczęstsze pytania</span>' />
   <Faq pary={FAQ} />
 </section></div>
 

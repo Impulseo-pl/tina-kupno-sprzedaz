@@ -10,20 +10,20 @@ const FAQ: [string, string][] = [
   ['Czy wycena jest płatna?', 'Nie. Wycena i dojazd są bezpłatne i nie zobowiązują do sprzedaży. Jeśli kwota Ci nie odpowiada, nie podpisujesz umowy i nie płacisz nic.'],
   ['Muszę dodać zdjęcia?', 'Nie, to krok nieobowiązkowy. Ze zdjęciami podamy jednak pewniejszą kwotę już w pierwszej rozmowie, bo nie musimy pytać o każdy szczegół.'],
   ['Po co pole „ile chcesz za auto”?', 'Żeby skrócić rozmowę. Jeśli wiemy, na jakiej kwocie Ci zależy, od razu powiemy, czy jesteśmy w stanie ją dać, zamiast przerzucać się propozycjami.'],
-  ['Nie znam dokładnego przebiegu ani pojemności. Co wtedy?', 'Wpisz przybliżone wartości i napisz o tym w uwagach. Lepszy szacunek niż puste pole — resztę doprecyzujemy przez telefon.'],
+  ['Nie znam dokładnego przebiegu ani pojemności. Co wtedy?', 'Wpisz przybliżone wartości i napisz o tym w uwagach. Lepszy szacunek niż puste pole, resztę doprecyzujemy przez telefon.'],
   ['Co się dzieje po wysłaniu formularza?', 'Zgłoszenie trafia bezpośrednio do nas i oddzwaniamy na podany numer. Jeśli wolisz kontakt o konkretnej porze, zaznacz to w formularzu.'],
 ];
 ---
 <Base
-  title="Wycena auta online — formularz bez kalkulatora | TINA"
-  description="Opisz auto w formularzu, a oddzwonimy z konkretną kwotą. Bez kalkulatorów i bez widełek — wycena jest bezpłatna i nie zobowiązuje do sprzedaży."
+  title="Wycena auta online | TINA Skup Aut"
+  description="Opisz auto w formularzu i dołącz zdjęcia. Przygotujemy wstępną wycenę, a ostateczną ofertę przedstawimy po oględzinach. Wycena jest bezpłatna."
   path="/wycena"
   schema={[okruszki([['/wycena', 'Wycena auta']]), faqLd(FAQ)]}
 >
 
 <Chero
   okruszek="Wycena auta"
-  lede="Wypełnij formularz albo po prostu zadzwoń. Opisz samochód, dołącz zdjęcia i podaj lokalizację — przygotujemy wstępną wycenę, a ostateczną ofertę przedstawimy po oględzinach."
+  lede="Wypełnij formularz albo po prostu zadzwoń. Opisz samochód, dołącz zdjęcia i podaj lokalizację, przygotujemy wstępną wycenę, a ostateczną ofertę przedstawimy po oględzinach."
   sub="Wycena jest bezpłatna i nie zobowiązuje do sprzedaży."
   akcje={false}
 ><span>Wycena <span class="gold">Twojego auta</span></span></Chero>

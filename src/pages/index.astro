@@ -13,10 +13,10 @@ import Faq from '../components/Faq.astro';
 import { FIRMA_LD, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
-  ['Ile trwa wycena auta?', 'Sama rozmowa to zwykle kilka minut — tyle wystarczy, żeby podać markę, rocznik, przebieg i stan auta, a od nas usłyszeć wstępną wycenę. Ostateczną ofertę przedstawiamy po obejrzeniu samochodu, już na miejscu. Wycena jest bezpłatna i nie zobowiązuje do sprzedaży.'],
+  ['Ile trwa wycena auta?', 'Sama rozmowa to zwykle kilka minut. Tyle wystarczy, żeby podać markę, rocznik, przebieg i stan auta, a od nas usłyszeć wstępną wycenę. Ostateczną ofertę przedstawiamy po obejrzeniu samochodu, już na miejscu. Wycena jest bezpłatna i nie zobowiązuje do sprzedaży.'],
   ['Czy odbierzecie auto, które nie jeździ?', 'Tak. Auta niejeżdżące i powypadkowe zabieramy lawetą, transport jest po naszej stronie i nic nie kosztuje.'],
   ['Czy kupicie auto bez ważnego OC albo przeglądu?', 'Tak. Brak OC lub przeglądu nie blokuje sprzedaży, wpływa tylko na kwotę.'],
-  ['Kiedy dostanę pieniądze?', 'Na miejscu, zaraz po podpisaniu umowy kupna-sprzedaży — gotówką albo przelewem, jak wolisz. Auto ładujemy na lawetę dopiero po wypłacie.'],
+  ['Kiedy dostanę pieniądze?', 'Na miejscu, zaraz po podpisaniu umowy kupna-sprzedaży, gotówką albo przelewem, jak wolisz. Auto ładujemy na lawetę dopiero po wypłacie.'],
   ['Czy kupujecie samochody elektryczne?', 'Nie. Hybrydy odkupujemy normalnie, natomiast aut w pełni elektrycznych nie kupujemy. Nie bierzemy też motocykli, kamperów ani przyczep.'],
   ['Czy przyjedziecie do Warszawy albo na drugi koniec Mazowsza?', 'Tak. Działamy na terenie całego województwa mazowieckiego, a bazę mamy pod Sochaczewem. Dojazd jest bezpłatny niezależnie od tego, jak daleko jedziemy.'],
 ];
@@ -28,15 +28,15 @@ const SKROT: [string][] = [
 ];
 ---
 <Base
-  title="Skup aut za gotówkę — całe Mazowsze | TINA Skup Aut"
-  description="Skup samochodów osobowych, dostawczych i hybryd na terenie całego Mazowsza. Cena ustalona przez telefon, przyjazd tego samego dnia, dojazd i laweta za 0 zł."
+  title="Skup aut za gotówkę na całym Mazowszu | TINA Skup Aut"
+  description="Skup samochodów osobowych, dostawczych i hybryd na terenie całego Mazowsza. Wstępna wycena przez telefon, przyjazd pod wskazany adres, dojazd i laweta za 0 zł."
   path="/"
   schema={[FIRMA_LD, faqLd(FAQ)]}
 >
 
 <HeroSkup
   tag="Skup i sprzedaż samochodów · całe Mazowsze"
-  lede='Odkupujemy samochody osobowe, dostawcze i hybrydy — sprawne, uszkodzone i powypadkowe. Ustalamy cenę, przyjeżdżamy <span>tego samego dnia</span>, płacimy na miejscu. Dojazd i laweta nic nie kosztują.'
+  lede='Odkupujemy samochody osobowe, dostawcze i hybrydy: sprawne, uszkodzone i powypadkowe. Ustalamy cenę, przyjeżdżamy <span>tego samego dnia</span>, płacimy na miejscu. Dojazd i laweta nic nie kosztują.'
 ><span>Skup aut</span> za gotówkę<span class="l2 gold">na terenie całego Mazowsza</span></HeroSkup>
 
 <PasFaktow />
@@ -55,7 +55,7 @@ const SKROT: [string][] = [
   <Naglowek
     eyebrow="Sprzedaż auta bez zbędnych komplikacji"
     tytul='Dlaczego warto sprzedać auto <span class="gold">w TINA?</span>'
-    opis="Bez publikowania ogłoszeń, wielokrotnych spotkań i długiego oczekiwania na kupującego. Oglądamy samochód, przedstawiamy ofertę i — jeśli ją zaakceptujesz — zajmujemy się formalnościami oraz odbiorem pojazdu."
+    opis="Bez publikowania ogłoszeń, wielokrotnych spotkań i długiego oczekiwania na kupującego. Oglądamy samochód, przedstawiamy ofertę i, jeśli ją zaakceptujesz, zajmujemy się formalnościami oraz odbiorem pojazdu."
   />
   <div class="vows">
     <div class="vow">
@@ -91,7 +91,7 @@ const SKROT: [string][] = [
   <Naglowek
     eyebrow="Dwie strony jednej transakcji"
     tytul='Skupujemy <span class="gold">i sprzedajemy</span>'
-    opis="Większość firm w tej branży robi tylko jedno. My stoimy po obu stronach, dlatego wiemy, ile auto jest naprawdę warte — nie w ogłoszeniu, tylko w transakcji."
+    opis="Większość firm w tej branży robi tylko jedno. My stoimy po obu stronach, dlatego wiemy, ile auto jest naprawdę warte, nie w ogłoszeniu, tylko w transakcji."
   />
   <div class="two">
     <div class="pane">
@@ -100,7 +100,7 @@ const SKROT: [string][] = [
         <h3><span>Skup</span><span>Chcę sprzedać auto</span></h3>
         <p>Odkupujemy auto na siebie i płacimy od ręki. Nie pośredniczymy, nie bierzemy prowizji, nie czekamy, aż znajdzie się kupiec.</p>
         <ul>
-          <li>Osobowe, dostawcze i hybrydy — każda marka i rocznik</li>
+          <li>Osobowe, dostawcze i hybrydy, każda marka i rocznik</li>
           <li>Uszkodzone i powypadkowe, jeśli da się je jeszcze naprawić</li>
           <li>Także bez ważnego OC albo przeglądu</li>
           <li>Płatność gotówką na miejscu albo przelewem</li>
@@ -129,7 +129,7 @@ const SKROT: [string][] = [
   <Naglowek
     eyebrow="Dowód, nie deklaracja"
     tytul='Auta, które <span class="gold">już odkupiliśmy</span>'
-    opis="Prawdziwe transakcje i prawdziwe zdjęcia — od trzydziestoletniego mercedesa po skrzyniowego craftera."
+    opis="Prawdziwe transakcje i prawdziwe zdjęcia, od trzydziestoletniego mercedesa po skrzyniowego craftera."
   />
   <div class="grid4">
     <figure class="shot"><img src="/img/auto-01.jpg" alt="Opel Movano, furgon" loading="lazy"><figcaption><b>Opel Movano</b><span>furgon</span></figcaption></figure>

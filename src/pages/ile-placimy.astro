@@ -3,13 +3,14 @@ import Base from '../layouts/Base.astro';
 import Chero from '../components/Chero.astro';
 import Telefon from '../components/Telefon.astro';
 import Cta from '../components/Cta.astro';
+import Faq from '../components/Faq.astro';
 import { okruszki, faqLd } from '../dane/firma';
 
 const FAQ: [string, string][] = [
   ['Dlaczego nie ma jednego cennika skupu aut?', 'Ponieważ na wartość wpływa rzeczywisty stan konkretnego pojazdu. Dwa auta tego samego modelu i z tego samego rocznika mogą różnić się wartością ze względu na przebieg, usterki, wyposażenie i historię.'],
   ['Czy przez telefon otrzymam ostateczną cenę?', 'Na podstawie rozmowy i zdjęć możemy przygotować wstępną ocenę. Ostateczną ofertę przedstawiamy po obejrzeniu samochodu i potwierdzeniu jego stanu.'],
   ['Czy wycena jest bezpłatna?', 'Tak. Przekazanie informacji o samochodzie i otrzymanie oferty nie zobowiązuje do sprzedaży.'],
-  ['Czy mogę podać własne oczekiwania cenowe?', 'Tak, możesz powiedzieć, jakiej kwoty oczekujesz. Nie jest to jednak wymagane — wycenę możemy przygotować na podstawie danych i stanu pojazdu.'],
+  ['Czy mogę podać własne oczekiwania cenowe?', 'Tak, możesz powiedzieć, jakiej kwoty oczekujesz. Nie jest to jednak wymagane, wycenę możemy przygotować na podstawie danych i stanu pojazdu.'],
   ['Czy zdjęcia są obowiązkowe?', 'Nie, ale pomagają lepiej ocenić samochód przed umówieniem oględzin. Szczególnie przydatne są w przypadku aut uszkodzonych i niejeżdżących.'],
   ['Czy kupujecie samochody bez ważnego OC lub przeglądu?', 'Takie auto również może zostać wycenione. Brak ważnych dokumentów wpływa na sposób odbioru pojazdu i może mieć znaczenie przy ustalaniu wartości.'],
   ['Czy odkupujecie auta powypadkowe?', 'Rozpatrujemy również zgłoszenia dotyczące samochodów uszkodzonych, powypadkowych oraz niejeżdżących. Możliwość zakupu zależy od zakresu uszkodzeń i stanu całego pojazdu.'],
@@ -25,7 +26,7 @@ const FAQ: [string, string][] = [
 
 <Chero
   okruszek="Ile płacimy"
-  lede="Nie mamy cennika i nie udajemy, że da się go zrobić. Zamiast tego tłumaczymy dokładnie, co decyduje o kwocie — żebyś wiedział, czego się spodziewać, zanim podniesiesz słuchawkę."
+  lede="Nie mamy cennika i nie udajemy, że da się go zrobić. Zamiast tego tłumaczymy dokładnie, co decyduje o kwocie, żebyś wiedział, czego się spodziewać, zanim podniesiesz słuchawkę."
   sub="Skup aut za gotówkę na terenie całego Mazowsza."
 >
   <span>Ile płacimy <span class="gold">za auto</span></span>
@@ -130,7 +131,7 @@ const FAQ: [string, string][] = [
       <li>lokalizację samochodu;</li>
       <li>kilka aktualnych zdjęć.</li>
     </ol>
-    <p>Nie musisz przed wyceną wykonywać kosztownych napraw. Najpierw pokaż nam samochód w obecnym stanie — sprawdzimy, czy jego zakup będzie możliwy bez dodatkowych przygotowań.</p>
+    <p>Nie musisz przed wyceną wykonywać kosztownych napraw. Najpierw pokaż nam samochód w obecnym stanie, sprawdzimy, czy jego zakup będzie możliwy bez dodatkowych przygotowań.</p>
 
     <h2>Jak zrobić zdjęcia do wyceny?</h2>
     <p>Profesjonalna sesja nie jest potrzebna. Wystarczy kilka wyraźnych zdjęć wykonanych telefonem w świetle dziennym. Najbardziej pomocne będą zdjęcia:</p>
@@ -173,12 +174,7 @@ const FAQ: [string, string][] = [
     <p>Przed rozpoczęciem większych prac warto najpierw sprawdzić, ile samochód jest wart w obecnym stanie. Pozwoli to porównać koszt naprawy z możliwą różnicą w cenie.</p>
 
     <h2>Pytania dotyczące wyceny samochodu</h2>
-    {FAQ.map(([pytanie, odpowiedz]) => (
-      <>
-        <h3>{pytanie}</h3>
-        <p>{odpowiedz}</p>
-      </>
-    ))}
+    <Faq pary={FAQ} />
   </div>
 </section></div>
 

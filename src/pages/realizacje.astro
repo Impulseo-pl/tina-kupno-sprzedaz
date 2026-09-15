@@ -5,7 +5,7 @@ import Naglowek from '../components/Naglowek.astro';
 import Cta from '../components/Cta.astro';
 import { okruszki } from '../dane/firma';
 
-/* Zdjecia od klienta — auta, ktore realnie przeszly przez jego rece.
+/* Zdjecia od klienta, auta, ktore realnie przeszly przez jego rece.
    Zadnych stockow: jesli czegos nie ma na zdjeciu, nie ma tego na stronie. */
 const AUTA = [
   ['auto-01', 'Opel Movano', 'furgon', ''],
@@ -29,7 +29,7 @@ const AUTA = [
 ];
 ---
 <Base
-  title="Realizacje — auta, które odkupiliśmy | TINA Skup Aut"
+  title="Realizacje: auta, które odkupiliśmy | TINA Skup Aut"
   description="Zdjęcia samochodów, które realnie przeszły przez nasze ręce: osobowe, dostawcze, klasyki i auta powypadkowe. Prawdziwe transakcje, nie zdjęcia ze stocka."
   path="/realizacje"
   schema={okruszki([['/realizacje', 'Realizacje']])}
@@ -37,7 +37,7 @@ const AUTA = [
 
 <Chero
   okruszek="Realizacje"
-  lede="Zobacz samochody, które przeszły przez nasze ręce — od małych aut miejskich po duże auta terenowe."
+  lede="Zobacz samochody, które przeszły przez nasze ręce, od małych aut miejskich po duże auta terenowe."
   sub="Wszystkie zdjęcia są nasze. Żadnych obrazków ze stocka."
   akcje={false}
 ><span>Auta, które <span class="gold">odkupiliśmy</span></span></Chero>
@@ -45,7 +45,7 @@ const AUTA = [
 <div class="w"><section>
   <div class="proza">
     <h2>Zobacz, jakie auta trafiają do naszego skupu</h2>
-    <p>Każdy samochód ma inny rocznik, przebieg i stan techniczny. Poniżej prezentujemy wybrane pojazdy, które rzeczywiście odkupiliśmy — od samochodów osobowych i dostawczych po auta starsze, uszkodzone oraz powypadkowe. Ta galeria najlepiej pokazuje, jak szeroki jest zakres naszego skupu.</p>
+    <p>Każdy samochód ma inny rocznik, przebieg i stan techniczny. Poniżej prezentujemy wybrane pojazdy, które rzeczywiście odkupiliśmy, od samochodów osobowych i dostawczych po auta starsze, uszkodzone oraz powypadkowe. Ta galeria najlepiej pokazuje, jak szeroki jest zakres naszego skupu.</p>
   </div>
 </section></div>
 
@@ -64,7 +64,7 @@ const AUTA = [
   <Naglowek
     eyebrow="Co z tego wynika"
     tytul='Zakres jest <span class="gold">szerszy, niż się wydaje</span>'
-    opis="Na zdjęciach jest wszystko: osobówki, dostawcze, klasyk, terenowe, pickup i auta po szkodzie. To nie jest przypadek — tak wygląda przekrój tego, co realnie odkupujemy."
+    opis="Na zdjęciach jest wszystko: osobówki, dostawcze, klasyk, terenowe, pickup i auta po szkodzie. To nie jest przypadek, tak wygląda przekrój tego, co realnie odkupujemy."
   />
   <div class="links">
     <a href="/auta-uszkodzone-powypadkowe"><b>Auta uszkodzone</b>Po stłuczce, po gradzie, niejeżdżące</a>
