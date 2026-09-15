@@ -211,6 +211,8 @@ summary:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 .proza h2{font-size:clamp(19px,2.4vw,26px);margin-top:40px}
 .proza h2:first-child{margin-top:0}
 .proza h3{font-size:clamp(16.5px,1.9vw,19px);margin-top:28px}
+/* Naglowek nad rozwijanym FAQ w artykule: na srodku, z oddechem nad lista. */
+.proza h2.tyt-faq{text-align:center;margin-top:58px;margin-bottom:30px}
 .proza h3+p{margin-top:8px}
 .proza p,.proza li{margin-top:13px;font-size:16.5px;color:#3c414b}
 .proza ul{margin-top:10px;padding-left:0}
