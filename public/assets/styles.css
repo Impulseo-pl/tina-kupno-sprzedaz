@@ -225,6 +225,9 @@ summary:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 .wpis h2 a:hover{color:var(--g4)}
 .wpis p{font-size:16px;color:#3c414b;line-height:1.6}
 .wpis .acts{margin-top:18px}
+/* .btn.o jest pisany pod ciemne tlo, na jasnej karcie potrzebuje ciemnego tekstu */
+.wpis .btn.o{color:var(--ink);border-color:var(--line)}
+.wpis .btn.o:hover{color:var(--g4);border-color:var(--g3)}
 @media (max-width:760px){.wpis{grid-template-columns:1fr;gap:18px}}
 .proza h3+p{margin-top:8px}
 .proza p,.proza li{margin-top:13px;font-size:16.5px;color:#3c414b}
