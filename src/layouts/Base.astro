@@ -14,7 +14,7 @@ const { title, description, path, schema, ogImage, cta } = Astro.props;
 const canonical = path === '/' ? `${SITE}/` : `${SITE}${path}`;
 const schematy = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 const przycisk = cta ?? { label: 'Wyceń auto', href: '/wycena' };
-const CSS_V = '20260915o';
+const CSS_V = '20260915p';
 // Na telefonie w pasku miesci sie tylko kilka pozycji — reszta chowa sie pod „Więcej”.
 const NAW_TELEFON = ['/', '/sprzedaz', '/kontakt'];
 ---
@@ -58,7 +58,7 @@ const NAW_TELEFON = ['/', '/sprzedaz', '/kontakt'];
     <a class="tel" href={`tel:${FIRMA.tel1tel}`}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>{FIRMA.tel1}</a>
   </div>
   <div class="menu-wiecej" id="menu-wiecej" hidden>
-    {NAW.map((p) => <a href={p.href} aria-current={p.href === path ? 'page' : undefined}>{p.label}</a>)}
+    {NAW.filter((p) => !NAW_TELEFON.includes(p.href)).map((p) => <a href={p.href} aria-current={p.href === path ? 'page' : undefined}>{p.label}</a>)}
   </div>
 </header>
 <div class="prog"></div>
