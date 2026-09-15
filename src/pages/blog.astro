@@ -1,0 +1,86 @@
+---
+/* Lista wpisow. Artykuly zyja pod wlasnymi adresami (dobre frazy w URL),
+   blog jest dla nich spisem tresci. Nowy wpis = jeden rekord w WPISY. */
+import Base from '../layouts/Base.astro';
+import Chero from '../components/Chero.astro';
+import Cta from '../components/Cta.astro';
+import { okruszki, SITE } from '../dane/firma';
+
+type Wpis = { href: string; tytul: string; zajawka: string; obraz: string; alt: string; data: string; czas: string };
+
+const WPISY: Wpis[] = [
+  {
+    href: '/jak-sprzedac-auto',
+    tytul: 'Jak sprzedać samochód bez niepotrzebnych problemów?',
+    zajawka:
+      'Dokumenty do zebrania, co musi znaleźć się w umowie, trzy rzeczy do sprawdzenia przed wydaniem kluczyków oraz dwa terminy po sprzedaży: zgłoszenie zbycia w 30 dni i powiadomienie ubezpieczyciela w 14 dni.',
+    obraz: '/img/auto-04.jpg',
+    alt: 'Ford Mondeo kombi przygotowany do sprzedaży',
+    data: '2026-09-14',
+    czas: '8 min czytania',
+  },
+  {
+    href: '/komis-czy-skup-aut',
+    tytul: 'Komis czy skup aut: czym się różnią i co wybrać?',
+    zajawka:
+      'Komis szuka kupującego, skup sam kupuje samochód. Porównanie prowizji, czasu oczekiwania i momentu wypłaty, a do tego lista pytań, które warto zadać przed podpisaniem umowy komisowej.',
+    obraz: '/img/auto-05.jpg',
+    alt: 'Audi A6 na placu przed oględzinami',
+    data: '2026-09-14',
+    czas: '9 min czytania',
+  },
+];
+
+const dataPl = (d: string) =>
+  new Date(d).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const blogLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Blog TINA Skup Aut',
+  url: SITE + '/blog',
+  blogPost: WPISY.map((w) => ({
+    '@type': 'BlogPosting',
+    headline: w.tytul,
+    description: w.zajawka,
+    url: SITE + w.href,
+    mainEntityOfPage: SITE + w.href,
+    datePublished: w.data,
+    image: SITE + w.obraz,
+    author: { '@type': 'Organization', name: 'TINA Skup Aut' },
+  })),
+};
+---
+<Base
+  title="Blog o sprzedaży samochodu | TINA Skup Aut"
+  description="Poradniki o sprzedaży auta: formalności krok po kroku, umowa kupna-sprzedaży, zgłoszenie zbycia oraz różnice między komisem a skupem samochodów."
+  path="/blog"
+  schema={[okruszki([['/blog', 'Blog']]), blogLd]}
+>
+
+<Chero
+  okruszek="Blog"
+  lede="Praktyczne poradniki o sprzedaży samochodu: dokumenty, umowa, terminy po transakcji i różnice między komisem a skupem."
+  sub="Piszemy o tym, o co pytacie w rozmowach."
+  akcje={false}
+><span>Blog <span class="gold">o sprzedaży auta</span></span></Chero>
+
+<div class="w"><section>
+  <div class="wpisy">
+    {WPISY.map((w) => (
+      <article class="wpis">
+        <a class="foto" href={w.href}><img src={w.obraz} alt={w.alt} loading="lazy"></a>
+        <div class="tresc">
+          <p class="meta"><time datetime={w.data}>{dataPl(w.data)}</time> · {w.czas}</p>
+          <h2><a href={w.href}>{w.tytul}</a></h2>
+          <p>{w.zajawka}</p>
+          <div class="acts"><a class="btn o" href={w.href}>Czytaj artykuł</a></div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section></div>
+
+<Cta />
+
+</Base>

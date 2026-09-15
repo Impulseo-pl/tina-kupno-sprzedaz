@@ -15,6 +15,7 @@ const STRONY: [string, string][] = [
   ['/wycena', '0.8'],
   ['/sprzedaz', '0.7'],
   ['/realizacje', '0.6'],
+  ['/blog', '0.6'],
   ['/o-nas', '0.5'],
   ['/pytania', '0.6'],
   ['/kontakt', '0.6'],

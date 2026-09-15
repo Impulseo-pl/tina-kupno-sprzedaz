@@ -213,6 +213,19 @@ summary:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 .proza h3{font-size:clamp(16.5px,1.9vw,19px);margin-top:28px}
 /* Naglowek nad rozwijanym FAQ w artykule: na srodku, z oddechem nad lista. */
 .proza h2.tyt-faq{text-align:center;margin-top:58px;margin-bottom:30px}
+/* ---------- lista wpisow na blogu ---------- */
+.wpisy{display:grid;gap:26px;max-width:960px;margin-inline:auto}
+.wpis{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:center;background:var(--w0);border:1px solid var(--line);padding:22px}
+.wpis .foto{display:block;overflow:hidden}
+.wpis .foto img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .5s var(--ez)}
+.wpis:hover .foto img{transform:scale(1.04)}
+.wpis .meta{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.wpis h2{font-size:clamp(18px,2.2vw,23px);margin:10px 0 12px}
+.wpis h2 a{color:inherit;text-decoration:none}
+.wpis h2 a:hover{color:var(--g4)}
+.wpis p{font-size:16px;color:#3c414b;line-height:1.6}
+.wpis .acts{margin-top:18px}
+@media (max-width:760px){.wpis{grid-template-columns:1fr;gap:18px}}
 .proza h3+p{margin-top:8px}
 .proza p,.proza li{margin-top:13px;font-size:16.5px;color:#3c414b}
 .proza ul{margin-top:10px;padding-left:0}
